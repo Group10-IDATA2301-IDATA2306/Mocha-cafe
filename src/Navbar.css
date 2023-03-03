@@ -1,0 +1,32 @@
+nav {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 9rem;
+    justify-content: flex-start;
+    gap: 3rem;
+
+    box-shadow: 1px 1px 5px black;
+    background-color: white;
+    z-index: 5;
+}
+
+logo {
+    display: inline-block;
+    width: 5rem;
+    height: 5rem;
+
+    margin-left: 3rem;
+    margin-right: 2rem;
+
+    color: #f8f9fa;
+    background-color:  rgb(116, 86, 66);
+    border-radius: 50%;
+}
+
+logo::before{
+    display: inline-block;
+    margin-left: 0.8rem;
+    margin-top: 0.8rem;
+}
+
