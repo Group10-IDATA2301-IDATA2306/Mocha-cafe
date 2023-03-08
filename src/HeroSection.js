@@ -17,6 +17,7 @@ export function HeroSection() {
             <content>
             <main-title>Try our new exciting flavors</main-title>
             {/* <button>Find out more</button> */}
+            {/* <img src="/img/Coffe\ L\ 2295\ x\ 1311.jpg"/> */}
             </content>
         </main>
     </>
