@@ -9,6 +9,10 @@ buildNumber.properties
 .mvn/timing.properties
 # https://github.com/takari/maven-wrapper#usage-without-binary-jar
 .mvn/wrapper/maven-wrapper.jar
+<<<<<<< HEAD
 node_modules
 /node_modules
 /.vscode
+=======
+.vscode/
+>>>>>>> 8b697e9b46cd6ed1142aa572fcc3908a6ad2c31d
