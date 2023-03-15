@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Mocha Coffeeshop</title>
+</head>
+
+<body>
+    <header>
+        <nav class="navBar">
+            <a href="" class="navEl">
+                Home
+            </a>
+            <a href="" class="navEl">
+                Our products
+            </a>
+            <a href="" class="navEl">
+                About
+            </a>
+            <a href="" class="dummyEl">
+
+            </a>
+            <a href="" class="navEl">
+                Cart
+            </a>
+        </nav>
+    </header>
+    <main>
+        <div id="checkout">
+            <section id="checkoutPersonalDetails">
+                <h1 class="pageTitle">
+                    Checkout
+                </h1>
+                <div class="formWrapper">
+                    <h2 class="formHeader">
+                        Contact information
+                    </h2>
+                    <input type="text" placeholder="Email" class="formInput">
+                    <input type="text" placeholder="Phone number" class="formInput">
+                </div>
+                <div class="formWrapper">
+                    <h2 class="formHeader">
+                        Shipping address
+                    </h2>
+                    <div class="formInputWrapper">
+                        <input type="text" placeholder="First name" class="formInput">
+                        <input type="text" placeholder="Last name" class="formInput">
+                    </div>
+                    <input type="text" placeholder="Company (Required for business addresses)" class="formInput">
+                    <input type="text" placeholder="Address" class="formInput">
+                    <div class="formInputWrapper">
+                        <select name="country" id="countryDropDown" class="formInput">
+                            <option value="Norway" class="formOption">Norway</option>
+                            <option value="Sweden" class="formOption">Sweden</option>
+                        </select>
+                        <input type="text" placeholder="City" class="formInput">
+                        <input type="text" placeholder="ZIP code" class="formInput">
+                    </div>
+                </div>
+                <div class="formBtnWrapper">
+                    <div class="dummyEl">
+
+                    </div>
+                    <button class="bigBtn">
+                        Continue to shipping
+                    </button>
+                </div>
+            </section>
+            <section id="checkoutProducts">
+                <div id="cartItemsBox">
+                    <div class="cartProductEl">
+                        <div class="cartProductElDetails">
+                            <img src="resources/products/Product_1-removebg-preview.png" alt="Coffee beans"
+                                class="cartProductElImg">
+                            <div class="cartProductElTitleAndCount">
+                                <h3 class="cartProductElTitle">
+                                    Brazilian coffee
+                                </h3>
+                                <input type="text" value="2" class="cartProductElCount">
+                            </div>
+                        </div>
+                        <div class="cartProductElPrice">
+                            NOK 160,-
+                        </div>
+                        <button class="cartProductElRemoveBtn">
+                            X
+                        </button>
+                    </div>
+                    <div class="cartProductEl">
+                        <div class="cartProductElDetails">
+                            <img src="resources/products/Product_2-removebg-preview.png" alt="Coffee beans"
+                                class="cartProductElImg">
+                            <div class="cartProductElTitleAndCount">
+                                <h3 class="cartProductElTitle">
+                                    Green tea
+                                </h3>
+                                <input type="text" value="1" class="cartProductElCount">
+                            </div>
+                        </div>
+                        <p class="cartProductElPrice">
+                            NOK 70,-
+                        </p>
+                        <button class="cartProductElRemoveBtn">
+                            X
+                        </button>
+                    </div>
+                </div>
+                <div id="priceDetails">
+                    <p class="priceDetailSection">
+                        Extra fees might be added to the total due to differences in the shipping locations. The total
+                        fee will be calculated at the next step.
+                    </p>
+                    <div class="priceDetailSection">
+                        <h3 class="priceDisplayEl">
+                            Total
+                        </h3>
+                        <h3 class="priceDisplayEl">
+                            NOK 230
+                        </h3>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    <footer>
+
+    </footer>
+</body>
+
+</html>
