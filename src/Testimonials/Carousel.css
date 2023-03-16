@@ -1,0 +1,47 @@
+
+#Testimonials{
+  text-align: center;
+}
+
+#Testimonials > h2{
+  margin-top: 5rem;
+  color: white;
+}
+
+carousel{
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    height: 50rem;
+    justify-content: center;
+}
+
+item {
+    height: 20rem;
+    width: 40rem;
+    margin-bottom: 3rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+
+    padding: 2.4rem;
+    text-align: center;
+    border-radius: 1rem;
+    background-color: white;
+}
+
+/* item:hover{
+  background-color: blue;
+} */
+
+
+sean{
+  height: 15rem;
+  width: 10rem;
+  border-radius: 50%;
+  background-image: url("/src/assets/img/Sean.jpg");
+  background-size: cover;
+}
+

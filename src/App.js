@@ -1,5 +1,8 @@
-import {HeroSection} from "./HeroSection"
-import { NavBar } from "./NavBar";
+import {HeroSection} from "./Main/HeroSection"
+import { NavBar } from "./Navigation/NavBar";
+import { Footer } from "./Footer/Footer";
+import { Carousel} from "./Testimonials/Carousel";
+import { Product } from "./Products/Product";
 
 /**
  * Component representing the main page
@@ -11,6 +14,9 @@ export function App() {
     <>
     <NavBar/>
     <HeroSection/>
+    <Product/>
+    <Carousel/>
+    <Footer/>
     </>
 
 );

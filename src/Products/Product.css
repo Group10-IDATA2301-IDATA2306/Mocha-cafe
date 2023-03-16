@@ -1,0 +1,43 @@
+
+.product-section{
+    height: 60rem;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 10rem;
+
+    background-color: #f7f7f7;
+    padding: 15rem;
+}
+
+.product-container{
+    display: flex;
+    height: 40rem;
+    gap: 20rem;
+
+    /* background-color: white; */
+}
+
+card{
+    height: 30rem;
+    width: 30rem;
+    background-color: teal;
+    /* border-radius: 1rem; */
+}
+
+#product1{
+    background-image: url("/src/assets/img/Product\ 1.png");
+    background-size: cover;
+}
+
+#product2{
+    background-image: url("/src/assets/img/Product 2.png");
+    background-size: cover;
+}
+
+#product3{
+    background-image: url("/src/assets/img/Product 3.png");
+    background-size: cover;
+}
