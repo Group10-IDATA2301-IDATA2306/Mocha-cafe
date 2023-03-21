@@ -8,8 +8,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.Cascade;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -18,35 +16,48 @@ import jakarta.persistence.ManyToOne;
 
 
 /**
- * Representing a cart item.
+ * <h1>Cart Item</h1>
+ * 
+ * <p>Represents an simple entity class for Cart Item
+ *  with the JPA's {@code @Entity} annotation. 
+ * </p>
+ * 
+ * @version 21.03.2023
+ * @since   21.03.2023
  */
 @Entity
 @Table(name = "cart_item")
 public class CartItem {
     
+    /** Unique Id of the Cart Item */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "cart_item_id")
     private long id;
 
+    /** Shopping Session for the Cart Item */
     @ManyToOne
     @JoinColumn(name = "session_id")
     private ShoppingSession shoppingSession;
 
+    /** Product of the Cart Item */
     @OneToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "product_id")
     private Product product;
 
+    /** Quantity of the Cart Item */
     private Integer quantity;
 
+    /** Cart Item Updated */
     @Column(name = "updated")
     private LocalDateTime updated;
 
+    /** Creation of the Cart Item */
     @Column(name = "creation")
     private LocalDateTime creation;
 
     /**
-     * Default constructor.
+     * Default constructor for Cart Item.
      */
     public CartItem() {
 
@@ -81,7 +92,7 @@ public class CartItem {
      * @return the shopping session for the cart items.
      */
     public ShoppingSession getShoppingSession() {
-        return ShoppingSession;
+        return shoppingSession;
     }
 
     /**
