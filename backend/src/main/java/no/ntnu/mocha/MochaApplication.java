@@ -32,7 +32,7 @@ public class MochaApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		// Add products objects and save these to db.
-		Product product1 = new Product("1", "2", "3", "Mocha", 120, 20, 5.2, 20.0, "Strong Mocha Coffee", true);
+		//Product product1 = new Product("1", "2", "3", "Mocha", 120, 20, 5.2, 20.0, "Strong Mocha Coffee", true);
 
 		/* 
 		for(Product product : productRepository.findAll()) {

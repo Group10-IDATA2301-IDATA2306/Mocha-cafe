@@ -1,166 +1,173 @@
 package no.ntnu.mocha.domain.entity;
 
-import java.time.LocalDateTime;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+
+import jakarta.persistence.Table;
 
 /**
  * Represents a customer review submitted on the website.
+ * 
+ * @since   06.02.2023
+ * @version 21.03.2023
  */
 @Entity
+@Table(name = "review")
 public class Review {
     
+    /** Review ID (primary key) represented as Long in the database. */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(unique = true, name = "rating_id", nullable = false)
-    private long id;
+    private long rId;
 
-    //@ManyToOne(cascade = CascadeType.DETACH)
-    //@JoinColumn(name = "user_id")
-    //private User user;
+    /** User ID (foreign key) represented as Long in the database. */
+    private long uId;
 
-    private String displayName;
+    /** Product ID (foreign key) represented as Long in the database. */
+    private long pId;
 
-    @ManyToOne(cascade = CascadeType.DETACH)
-    @JoinColumn(name = "product_id")
-    private Product product;
-
-    private int rating;
-
+    /** Content of the review represented as VarChar(255) in the database. */
     private String comment;
 
-    @Column(name = "updated_at")
-    private LocalDateTime updatedAt;
+    /** Star rating of the review represented as Integer in the database. */
+    private int stars;
 
-    private String userProduct;
+    /** Date of the review represented as Date in the database. */
+    private Date date;
 
 
     /**
-     * Empty constructor.
+     * Emtpy Constructor.
      */
     public Review() {}
 
+
     /**
-     * Create a new instance of the Rating class.
+     * Creates an instance of Review.
      * 
-     * @param user          The author of the rating.
-     * @param displayname   The display name of the author.
-     * @param product       The product associated to the rating.
-     * @param rating        The integer rating of the product.
-     * @param comment       The authors comment in the review.
+     * @param uId       the uId of user which made the review. 
+     * @param pId       the pId of the product which is reviewed.
+     * @param comment   the content of the review.
+     * @param stars     the star rating of the review.
      */
-    public Review(String displayName, Product product, int rating, String comment) {
-        // this.user = user;
-        setDisplayName(displayName);
-        this.product = product;
-        this.rating = rating;
+    public Review(long uId, long pId, String comment, int stars) {
+        super();
+        this.uId = uId;
+        this.pId = pId;
         this.comment = comment;
-        this.updatedAt = LocalDateTime.now();
-        // this.userProduct = user.getEmail() + product.getName();
+        this.stars = stars;
+        this.date = new Date();
     }
 
-
-    public long getId() {
-        return this.id;
-    }
-
-
-    //public User getUser() {return this.user;}
-    //public void setUser(User user) {this.user = user;}
-
-    
     /**
-     * Get the display name of the rating author.
+     * Get the rId of the Review.
      * 
-     * @return display name of the reviewer.
+     * @return rId of the Review.
      */
-    public String getDisplayName() {
-        return this.displayName;
+    public long getRid() {
+        return rId;
     }
 
     /**
-     * Set the display name of the rating author.
+     * Set the rId of the Review.
      * 
-     * @param displayName the new display name.
+     * @param rId the rId of the Review.
      */
-    public void setDisplayName(String displayName) {
-        if (displayName == null || displayName.isEmpty()) {
-            this.displayName = "Anonymous";
-        } else {
-            this.displayName = displayName;
-        }
+    public void setRid(long rId) {
+        this.rId = rId;
     }
 
-
     /**
-     * Get the user and the product represented as a String.
+     * Get the uId of the Review.
      * 
-     * @return User and Product as a String.
+     * @return uId of the Review.
      */
-    public String getUserAndProductAsString() {
-        return this.userProduct;
+    public long getUid() {
+        return uId;
     }
 
-
     /**
-     * Get the Product which where rated.
+     * Set the uId of the Review.
      * 
-     * @return the rated Product.
+     * @param uId the uId of the Review.
      */
-    public Product getProduct() {
-        return this.product;
+    public void setUid(long uId) {
+        this.uId = uId;
     }
 
     /**
-     * Set the Product which where rated.
+     * Get the pId of the Review.
      * 
-     * @param product the rated Product.
+     * @return pId of the Review.
      */
-    public void setProduct(Product product) {
-        this.product = product;
+    public long getPid() {
+        return pId;
     }
 
+    /**
+     * Set the pId of the Review.
+     * 
+     * @param pId the pId of the Review.
+     */
+    public void setPid(long pId) {
+        this.pId = pId;
+    }
 
     /**
-     * Get the comment associated with the review.
+     * Get the comment of the Review.
      * 
-     * @return the comment as a String.
+     * @return comment of the Review.
      */
     public String getComment() {
-        return this.comment;
+        return comment;
     }
 
     /**
-     * Set the comment associated with the review.
+     * Set the comment of the Review.
      * 
-     * @param comment the comment belonging to the rating.
+     * @param comment the comment of the Review.
      */
     public void setComment(String comment) {
         this.comment = comment;
     }
 
-
     /**
-     * Get the time and date of the last rating update.
+     * Get the stars of the Review.
      * 
-     * @return LocalDateTime the time of last update.
+     * @return stars of the Review.
      */
-    public LocalDateTime getUpdatedAt() {
-        return this.updatedAt;
+    public int getStars() {
+        return stars;
     }
 
     /**
-     * Set the time and date of the last rating update.
+     * Set the stars of the Review.
      * 
-     * @param updatedAt the LocalDateTime representing the time of last update.
+     * @param stars the stars of the Review.
      */
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
+    public void setStars(int stars) {
+        this.stars = stars;
+    }
+
+    /**
+     * Get the date of the Review.
+     * 
+     * @return date of the Review.
+     */
+    public Date getDate() {
+        return date;
+    }
+
+    /**
+     * Set the date of the Review.
+     * 
+     * @param date the date of the Review.
+     */
+    public void setDate(Date date) {
+        this.date = date;
     }
 }

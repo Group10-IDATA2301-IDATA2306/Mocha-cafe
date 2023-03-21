@@ -9,35 +9,38 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Table;
 
 /**
- * Represents an media and it's details.
+ * Represents a product image and it's details.
  * 
- * @since 06.02.2023
- * @version 06.02.2023
+ * @since   06.02.2023
+ * @version 21.03.2023
  */
 @Entity
-@Table(name = "media")
+@Table(name = "image")
 public class Image {
     
 
-    /** Media ID (primary key) represented as Varchar(255) in the database. */
+    /** Image ID (primary key) represented as Long in the database. */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String mID;
+    private long iId;
 
-    /** Path to media-file, represented as Varchar(255). */
-    private String path;
+    /** Url to image-file, represented as Varchar(255). */
+    private String url;
 
-    /** Media height in px, represented as Int(11). */
+    /** Image height in px, represented as Int(11). */
     private int height;
 
-    /** Media width in px, represented as Int(11). */
+    /** Image width in px, represented as Int(11). */
     private int width;
 
-    /** Color theme of the media, represented as Varchar(255). */
-    private String theme;
+    /** Color theme of the image, represented as Varchar(255). */
+    private String color;
 
     /** Text to display in the HTML alt-attribute, represented as Text. */
     private String alt;
+
+    /** File extension of the image, represented as VarChar(255). */
+    private String extension;
 
 
     /**
@@ -46,111 +49,151 @@ public class Image {
     public Image() {}
 
     /**
-     * Creates an instance of an Media.
+     * Creates an instance of Image.
      * 
-     * @param mID       the unique mID of the Media (e.g., "837R3")
-     * @param path      the path to media-file (e.g., "")
-     * @param height    the height of the media (e.g., 45px)
-     * @param width     the width of the media (e.g., 70px)
-     * @param theme     the color theme of the media (e.g., "Brown")
+     * @param url       the url to the image-file (e.g., "")
+     * @param height    the height of the image (e.g., 45px)
+     * @param width     the width of the image (e.g., 70px)
+     * @param color     the color theme of the image (e.g., "Brown")
      * @param alt       the text to display in the HTML alt-attribute (e.g., "Mocha Cofee")
+     * @param extension the file extension of the image (e.g., "png", "jpeg")
      */
-    public Image(String mID, String path, int height, 
-                    int width, String theme, String alt) {
-
+    public Image(String url, int height, int width, String color, String alt, String extension) {
         super();
-        this.mID = mID;
-        this.path = path;
+        this.url = url;
         this.height = height;
         this.width = width;
-        this.theme = theme;
+        this.color = color;
         this.alt = alt;
+        this.extension = extension;
     }
 
     
     /**
-     * Returns the unique mID of the media.
+     * Returns the unique iId of the image.
      * 
-     * @return the mID of the media
+     * @return the iId of the image.
      */
-    public String getmID() { return mID; }
+    public Long getIid() { 
+        return iId; 
+    }
 
     /**
-     * Returns the path of the media.
+     * Returns the url of the image.
      * 
-     * @return the path of the media
+     * @return the url of the image.
      */
-    public String getPath() { return path; }
+    public String getUrl() { 
+        return url; 
+    }
 
     /**
-     * Returns the height of the media.
+     * Returns the height of the image.
      * 
-     * @return the height of the media
+     * @return the height of the image.
      */
-    public int getHeight() { return height; }
+    public int getHeight() { 
+        return height; 
+    }
 
     /**
-     * Returns the width of the media.
+     * Returns the width of the image.
      * 
-     * @return the width of the media
+     * @return the width of the image.
      */
-    public int getWidth() { return width; }
+    public int getWidth() { 
+        return width; 
+    }
 
     /**
-     * Returns the theme of the media.
+     * Returns the color of the image.
      * 
-     * @return the theme of the media
+     * @return the color of the image.
      */
-    public String getTheme() { return theme; }
+    public String getColor() { 
+        return color; 
+    }
 
     /**
      * Returns the display text of the HTML
      * alt-attribute.
      * 
-     * @return the text displaye don the alt-attribute
+     * @return the text displayed in the alt-attribute.
      */
-    public String getAlt() { return alt; }
+    public String getAlt() { 
+        return alt; 
+    }
+
+    /**
+     * Returns the file extension of the image.
+     * 
+     * @return file extension of the image.
+     */
+    public String getExtension() { 
+        return extension; 
+    }
 
 
     /**
-     * Set the unique mID of the media.
+     * Set the unique iId of the image.
      * 
-     * @param mID the unique mID of the media
+     * @param iId the unique iId of the image.
      */
-    public void setmID(String mID) { this.mID = mID; }
+    public void setmID(long iId) { 
+        this.iId = iId; 
+    }
 
     /**
-     * Set the path of the media.
+     * Set the url of the image.
      * 
-     * @param path the path of the media
+     * @param url the url of the image.
      */
-    public void setPath(String path) { this.path = path; }
+    public void setUrl(String url) { 
+        this.url = url; 
+    }
 
     /**
-     * Set the height of the media.
+     * Set the height of the image.
      * 
-     * @param height the height of the media
+     * @param height the height of the image.
      */
-    public void setHeight(int height) { this.height = height; }
+    public void setHeight(int height) { 
+        this.height = height; 
+    }
 
     /**
-     * Set the width of the media.
+     * Set the width of the image.
      * 
-     * @param width the width of the media
+     * @param width the width of the image.
      */
-    public void setWidth(int width) { this.width = width; }
+    public void setWidth(int width) { 
+        this.width = width; 
+    }
 
     /**
-     * Set the theme of the media.
+     * Set the color of the image.
      * 
-     * @param theme the theme of the media
+     * @param color the color of the image.
      */
-    public void setTheme(String theme) { this.theme = theme; }
+    public void setColor(String color) { 
+        this.color = color; 
+    }
 
     /**
-     * Set the alt-attribute of the media.
+     * Set the alt-attribute of the image.
      * 
-     * @param alt the alt-attribute of the media
+     * @param alt the alt-attribute of the image.
      */
-    public void setAlt(String alt) { this.alt = alt;}
+    public void setAlt(String alt) { 
+        this.alt = alt;
+    }
+
+    /**
+     * Set the file extension of the image.
+     * 
+     * @param extension the file extension of the image.
+     */
+    public void setExtension(String extension) {
+        this.extension = extension;
+    }
 }

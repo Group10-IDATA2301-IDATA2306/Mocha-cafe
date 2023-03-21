@@ -9,25 +9,22 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Table;
 
 /**
- * Represents an product and it's details.
+ * Represents a product and it's details.
  * 
- * @since 06.02.2023
- * @version 06.02.2023
+ * @since   06.02.2023
+ * @version 21.03.2023
  */
 @Entity
 @Table(name = "product")
 public class Product {
     
-    /** Product ID (primary key) represented as Varchar(255) in the database. */
+    /** Product ID (primary key) represented as Long in the database. */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String pID;
+    private long pId;
 
-    /** Category ID (foreign key to Category) represented as Varchar(255) in the database. */
-    private String cID;
-
-    /** Media ID (foreign key to Media) represented as Varchar(255) in the database. */
-    private String mID;
+    /** Image ID (foreign key to Image) represented as Long in the database. */
+    private long iId;
 
     /** Product name, represented as Varchar(255). */
     private String name;
@@ -35,14 +32,8 @@ public class Product {
     /** Product price, represented as Int(11). */
     private int price;
 
-    /** Quantity of products, represented as Int(11). */
+    /** Amount of the product measured in weight, represented as Int(11). */
     private int amount;
-
-    /** Weight of the product, represented as Double. */
-    private double weight;
-
-    /** Alternative discount to the product as a decimal-percentage, represented as Double. */
-    private double discount;
 
     /** Description text for the product, represented as Text. */
     private String description;
@@ -57,88 +48,60 @@ public class Product {
     public Product() {}
 
     /**
-     * Creates an instance of an Product.
+     * Creates an instance of Product.
      * 
-     * @param pID           the pID of the product (e.g., "")
-     * @param cID           the cID of the product (e.g., "")
-     * @param mID           the mID of the product (e.g., "")
      * @param name          the name of the product (e.g., "CofeeDockery")
      * @param price         the price of the product (measured in kr)
      * @param amount        the amount of the product (e.g., 23)
-     * @param weight        the weight of the product (measured in kilos)
-     * @param discount      the discount of the product (e.g., 50%)
+     * @param iID           the iID of the product (e.g., "")
      * @param description   the description of the product (e.g., "This is a dark mocha cofee")
-     * @param display       the display of the product (boolean yes/no)
+     * @param display       the display of the product (boolean true/false)
      */
-    public Product(String pID, String cID, String mID, String name, 
-                    int price, int amount, double weight, double discount,
-                    String description, boolean display) {
-
+    public Product(String name, int price, int amount, long iId, String description, boolean display) {
         super();
-        this.pID = pID;
-        this.cID = cID;
-        this.mID = mID;
         this.name = name;
         this.price = price;
         this.amount = amount;
-        this.weight = weight;
-        this.discount = discount;
+        this.iId = iId;
         this.description = description;
         this.display = display;
     }
 
     /**
-     * Returns the pID of the product.
+     * Returns the pId of the product.
      * 
-     * @return the pID of the product
+     * @return the pId of the product
      */
-    public String getpID() {
-        return pID;
+    public long getPid() {
+        return pId;
     }
 
     /**
-     * Set the pID of the product.
+     * Set the pId of the product.
      * 
-     * @param pID the pID of the product
+     * @param pId the pId of the product
      */
-    public void setpID(String pID) {
-        this.pID = pID;
+    public void setPid(long pId) {
+        this.pId = pId;
+    }
+
+
+    /**
+     * Returns the iId of the product.
+     * 
+     * @return the iId of the product
+     */
+    public long getIiD() {
+        return iId;
     }
 
     /**
-     * Returns the cID of the product.
+     * Set the iId of the product.
      * 
-     * @return the cID of the product
+     * @param iId the iId of the product
      */
-    public String getcID() {
-        return cID;
-    }
-
-    /**
-     * Set the cID of the product.
-     * 
-     * @param cID the cID of the product
-     */
-    public void setcID(String cID) {
-        this.cID = cID;
-    }
-
-    /**
-     * Returns the mID of the product.
-     * 
-     * @return the mID of the product
-     */
-    public String getmID() {
-        return mID;
-    }
-
-    /**
-     * Set the mID of the product.
-     * 
-     * @param mID the mID of the product
-     */
-    public void setmID(String mID) {
-        this.mID = mID;
+    public void setIiD(long iId) {
+        this.iId = iId;
     }
 
     /**
@@ -196,42 +159,6 @@ public class Product {
     }
 
     /**
-     * Returns the weight of the product.
-     * 
-     * @return the weight of the product
-     */
-    public double getWeight() {
-        return weight;
-    }
-
-    /**
-     * Set the weight of the product.
-     * 
-     * @param weight the weight of the product
-     */
-    public void setWeight(double weight) {
-        this.weight = weight;
-    }
-
-    /**
-     * Returns the discount of the product.
-     * 
-     * @return the discount of the product
-     */
-    public double getDiscount() {
-        return discount;
-    }
-
-    /**
-     * Set the discount of the product.
-     * 
-     * @param discount the discount of the product
-     */
-    public void setDiscount(double discount) {
-        this.discount = discount;
-    }
-
-    /**
      * Returns the description of the product.
      * 
      * @return the description of the product
@@ -254,7 +181,7 @@ public class Product {
      * 
      * @return the display of the product
      */
-    public boolean isDisplay() {
+    public boolean getDisplay() {
         return display;
     }
 
