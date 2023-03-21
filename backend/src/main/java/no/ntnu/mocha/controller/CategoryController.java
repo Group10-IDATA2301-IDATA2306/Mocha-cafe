@@ -1,4 +1,4 @@
-package no.ntnu.mocha.domain.controllers;
+package no.ntnu.mocha.controller;
 
 public class CategoryController {
     
