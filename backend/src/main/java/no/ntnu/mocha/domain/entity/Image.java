@@ -16,7 +16,7 @@ import jakarta.persistence.Table;
  */
 @Entity
 @Table(name = "media")
-public class Media {
+public class Image {
     
 
     /** Media ID (primary key) represented as Varchar(255) in the database. */
@@ -43,7 +43,7 @@ public class Media {
     /**
      * Empty constructor.
      */
-    public Media() {}
+    public Image() {}
 
     /**
      * Creates an instance of an Media.
@@ -55,7 +55,7 @@ public class Media {
      * @param theme     the color theme of the media (e.g., "Brown")
      * @param alt       the text to display in the HTML alt-attribute (e.g., "Mocha Cofee")
      */
-    public Media(String mID, String path, int height, 
+    public Image(String mID, String path, int height, 
                     int width, String theme, String alt) {
 
         super();

@@ -14,7 +14,7 @@ import javax.persistence.ManyToOne;
  * Represents a customer review submitted on the website.
  */
 @Entity
-public class Rating {
+public class Review {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -44,7 +44,7 @@ public class Rating {
     /**
      * Empty constructor.
      */
-    public Rating() {}
+    public Review() {}
 
     /**
      * Create a new instance of the Rating class.
@@ -55,7 +55,7 @@ public class Rating {
      * @param rating        The integer rating of the product.
      * @param comment       The authors comment in the review.
      */
-    public Rating(String displayName, Product product, int rating, String comment) {
+    public Review(String displayName, Product product, int rating, String comment) {
         // this.user = user;
         setDisplayName(displayName);
         this.product = product;

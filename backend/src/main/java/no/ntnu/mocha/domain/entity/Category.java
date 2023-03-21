@@ -16,7 +16,7 @@ import jakarta.persistence.Table;
  */
 @Entity
 @Table(name = "category")
-public class ProductCategory {
+public class Category {
     
     /** Category ID (primary key) represented as Varchar(255) in the database. */
     @Id
@@ -33,7 +33,7 @@ public class ProductCategory {
     /**
      * Emtpy Constructor.
      */
-    public ProductCategory() {}
+    public Category() {}
 
     /**
      * Creates an instance of the Category.
@@ -42,7 +42,7 @@ public class ProductCategory {
      * @param name          the name of the category (e.g., "Mocha")
      * @param description   the description of the category (e.g., "This is a strong coffee")
      */
-    public ProductCategory(String cID, String name, String description) {
+    public Category(String cID, String name, String description) {
         super();
         this.cID = cID;
         this.name = name;
