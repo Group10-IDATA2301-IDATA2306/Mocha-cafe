@@ -10,20 +10,59 @@ export function Carousel() {
     <container id="Testimonials">
       <h2>What our customers say</h2>
       <carousel>
-        <item>
-          <h3>Sean</h3>
-          <sean>
-          </sean>
+        <item id="sean-card">
+        <container class="rating">
+          <i class="fa fa-star fa-5x" aria-hidden="true"></i>
+          <i class="fa fa-star fa-5x" aria-hidden="true"></i>
+          <i class="fa fa-star fa-5x" aria-hidden="true"></i>
+          <i class="fa fa-star fa-5x" aria-hidden="true"></i>
+          <i class="fa fa-star fa-5x" aria-hidden="true"></i>
+        </container>
           <p>Mocha Nooka Cafe is my favorite spot for a chill, hip atmosphere. The coffee is 
                 always on point and the staff are super helpful. A definite must-visit for anyone who's looking 
                 for a unique cafe experience!</p>
+          <container class="portrait-container">
+            <portrait id="Sean"></portrait>
+            <h3>Sean</h3>
+          </container>
         </item>
+
         <item>
-          <h3>Toni</h3>
+        <container class="rating">
+          <i class="fa fa-star fa-5x" aria-hidden="true"></i>
+          <i class="fa fa-star fa-5x" aria-hidden="true"></i>
+          <i class="fa fa-star fa-5x" aria-hidden="true"></i>
+          <i class="fa fa-star fa-5x" aria-hidden="true"></i>
+          <i class="fa fa-star fa-5x" aria-hidden="true"></i>
+        </container>
+      
+        <p>This coffe cured my depression. I am a changed man and i am ready to take on the world again!</p>
+        <container class="portrait-container">
+            <portrait id="Toni"></portrait>
+            <h3>Toni</h3>
+          </container>
         </item>
+
         <item>
-          <h3>John</h3>
+
+        <container class="rating">
+          <i class="fa fa-star fa-5x" aria-hidden="true"></i>
+          <i class="fa fa-star fa-5x" aria-hidden="true"></i>
+          <i class="fa fa-star fa-5x" aria-hidden="true"></i>
+          <i class="fa fa-star fa-5x" aria-hidden="true"></i>
+          <i class="fa fa-star fa-5x" aria-hidden="true"></i>
+        </container>
+
+        <p>I love coming to Mocha Nooka Cafe! It's the perfect spot to hang out with friends and 
+             enjoy something tasty and refreshing. The atmosphere is always chill and the staff are really 
+             friendly. Highly recommended!</p>
+        <container class="portrait-container">
+            <portrait id="Sarah"></portrait>
+            <h3>Sarah</h3>
+        </container>
+    
         </item>
+
       </carousel>
     </container>
   )

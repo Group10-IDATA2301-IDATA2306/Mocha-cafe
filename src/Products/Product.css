@@ -2,42 +2,116 @@
 .product-section{
     height: 60rem;
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    gap: 10rem;
+    grid-template-rows: 1fr 1fr;
+    gap: 5rem;
+    padding: 5rem;
 
     background-color: #f7f7f7;
-    padding: 15rem;
+    text-align: center;
 }
 
 .product-container{
     display: flex;
-    height: 40rem;
-    gap: 20rem;
+    height: 60rem;
+    justify-content: space-around;
 
     /* background-color: white; */
 }
 
 card{
-    height: 30rem;
+    display: grid;
+
+    height: 40rem;
     width: 30rem;
     background-color: teal;
-    /* border-radius: 1rem; */
+    border-radius: 2rem;
+    box-shadow: 25px 25px 25px #bebebe,
+    -15px -15px 50px #ffffff;
+
+    transition: 0.4s ease-out;
+
+    font-size: 3rem;
+
+    z-index: 0;
 }
+
+.card-info-pre-animation, .card-info-post-animation{
+    grid-row: 2;
+    grid-column: 1;
+
+    display: flex;
+    transition: 0.4s ease-out;
+
+    transform: translateY(-5rem) translateX(1rem);
+    z-index: 1;
+
+}
+
+.card-info-pre-animation > h4, .card-info-post-animation > h4{
+    z-index: 2;
+    width: inherit;
+
+    color: #f7f7f7;
+    font-size: 2rem;
+}
+
+.card-info-pre-animation > *:last-child, .card-info-post-animation > *:last-child{
+    margin-left: auto;
+    margin-right: 3rem;
+}
+
+.card-info-post-animation{
+    display: none;
+}
+
+
+card:hover {
+    transform: translateY(5%);
+}
+
+card:hover > overlay{
+    opacity: 1;
+    /* background: linear-gradient(to top, black , transparent 100%); */
+    transition: 0.4s ease-in-out;
+}
+
+/* card:hover > .card-info-post-animation{
+    display: flex;
+    flex-direction: column;
+} */
+
+/* card:hover > .card-info-pre-animation{
+    display: none;
+} */
+
+
+overlay{
+    height: inherit;
+    width: inherit;
+    border-radius: 2rem;
+    z-index: 0;
+    transition: 0.5s ease-in-out;
+
+    background: linear-gradient(to top, black , transparent 60%);
+    opacity: 0.8;
+}
+
 
 #product1{
     background-image: url("/src/assets/img/Product\ 1.png");
     background-size: cover;
+    background-position: -2rem;
 }
 
 #product2{
     background-image: url("/src/assets/img/Product 2.png");
     background-size: cover;
+    background-position: -10rem;
 }
 
 #product3{
     background-image: url("/src/assets/img/Product 3.png");
     background-size: cover;
 }
+
+
