@@ -2,7 +2,7 @@ package no.ntnu.mocha.domain.repository;
 
 import org.springframework.data.repository.CrudRepository;
 
-import no.ntnu.mocha.domain.entity.Image;
+import no.ntnu.mocha.domain.entities.Image;
 
 /**
  * Represents ImageRepository which extends

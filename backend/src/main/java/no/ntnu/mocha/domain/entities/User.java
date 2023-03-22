@@ -1,4 +1,4 @@
-package no.ntnu.mocha.domain.entity;
+package no.ntnu.mocha.domain.entities;
 
 import org.hibernate.annotations.CollectionId;
 
@@ -84,18 +84,18 @@ public class User {
                 String password, String email, String country,
                 String street, String houseNumber, String city, 
                 int zipCode) {
-                    super();
-                    this.Uid = Uid;
-                    this.firstName = firstName;
-                    this.lastName = lastName;
-                    this.password = password;
-                    this.email = email;
-                    this.country = country;
-                    this.street = street;
-                    this.houseNumber = houseNumber;
-                    this.city = city;
-                    this.zipCode = zipCode;
-                }
+        super();
+        this.Uid = Uid;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.password = password;
+        this.email = email;
+        this.country = country;
+        this.street = street;
+        this.houseNumber = houseNumber;
+        this.city = city;
+        this.zipCode = zipCode;
+    }
 
     /**
      * Returns the User Id for the User.

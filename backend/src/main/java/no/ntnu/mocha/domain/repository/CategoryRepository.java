@@ -2,7 +2,7 @@ package no.ntnu.mocha.domain.repository;
 
 import org.springframework.data.repository.CrudRepository;
 
-import no.ntnu.mocha.domain.entity.Category;
+import no.ntnu.mocha.domain.entities.Category;
 
 /**
  * Represents CategoryRepository which extends

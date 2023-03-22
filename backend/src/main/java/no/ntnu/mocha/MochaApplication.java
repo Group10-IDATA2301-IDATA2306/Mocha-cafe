@@ -6,7 +6,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import no.ntnu.mocha.domain.entity.Product;
+import no.ntnu.mocha.domain.entities.Product;
 
 /**
  * <h1>Mocha Application</h1>

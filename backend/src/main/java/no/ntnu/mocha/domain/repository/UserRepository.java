@@ -1,7 +1,8 @@
 package no.ntnu.mocha.domain.repository;
 
 import org.springframework.data.repository.CrudRepository;
-import no.ntnu.mocha.domain.entity.User;
+
+import no.ntnu.mocha.domain.entities.User;
 
 /**
  * Represents UserRepository which extends

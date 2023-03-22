@@ -1,4 +1,4 @@
-package no.ntnu.mocha.domain.entity;
+package no.ntnu.mocha.domain.entities;
 
 import javax.persistence.Entity;
 
@@ -39,11 +39,11 @@ public class Product {
 
     /** Product price, represented as Int(11). */
     @Column(name = "price")
-    private int price;
+    private double price;
 
-    /** Amount of the product measured in weight, represented as Int(11). */
+    /** Size of the product measured in weight, represented as Int(11). */
     @Column(name = "amount")
-    private int amount;
+    private String size;
 
     /** Description text for the product, represented as Text. */
     @Column(name = "description")
@@ -64,16 +64,16 @@ public class Product {
      * 
      * @param name          the name of the product (e.g., "CofeeDockery")
      * @param price         the price of the product (measured in kr)
-     * @param amount        the amount of the product (e.g., 23)
+     * @param size          the size of the product (e.g., 25.9)
      * @param iID           the iID of the product (e.g., "")
      * @param description   the description of the product (e.g., "This is a dark mocha cofee")
      * @param display       the display of the product (boolean true/false)
      */
-    public Product(String name, int price, int amount, Image iId, String description, boolean display) {
+    public Product(String name, double price, String size, Image iId, String description, boolean display) {
         super();
         this.name = name;
         this.price = price;
-        this.amount = amount;
+        this.size = size;
         this.iId = iId;
         this.description = description;
         this.display = display;
@@ -139,7 +139,7 @@ public class Product {
      * 
      * @return the price of the product
      */
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
@@ -148,26 +148,26 @@ public class Product {
      * 
      * @param price the price of the product
      */
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
     /**
-     * Returns the amount of the product.
+     * Returns the size of the product.
      * 
-     * @return the amount of the product
+     * @return the size of the product
      */
-    public int getAmount() {
-        return amount;
+    public String getSize() {
+        return size;
     }
 
     /**
-     * Set the amount of the product.
+     * Set the size of the product.
      * 
-     * @param amount the amount of the product
+     * @param size the size of the product
      */
-    public void setAmount(int amount) {
-        this.amount = amount;
+    public void setSize(String size) {
+        this.size = size;
     }
 
     /**

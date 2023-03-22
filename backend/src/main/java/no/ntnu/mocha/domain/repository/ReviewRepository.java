@@ -2,7 +2,7 @@ package no.ntnu.mocha.domain.repository;
 
 import org.springframework.data.repository.CrudRepository;
 
-import no.ntnu.mocha.domain.entity.Review;
+import no.ntnu.mocha.domain.entities.Review;
 
 /**
  * Represents ReviewRepository which extends

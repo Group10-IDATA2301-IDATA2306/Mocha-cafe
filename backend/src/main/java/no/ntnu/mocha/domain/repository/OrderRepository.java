@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
-import no.ntnu.mocha.domain.entity.Order;
+import no.ntnu.mocha.domain.entities.Order;
 
 /**
  * Represents OrderRepository which extends

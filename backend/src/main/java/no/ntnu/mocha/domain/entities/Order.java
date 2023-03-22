@@ -1,4 +1,4 @@
-package no.ntnu.mocha.domain.entity;
+package no.ntnu.mocha.domain.entities;
 
 import java.time.LocalDateTime;
 import jakarta.persistence.Column;

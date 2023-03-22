@@ -4,9 +4,9 @@ import java.util.Optional;
 
 import org.springframework.data.repository.CrudRepository;
 
-import no.ntnu.mocha.domain.entity.CartItem;
-import no.ntnu.mocha.domain.entity.Order;
-import no.ntnu.mocha.domain.entity.Product;
+import no.ntnu.mocha.domain.entities.CartItem;
+import no.ntnu.mocha.domain.entities.Order;
+import no.ntnu.mocha.domain.entities.Product;
 
 /**
  * Represents CartItemRepository which extends
