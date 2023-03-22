@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 
 import org.springframework.data.annotation.Id;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Table;
@@ -12,7 +13,7 @@ import jakarta.persistence.Table;
  * Represents a category and it's details.
  * 
  * @since   06.02.2023
- * @version 21.03.2023
+ * @version 22.03.2023
  */
 @Entity
 @Table(name = "category")
@@ -21,10 +22,16 @@ public class Category {
     /** Category ID (primary key) represented as Long in the database. */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(unique = true, name = "category_id")
     private long cId;
 
     /** Category name, represented as Varchar(255). */
+    @Column(unique = true, name = "name")
     private String name;
+
+    /** Description, represented as Varchar(255). */
+    @Column(name = "description")
+    private String description;
 
 
     /**
@@ -40,6 +47,7 @@ public class Category {
     public Category(String name, String description) {
         super();
         this.name = name;
+        this.description = description;
     }
 
 
@@ -77,5 +85,23 @@ public class Category {
      */
     public void setName(String name) { 
         this.name = name; 
+    }
+
+    /**
+     * Returns the description of the category.
+     * 
+     * @return the description of the category.
+     */
+    public String getDescription() {
+        return description;
+    }
+
+    /**
+     * Sets the description of the category.
+     * 
+     * @param description the description of the category.
+     */
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

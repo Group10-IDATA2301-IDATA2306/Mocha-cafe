@@ -2,10 +2,14 @@ package no.ntnu.mocha.domain.entity;
 
 import javax.persistence.Entity;
 
+import org.hibernate.annotations.CollectionId;
 import org.springframework.data.annotation.Id;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 /**
@@ -21,24 +25,32 @@ public class Product {
     /** Product ID (primary key) represented as Long in the database. */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(unique = true, name = "product_id")
     private long pId;
 
     /** Image ID (foreign key to Image) represented as Long in the database. */
-    private long iId;
+    @OneToOne
+    @JoinColumn(name = "image_id")
+    private Image iId;
 
     /** Product name, represented as Varchar(255). */
+    @Column(name = "name")
     private String name;
 
     /** Product price, represented as Int(11). */
+    @Column(name = "price")
     private int price;
 
     /** Amount of the product measured in weight, represented as Int(11). */
+    @Column(name = "amount")
     private int amount;
 
     /** Description text for the product, represented as Text. */
+    @Column(name = "description")
     private String description;
 
     /** Indicating wether to display the product on the website or not, represented as Boolean. */
+    @Column(name = "display")
     private boolean display;
 
 
@@ -57,7 +69,7 @@ public class Product {
      * @param description   the description of the product (e.g., "This is a dark mocha cofee")
      * @param display       the display of the product (boolean true/false)
      */
-    public Product(String name, int price, int amount, long iId, String description, boolean display) {
+    public Product(String name, int price, int amount, Image iId, String description, boolean display) {
         super();
         this.name = name;
         this.price = price;
@@ -91,7 +103,7 @@ public class Product {
      * 
      * @return the iId of the product
      */
-    public long getIiD() {
+    public Image getIiD() {
         return iId;
     }
 
@@ -100,7 +112,7 @@ public class Product {
      * 
      * @param iId the iId of the product
      */
-    public void setIiD(long iId) {
+    public void setIiD(Image iId) {
         this.iId = iId;
     }
 

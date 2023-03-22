@@ -1,5 +1,6 @@
 package no.ntnu.mocha.domain.entity;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -7,6 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 /**
@@ -22,22 +26,30 @@ public class Review {
     /** Review ID (primary key) represented as Long in the database. */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(unique = true, name = "review_id")
     private long rId;
 
     /** User ID (foreign key) represented as Long in the database. */
-    private long uId;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User uId;
 
     /** Product ID (foreign key) represented as Long in the database. */
-    private long pId;
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private Product pId;
 
     /** Content of the review represented as VarChar(255) in the database. */
+    @Column(name = "comment")
     private String comment;
 
     /** Star rating of the review represented as Integer in the database. */
+    @Column(name = "stars")
     private int stars;
 
     /** Date of the review represented as Date in the database. */
-    private Date date;
+    @Column(name = "date")
+    private LocalDateTime date;
 
 
     /**
@@ -54,13 +66,13 @@ public class Review {
      * @param comment   the content of the review.
      * @param stars     the star rating of the review.
      */
-    public Review(long uId, long pId, String comment, int stars) {
+    public Review(User uId, Product pId, String comment, int stars) {
         super();
         this.uId = uId;
         this.pId = pId;
         this.comment = comment;
         this.stars = stars;
-        this.date = new Date();
+        this.date = LocalDateTime.now();
     }
 
     /**
@@ -86,7 +98,7 @@ public class Review {
      * 
      * @return uId of the Review.
      */
-    public long getUid() {
+    public User getUid() {
         return uId;
     }
 
@@ -95,7 +107,7 @@ public class Review {
      * 
      * @param uId the uId of the Review.
      */
-    public void setUid(long uId) {
+    public void setUid(User uId) {
         this.uId = uId;
     }
 
@@ -104,7 +116,7 @@ public class Review {
      * 
      * @return pId of the Review.
      */
-    public long getPid() {
+    public Product getPid() {
         return pId;
     }
 
@@ -113,7 +125,7 @@ public class Review {
      * 
      * @param pId the pId of the Review.
      */
-    public void setPid(long pId) {
+    public void setPid(Product pId) {
         this.pId = pId;
     }
 
@@ -158,7 +170,7 @@ public class Review {
      * 
      * @return date of the Review.
      */
-    public Date getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
@@ -167,7 +179,7 @@ public class Review {
      * 
      * @param date the date of the Review.
      */
-    public void setDate(Date date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 }

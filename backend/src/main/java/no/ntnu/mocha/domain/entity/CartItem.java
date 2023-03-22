@@ -2,7 +2,11 @@ package no.ntnu.mocha.domain.entity;
 
 import javax.persistence.Table;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 
 
 /**
@@ -20,12 +24,17 @@ import jakarta.persistence.Entity;
 public class CartItem {
 
     /** The order Id of the Cart Item */
+    @ManyToMany
+    @JoinColumn(name = "order_id")
     private Order oId;
 
     /** The Product Id of the Cart Item */
+    @OneToMany
+    @JoinColumn(name = "product_id")
     private Product pId;
 
     /** The amount of the Cart Items */
+    @Column(name = "amount")
     private int amount;
 
     /**
@@ -41,6 +50,7 @@ public class CartItem {
      * @param amount    The amount of the Cart Item.
      */
     public CartItem(Order oId, Product pId, int amount) {
+        super();
         this.oId = oId;
         this.pId = pId;
         this.amount = amount;

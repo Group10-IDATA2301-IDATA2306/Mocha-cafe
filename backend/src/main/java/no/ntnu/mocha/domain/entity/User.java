@@ -1,42 +1,101 @@
 package no.ntnu.mocha.domain.entity;
 
+import org.hibernate.annotations.CollectionId;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
 /**
  * Represents an User.
  * 
  * @version 21.03.2023
  * @since   21.03.2023
  */
+@Entity
+@Table(name = "user")
 public class User {
     
     /** Unique User Id */
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(unique = true, name = "user_id")
     private long Uid;
 
     /** The firstname of the User */
+    @Column(name = "first_name")
     private String firstName;
 
     /** The lastname of the User */
+    @Column(name = "last_name")
     private String lastName;
 
     /** The password of the User */
+    @Column(name = "password")
     private String password;
 
     /** The email of the User */
+    @Column(name = "email")
     private String email;
 
     /** The country of the User */
+    @Column(name = "country")
     private String country;
 
     /** The street of the User */
+    @Column(name = "street")
     private String street;
 
     /** The housenumber of the User */
-    private int houseNumber;
+    @Column(name = "house_number")
+    private String houseNumber;
 
     /** The city of the User */
+    @Column(name = "city")
     private String city;
 
     /** The zip-code of the User */
+    @Column(name = "zip_code")
     private int zipCode;
+
+    /**
+     * Empty constructor.
+     */
+    public User(){}
+
+    /**
+     * Creates an instance of User.
+     * 
+     * @param Uid           User id of the User (e.g. "123")
+     * @param firstName     First Name of the User (e.g. "Morten")
+     * @param lastName      Last Name of the User (e.g. "Finvein")
+     * @param password      Password of the User (e.g. "123Spill")
+     * @param email         Email of the User (e.g. "morten@gmail.com")
+     * @param country       Country of the User (e.g. "Albania")
+     * @param street        Street of the User (e.g. "NTNU Ålesund veien 3")
+     * @param houseNumber   House Number of the User (e.g. "52C")
+     * @param city          City of the User (e.g. "Ålesund")
+     * @param zipCode       zip-code of the User (e.g. "6800")
+     */
+    public User(long Uid, String firstName, String lastName,
+                String password, String email, String country,
+                String street, String houseNumber, String city, 
+                int zipCode) {
+                    super();
+                    this.Uid = Uid;
+                    this.firstName = firstName;
+                    this.lastName = lastName;
+                    this.password = password;
+                    this.email = email;
+                    this.country = country;
+                    this.street = street;
+                    this.houseNumber = houseNumber;
+                    this.city = city;
+                    this.zipCode = zipCode;
+                }
 
     /**
      * Returns the User Id for the User.
@@ -169,7 +228,7 @@ public class User {
      * 
      * @return the housenumber of the User.
      */
-    public int getHouseNumber() {
+    public String getHouseNumber() {
         return houseNumber;
     }
 
@@ -178,7 +237,7 @@ public class User {
      * 
      * @param houseNumber the housenumber of the User.
      */
-    public void setHouseNumber(int houseNumber) {
+    public void setHouseNumber(String houseNumber) {
         this.houseNumber = houseNumber;
     }
 

@@ -1,9 +1,8 @@
 package no.ntnu.mocha.domain.entity;
 
 import javax.persistence.Entity;
-
 import org.springframework.data.annotation.Id;
-
+import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Table;
@@ -22,24 +21,31 @@ public class Image {
     /** Image ID (primary key) represented as Long in the database. */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(unique = true, name = "image_id", nullable = false)
     private long iId;
 
     /** Url to image-file, represented as Varchar(255). */
+    @Column(name = "url")
     private String url;
 
     /** Image height in px, represented as Int(11). */
+    @Column(name = "height")
     private int height;
 
     /** Image width in px, represented as Int(11). */
+    @Column(name = "width")
     private int width;
 
     /** Color theme of the image, represented as Varchar(255). */
+    @Column(name = "color")
     private String color;
 
     /** Text to display in the HTML alt-attribute, represented as Text. */
+    @Column(name = "alt")
     private String alt;
 
     /** File extension of the image, represented as VarChar(255). */
+    @Column(name = "extension")
     private String extension;
 
 
