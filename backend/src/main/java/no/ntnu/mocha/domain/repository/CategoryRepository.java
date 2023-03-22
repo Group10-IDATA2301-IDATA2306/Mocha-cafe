@@ -12,5 +12,6 @@ import no.ntnu.mocha.domain.entity.Category;
  * @since   21.03.2023
  */
 public interface CategoryRepository extends CrudRepository<Long, Category> {
-    
+
+    Category findByName(String name);
 }

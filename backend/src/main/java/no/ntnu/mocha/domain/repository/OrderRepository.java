@@ -1,5 +1,8 @@
 package no.ntnu.mocha.domain.repository;
 
+import java.util.List;
+
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import no.ntnu.mocha.domain.entity.Order;
@@ -13,4 +16,8 @@ import no.ntnu.mocha.domain.entity.Order;
  */
 public interface OrderRepository extends CrudRepository<Long, Order> {
     
+    @Query(value = "select product_id from order group by product_id order by sum(quantity)", nativeQuery = true)
+    List<Long> findTopBestSellingProduct();
+    
+
 }
