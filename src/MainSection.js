@@ -1,17 +1,20 @@
 import { Route, Routes } from "react-router-dom";
-import { DashBoard } from "./Pages/DashBoard/DashBoard";
-import { Budget } from "./Pages/Budget/Budget";
-import { Analytics } from "./Pages/Analytics/Analytics";
+import { Home } from "./Pages/Home/Home";
+import { Products } from "./Pages/Products/Products";
+import { About } from "./Pages/About/About";
+import { Contact } from "./Pages/Contact/Contact";
+import { Cart } from "./Pages/Cart/Cart";
 import './MainSection.css';
 
 export function MainSection() {
   return (
     <main>
       <Routes>
-        <Route path="/" element={<DashBoard />} />
-        <Route path="/budget" element={<Budget />} />
-        <Route path="/analytics" element={<Analytics />} />
-        <Route path="/login" element={<DashBoard />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
     </main>
   );

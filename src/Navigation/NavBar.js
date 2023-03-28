@@ -49,7 +49,7 @@ export function NavBar(){
         // E.g queryCartItems().length
 
         // Dummy number to showcase functionality
-        var numberOfItems = 1;
+        const numberOfItems = 1;
 
         setNumberOfItemsInCart(numberOfItems)
     }

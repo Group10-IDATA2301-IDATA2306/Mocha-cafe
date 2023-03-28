@@ -8,17 +8,11 @@ import "./HeroSection.css"
 export function HeroSection() {
 
     return(
-
-    <> <main>
+        <main id="hero-section">
             <content>
                 <main-title>Try our new exciting flavors</main-title>
                 <button>Find out more</button>
             </content>
-            
         </main>
-    </>
-
     );
 }
-
-

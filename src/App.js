@@ -1,8 +1,6 @@
 import { HeroSection } from "./Hero/HeroSection"
 import { NavBar } from "./Navigation/NavBar";
 import { Footer } from "./Footer/Footer";
-import { Carousel} from "./Testimonials/Carousel";
-import { Product } from "./Products/Product";
 import { BrowserRouter as Router } from "react-router-dom";
 import { MainSection } from "./MainSection";
 
@@ -21,13 +19,5 @@ export function App() {
         </section>
     </Router>
 
-);
-    }
-
-
-
-
-
-
-
-
+    );
+}
