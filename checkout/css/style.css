@@ -39,10 +39,8 @@ main {
 }
 
 .pageTitle {
-    color: white;
     text-align: center;
     font-size: 30px;
-    background-color: #087f5b;
     padding: 10px;
     margin: 20px;
 }
