@@ -7,7 +7,11 @@ nav {
     height: 9rem;
     box-shadow: 1px 1px 5px black;
     background-color: white;
-    z-index: 5;
+}
+
+nav > a {
+    text-decoration: none;
+    color: rgb(24, 24, 24);
 }
 
 nav > i,h4{
