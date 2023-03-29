@@ -1,0 +1,19 @@
+{
+    "products": [
+        {
+            "pID": "4569",
+            "name": "Brazilian coffee, ground, 500 grams",
+            "categories": "coffee, ground",
+            "price": 80,
+            "description": "This delicious Brazilian coffee is sealed for freshness, giving you the ultimate coffee-drinking experience. 500 grams of this robust and flavorful blend will bring you the perfect cup every time. With a full-bodies taste and subtle notes of chocolate, this cofee is sure to become your favorite. Enjoy the unique Brazilian flavor in every sip!",
+            "imgURL": "./resources/products/Product_1-removebg-preview.png"
+        },
+        {
+            "pID": "4573",
+            "name": "Green tea, 200 grams",
+            "price": 70,
+            "description": "This green tea is one of our most refreshing and delicious options. It's natural lack of coffeine makes it perfect for every time of the day!",
+            "imgURL": "./resources/products/Product_2-removebg-preview.png"
+        }
+    ]
+}
