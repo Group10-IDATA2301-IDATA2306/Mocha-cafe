@@ -17,7 +17,9 @@ export function NavBar(){
 
     return( 
         <nav>
-            <logo class="fa fa-coffee fa-5x" aria-hidden="true" id="logo"></logo>
+            <ActiveLink to="/">
+                <logo class="fa fa-coffee fa-5x" aria-hidden="true" id="logo"></logo>
+            </ActiveLink>
             <ActiveLink to="/">
                 <h4>HOME</h4>
             </ActiveLink>

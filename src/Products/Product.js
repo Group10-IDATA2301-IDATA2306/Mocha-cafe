@@ -15,7 +15,7 @@ export function Product(){
 
             <container className="product-container">
 
-                <card id="product1">
+                <card id="product1" key="1">
                     <container class= "card-info-pre-animation">
                         <h4>Black coffe</h4>
                         <h4>229kr</h4>
