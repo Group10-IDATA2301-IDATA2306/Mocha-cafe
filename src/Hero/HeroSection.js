@@ -8,7 +8,7 @@ import "./HeroSection.css"
 export function HeroSection() {
 
     return(
-        <main id="hero-section">
+        <main>
             <content>
                 <main-title>Try our new exciting flavors</main-title>
                 <button>Find out more</button>

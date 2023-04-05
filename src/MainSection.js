@@ -8,7 +8,6 @@ import './MainSection.css';
 
 export function MainSection() {
   return (
-    <main>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
@@ -16,6 +15,5 @@ export function MainSection() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/cart" element={<Cart />} />
       </Routes>
-    </main>
   );
 }
