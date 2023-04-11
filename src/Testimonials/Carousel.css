@@ -1,141 +1,49 @@
+.testimonial-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5rem;
 
-#Testimonials{
+  height: 65rem;
   text-align: center;
 }
 
-#Testimonials > h2{
-  margin-top: 5rem;
+.testimonial-section > h2 {
   color: white;
 }
 
-carousel{
-    display: flex;
-    align-items: center;
-    height: 60rem;
-    justify-content: space-around;
-
-}
-
-item {
-    height: 30rem;
-    width: 60rem;
-    margin-bottom: 3rem;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-
-    transition: 0.3s ease-out;
-    
-    padding: 2.4rem;
-    text-align: center;
-    border-radius: 1rem;
-    background-color: white;
-
-
-}
-
-.rating{
+carousel {
   display: flex;
-  gap: 1rem;
+  align-items: center;
+  justify-content: space-around;
+
+  height: 40rem;
+
+  flex-wrap: wrap;
+  overflow: hidden;
 }
 
-.rating > i{
-  color: darkslategrey;
-}
-
-.portrait-container{
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-
-/* Temporary static images for testimonials */
-
-#Sean{
-  display: block;
-
-  height: 7rem;
-  width: 7rem;
-  background-image: url("/src/assets/img/Sean.jpg");
-  background-size: cover;
-  background-position: center;
-
-  border-radius: 50%;
-}
-
-#Toni{
-  display: block;
-
-  height: 7rem;
-  width: 7rem;
-  background-image: url("/src/assets/img/Toni.jpg");
-  background-size: cover;
-  background-position: center;
-
-  border-radius: 50%;
-
-}
-
-#Sarah{
-  display: block;
-
-  height: 7rem;
-  width: 7rem;
-  background-image: url("/src/assets/img/Sarah.jpg");
-  background-size: cover;
-  background-position: center;
-
-  border-radius: 50%;
-
-}
-
-/* Experimental responsive layouts */
-
-@media (max-width: 1200px) {
-
-  carousel > *:first-child{
-    display: none;
-  }
-
-  item{
-    height: 35rem;
-    width: 40rem;
-
-    transition: 0.1s ease-out;
+@media (max-width: 700px) {
+  .testimonial-section > h2 {
+    font-size: 4rem;
   }
 }
 
-@media (min-width: 1201px) {
+@media (max-width: 550px) {
+  .testimonial-section > h2 {
+    font-size: 3rem;
+  }
 
-  item{
-    height: 35rem;
-    width: 30rem;
+  carousel {
+    height: 28rem;
   }
 }
-
-@media (min-width: 1550px) {
-
-  item{
-    height: 30rem;
-    width: 40rem;
+@media (max-width: 400px) {
+  carousel {
+    height: 32rem;
   }
-}
 
-@media (min-width: 1700px) {
-
-  item{
-    height: 25rem;
-    width: 50rem;
-  }
-}
-
-@media  (min-width: 2000px) {
-
-  item{
-    height: 30rem;
-    width: 60rem;
+  .testimonial-section > h2 {
+    font-size: 2.7rem;
   }
 }

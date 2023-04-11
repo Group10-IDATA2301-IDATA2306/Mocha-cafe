@@ -1,4 +1,4 @@
-import { HeroSection } from "./Hero/HeroSection"
+import { HeroSection } from "./HeroSection/HeroSection";
 import { NavBar } from "./Navigation/NavBar";
 import { Footer } from "./Footer/Footer";
 import { BrowserRouter as Router } from "react-router-dom";
@@ -10,14 +10,13 @@ import { MainSection } from "./MainSection";
  * @constructor
  */
 export function App() {
-    return (
+  return (
     <Router>
-        <section>
-            <NavBar/>
-            <MainSection/>
-            <Footer/>
-        </section>
+      <section>
+        <NavBar />
+        <MainSection />
+        <Footer />
+      </section>
     </Router>
-
-    );
+  );
 }

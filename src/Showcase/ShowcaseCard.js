@@ -1,4 +1,4 @@
-import "./Product.css";
+import "./ShowcaseCard.css";
 
 /**
  * A collection of products

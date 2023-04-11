@@ -1,60 +1,53 @@
-
-footer{
-    display: grid;
-    grid-auto-flow: row;
-    grid-row-gap: 4rem;
-    background-color: #f7f7f7;
-    padding: 2rem;
-    
+footer {
+  display: grid;
+  grid-auto-flow: row;
+  grid-row-gap: 4rem;
+  background-color: #f7f7f7;
+  padding: 2rem;
 }
 
-
-#about-us-section{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 2rem;
-    margin-left: 2rem;
-
+#about-us-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2rem;
+  margin-left: 2rem;
 }
 
-#contact-us-section{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    gap: 2rem;
-    margin-left: 2rem;
+#contact-us-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 2rem;
+  margin-left: 2rem;
 }
 
-#info-section{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    gap: 2rem;
-    margin-left: 2rem;
+#info-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 2rem;
+  margin-left: 2rem;
 }
 
-#footer-icons{
-    display: flex;
-    justify-content: start;
-    gap: 2rem;
-    margin-left: 2rem;
-
+#footer-icons {
+  display: flex;
+  justify-content: flex-start;
+  gap: 2rem;
+  margin-left: 2rem;
 }
 
-#footer-icons > i{
-    background-color:  #343a40;
-    border-radius: 50%;
-    text-align: center;
-    margin-bottom: 5rem;
-    padding: 1.2rem;
-    min-width: 2.5rem;
+#footer-icons > i {
+  background-color: #343a40;
+  border-radius: 50%;
+  text-align: center;
+  margin-bottom: 5rem;
+  padding: 1.2rem;
+  min-width: 2.5rem;
 }
 
-#footer-icons > i::before{
-    color: whitesmoke;
-    text-align: center;
-
+#footer-icons > i::before {
+  color: whitesmoke;
+  text-align: center;
 }
-

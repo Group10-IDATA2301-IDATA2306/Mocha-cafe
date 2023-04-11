@@ -1,14 +1,14 @@
-import { HeroSection } from "../../Hero/HeroSection";
-import { Product } from "../../Products/Product";
+import { HeroSection } from "../../HeroSection/HeroSection";
+import { Product } from "../../Showcase/ShowcaseCard";
 import { Carousel } from "../../Testimonials/Carousel";
-import './Home.css';
+import "./Home.css";
 
 export function Home() {
-    return (
-        <>
-            <HeroSection/>
-            <Product/>
-            <Carousel/>
-        </>
-    );
+  return (
+    <>
+      <HeroSection />
+      <Product />
+      <Carousel />
+    </>
+  );
 }
