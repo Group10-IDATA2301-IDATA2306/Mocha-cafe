@@ -2,11 +2,11 @@ main {
   display: grid;
   height: 78rem;
   grid-template-columns: 50% 1fr;
-  align-items: center; 
+  align-items: center;
 
   background: linear-gradient(to right, #087f5b, #032f22);
   background-size: cover;
-  background-position: right right;
+  background-position: center center;
   background-image: url("/src/assets/img/Coffe_7000_x_4000-no-bg.png");
 }
 
@@ -46,7 +46,7 @@ content {
   flex-direction: column;
   z-index: 1;
   align-items: center;
-  
+
   margin-left: 10%;
   height: 27rem;
   width: 66rem;
@@ -66,16 +66,17 @@ main-title {
 
 /* Computer screens */
 @media (min-width: 1400px) and (max-width: 1600px) {
-main{
-  height: 75rem;
-}
+  main {
+    height: 75rem;
+  }
   content {
     width: 60rem;
     height: 20rem;
   }
   main-title {
     font-size: 8rem;
-}}
+  }
+}
 
 /* Computer screens */
 @media (min-width: 1280px) and (max-width: 1400px) {
@@ -94,7 +95,7 @@ main{
 
 /* TBD */
 @media (min-width: 1080px) and (max-width: 1280px) {
-  /* main {
+  main {
     height: 65rem;
     background-position: center right;
   }
@@ -105,31 +106,33 @@ main{
   }
   main-title {
     font-size: 5rem;
-  } */
+  }
 }
 
-
 /* TBD */
-@media (min-width: 800px) and (max-width: 1080px) {
-  /* main {
+@media (min-width: 700px) and (max-width: 1080px) {
+  main {
     height: 60rem;
-    background-size: contain;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-image: url("/src/assets/img/Coffe_1890_x_1890-removebg.png");
   }
   content {
-    width: 26rem;
+    width: 30rem;
     height: 8rem;
     text-align: left;
   }
+
   main-title {
-    font-size: 3.5rem;
-  } */
+    font-size: 4rem;
+  }
+
+  button {
+    height: 4rem;
+    width: 20rem;
+    text-align: center;
+  }
 }
 
 /* Mobile devices */
-@media (min-width: 400px) and (max-width: 600px) {
+@media (min-width: 400px) and (max-width: 700px) {
   main {
     display: flex;
     justify-content: center;
@@ -141,9 +144,8 @@ main{
     background-position: center center;
   }
   content {
-    width: 26rem;
-    height: 12rem;
-  
+    width: 30rem;
+    height: 18rem;
     text-align: left;
     background-color: #04402e;
     border-radius: 8px;
@@ -151,15 +153,16 @@ main{
     gap: 2rem;
     margin-left: 0;
   }
+
   main-title {
-    font-size: 3rem;
+    font-size: 4rem;
     text-align: center;
   }
-  button {
-    width: 13rem; 
-    height: 3rem;
-    font-size: 0.7rem;
 
+  button {
+    width: 18rem;
+    height: 4.2rem;
+    font-size: 1rem;
   }
 }
 
@@ -178,7 +181,7 @@ main{
   content {
     width: 20rem;
     height: 12rem;
-   
+
     text-align: left;
     background-color: #04402e;
     border-radius: 8px;
