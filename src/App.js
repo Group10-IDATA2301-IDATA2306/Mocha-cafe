@@ -1,8 +1,8 @@
-import { HeroSection } from "./Main/HeroSection";
+import { HeroSection } from "./HeroSection/HeroSection";
 import { NavBar } from "./Navigation/NavBar";
 import { Footer } from "./Footer/Footer";
-import { Carousel } from "./Testimonials/Carousel";
-import { Product } from "./Products/Product";
+import { BrowserRouter as Router } from "react-router-dom";
+import { MainSection } from "./MainSection";
 
 /**
  * Component representing the main page
@@ -11,12 +11,12 @@ import { Product } from "./Products/Product";
  */
 export function App() {
   return (
-    <>
-      <NavBar />
-      <HeroSection />
-      <Product />
-      <Carousel />
-      <Footer />
-    </>
+    <Router>
+      <section>
+        <NavBar />
+        <MainSection />
+        <Footer />
+      </section>
+    </Router>
   );
 }

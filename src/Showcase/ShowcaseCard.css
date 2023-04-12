@@ -1,0 +1,164 @@
+.product-section {
+  height: 60rem;
+  display: grid;
+  grid-template-rows: 10rem 1fr;
+  padding: 5rem;
+
+  background-color: #f7f7f7;
+  text-align: center;
+}
+
+.product-container {
+  display: flex;
+  height: 40rem;
+  justify-content: space-around;
+  flex-wrap: wrap;
+
+  overflow: hidden;
+  z-index: 0;
+}
+
+card {
+  display: grid;
+
+  height: inherit;
+  width: 30rem;
+
+  background-color: teal;
+  border-radius: 2rem;
+  font-size: 3rem;
+  z-index: 0;
+
+  cursor: pointer;
+}
+
+.card-info {
+  grid-row: 2;
+  grid-column: 1;
+
+  display: flex;
+  transition: 0.4s ease-out;
+
+  transform: translateY(-5rem) translateX(1rem);
+  z-index: 1;
+}
+
+.card-info > h4 {
+  z-index: 2;
+  width: inherit;
+
+  color: #f7f7f7;
+  font-size: 2rem;
+}
+
+.card-info > *:last-child {
+  margin-left: auto;
+  margin-right: 3rem;
+}
+
+card:hover > overlay {
+  opacity: 1;
+  transition: 0.4s ease-in-out;
+}
+
+overlay {
+  height: inherit;
+  width: inherit;
+  border-radius: 2rem;
+  z-index: 0;
+  transition: 0.4s ease-in-out;
+
+  background: linear-gradient(to top, black, transparent 80%);
+  opacity: 0.8;
+}
+
+#product1 {
+  background-image: url("/src/assets/img/Product\ 1.png");
+  background-size: cover;
+  background-position: -2rem;
+}
+
+#product2 {
+  background-image: url("/src/assets/img/Product 2.png");
+  background-size: cover;
+  background-position: -10rem;
+}
+
+#product3 {
+  background-image: url("/src/assets/img/Product 3.png");
+  background-size: cover;
+}
+
+@media (min-width: 300px) and (max-width: 1400px) {
+  h2 {
+    font-size: 4rem;
+  }
+}
+
+@media (min-width: 300px) and (max-width: 1080px) {
+  .product-container {
+    height: 30rem;
+    justify-content: space-evenly;
+  }
+
+  .product-section {
+    height: 40rem;
+    grid-template-rows: 10rem 1fr;
+  }
+
+  card {
+    width: 20rem;
+  }
+
+  .card-info > h4 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 380px) and (max-width: 450px) {
+  .product-container {
+    height: 30rem;
+    justify-content: center;
+  }
+
+  .product-section {
+    height: 40rem;
+    grid-template-rows: 7rem 1fr;
+  }
+
+  card {
+    width: 20rem;
+  }
+
+  .card-info > h4 {
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    font-size: 2.7rem;
+  }
+}
+
+@media (min-width: 300px) and (max-width: 380px) {
+  .product-section {
+    height: 40rem;
+    grid-template-rows: 7rem 1fr;
+  }
+
+  .product-container {
+    height: 30rem;
+    justify-content: center;
+  }
+
+  card {
+    width: 18rem;
+  }
+
+  .card-info > h4 {
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    font-size: 2.7rem;
+  }
+}
