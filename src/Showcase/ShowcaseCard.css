@@ -56,10 +56,6 @@ card {
   margin-right: 3rem;
 }
 
-card:hover {
-  /* transform: translateY(-5%); */
-}
-
 card:hover > overlay {
   opacity: 1;
   transition: 0.4s ease-in-out;
@@ -91,6 +87,32 @@ overlay {
 #product3 {
   background-image: url("/src/assets/img/Product 3.png");
   background-size: cover;
+}
+
+@media (min-width: 300px) and (max-width: 1400px) {
+  h2 {
+    font-size: 4rem;
+  }
+}
+
+@media (min-width: 300px) and (max-width: 1080px) {
+  .product-container {
+    height: 30rem;
+    justify-content: space-evenly;
+  }
+
+  .product-section {
+    height: 40rem;
+    grid-template-rows: 10rem 1fr;
+  }
+
+  card {
+    width: 20rem;
+  }
+
+  .card-info > h4 {
+    font-size: 1.5rem;
+  }
 }
 
 @media (min-width: 380px) and (max-width: 450px) {

@@ -93,7 +93,7 @@ main-title {
   }
 }
 
-/* TBD */
+/* Laptops */
 @media (min-width: 1080px) and (max-width: 1280px) {
   main {
     height: 65rem;
@@ -109,7 +109,7 @@ main-title {
   }
 }
 
-/* TBD */
+/* Ipad and notepads */
 @media (min-width: 700px) and (max-width: 1080px) {
   main {
     height: 60rem;
