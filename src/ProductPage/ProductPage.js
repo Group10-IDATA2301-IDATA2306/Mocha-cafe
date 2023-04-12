@@ -1,13 +1,34 @@
-import "./Product.css"
+import "./Product.css";
 
 /**
- * A collection of product.
- * 
+ * Represents product page.
+ *
+ * @param props Properties containing the products.
  * @return {JSX.Element}
  * @constructor
  */
-export function ProductPage() {
-    return(
-        
+export function ProductPage(props) {
+  let content;
+  if (props.error) {
+    content = <p className="error">Error: {props.error}</p>;
+  } else {
+    let productContent;
+    if (props.products.length > 0) {
+      productContent = props.products.map((product) => (
+        <li key={product.id}>{product.name + " ($" + product.price + ")"}</li>
+      ));
+    } else {
+      productContent = <p>Loading...</p>;
+    }
+
+    content = (
+      <>
+        <h1>Products</h1>
+        <p>Here you can see all our products.</p>
+        <ul id="product-containter">{productContent}</ul>
+      </>
     );
+  }
+
+  return content;
 }
