@@ -20,7 +20,7 @@ item {
   gap: 1rem;
 }
 
-img {
+.testimonial-portrait {
   display: block;
   height: 7rem;
   width: 7rem;

@@ -1,7 +1,6 @@
 import { HeroSection } from "../../HeroSection/HeroSection";
-import { Product } from "../../Showcase/ShowcaseCard";
 import { Carousel } from "../../Testimonials/Carousel";
-import { Showcase } from "../../Showcase/ShowCase";
+import { Showcase } from "../../Showcase/Showcase";
 import "./Home.css";
 
 export function Home() {

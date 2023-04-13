@@ -1,4 +1,3 @@
-import { HeroSection } from "./HeroSection/HeroSection";
 import { NavBar } from "./Navigation/NavBar";
 import { Footer } from "./Footer/Footer";
 import { BrowserRouter as Router } from "react-router-dom";
