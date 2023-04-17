@@ -18,6 +18,7 @@ export function ShowcaseCard({ props }) {
         style={{
           backgroundImage: `url(${imageUrl})`,
         }}
+        alt="A product"
       />
       <container class="card-info">
         <h4>{props.name}</h4>
