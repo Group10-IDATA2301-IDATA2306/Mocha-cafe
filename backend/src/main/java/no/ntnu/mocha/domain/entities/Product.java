@@ -1,37 +1,36 @@
 package no.ntnu.mocha.domain.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
-
-import org.hibernate.annotations.CollectionId;
 import org.springframework.data.annotation.Id;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 /**
  * Represents a product and it's details.
  * 
- * @since   06.02.2023
+ * @since 06.02.2023
  * @version 21.03.2023
  */
 @Entity
-@Table(name = "product")
 public class Product {
-    
+
     /** Product ID (primary key) represented as Long in the database. */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(unique = true, name = "product_id")
-    private long pId;
+    public long product_id;
 
-    /** Image ID (foreign key to Image) represented as Long in the database. */
-    @OneToOne
-    @JoinColumn(name = "image_id")
-    private Image iId;
+    /**
+     * A variable for easy-of-access to all the carts this product is present in
+     */
+    @OneToMany(mappedBy = "product")
+    private List<Cart> present_in_carts = new ArrayList<>();
 
     /** Product name, represented as Varchar(255). */
     @Column(name = "name")
@@ -49,71 +48,55 @@ public class Product {
     @Column(name = "description")
     private String description;
 
-    /** Indicating wether to display the product on the website or not, represented as Boolean. */
+    /**
+     * Indicating wether to display the product on the website or not, represented
+     * as Boolean.
+     */
     @Column(name = "display")
     private boolean display;
-
 
     /**
      * Empty constructor.
      */
-    public Product() {}
+    public Product() {
+    }
 
     /**
      * Creates an instance of Product.
      * 
-     * @param name          the name of the product (e.g., "CofeeDockery")
-     * @param price         the price of the product (measured in kr)
-     * @param size          the size of the product (e.g., 25.9)
-     * @param iID           the iID of the product (e.g., "")
-     * @param description   the description of the product (e.g., "This is a dark mocha cofee")
-     * @param display       the display of the product (boolean true/false)
+     * @param name        the name of the product (e.g., "CofeeDockery")
+     * @param price       the price of the product (measured in kr)
+     * @param size        the size of the product (e.g., 25.9)
+     * @param iID         the iID of the product (e.g., "")
+     * @param description the description of the product (e.g., "This is a dark
+     *                    mocha cofee")
+     * @param display     the display of the product (boolean true/false)
      */
-    public Product(String name, double price, String size, Image iId, String description, boolean display) {
+    public Product(String name, double price, String size, String description, boolean display) {
         super();
         this.name = name;
         this.price = price;
         this.size = size;
-        this.iId = iId;
         this.description = description;
         this.display = display;
     }
 
     /**
-     * Returns the pId of the product.
+     * Returns the product_id of the product.
      * 
-     * @return the pId of the product
+     * @return the product_id of the product
      */
-    public long getPid() {
-        return pId;
+    public long getproduct_id() {
+        return product_id;
     }
 
     /**
-     * Set the pId of the product.
+     * Set the product_id of the product.
      * 
-     * @param pId the pId of the product
+     * @param product_id the product_id of the product
      */
-    public void setPid(long pId) {
-        this.pId = pId;
-    }
-
-
-    /**
-     * Returns the iId of the product.
-     * 
-     * @return the iId of the product
-     */
-    public Image getIiD() {
-        return iId;
-    }
-
-    /**
-     * Set the iId of the product.
-     * 
-     * @param iId the iId of the product
-     */
-    public void setIiD(Image iId) {
-        this.iId = iId;
+    public void setproduct_id(long product_id) {
+        this.product_id = product_id;
     }
 
     /**

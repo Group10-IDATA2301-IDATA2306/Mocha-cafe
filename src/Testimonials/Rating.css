@@ -1,8 +1,0 @@
-.rating {
-  display: flex;
-  gap: 1rem;
-}
-
-.rating > i {
-  color: darkslategrey;
-}

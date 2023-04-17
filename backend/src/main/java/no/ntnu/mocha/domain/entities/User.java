@@ -1,29 +1,33 @@
 package no.ntnu.mocha.domain.entities;
 
-import org.hibernate.annotations.CollectionId;
-
+import java.util.ArrayList;
+import java.util.List;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 /**
  * Represents an User.
  * 
  * @version 21.03.2023
- * @since   21.03.2023
+ * @since 21.03.2023
  */
 @Entity
-@Table(name = "user")
 public class User {
-    
+
     /** Unique User Id */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(unique = true, name = "user_id")
-    private long Uid;
+    public long user_id;
+
+    /** A variable for easy-of-access to all the carts this user is present in */
+    @OneToMany(mappedBy = "user")
+    private List<Cart> present_in_carts = new ArrayList<>();
 
     /** The firstname of the User */
     @Column(name = "first_name")
@@ -64,28 +68,29 @@ public class User {
     /**
      * Empty constructor.
      */
-    public User(){}
+    public User() {
+    }
 
     /**
      * Creates an instance of User.
      * 
-     * @param Uid           User id of the User (e.g. "123")
-     * @param firstName     First Name of the User (e.g. "Morten")
-     * @param lastName      Last Name of the User (e.g. "Finvein")
-     * @param password      Password of the User (e.g. "123Spill")
-     * @param email         Email of the User (e.g. "morten@gmail.com")
-     * @param country       Country of the User (e.g. "Albania")
-     * @param street        Street of the User (e.g. "NTNU Ålesund veien 3")
-     * @param houseNumber   House Number of the User (e.g. "52C")
-     * @param city          City of the User (e.g. "Ålesund")
-     * @param zipCode       zip-code of the User (e.g. "6800")
+     * @param user_id     User id of the User (e.g. "123")
+     * @param firstName   First Name of the User (e.g. "Morten")
+     * @param lastName    Last Name of the User (e.g. "Finvein")
+     * @param password    Password of the User (e.g. "123Spill")
+     * @param email       Email of the User (e.g. "morten@gmail.com")
+     * @param country     Country of the User (e.g. "Albania")
+     * @param street      Street of the User (e.g. "NTNU Ålesund veien 3")
+     * @param houseNumber House Number of the User (e.g. "52C")
+     * @param city        City of the User (e.g. "Ålesund")
+     * @param zipCode     zip-code of the User (e.g. "6800")
      */
-    public User(long Uid, String firstName, String lastName,
-                String password, String email, String country,
-                String street, String houseNumber, String city, 
-                int zipCode) {
+    public User(long user_id, String firstName, String lastName,
+            String password, String email, String country,
+            String street, String houseNumber, String city,
+            int zipCode) {
         super();
-        this.Uid = Uid;
+        this.user_id = user_id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;
@@ -102,17 +107,17 @@ public class User {
      * 
      * @return the User Id for the User.
      */
-    public long getUid(){
-        return Uid;
+    public long getuser_id() {
+        return user_id;
     }
 
     /**
-     * Sets the User id {@code Uid} for the User.
+     * Sets the User id {@code user_id} for the User.
      * 
-     * @param Uid the user id for the User.
+     * @param user_id the user id for the User.
      */
-    public void setUid(long Uid) {
-        this.Uid = Uid;
+    public void setuser_id(long user_id) {
+        this.user_id = user_id;
     }
 
     /**
