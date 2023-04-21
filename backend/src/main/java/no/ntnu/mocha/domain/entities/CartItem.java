@@ -1,12 +1,16 @@
 package no.ntnu.mocha.domain.entities;
 
-import javax.persistence.Table;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+
 
 
 /**
@@ -23,13 +27,18 @@ import jakarta.persistence.OneToMany;
 @Table(name = "cart_item")
 public class CartItem {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "cart_item_id")
+    private long cID;
+
     /** The order Id of the Cart Item */
-    @ManyToMany
+    @OneToOne
     @JoinColumn(name = "order_id")
     private Order oId;
 
     /** The Product Id of the Cart Item */
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "product_id")
     private Product pId;
 
@@ -54,6 +63,15 @@ public class CartItem {
         this.oId = oId;
         this.pId = pId;
         this.amount = amount;
+    }
+
+    /**
+     * Returns the cId of the cart item id.
+     * 
+     * @return the cId of the cart item
+     */
+    public long getCid() {
+        return cID;
     }
 
     /**

@@ -1,13 +1,11 @@
 package no.ntnu.mocha.domain.entities;
 
-import javax.persistence.Entity;
-
-import org.hibernate.annotations.CollectionId;
-import org.springframework.data.annotation.Id;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -74,7 +72,7 @@ public class Product {
         this.name = name;
         this.price = price;
         this.size = size;
-        this.iId = iId;
+        //this.iId = iId;
         this.description = description;
         this.display = display;
     }
@@ -103,18 +101,18 @@ public class Product {
      * 
      * @return the iId of the product
      */
-    public Image getIiD() {
-        return iId;
-    }
+   // public Image getIiD() {
+   //     return iId;
+   // }
 
     /**
      * Set the iId of the product.
      * 
      * @param iId the iId of the product
      */
-    public void setIiD(Image iId) {
-        this.iId = iId;
-    }
+    //public void setIiD(Image iId) {
+    //    this.iId = iId;
+    //}
 
     /**
      * Returns the name of the product.

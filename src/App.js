@@ -1,6 +1,5 @@
-import { HeroSection } from "./HeroSection/HeroSection";
-import { NavBar } from "./Navigation/NavBar";
-import { Footer } from "./Footer/Footer";
+import { NavBar } from "./components/Navigation/NavBar";
+import { Footer } from "./components/Footer/Footer";
 import { BrowserRouter as Router } from "react-router-dom";
 import { MainSection } from "./MainSection";
 

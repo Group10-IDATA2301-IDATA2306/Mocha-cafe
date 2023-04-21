@@ -1,16 +1,14 @@
 package no.ntnu.mocha.domain.entities;
 
 import java.time.LocalDateTime;
-import java.util.Date;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 /**
@@ -69,7 +67,7 @@ public class Review {
     public Review(User uId, Product pId, String comment, int stars) {
         super();
         this.uId = uId;
-        this.pId = pId;
+        //this.pId = pId;
         this.comment = comment;
         this.stars = stars;
         this.date = LocalDateTime.now();
@@ -116,18 +114,18 @@ public class Review {
      * 
      * @return pId of the Review.
      */
-    public Product getPid() {
-        return pId;
-    }
+    //public Product getPid() {
+    //    return pId;
+    //}
 
     /**
      * Set the pId of the Review.
      * 
      * @param pId the pId of the Review.
      */
-    public void setPid(Product pId) {
-        this.pId = pId;
-    }
+   // public void setPid(Product pId) {
+   //     this.pId = pId;
+   // }
 
     /**
      * Get the comment of the Review.

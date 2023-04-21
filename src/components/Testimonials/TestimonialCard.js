@@ -13,7 +13,7 @@ export function TestimonialCard({ props }) {
       <p>{props.comment}</p>
       <container class="portrait-container">
         <img
-          src={require("../assets/img/" + props.name + ".jpg")}
+          src={require("../../assets/img/" + props.name + ".jpg")}
           alt="A customer"
         />
         <h3>{props.name}</h3>

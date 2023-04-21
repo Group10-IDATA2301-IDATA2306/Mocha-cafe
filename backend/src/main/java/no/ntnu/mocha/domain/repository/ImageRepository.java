@@ -1,7 +1,6 @@
 package no.ntnu.mocha.domain.repository;
 
 import org.springframework.data.repository.CrudRepository;
-
 import no.ntnu.mocha.domain.entities.Image;
 
 /**
@@ -11,6 +10,6 @@ import no.ntnu.mocha.domain.entities.Image;
  * @version 21.03.2023
  * @since   21.03.2023
  */
-public interface ImageRepository extends CrudRepository<Long, Image>{
+public interface ImageRepository extends CrudRepository<Image, Long>{
     
 }

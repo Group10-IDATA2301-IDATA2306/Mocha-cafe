@@ -1,7 +1,6 @@
 package no.ntnu.mocha.domain.repository;
 
 import org.springframework.data.repository.CrudRepository;
-
 import no.ntnu.mocha.domain.entities.Category;
 
 /**
@@ -11,7 +10,6 @@ import no.ntnu.mocha.domain.entities.Category;
  * @version 21.03.2023
  * @since   21.03.2023
  */
-public interface CategoryRepository extends CrudRepository<Long, Category> {
+public interface CategoryRepository extends CrudRepository<Category, Long> {
 
-    Category findByName(String name);
 }

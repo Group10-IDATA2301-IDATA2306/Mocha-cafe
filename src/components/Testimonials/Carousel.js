@@ -1,6 +1,6 @@
 import "./Carousel.css";
 import { TestimonialCard } from "./TestimonialCard";
-import testimonails from "../assets/testimonials.json";
+import testimonails from "../../assets/testimonials.json";
 
 /**
  * Creates a Carousel component

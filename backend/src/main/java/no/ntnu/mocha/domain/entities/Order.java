@@ -7,7 +7,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 /**
@@ -27,7 +27,7 @@ public class Order {
     private long oId;
 
     /** Foregin key (Uid) from User class */
-    @OneToMany
+    @ManyToOne()
     @JoinColumn(name = "user_id")
     private User Uid;
 
