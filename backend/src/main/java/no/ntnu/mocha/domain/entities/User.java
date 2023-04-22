@@ -21,7 +21,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(unique = true, name = "user_id")
-    private long Uid;
+    private long id;
 
     /** The firstname of the User */
     @Column(name = "first_name")
@@ -67,7 +67,6 @@ public class User {
     /**
      * Creates an instance of User.
      * 
-     * @param Uid           User id of the User (e.g. "123")
      * @param firstName     First Name of the User (e.g. "Morten")
      * @param lastName      Last Name of the User (e.g. "Finvein")
      * @param password      Password of the User (e.g. "123Spill")
@@ -78,12 +77,11 @@ public class User {
      * @param city          City of the User (e.g. "Ålesund")
      * @param zipCode       zip-code of the User (e.g. "6800")
      */
-    public User(long Uid, String firstName, String lastName,
+    public User(String firstName, String lastName,
                 String password, String email, String country,
                 String street, String houseNumber, String city, 
                 int zipCode) {
         super();
-        this.Uid = Uid;
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;
@@ -100,17 +98,17 @@ public class User {
      * 
      * @return the User Id for the User.
      */
-    public long getUid(){
-        return Uid;
+    public long getId(){
+        return id;
     }
 
     /**
-     * Sets the User id {@code Uid} for the User.
+     * Sets the User id {@code id} for the User.
      * 
-     * @param Uid the user id for the User.
+     * @param id the user id for the User.
      */
-    public void setUid(long Uid) {
-        this.Uid = Uid;
+    public void setUid(long id) {
+        this.id = id;
     }
 
     /**

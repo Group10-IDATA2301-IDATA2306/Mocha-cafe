@@ -1,0 +1,123 @@
+package no.ntnu.mocha.domain.entities;
+
+import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+
+/**
+ * <h1>Product Category</h1>
+ * 
+ * <p>Represents an simple entity class for Product Category
+ *  with the JPA's {@code @Entity} annotation. 
+ * </p>
+ * 
+ * @version 21.04.2023
+ * @since   21.04.2023
+ */
+@Entity
+@Table(name = "product_category")
+public class ProductCategory {
+
+    /** Unique id for the product category */
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(unique = true, nullable = false, name = "pc_Id")
+    private long id;
+
+    /** Category name, represented as Varchar(255). */
+    @Column(unique = true, name = "name")
+    private String name;
+
+    /** Description, represented as Varchar(255). */
+    @Column(name = "description")
+    private String description;
+
+    @OneToMany(mappedBy = "productCategory")
+    @JsonIgnore
+    private List<Product> product;
+
+    /**
+     * Empty constructor.
+     */
+    public ProductCategory(){}
+
+    /**
+     * Creates an instance of Product Category.
+     * 
+     * @param name          the name of product category.
+     * @param description   the description of the product category.
+     */
+    public ProductCategory(String name, String description) {
+        super();
+        this.name = name;
+        this.description = description;
+    }
+
+    // Getters and setters
+
+    /**
+     * Returns the id of the product category.
+     * 
+     * @return the id of the product category
+     */
+    public long getId() {
+        return id;
+    } 
+
+    /**
+     * Sets the product category id.
+     * 
+     * @param id the product category id
+     */
+    public void setPcId(long id) {
+        this.id = id;
+    }
+
+    /**
+     * Returns the name of the
+     * Product Category.
+     * 
+     * @return  the name of the product category.
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * Sets the name of the product category.
+     * 
+     * @param name  the name of the product category.
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * Returns the description of the 
+     * product category.
+     * 
+     * @return  the description of the product
+     *          category.
+     */
+    public String getDescription() {
+        return description;
+    }
+
+    /**
+     * Sets the description of the product
+     * category.
+     * 
+     * @param description   the description of the 
+     *                      product category.
+     */
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+}

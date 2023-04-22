@@ -9,7 +9,15 @@ import no.ntnu.mocha.domain.entities.Product;
  * 
  * @version 21.03.2023
  * @since   21.03.2023
+ * @see     Product
  */
 public interface ProductRepository extends CrudRepository<Product, Long> {
-    
+
+    /**
+     * Returns the product by name.
+     * 
+     * @param name the name of the product
+     * @return the name of the product
+     */
+    Product findByName(String name);
 }

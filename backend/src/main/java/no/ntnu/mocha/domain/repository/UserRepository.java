@@ -10,6 +10,7 @@ import no.ntnu.mocha.domain.entities.User;
  * 
  * @version 21.03.2023
  * @since   21.03.2023
+ * @see     User
  */
 public interface UserRepository extends CrudRepository<User, Long> {
     

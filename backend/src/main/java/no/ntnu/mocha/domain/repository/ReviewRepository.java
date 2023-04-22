@@ -9,6 +9,7 @@ import no.ntnu.mocha.domain.entities.Review;
  * 
  * @version 21.03.2023
  * @since   21.03.2023
+ * @see     Review
  */
 public interface ReviewRepository extends CrudRepository<Review, Long> {
     

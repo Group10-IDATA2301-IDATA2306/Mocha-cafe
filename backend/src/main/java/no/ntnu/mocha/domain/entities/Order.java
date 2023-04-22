@@ -14,7 +14,7 @@ import jakarta.persistence.Table;
  * Represents an order.
  * 
  * @version 21.03.2023
- * @since   22.03.2023
+ * @since   22.04.2023
  */
 @Entity
 @Table(name = "order")
@@ -24,12 +24,12 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(unique = true, nullable = false, name = "order_id")
-    private long oId;
+    private long id;
 
     /** Foregin key (Uid) from User class */
     @ManyToOne()
     @JoinColumn(name = "user_id")
-    private User Uid;
+    private User user;
 
     /** Given date for the current order */
     @Column(name = "date")
@@ -46,10 +46,8 @@ public class Order {
      * @param oId   The Order Id for the Order.
      * @param Uid   The User Id for the Order.
      */
-    public Order(int oId, User Uid) {
+    public Order(LocalDateTime date) {
         super();
-        this.oId = oId;
-        this.Uid = Uid;
         // The current date of the Order
         this.date = LocalDateTime.now(); 
     }
@@ -59,36 +57,18 @@ public class Order {
      * 
      * @return this order items id.
      */
-    public long getoId() {
-        return oId;
+    public long getId() {
+        return id;
     }
 
     /**
-     * Sets the order id (oId) for this
+     * Sets the order id for this
      * order.
      * 
-     * @param oId the order id for this order.
+     * @param id the order id for this order.
      */
-    public void setoId() {
-        this.oId = oId;
-    }
-
-    /**
-     * Returns the User Id for this order.
-     * 
-     * @return the User Id for this order.
-     */
-    public User getUid() {
-        return this.Uid;
-    }
-
-    /**
-     * Sets the User Id for this order.
-     * 
-     * @param Uid the User Id for this order.
-     */
-    public void setUid(User Uid) {
-        this.Uid = Uid;
+    public void setId(long id) {
+        this.id = id;
     }
 
     /**

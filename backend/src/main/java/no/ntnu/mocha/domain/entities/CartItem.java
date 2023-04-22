@@ -21,7 +21,7 @@ import jakarta.persistence.Table;
  * </p>
  * 
  * @version 21.03.2023
- * @since   21.03.2023
+ * @since   22.04.2023
  */
 @Entity
 @Table(name = "cart_item")
@@ -30,17 +30,17 @@ public class CartItem {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "cart_item_id")
-    private long cID;
+    private long id;
 
     /** The order Id of the Cart Item */
     @OneToOne
     @JoinColumn(name = "order_id")
-    private Order oId;
+    private Order order;
 
     /** The Product Id of the Cart Item */
     @ManyToOne
     @JoinColumn(name = "product_id")
-    private Product pId;
+    private Product product;
 
     /** The amount of the Cart Items */
     @Column(name = "amount")
@@ -58,56 +58,46 @@ public class CartItem {
      * @param pId       The Product Id of the Cart Item.
      * @param amount    The amount of the Cart Item.
      */
-    public CartItem(Order oId, Product pId, int amount) {
+    public CartItem(int amount) {
         super();
-        this.oId = oId;
-        this.pId = pId;
         this.amount = amount;
     }
 
     /**
-     * Returns the cId of the cart item id.
+     * Returns the id for the Cart Item.
      * 
-     * @return the cId of the cart item
+     * @return the id for the Cart Item.
      */
-    public long getCid() {
-        return cID;
+    public long getId() {
+        return id;
     }
 
     /**
-     * Returns the oId this cart item represents.
+     * Sets the id for the Cart Item.
      * 
-     * @return oId this cart item represents.
+     * @param id    the id for the Cart Item.
      */
-    public Order getoId() {
-        return oId;
+    public void setId(long id) {
+        this.id = id;
     }
 
     /**
-     * Sets the oId that this cart item represents.
+     * Returns the amount for the Cart Item.
      * 
-     * @param oId the oId that this cart item represents.
+     * @return  the amount for the Cart Item.
      */
-    public void setoId(Order oId) {
-        this.oId = oId;
+    public int getAmount() {
+        return amount;
     }
 
     /**
-     * Returns the pId this cart item represents.
+     * Sets the amount for the Cart Item.
      * 
-     * @return the pId this cart item represents.
+     * @param amount    the amount for the
+     *                  Cart Item.
      */
-    public Product getpId() {
-        return pId;
-    }
-
-    /**
-     * Sets the pId that this cart item represents.
-     * 
-     * @param pId the pId that this cart item represents.
-     */
-    public void setpId(Product pId) {
-        this.pId = pId;
+    public void setAmount(int amount) {
+        this.amount = amount;
     }
 
 }
