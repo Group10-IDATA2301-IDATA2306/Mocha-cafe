@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import no.ntnu.mocha.DTO.ProductDto;
 import no.ntnu.mocha.domain.entities.Product;
+import no.ntnu.mocha.domain.entities.ProductCategory;
 import no.ntnu.mocha.domain.repository.ProductCategoryRepository;
 import no.ntnu.mocha.domain.repository.ProductRepository;
 
@@ -50,27 +51,41 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product getProductByName(String name) {
-        
+        return productRepository.findByName(name);
     }
 
     @Override
-    public Product addProductFromDto(String name) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'addProductFromDto'");
+    public Product addProductFromDto(ProductDto productDto) {
+        Product p = getProductFromDto(productDto);
+        if (productRepository.findByName(p.getName()) == null) {
+            ProductCategory productCategory = 
+                    productCategoryRepository.findByName(p.getCategory().getName());
+            if (productCategory == null) {
+                productCategoryRepository.save(p.getCategory());
+                p.setCategory(
+                    productCategoryRepository.findByName(p.getCategory().getName())
+                );
+            } else {
+                p.setCategory(productCategory);
+            }
+            productRepository.save(p);
+        }
+        return productRepository.findByName(p.getName());
     }
 
     @Override
     public Product updateProduct(long id, ProductDto product) {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'updateProduct'");
+        throw new UnsupportedOperationException("Unimplemented method 'addProductFromDto'");
     }
 
     @Override
     public void deleteProduct(long id) {
-        
+
     }
 
     private Product getProductFromDto(ProductDto object) {
-        
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'addProductFromDto'");
     }
 }

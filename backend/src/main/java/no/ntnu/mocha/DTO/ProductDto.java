@@ -27,6 +27,11 @@ public class ProductDto {
     /** Description of the product. */
     private String description;
 
+    /** The category of a product */
+    private String category;
+
+
+
     /**
      * Empty Constructor.
      */
@@ -40,14 +45,17 @@ public class ProductDto {
      * @param price         The price of the product.
      * @param amount        The amount of the specific product.
      * @param description   The description of the product.
+     * @param category      The category of the product.
      */
     public ProductDto(long imageId, String name, double price,
-                        String size, String description) {
+                        String size, String description,
+                        String category) {
                             this.imageId = imageId;
                             this.name = name;
                             this.price = price;
                             this.size = size;
                             this.description = description;
+                            this.category = category;
     }
 
     /**
@@ -94,6 +102,24 @@ public class ProductDto {
     public String getDescription() {
         return description;
     }
+
+    /**
+     * Returns the category of the product.
+     * 
+     * @return  the category of the product.
+     */
+    public String getCategory() {
+        return category;
+    }
+
+    /**
+     * Sets the category of the product.
+     * 
+     * @param category  the category of the product.s
+     */
+    public void setCategory(String category) {
+        this.category = category;
+    } 
 
                 
 }

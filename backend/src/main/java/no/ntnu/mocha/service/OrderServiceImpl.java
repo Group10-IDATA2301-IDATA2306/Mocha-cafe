@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import no.ntnu.mocha.domain.entities.Order;
 import no.ntnu.mocha.domain.repository.OrderRepository;
@@ -18,6 +19,7 @@ import no.ntnu.mocha.domain.repository.OrderRepository;
  * @since   22.04.2023
  * @see     OrderService
  */
+@Service
 public class OrderServiceImpl implements OrderService {
 
     /** Gives access to the Order Repository */

@@ -1,6 +1,7 @@
 package no.ntnu.mocha.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import no.ntnu.mocha.domain.entities.CartItem;
 import no.ntnu.mocha.domain.entities.Order;
@@ -17,6 +18,7 @@ import no.ntnu.mocha.domain.repository.CartItemRepository;
  * @since   21.04.2023
  * @see     CartItemService
  */
+@Service
 public class CartItemServiceImpl implements CartItemService {
 
     /** Gives access to the Cart Item Repository */

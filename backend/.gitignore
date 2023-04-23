@@ -31,4 +31,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Properties and HTTPS Configs ###
 env.properties
+keystore.p12

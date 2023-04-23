@@ -3,6 +3,7 @@ package no.ntnu.mocha.service;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import no.ntnu.mocha.domain.entities.ProductCategory;
 import no.ntnu.mocha.domain.repository.ProductCategoryRepository;
@@ -17,6 +18,7 @@ import no.ntnu.mocha.domain.repository.ProductCategoryRepository;
  * @since   21.04.2023
  * @see     ProductCategoryService
  */
+@Service
 public class ProductCategoryServiceImpl implements ProductCategoryService {
 
     /** Gives access to the repository */

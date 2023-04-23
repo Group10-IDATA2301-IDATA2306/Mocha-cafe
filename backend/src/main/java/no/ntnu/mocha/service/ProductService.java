@@ -41,10 +41,11 @@ public interface ProductService {
     /**
      * Adds a product from the Product DTO.
      * 
-     * @param name the name of the product
+     * @param productDto    the product to be added
+     *                      to the database.
      * @return the created product
      */
-    Product addProductFromDto(String name);
+    Product addProductFromDto(ProductDto productDto);
 
     /**
      * Updates a product with the given id using data

@@ -188,4 +188,24 @@ public class Product {
     public void setDisplay(boolean display) {
         this.display = display;
     }
+
+    /**
+     * Returns the product category of the given
+     * product.
+     * 
+     * @return  the product category of the given product.
+     */
+    public ProductCategory getCategory() {
+        return productCategory;
+    }
+
+    /**
+     * Sets the product category of the given product.
+     * 
+     * @param productCategory   the product category of the
+     *                          given product.
+     */
+    public void setCategory(ProductCategory productCategory) {
+        this.productCategory = productCategory;
+    }
 }
