@@ -5,8 +5,6 @@ import java.util.Arrays;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-
-import io.jsonwebtoken.io.IOException;
 import no.ntnu.mocha.domain.entities.Image;
 import no.ntnu.mocha.domain.repository.ImageRepository;
 
@@ -38,7 +36,7 @@ public class ImageServiceImpl implements ImageService {
      * is valid, and if not throws an {@code IOException}.
      * 
      * @param imageFile the uploaded file.
-     * @throws IOException if the Image is not valid.
+     * @throws Exception if the Image is not valid.
      */
     @Override
     public Image addImage(MultipartFile imageFile) {
@@ -52,7 +50,7 @@ public class ImageServiceImpl implements ImageService {
               image =
                       imageRepository.save(new Image(imageData, fileExtension, contentType));
             }
-          } catch (IOException e) {
+          } catch (Exception e) {
             e.printStackTrace();
           }
           return image;
@@ -73,7 +71,7 @@ public class ImageServiceImpl implements ImageService {
      * 
      * @param imageFile the image file to be updatet.
      * @param id        the id of the Image to be updatet.
-     * @throws  IOException if the Image is not valid.
+     * @throws  Exception if the Image is not valid.
      */
     @Override
     public Image updateImage(long id, MultipartFile imageFile) {
@@ -86,7 +84,7 @@ public class ImageServiceImpl implements ImageService {
                     image.setContentType(imageFile.getContentType());
                     imageRepository.save(image);
                 }
-            } catch (IOException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
