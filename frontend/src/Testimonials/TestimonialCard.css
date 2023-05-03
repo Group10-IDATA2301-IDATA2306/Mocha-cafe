@@ -1,11 +1,11 @@
 item {
   height: 100%;
-  width: 20%;
-  min-width: 20rem;
+  width: 25%;
+  min-width: 25rem;
   min-height: 30rem;
 
   display: grid;
-  grid-template-rows: 20% 1fr 25% 15%;
+  grid-template-rows: 8rem 1fr 1fr 10%;
   justify-content: center;
   align-items: center;
 
@@ -21,10 +21,17 @@ item {
 .testimonial-portrait {
   align-self: center;
   justify-self: center;
-  height: auto;
-  width: 30%;
+  height: 10rem;
+  width: 10rem;
   border-radius: 50%;
-  object-fit: cover;
+}
+
+.rating {
+  font-size: 0.8rem;
+}
+
+item > h3 {
+  font-size: 3rem;
 }
 
 /* @media (max-width: 1200px) {
@@ -41,7 +48,7 @@ item {
   }
 } */
 
-@media (max-width: 1000px) {
+/* @media (max-width: 1000px) {
   item > p {
     font-size: 1.8rem;
   }
@@ -51,15 +58,20 @@ item {
   }
 
   item > .portrait-container > h3 {
-    font-size: 2rem;
+    font-size: 2.8rem;
   }
 
   item {
     height: 100%;
   }
-}
+} */
 
 @media (max-width: 585px) {
+  item {
+    height: 100%;
+    min-width: 20rem;
+  }
+
   item > p {
     font-size: 1.6rem;
   }
@@ -68,12 +80,8 @@ item {
     font-size: 0.5rem;
   }
 
-  item > .portrait-container > h3 {
+  item > h3 {
     font-size: 2rem;
-  }
-
-  item {
-    height: 100%;
   }
 }
 

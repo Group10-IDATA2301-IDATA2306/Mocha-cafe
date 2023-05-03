@@ -1,6 +1,6 @@
 main {
   display: grid;
-  height: 78rem;
+  height: 80vh;
   grid-template-columns: 50% 1fr;
   align-items: center;
 

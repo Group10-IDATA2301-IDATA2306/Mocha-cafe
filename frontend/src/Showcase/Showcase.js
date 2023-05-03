@@ -2,10 +2,10 @@ import "./Showcase.css";
 import { ShowcaseCard } from "./ShowcaseCard";
 
 const jsonTestData = {
-  id: "Product 1",
-  name: "jsonTestData",
+  id: "3",
+  name: "Black Coffe",
   price: "122",
-  imageURL: "../assets/img/Product 1.png",
+  description: "Some coffe",
 };
 
 /**

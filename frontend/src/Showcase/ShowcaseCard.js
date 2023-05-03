@@ -8,23 +8,21 @@ import "./ShowcaseCard.css";
  * @constructor
  */
 export function ShowcaseCard({ props }) {
-  // const imageUrl = require(`${props.imageURL}`);
-  const imageUrl = require(`../assets/img/Product 1.png`);
-
   return (
     <card>
       <img
         className="product-image"
-        style={{
-          backgroundImage: `url(${imageUrl})`,
-        }}
-        alt="A product"
+        src={require("../assets/img/" + props.id + ".png")}
+        alt="product"
       />
-      <container class="card-info">
-        <h4>{props.name}</h4>
-        <h4>{props.price}</h4>
-      </container>
       <overlay></overlay>
+      <container className="card-info">
+        <container class="card-stats">
+          <h4>{props.name}</h4>
+          <h4>{props.price}kr</h4>
+        </container>
+        <p>{props.description}</p>
+      </container>
     </card>
   );
 }
