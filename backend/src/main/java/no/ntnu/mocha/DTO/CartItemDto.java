@@ -13,10 +13,10 @@ package no.ntnu.mocha.DTO;
 public class CartItemDto {
     
     /** The id of the product of this cart item dto. */
-    private final Long productId;
+    private final long productId;
 
     /** The quantity of the product in this cart item dto. */
-    private final Integer quantity;
+    private final int quantity;
 
     /**
      * Creates an instance of the product in this cart item dto.
