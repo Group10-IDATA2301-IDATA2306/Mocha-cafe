@@ -1,9 +1,0 @@
-.product-section {
-  height: 60rem;
-  display: grid;
-  grid-template-rows: 10rem 1fr;
-  padding: 5rem;
-
-  background-color: #f7f7f7;
-  text-align: center;
-}

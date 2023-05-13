@@ -18,10 +18,10 @@ export function ShowcaseCard({ props }) {
       <overlay></overlay>
       <container className="card-info">
         <container class="card-stats">
-          <h4>{props.name}</h4>
-          <h4>{props.price}kr</h4>
+          <h3>{props.name}</h3>
         </container>
         <p>{props.description}</p>
+        <h4>{props.price}kr</h4>
       </container>
     </card>
   );

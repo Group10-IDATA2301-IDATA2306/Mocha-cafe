@@ -45,8 +45,27 @@ card {
 }
 
 .card-info {
-  background-color: #032f22;
+  background-color: #f7f7f7;
   height: auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  margin-top: 1rem;
+}
+
+.card-info > h4 {
+  z-index: 2;
+  color: #087f5b;
+  font-size: 2rem;
+  margin-left: 2rem;
+  margin-top: 5rem;
+}
+
+.card-info > p {
+  margin-left: 2rem;
+  font-size: 1.6rem;
 }
 
 .card-stats {
@@ -55,7 +74,7 @@ card {
 
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  /* justify-content: center; */
   /* align-items: center; */
   padding-left: 2rem;
   padding-top: 1rem;
@@ -65,15 +84,9 @@ card {
   z-index: 5;
 }
 
-.card-stats > h4 {
-  z-index: 2;
-  color: #f7f7f7;
-  font-size: 2rem;
-}
-
 .card-stats > *:last-child {
-  margin-left: auto;
-  margin-right: 3rem;
+  /* margin-left: auto;
+  margin-right: 3rem; */
 }
 
 /* card:hover > overlay {
