@@ -1,10 +1,14 @@
 package no.ntnu.mocha;
 
+import java.net.InetAddress;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.core.env.Environment;
 
 /**
  * <h1>Mocha Application</h1>
@@ -19,6 +23,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class MochaApplication implements CommandLineRunner {
 
+	/* Represents the environment in which the application is running. */
+	@Autowired
+	private Environment environment;
+
 	private static final Logger logger = 
 		LoggerFactory.getLogger(MochaApplication.class);
 
@@ -29,7 +37,12 @@ public class MochaApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		
-	}
 
+		/* Inject IP address and assigned port of active server instance. */
+		String ip   = InetAddress.getLocalHost().getHostAddress();
+		String port = environment.getProperty("local.server.port");
+
+		/* Log initial status to STDOUT. */
+		logger.info("Server instance initialized: " + ip + ":" + port);
+	}
 }

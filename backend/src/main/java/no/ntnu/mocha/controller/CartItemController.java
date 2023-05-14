@@ -12,6 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
  * @since   22.04.2023
  */
 @RestController
-@RequestMapping("api/cart_items")
+@RequestMapping("cart")
 public class CartItemController {
 }

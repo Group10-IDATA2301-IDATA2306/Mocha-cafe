@@ -1,68 +1,90 @@
 package no.ntnu.mocha.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import no.ntnu.mocha.domain.entities.CartItem;
 import no.ntnu.mocha.domain.entities.Order;
 import no.ntnu.mocha.domain.entities.Product;
+import no.ntnu.mocha.domain.repository.CartItemRepository;
 
 /**
- * <h1>Business Logic interface for the Cart Items </h1>
+ * <h1>Business Logic Service class for Cart Item</h1>
  * 
- * <p>Represents an interface that defines the operations
- * that can be performed in Cart Item in the application. </p>
+ * <p> Representing an Service class for the Cart Item and implements the
+ * Cart Item Service interface with the additional methods. </p>
  * 
- * @version 22.04.2023
- * @since   22.04.2023
+ * @version 21.04.2023
+ * @since   21.04.2023
  */
-public interface CartItemService {
-    
-    /**
-     * Returns the Cart Item with the given id.
-     * 
-     * @param   id the id of the cart item
-     * @return  the cart item with the given id
-     */
-    CartItem getCartItem(long id);
+@Service
+public class CartItemService {
+
+    /** Gives access to the Cart Item Repository */
+    @Autowired
+    private CartItemRepository cartItemRepository;
 
     /**
-     * Returns the cart item with the given order id
-     * and product id.
+     * Returns the cart item with the given id.
      * 
-     * @param oId   the order id
-     * @param pId   the product id
-     * @return      the cart item with the given order id
-     *              and product id
+     * @param id    the id of the cart item.
+     * @return {@code CartItem} with the given id, or
+     *          {@code null} if nothing found.
      */
-    CartItem getCartItemByOrderAndProduct(Order oId, Product pId);
+    public CartItem getCartItem(long id) {
+        return this.cartItemRepository.findById(id).orElse(null);
+    }
 
     /**
-     * Adds the given cart item.
+     * Returns the Cart Item with the given order id and product id.
      * 
-     * @param cartItem  the cart item
+     * @param oId   The order id to find cart item for.
+     * @param pId   The product id to find cart item for.
+     * @return {@code CartItem} found, or {@code null} if
+     *          nothing found.
      */
-    void addCartItem(CartItem cartItem);
+    public CartItem getCartItemByOrderAndProduct(Order oId, Product pId) {
+        return this.cartItemRepository.findCartItemByOrderAndProduct(oId, pId)
+                .orElse(null);
+    }
 
     /**
-     * Updates the cart item with the given 
-     * id and cart item.
+     * Saves the cart item into the database.
      * 
-     * @param id        the id of the cart item
-     * @param cartItem  the cart item
+     * @param cartItem  the cart item to be saved.
      */
-    void updateCartItem(long id, CartItem cartItem);
+    public void addCartItem(CartItem cartItem) {
+        this.cartItemRepository.save(cartItem);
+    }
 
     /**
-     * Deletes the cart item with the given id.
+     * Updates the cart item with the given id to the 
+     * database.
      * 
-     * @param id    the id of the cart item
+     * @param id        the id of the cart item to update
+     * @param cartItem  the updated {@code cartItem}
      */
-    void deleteCartItem(long id);
+    public void updateCartItem(long id, CartItem cartItem) {
+        this.cartItemRepository.save(cartItem);
+    }
 
     /**
-     * Deletes all the cart items by the given
-     * id.
+     * Deletes the cart item by the given id.
      * 
-     * @param id    the cart item id.
+     * @param id    the id of the cart item to be
+     *              deleted.
      */
-    void deleteAllCartItemById(long id);
+    public void deleteCartItem(long id) {
+        this.cartItemRepository.deleteById(id);
+    }
 
+    /**
+     * Deletes all the item in the cart item
+     * with the given id.
+     * 
+     * @param id    the cart item id to be deleted.
+     */
+    public void deleteAllCartItemById(long id) {
+        this.cartItemRepository.deleteAllCartItemById(id);
+    }
 }

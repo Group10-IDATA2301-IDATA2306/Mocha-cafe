@@ -1,46 +1,72 @@
 package no.ntnu.mocha.service;
 
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import no.ntnu.mocha.domain.entities.ProductCategory;
+import no.ntnu.mocha.domain.repository.ProductCategoryRepository;
 
 /**
- * <h1>Business Logic interface for the Category </h1>
+ * <h1>Business Logic Service class for Category</h1>
  * 
- * Represents an interface that defines the operations
- * that can be performed in category in the application.
+ * <p> Representing an Service class for the Category and implements the
+ * Cart Item Service interface with the additional methods. </p>
  * 
- * @version 22.04.2023
- * @since   22.04.2023
+ * @version 21.04.2023
+ * @since   21.04.2023
  */
-public interface ProductCategoryService {
-    
-    /**
-     * Returns all the product categories.
-     * 
-     * @return  all the product categories.
-     */
-    Iterable<ProductCategory> getAllProductCategories();
+@Service
+public class ProductCategoryService {
+
+    /** Gives access to the repository */
+    @Autowired
+    private ProductCategoryRepository productCategoryRepository;
 
     /**
-     * Returns the product category by the 
-     * given id.
+     * Returns an iterable collection of all the
+     * product categories.
      * 
-     * @param id    the id of the product category.
-     * @return  the product category by the given id.
+     * @return {@code Iterable<ProductCategory>} of all the
+     *          product categories.
      */
-    ProductCategory getProductCategory(long id);
+    public Iterable<ProductCategory> getAllProductCategories() {
+        return productCategoryRepository.findAll();
+    }
 
     /**
-     * Adds a product category into the database.
+     * Returns the product category with the given id.
      * 
-     * @param category the category to be added.
+     * @return {@code ProductCategort} with the given id,
+     *          and if not {@code null} if nothing is found.
      */
-    void addProductCategory(ProductCategory category);
+    public ProductCategory getProductCategory(long id) {
+        Optional<ProductCategory> category = productCategoryRepository.findById(id);
+        return category.orElse(null);
+    }
 
     /**
-     * Deletes an product category by the id in the 
-     * database.
+     * Adds the given product category to the database.
      * 
-     * @param id    the given id of the product category.
+     * @param category  {@code ProductCategory} to be added.
      */
-    void deleteProductCategory(long id);
+    public void addProductCategory(ProductCategory category) {
+        if(!productCategoryRepository.existsById(category.getId())) {
+            productCategoryRepository.save(category);
+        }
+    }
+
+    /**
+     * Deletes the product category by the given
+     * id.
+     * 
+     * @param id    the id of the product category to be
+     *              deleted.
+     */
+    public void deleteProductCategory(long id) {
+        if (productCategoryRepository.existsById(id)) {
+            productCategoryRepository.deleteById(id);
+        }
+    }
 }

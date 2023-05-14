@@ -1,68 +1,84 @@
 package no.ntnu.mocha.service;
 
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import no.ntnu.mocha.DTO.ProductDto;
 import no.ntnu.mocha.domain.entities.Product;
+import no.ntnu.mocha.domain.entities.ProductCategory;
+import no.ntnu.mocha.domain.repository.ProductCategoryRepository;
+import no.ntnu.mocha.domain.repository.ProductRepository;
 
 /**
- * <h1>Business Logic interface for the Products </h1>
+ * <Business Logic Service for the Product</h1>
  * 
- * Represents an interface that defines the operations
- * that can be performed in products in the application.
+ * Representing an Service class for the Product and implements the
+ * Product Service interface with the additional methods.
  * 
  * @version 21.04.2023
  * @since   21.04.2023
  */
-public interface ProductService {
+@Service
+public class ProductService {
+    
+    /** Gives access to the repository */
+    @Autowired
+    private ProductRepository productRepository;
 
-    /**
-     * Access elements of the Product Collection, and
-     * returns all the products.
-     * 
-     * @return all the products
-     */
-    Iterable<Product> getAllProducts();
+    /** Gives access to the repository */
+    @Autowired
+    private ProductCategoryRepository productCategoryRepository;
 
-    /**
-     * Returns the product by id.
-     * 
-     * @param id the id of the product
-     * @return the product
-     */
-    Product getProduct(long id);
+    public Iterable<Product> getAllProducts() {
+        List<Product> products = new ArrayList<>();
+        productRepository.findAll().forEach(products::add);
 
-    /**
-     * Returns the product with correct name.
-     * 
-     * @param name the name of the product
-     * @return the product with the right name
-     */
-    Product getProductByName(String name);
+        return products.stream().sorted(Comparator.comparingLong(Product::getId))
+                .collect(Collectors.toList());
+    }
 
-    /**
-     * Adds a product from the Product DTO.
-     * 
-     * @param productDto    the product to be added
-     *                      to the database.
-     * @return the created product
-     */
-    Product addProductFromDto(ProductDto productDto);
+    public Product getProduct(long id) {
+        Optional<Product> p = productRepository.findById(id);
+        return p.orElse(null);
+    }
 
-    /**
-     * Updates a product with the given id using data
-     * from the Product DTO.
-     * 
-     * @param id        the id of the product
-     * @param product   the DTO containing the updated product
-     * @return          the updated product
-     */
-    Product updateProduct(long id, ProductDto product);
+    public Product getProductByName(String name) {
+        return productRepository.findByName(name);
+    }
 
-    /**
-     * Deletes a product with the given id.
-     * 
-     * @param id the id of the product
-     */
-    void deleteProduct(long id);
+    public Product addProductFromDto(ProductDto productDto) {
+        Product p = getProductFromDto(productDto);
+        if (productRepository.findByName(p.getName()) == null) {
+            ProductCategory productCategory = 
+                    productCategoryRepository.findByName(p.getCategory().getName());
+            if (productCategory == null) {
+                productCategoryRepository.save(p.getCategory());
+                p.setCategory(
+                    productCategoryRepository.findByName(p.getCategory().getName())
+                );
+            } else {
+                p.setCategory(productCategory);
+            }
+            productRepository.save(p);
+        }
+        return productRepository.findByName(p.getName());
+    }
 
+    public Product updateProduct(long id, ProductDto product) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'addProductFromDto'");
+    }
 
+    public void deleteProduct(long id) {
+
+    }
+
+    private Product getProductFromDto(ProductDto object) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'addProductFromDto'");
+    }
 }

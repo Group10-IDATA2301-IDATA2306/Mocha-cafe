@@ -59,6 +59,10 @@ public class User {
     @Column(name = "zip_code")
     private int zipCode;
 
+    /** The role of the User. */
+    @Column(name = "role")
+    private String role;
+
     /**
      * Empty constructor.
      */
@@ -75,12 +79,13 @@ public class User {
      * @param street        Street of the User (e.g. "NTNU Ålesund veien 3")
      * @param houseNumber   House Number of the User (e.g. "52C")
      * @param city          City of the User (e.g. "Ålesund")
-     * @param zipCode       zip-code of the User (e.g. "6800")
+     * @param zipCode       Zip-code of the User (e.g. "6800")
+     * @param role          Role of the User (e.g. "ADMIN")
      */
     public User(String firstName, String lastName,
                 String password, String email, String country,
                 String street, String houseNumber, String city, 
-                int zipCode) {
+                int zipCode, String role) {
         super();
         this.firstName = firstName;
         this.lastName = lastName;
@@ -91,6 +96,7 @@ public class User {
         this.houseNumber = houseNumber;
         this.city = city;
         this.zipCode = zipCode;
+        this.role = role;
     }
 
     /**
@@ -273,4 +279,23 @@ public class User {
         this.zipCode = zipCode;
     }
 
+
+    /**
+     * Get the role assigned to the User.
+     * 
+     * @return user's role.
+     */
+    public String getRole() {
+        return this.role;
+    }
+
+
+    /**
+     * Set the role of the User.
+     * 
+     * @param role the role of the User.
+     */
+    public void setRole(String role) {
+        this.role = role;
+    }
 }
