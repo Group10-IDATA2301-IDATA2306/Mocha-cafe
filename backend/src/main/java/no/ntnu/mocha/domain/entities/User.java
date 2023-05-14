@@ -23,6 +23,10 @@ public class User {
     @Column(unique = true, name = "user_id")
     private long id;
 
+    /** The username of the User. */
+    @Column(name = "username", nullable = false, unique = true)
+    private String username;
+
     /** The firstname of the User */
     @Column(name = "first_name")
     private String firstName;
@@ -71,6 +75,7 @@ public class User {
     /**
      * Creates an instance of User.
      * 
+     * @param username      Username of the user
      * @param firstName     First Name of the User (e.g. "Morten")
      * @param lastName      Last Name of the User (e.g. "Finvein")
      * @param password      Password of the User (e.g. "123Spill")
@@ -82,11 +87,12 @@ public class User {
      * @param zipCode       Zip-code of the User (e.g. "6800")
      * @param role          Role of the User (e.g. "ADMIN")
      */
-    public User(String firstName, String lastName,
+    public User(String username, String firstName, String lastName,
                 String password, String email, String country,
                 String street, String houseNumber, String city, 
                 int zipCode, String role) {
         super();
+        this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;
@@ -115,6 +121,24 @@ public class User {
      */
     public void setUid(long id) {
         this.id = id;
+    }
+
+    /**
+     * Get the username of the user.
+     * 
+     * @return user's username.
+     */
+    public String getUserName(){
+        return username;
+    }
+
+    /**
+     * Set the username of the user.
+     * 
+     * @param username the new username.
+     */
+    public void setUserName(String username) {
+        this.username = username;
     }
 
     /**

@@ -34,4 +34,7 @@ build/
 
 ### Properties and HTTPS Configs ###
 env.properties
+.env
+*.env
 keystore.p12
+prod
