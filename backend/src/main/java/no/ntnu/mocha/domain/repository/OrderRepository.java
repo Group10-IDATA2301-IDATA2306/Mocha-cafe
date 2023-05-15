@@ -2,8 +2,9 @@ package no.ntnu.mocha.domain.repository;
 
 import java.util.List;
 
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+
 import no.ntnu.mocha.domain.entities.Order;
 
 /**
@@ -14,6 +15,7 @@ import no.ntnu.mocha.domain.entities.Order;
  * @since   21.03.2023
  * @see     Order
  */
+@RepositoryRestResource
 public interface OrderRepository extends CrudRepository<Order, Long> {
 
     /**

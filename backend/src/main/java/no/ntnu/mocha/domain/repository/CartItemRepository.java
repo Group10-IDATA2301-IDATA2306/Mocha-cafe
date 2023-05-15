@@ -1,12 +1,13 @@
 package no.ntnu.mocha.domain.repository;
 
+import java.util.Optional;
+
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import no.ntnu.mocha.domain.entities.CartItem;
 import no.ntnu.mocha.domain.entities.Order;
 import no.ntnu.mocha.domain.entities.Product;
-import java.util.Optional;
 
 /**
  * Represents CartItemRepository which extends
@@ -16,7 +17,7 @@ import java.util.Optional;
  * @since   21.03.2023
  * @see     CartItem
  */
-@Repository
+@RepositoryRestResource
 public interface CartItemRepository extends CrudRepository<CartItem, Long> {
 
     /**

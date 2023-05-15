@@ -37,7 +37,7 @@ public class Review {
     private Product product;
 
     /** Content of the review represented as VarChar(255) in the database. */
-    @Column(name = "comment")
+    @Column(name = "review_comment")
     private String comment;
 
     /** Star rating of the review represented as Integer in the database. */
@@ -45,7 +45,7 @@ public class Review {
     private int stars;
 
     /** Date of the review represented as Date in the database. */
-    @Column(name = "date")
+    @Column(name = "review_date")
     private LocalDateTime date;
 
 

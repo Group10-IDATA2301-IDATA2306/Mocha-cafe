@@ -1,7 +1,7 @@
 package no.ntnu.mocha.domain.repository;
 
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import no.ntnu.mocha.domain.entities.Image;
 
@@ -13,7 +13,7 @@ import no.ntnu.mocha.domain.entities.Image;
  * @since   21.03.2023
  * @see     Image
  */
-@Repository
+@RepositoryRestResource
 public interface ImageRepository extends CrudRepository<Image, Long>{
     
 }

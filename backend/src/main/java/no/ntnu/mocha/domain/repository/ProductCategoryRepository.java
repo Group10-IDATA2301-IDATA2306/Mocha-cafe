@@ -1,6 +1,7 @@
 package no.ntnu.mocha.domain.repository;
 
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import no.ntnu.mocha.domain.entities.ProductCategory;
 
@@ -12,6 +13,7 @@ import no.ntnu.mocha.domain.entities.ProductCategory;
  * @since   21.04.2023
  * @ProductCategory
  */
+@RepositoryRestResource
 public interface ProductCategoryRepository extends CrudRepository<ProductCategory, Long> {
     
     /**

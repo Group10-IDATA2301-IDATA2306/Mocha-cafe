@@ -34,7 +34,7 @@ public class Product {
     private Image image;
 
     /** Product name, represented as Varchar(255). */
-    @Column(name = "name")
+    @Column(name = "image_name")
     private String name;
 
     /** Product price, represented as Int(11). */
@@ -46,7 +46,7 @@ public class Product {
     private String size;
 
     /** Description text for the product, represented as Text. */
-    @Column(name = "description")
+    @Column(name = "image_description")
     private String description;
 
     /** Indicating wether to display the product on the website or not, represented as Boolean. */

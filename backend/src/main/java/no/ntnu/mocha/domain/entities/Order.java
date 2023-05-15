@@ -17,7 +17,7 @@ import jakarta.persistence.Table;
  * @since   22.04.2023
  */
 @Entity
-@Table(name = "order")
+@Table(name = "product_order")
 public class Order {
     
     /** Unique Id for Order */
@@ -32,7 +32,7 @@ public class Order {
     private User user;
 
     /** Given date for the current order */
-    @Column(name = "date")
+    @Column(name = "order_date")
     private LocalDateTime date;
 
     /**

@@ -20,6 +20,9 @@ public class UserDto {
     /** Lastname of the User */
     private String lastName;
 
+    /** Username of the User */
+    private String username;
+
     /** Password of the User */
     private String password;
 
@@ -41,55 +44,17 @@ public class UserDto {
     /** ZipCode of the User */
     private int zipCode;
 
-    /**
-     * Empty constructor.
-     */
-    public UserDto() {}
+    /** Role of the User */
+    private String role;
 
-    /**
-     * Creates an instance of the UserDto. Several constructor for handling different data.
-     * 
-     * @param firstName     The firstname of the user.
-     * @param lastName      The lastname of the user.
-     * @param password      The password of the user.
-     * @param email         The email of the user.
-     * @param country       The country of the user.
-     * @param street        The street of the user.
-     * @param houseNumber   The house number of the user.
-     * @param zipCode       The zip code of the user.
-     */
-    public UserDto(String firstName, String lastName, String password,
-                    String email, String country, String street,
-                    String houseNumber, int zipCode, String city) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.password = password;
-        this.email = email;
-        this.country = country;
-        this.city = city;
-        this.street = street;
-        this.houseNumber = houseNumber;
-        this.zipCode = zipCode;
+
+
+    public String getUsername() {
+        return username;
     }
 
-    /**
-     * Creates and returns a User-object from the DTO.
-     * 
-     * @return a User Object.
-     */
-    public User getUserFromDto() {
-        User user = new User();
-        user.setFirstName(firstName);
-        user.setLastName(lastName);
-        user.setPassword(password);
-        user.setEmail(email);
-        user.setCountry(country);
-        user.setCity(city);
-        user.setStreet(street);
-        user.setHouseNumber(houseNumber);
-        user.setZipCode(zipCode);
-
-        return user;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     /**
@@ -254,4 +219,12 @@ public class UserDto {
         this.zipCode = zipCode;
     }
 
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 }

@@ -31,11 +31,11 @@ public class ProductCategory {
     private long id;
 
     /** Category name, represented as Varchar(255). */
-    @Column(unique = true, name = "name")
+    @Column(unique = true, name = "product_name")
     private String name;
 
     /** Description, represented as Varchar(255). */
-    @Column(name = "description")
+    @Column(name = "product_description")
     private String description;
 
     @OneToMany(mappedBy = "productCategory")

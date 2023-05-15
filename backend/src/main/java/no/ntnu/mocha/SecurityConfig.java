@@ -1,4 +1,4 @@
-package no.ntnu.mocha.security;
+package no.ntnu.mocha;
 
 
 import static org.springframework.security.config.Customizer.withDefaults;
@@ -8,7 +8,6 @@ import java.util.Arrays;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.env.Environment;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -22,6 +21,8 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+import no.ntnu.mocha.security.AuthEntryPoint;
+import no.ntnu.mocha.security.AuthenticationFilter;
 import no.ntnu.mocha.service.UserDetailsServiceImpl;
 
 
@@ -46,10 +47,6 @@ public class SecurityConfig {
 
     @Autowired
     private AuthEntryPoint exceptionHandler;
-
-    /** Represents the environment in which the application is running. */
-    @Autowired
-    private Environment environment;
 
     /** Encrypts the passwords which are stored in the database. */
     private BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
@@ -98,33 +95,21 @@ public class SecurityConfig {
     @SuppressWarnings(value = { "all" })
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
-        String debugging_mode = (environment.getProperty("debugging_mode")).trim();
-        boolean debug = "DEBUG".equalsIgnoreCase(debugging_mode);
-
-        /* Active if application is running in DEBUG mode. */
-        if (debug) {
-            http.csrf(csrf -> csrf.disable())
-                    .cors(withDefaults())
-                    .authorizeHttpRequests()
-                    .anyRequest()
-                    .permitAll();
-                    
-        /* Active if application is running in default mode. */
-        } else {
-            http.cors(withDefaults())
-                    .csrf(csrf -> csrf.disable())
-                    .sessionManagement(management -> management
-                            .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                    .authorizeHttpRequests()
-                    .requestMatchers(HttpMethod.POST, "/login", "/users")
-                    .permitAll()
-                    .anyRequest()
-                    .authenticated()
-                    .and()
-                    .exceptionHandling(handling -> handling
-                            .authenticationEntryPoint(exceptionHandler))
-                    .addFilterBefore(authenticationFilter, UsernamePasswordAuthenticationFilter.class);
-        }
+        
+    http.cors(withDefaults())
+            .csrf(csrf -> csrf.disable())
+            .sessionManagement(management -> management
+                    .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+            .authorizeHttpRequests()
+            .requestMatchers(HttpMethod.POST, "/login")
+            .permitAll()
+            .anyRequest()
+            .authenticated()
+            .and()
+            .exceptionHandling(handling -> handling
+                    .authenticationEntryPoint(exceptionHandler))
+            .addFilterBefore(authenticationFilter, UsernamePasswordAuthenticationFilter.class);
+        
 
         return http.build();
     }
