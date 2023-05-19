@@ -1,12 +1,12 @@
-main {
+#hero-section {
   display: grid;
   height: 78rem;
   grid-template-columns: 50% 1fr;
   align-items: center;
 
-  background: linear-gradient(to right, #087f5b, #032f22);
   background-size: cover;
   background-position: center center;
+  
   background-image: url("/src/assets/img/Coffe_7000_x_4000-no-bg.png");
 }
 

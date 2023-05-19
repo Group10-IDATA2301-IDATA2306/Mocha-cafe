@@ -26,7 +26,7 @@ export function NavBar() {
       <ActiveLink to="/about">
         <h4 class="navbar__links">ABOUT US</h4>
       </ActiveLink>
-      <ActiveLink to="/contact">
+      <ActiveLink to="/login">
         <h4 class="navbar__links">CONTACT</h4>
       </ActiveLink>
       <container class="cart-container">
