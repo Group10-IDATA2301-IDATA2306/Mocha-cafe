@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/static/css/main.541af54a.css",
+    "main.js": "/static/js/main.59f58b9a.js",
+    "static/media/Coffe_7000_x_4000-no-bg.png": "/static/media/Coffe_7000_x_4000-no-bg.70c39b83fa50f9614534.png",
+    "static/media/Coffe_1890_x_1890-removebg.png": "/static/media/Coffe_1890_x_1890-removebg.f7f6903ca2b7f259e621.png",
+    "static/media/Toni.jpg": "/static/media/Toni.8c148da35b52dd9719b3.jpg",
+    "static/media/Product 1.png": "/static/media/Product 1.5159122e90254d2647e6.png",
+    "static/media/Sean.jpg": "/static/media/Sean.f665eda0d0f98aa1b784.jpg",
+    "static/media/Sarah.jpg": "/static/media/Sarah.dc791f39f94eae16ba39.jpg",
+    "static/media/Coffe L 2295 x 1311.jpg": "/static/media/Coffe L 2295 x 1311.2bbbf5a041bcf19021d7.jpg",
+    "static/media/Coffe M 1359 x 776.jpg": "/static/media/Coffe M 1359 x 776.61df0b12724703e3079f.jpg",
+    "static/media/SoDoSans-Bold.ttf": "/static/media/SoDoSans-Bold.eb1b4b40e505b812cbaa.ttf",
+    "static/media/SoDoSans-Regular.ttf": "/static/media/SoDoSans-Regular.ed48a0d6f126c19d4c8c.ttf",
+    "index.html": "/index.html",
+    "main.541af54a.css.map": "/static/css/main.541af54a.css.map",
+    "main.59f58b9a.js.map": "/static/js/main.59f58b9a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.541af54a.css",
+    "static/js/main.59f58b9a.js"
+  ]
+}
