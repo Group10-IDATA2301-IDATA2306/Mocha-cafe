@@ -1,5 +1,5 @@
 .product-section {
-  height: 80vh;
+  /* height: 80vh; */
   display: grid;
   grid-template-rows: 10% 1fr;
   align-items: center;

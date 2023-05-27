@@ -2,7 +2,7 @@ import "./Showcase.css";
 import { ShowcaseCard } from "./ShowcaseCard";
 
 const jsonTestData = {
-  id: "3",
+  id: "2",
   name: "Black Coffe",
   price: "122",
   description: "Brazilian coffee is sealed for freshness...",
@@ -19,6 +19,7 @@ export function Showcase() {
     <container className="product-section">
       <h2>New Releases</h2>
       <container className="product-container">
+        <ShowcaseCard props={jsonTestData} />
         <ShowcaseCard props={jsonTestData} />
         <ShowcaseCard props={jsonTestData} />
         <ShowcaseCard props={jsonTestData} />
