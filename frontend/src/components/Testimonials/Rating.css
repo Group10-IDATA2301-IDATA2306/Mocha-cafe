@@ -1,5 +1,6 @@
 .rating {
   display: flex;
+  justify-self: center;
   gap: 1rem;
 }
 
