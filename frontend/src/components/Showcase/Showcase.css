@@ -1,0 +1,12 @@
+.product-section {
+  height: 80vh;
+  display: grid;
+  grid-template-rows: 10% 1fr;
+  align-items: center;
+  padding-top: 3rem;
+
+  background-color: #f7f7f7;
+  /* background: linear-gradient(to right, #087f5b, #032f22); */
+
+  text-align: center;
+}
