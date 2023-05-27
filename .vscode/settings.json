@@ -1,3 +1,9 @@
 {
+<<<<<<< HEAD
   "java.compile.nullAnalysis.mode": "disabled"
+=======
+  "java.configuration.updateBuildConfiguration": "interactive",
+  "java.compile.nullAnalysis.mode": "automatic",
+  "terminal.integrated.inheritEnv": false
+>>>>>>> 3fe289f11132a23d5cc29bd0e89c758a79b4a220
 }
