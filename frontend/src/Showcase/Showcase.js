@@ -5,7 +5,7 @@ const jsonTestData = {
   id: "3",
   name: "Black Coffe",
   price: "122",
-  description: "Some coffe",
+  description: "Brazilian coffee is sealed for freshness...",
 };
 
 /**
