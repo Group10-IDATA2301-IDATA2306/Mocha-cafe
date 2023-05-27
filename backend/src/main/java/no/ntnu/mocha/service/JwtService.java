@@ -1,16 +1,14 @@
 package no.ntnu.mocha.service;
 
 
-import java.security.Key;
-import java.util.Date;
-
-import org.springframework.http.HttpHeaders;
-import org.springframework.stereotype.Component;
-
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
+import java.security.Key;
 import jakarta.servlet.http.HttpServletRequest;
+import java.util.Date;
+import org.springframework.http.HttpHeaders;
+import org.springframework.stereotype.Component;
 
 
 /**
@@ -26,37 +24,26 @@ import jakarta.servlet.http.HttpServletRequest;
 @Component
 public class JwtService {
 
-	/** Expiration time specifynig how long a JWT is valid. */
-    static final long EXPIRATIONTIME = 86400000; 
+	static final long EXPIRATIONTIME = 86400000; // 1 day in ms
 
 	static final String PREFIX = "Bearer";
 
-
+	// Generate secret key. Only for the demonstration
+	// You should read it from the application configuration
 	static final Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
 
 	
-	/**
-	 * Generates a JWT Token with the given username and expiration time
-	 * which are to be returned to the client upon authorization.
-	 * 
-	 * @param username The username of the authenticated user.
-	 * @return Generated JSON Web Token as a String.
-	 */
+	// Generate JWT token
 	public String getToken(String username) {
 		return Jwts.builder()
-			.setSubject(username)
-			.setExpiration(new Date(System.currentTimeMillis() + EXPIRATIONTIME))
-			.signWith(key)
-			.compact();
+			  .setSubject(username)
+			  .setExpiration(new Date(System.currentTimeMillis() + EXPIRATIONTIME))
+			  .signWith(key)
+			  .compact();
   	}
 
-
-	/** 
-	 * Validates a JWT which a client has provided in its request header.
-	 * 
-	 * @param request The HTTP request which the client forwarded to the server.
-	 * @return String username of the user which the JWT was generated to.
-	 */
+	// Get a token from request Authorization header,
+    // parse a token and get username
 	public String getAuthUser(HttpServletRequest request) {
         String token = request.getHeader(HttpHeaders.AUTHORIZATION);
         String user = null;
