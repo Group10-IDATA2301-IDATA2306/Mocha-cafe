@@ -1,0 +1,10 @@
+/* Styling for all buttons that remove cart products */
+.removeCartProductButton {
+    margin: 10px;
+    border: none;
+    font-size: 15px;
+}
+
+.removeCartProductButton:hover {
+    cursor: pointer;
+}

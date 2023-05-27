@@ -1,0 +1,8 @@
+/* Styling for all quantity inputs for products */
+.productQuantityInput {
+    margin: 10px;
+    flex-grow: 1;
+    color: #1d2124;
+    padding: 5px;
+    font-size: 15px;
+}

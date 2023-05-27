@@ -1,0 +1,8 @@
+/* Styling for all title and quantity containers for cart items */
+.cartItemTitleAndQuantity {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
