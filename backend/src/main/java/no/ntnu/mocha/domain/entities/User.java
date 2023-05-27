@@ -22,9 +22,9 @@ public class User {
     
     /** Unique User Id */
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(unique = true, name = "user_id")
-    private long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false, updatable = false, name = "user_id")
+    private Long id;
 
     /** The username of the User. */
     @Column(name = "username", nullable = false, unique = true)
@@ -58,23 +58,13 @@ public class User {
      * @param password  The pasword of the User.
      */
     public User(String username, String password, Role role) {
-        this.username = username;
-        this.password = password;
-    }
-
-    /**
-     * Creates an instance of User.
-     * 
-     * @param username      Username of the user
-     * @param password      Password of the User (e.g. "123Spill")
-     * @param email         Email of the User (e.g. "morten@gmail.com")
-     */
-    public User(String username, String password, String email) {
         super();
         this.username = username;
         this.password = password;
-        this.email = email;
+        this.role = role;
     }
+
+
 
     /**
      * Returns the User Id for the User.

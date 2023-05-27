@@ -19,13 +19,11 @@ public class AccessUserDetails implements UserDetails {
     
     private final String username;
     private final String password;
-    private final boolean isActive;
     private final Set<GrantedAuthority> authorities = new HashSet<>();
 
     public AccessUserDetails(User user) {
         this.username = user.getUserName();
         this.password = user.getPassword();
-        this.isActive = user.isActive();
         this.convertRoles(user.getRole());
     }
 
@@ -51,17 +49,17 @@ public class AccessUserDetails implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return isActive;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return isActive;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return isActive;
+        return true;
     }
 
     @Override

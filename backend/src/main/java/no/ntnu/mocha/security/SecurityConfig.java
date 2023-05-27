@@ -116,12 +116,19 @@ public class SecurityConfig {
             .cors(withDefaults())
             .sessionManagement(management -> management
                     .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+            /* 
             .authorizeHttpRequests(authorize -> authorize
                 .requestMatchers(HttpMethod.POST, "/login", "/users")
                 .permitAll()
                 .anyRequest()
                 .authenticated()
-            )
+            ) */
+            .authorizeHttpRequests()
+            .requestMatchers(HttpMethod.POST, "/login", "/users")
+            .permitAll()
+            .anyRequest()
+            .authenticated()
+            .and()
             .exceptionHandling(handling -> handling
                 .authenticationEntryPoint(exceptionHandler)
             )
