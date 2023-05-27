@@ -113,9 +113,12 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     private void createUser(String username, String password) {
         Role userRole = roleRepository.findOneByName("ROLE_USER");
         if (userRole != null) {
-        User user = new User(username, createHash(password));
-        user.addRole(userRole);
-        userRepository.save(user);
+            User user = new User(
+                username, 
+                createHash(password), 
+                new Role("ROLE_USER")
+            );
+            userRepository.save(user);
         }
     }
 

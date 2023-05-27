@@ -15,7 +15,7 @@ import no.ntnu.mocha.domain.entities.Role;
 /**
  * Contains authentication information, needed by UserDetailService.
  */
-public class AccessUserDetails implements UserDetails{
+public class AccessUserDetails implements UserDetails {
     
     private final String username;
     private final String password;
@@ -26,14 +26,12 @@ public class AccessUserDetails implements UserDetails{
         this.username = user.getUserName();
         this.password = user.getPassword();
         this.isActive = user.isActive();
-        this.convertRoles(user.getRoles());
+        this.convertRoles(user.getRole());
     }
 
-    private void convertRoles(Set<Role> roles) {
+    private void convertRoles(Role role) {
         authorities.clear();
-        for (Role role : roles) {
         authorities.add(new SimpleGrantedAuthority(role.getName()));
-        }
     }
 
     @Override

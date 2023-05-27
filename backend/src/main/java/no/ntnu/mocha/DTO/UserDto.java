@@ -1,7 +1,5 @@
 package no.ntnu.mocha.DTO;
 
-import no.ntnu.mocha.domain.entities.User;
-
 /**
  * <h1>User DTO (Data Transfer Object)</h1>
  * 

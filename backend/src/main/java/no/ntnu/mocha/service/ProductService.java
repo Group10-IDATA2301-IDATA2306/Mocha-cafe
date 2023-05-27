@@ -38,10 +38,10 @@ public class ProductService {
     private ProductCategoryRepository productCategoryRepository;
 
     public Iterable<Product> getAllProducts() {
-        List<Product> products = new ArrayList<>();
-        productRepository.findAll().forEach(products::add);
+        List<Product> productList = new ArrayList<>();
+        productRepository.findAll().forEach(productList::add);
 
-        return products.stream().sorted(Comparator.comparingLong(Product::getId))
+        return productList.stream().sorted(Comparator.comparingLong(Product::getId))
                 .collect(Collectors.toList());
     }
 

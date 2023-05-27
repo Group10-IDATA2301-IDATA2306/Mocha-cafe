@@ -1,17 +1,10 @@
 package no.ntnu.mocha.domain.entities;
 
-import java.util.LinkedHashSet;
-import java.util.Set;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 /**
@@ -28,12 +21,6 @@ public class Role {
 
     @Column(name = "role_name")
     private String name;
-
-    @OneToMany(mappedBy = "roles")
-    private Set<User> users = new LinkedHashSet<>();
-
-    @ManyToMany
-    private User user;
 
 
     /**
@@ -53,14 +40,6 @@ public class Role {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Set<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(Set<User> users) {
-        this.users = users;
     }
 
     public String getName() {

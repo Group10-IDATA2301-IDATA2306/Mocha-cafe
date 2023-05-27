@@ -2,9 +2,11 @@ package no.ntnu.mocha.security;
 
 
 
-import java.util.Arrays;
-import org.springframework.beans.factory.annotation.Autowired;
 import static org.springframework.security.config.Customizer.withDefaults;
+
+import java.util.Arrays;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
@@ -44,9 +46,6 @@ public class SecurityConfig {
   @Autowired
   private AuthEntryPoint exceptionHandler;
 
-  /** Represents the environment in which the application is running. */
-  @Autowired
-  private Environment environment;
 
   private BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
 
@@ -87,21 +86,21 @@ public class SecurityConfig {
       return new InMemoryUserDetailsManager(user, admin);
   }
 
-  /**
-   * Configures the AuthenticationManager instance and returns it.
-   * 
-   * @param http An HttpSecurity instance to configure the AuthenticationManager
-   *             instance.
-   * @return An AuthenticationManager instance.
-   */
-  @Bean
-  public AuthenticationManager getAuthenticationManager(HttpSecurity http) throws Exception {
-      return http.getSharedObject(AuthenticationManagerBuilder.class)
-              .userDetailsService(userDetailsService)
-              .passwordEncoder(bCryptPasswordEncoder)
-              .and()
-              .build();
-  }
+    /**
+     * Configures the AuthenticationManager instance and returns it.
+     * 
+     * @param http An HttpSecurity instance to configure the AuthenticationManager
+     *             instance.
+     * @return An AuthenticationManager instance.
+     */
+    @Bean
+    public AuthenticationManager getAuthenticationManager(HttpSecurity http) throws Exception {
+        http.getSharedObject(AuthenticationManagerBuilder.class)
+            .userDetailsService(userDetailsService)
+            .passwordEncoder(bCryptPasswordEncoder);
+        
+        return http.getSharedObject(AuthenticationManagerBuilder.class).build();
+    }
 
   /**
    * This method will be called automatically by the framework to find out what
@@ -113,31 +112,20 @@ public class SecurityConfig {
   @Bean
   @SuppressWarnings(value = { "all" })
   public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-
-      String debugging_mode = (environment.getProperty("debugging_mode")).trim();
-      boolean debug = "DEBUG".equalsIgnoreCase(debugging_mode);
-
-      if (debug) {
-          http.csrf(csrf -> csrf.disable())
-                  .cors(withDefaults())
-                  .authorizeHttpRequests()
-                  .anyRequest()
-                  .permitAll();
-      } else {
-          http.csrf(csrf -> csrf.disable())
-                  .cors(withDefaults())
-                  .sessionManagement(management -> management
-                          .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                  .authorizeHttpRequests()
-                  .requestMatchers(HttpMethod.POST, "/login", "/users")
-                  .permitAll()
-                  .anyRequest()
-                  .authenticated()
-                  .and()
-                  .exceptionHandling(handling -> handling
-                          .authenticationEntryPoint(exceptionHandler))
-                  .addFilterBefore(authenticationFilter, UsernamePasswordAuthenticationFilter.class);
-      }
+        http.csrf(csrf -> csrf.disable())
+            .cors(withDefaults())
+            .sessionManagement(management -> management
+                    .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+            .authorizeHttpRequests(authorize -> authorize
+                .requestMatchers(HttpMethod.POST, "/login", "/users")
+                .permitAll()
+                .anyRequest()
+                .authenticated()
+            )
+            .exceptionHandling(handling -> handling
+                .authenticationEntryPoint(exceptionHandler)
+            )
+            .addFilterBefore(authenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
       return http.build();
   }
