@@ -9,6 +9,12 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.core.env.Environment;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+import no.ntnu.mocha.domain.entities.Role;
+import no.ntnu.mocha.domain.entities.User;
+import no.ntnu.mocha.domain.repository.RoleRepository;
+import no.ntnu.mocha.domain.repository.UserRepository;
 
 /**
  * <h1>Mocha Application</h1>
@@ -22,6 +28,14 @@ import org.springframework.core.env.Environment;
  */
 @SpringBootApplication
 public class MochaApplication implements CommandLineRunner {
+
+	@Autowired
+	UserRepository urepository;
+
+	@Autowired
+	RoleRepository roleRepository;
+
+	private BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
 
 	/* Represents the environment in which the application is running. */
 	@Autowired
@@ -37,6 +51,15 @@ public class MochaApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
+		/* 
+		Role role = new Role("USER");
+		roleRepository.save(role);
+		User user = new User(
+			"user1", 
+			bCryptPasswordEncoder.encode("user1"),
+			role
+		);
+		urepository.save(user); */
 
 		/* Inject IP address and assigned port of active server instance. */
 		String ip   = InetAddress.getLocalHost().getHostAddress();

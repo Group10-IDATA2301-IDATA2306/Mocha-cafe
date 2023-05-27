@@ -10,8 +10,10 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import no.ntnu.mocha.DTO.AuthenticationRequest;
 import no.ntnu.mocha.DTO.UserDto;
 import no.ntnu.mocha.service.JwtService;
 
@@ -27,6 +29,7 @@ import no.ntnu.mocha.service.JwtService;
  */
 @RestController
 @CrossOrigin
+@RequestMapping("/login")
 public class LoginController {
 
     
@@ -44,8 +47,8 @@ public class LoginController {
      * @param credentials An object that holds the user's credentials (username and password).
      * @return An HTTP response entity that includes a token in the Authorization header and the budget ID.
      */
-    @PostMapping(value = "/login")
-	public ResponseEntity<?> getToken(@RequestBody UserDto userDto) {
+    @PostMapping(value = "")
+	public ResponseEntity<?> getToken(@RequestBody AuthenticationRequest userDto) {
 
 		UsernamePasswordAuthenticationToken creds = new UsernamePasswordAuthenticationToken(
 			userDto.getUsername(),
@@ -53,7 +56,7 @@ public class LoginController {
 		);
 		Authentication auth = authenticationManager.authenticate(creds);
 
-		// Generate token
+		// Generate token 
 		String jwts = jwtService.getToken(auth.getName());
 
 
