@@ -1,5 +1,9 @@
 package no.ntnu.mocha.domain.entities;
 
+import java.util.Iterator;
+import java.util.LinkedHashSet;
+import java.util.Set;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -27,14 +31,6 @@ public class User {
     @Column(name = "username", nullable = false, unique = true)
     private String username;
 
-    /** The firstname of the User */
-    @Column(name = "first_name")
-    private String firstName;
-
-    /** The lastname of the User */
-    @Column(name = "last_name")
-    private String lastName;
-
     /** The password of the User */
     @Column(name = "password")
     private String password;
@@ -43,29 +39,10 @@ public class User {
     @Column(name = "email")
     private String email;
 
-    /** The country of the User */
-    @Column(name = "country")
-    private String country;
+    @Column(name = "bio")
+    private String bio;
 
-    /** The street of the User */
-    @Column(name = "street")
-    private String street;
-
-    /** The housenumber of the User */
-    @Column(name = "house_number")
-    private String houseNumber;
-
-    /** The city of the User */
-    @Column(name = "city")
-    private String city;
-
-    /** The zip-code of the User */
-    @Column(name = "zip_code")
-    private int zipCode;
-
-    /** The role of the User. */
-    @Column(name = "role")
-    private String role;
+    private Set<Role> roles = new LinkedHashSet<>();
 
     /**
      * Empty constructor.
@@ -73,36 +50,36 @@ public class User {
     public User(){}
 
     /**
+     * Creates an instance of User with username and password.
+     * 
+     * @param username  The username of the User.
+     * @param password  The pasword of the User.
+     */
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
+    /**
      * Creates an instance of User.
      * 
      * @param username      Username of the user
-     * @param firstName     First Name of the User (e.g. "Morten")
-     * @param lastName      Last Name of the User (e.g. "Finvein")
      * @param password      Password of the User (e.g. "123Spill")
      * @param email         Email of the User (e.g. "morten@gmail.com")
-     * @param country       Country of the User (e.g. "Albania")
-     * @param street        Street of the User (e.g. "NTNU Ålesund veien 3")
-     * @param houseNumber   House Number of the User (e.g. "52C")
-     * @param city          City of the User (e.g. "Ålesund")
-     * @param zipCode       Zip-code of the User (e.g. "6800")
-     * @param role          Role of the User (e.g. "ADMIN")
      */
-    public User(String username, String firstName, String lastName,
-                String password, String email, String country,
-                String street, String houseNumber, String city, 
-                int zipCode, String role) {
+    public User(String username, String password, String email) {
         super();
         this.username = username;
-        this.firstName = firstName;
-        this.lastName = lastName;
         this.password = password;
         this.email = email;
-        this.country = country;
-        this.street = street;
-        this.houseNumber = houseNumber;
-        this.city = city;
-        this.zipCode = zipCode;
-        this.role = role;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+    
+    public Set<Role> getRoles() {
+        return roles;
     }
 
     /**
@@ -142,42 +119,6 @@ public class User {
     }
 
     /**
-     * Returns the firstname of the User.
-     * 
-     * @return the firstname of the User.
-     */
-    public String getFirstName() {
-        return firstName;
-    }
-
-    /**
-     * Sets the firstname of the User.
-     * 
-     * @param firstName the firstname of the User.
-     */
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    /**
-     * Returns the lastname of the User.
-     * 
-     * @return the lastname of the User.
-     */
-    public String getLastName() {
-        return lastName;
-    }
-
-    /**
-     * Sets the lastname of the User.
-     * 
-     * @param lastName the lastname of the User.
-     */
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    /**
      * Returns the password for the User.
      * 
      * @return the password for the User.
@@ -213,113 +154,51 @@ public class User {
         this.email = email;
     }
 
-    /**
-     * Returns the country of the User.
-     * 
-     * @return the country of the User.
+    public boolean isActive() {
+        return false;
+    }
+
+        /**
+     * Add a role to the user
+     *
+     * @param role Role to add
      */
-    public String getCountry() {
-        return country;
+    public void addRole(Role role) {
+        roles.add(role);
     }
 
     /**
-     * Sets the country of the User.
-     * 
-     * @param country the country of the User.
+     * Check if this user is an admin
+     *
+     * @return True if the user has admin role, false otherwise
      */
-    public void setCountry(String country) {
-        this.country = country;
+    public boolean isAdmin() {
+        return this.hasRole("ROLE_ADMIN");
     }
 
     /**
-     * Returns the street of the User.
-     * 
-     * @return the street of the User.
+     * Check if the user has a specified role
+     *
+     * @param roleName Name of the role
+     * @return True if hte user has the role, false otherwise.
      */
-    public String getStreet() {
-        return street;
+    public boolean hasRole(String roleName) {
+        boolean found = false;
+        Iterator<Role> it = roles.iterator();
+        while (!found && it.hasNext()) {
+        Role role = it.next();
+        if (role.getName().equals(roleName)) {
+            found = true;
+        }
+        }
+        return found;
     }
 
-    /**
-     * Sets the street of the User.
-     * 
-     * @param street the street of the User.
-     */
-    public void setStreet(String street) {
-        this.street = street;
+    public String getBio() {
+        return bio;
     }
 
-    /**
-     * Returns the housenumber of the User.
-     * 
-     * @return the housenumber of the User.
-     */
-    public String getHouseNumber() {
-        return houseNumber;
-    }
-
-    /**
-     * Sets the housenumber of the User.
-     * 
-     * @param houseNumber the housenumber of the User.
-     */
-    public void setHouseNumber(String houseNumber) {
-        this.houseNumber = houseNumber;
-    }
-
-    /**
-     * Returns the city of the User.
-     * 
-     * @return the city of the User.
-     */
-    public String getCity() {
-        return city;
-    }
-
-    /**
-     * Sets the city of the User.
-     * 
-     * @param city the city of the User.
-     */
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    /**
-     * Returns the zip-code of the User.
-     * 
-     * @return the zip-code of the User.
-     */
-    public int getZipCode() {
-        return zipCode;
-    }
-
-    /**
-     * Sets the zip-code of the User.
-     * 
-     * @param zipCode the zip-code of the User.
-     */
-    public void setZipCode(int zipCode) {
-        this.zipCode = zipCode;
-    }
-
-
-    /**
-     * Get the role assigned to the User.
-     * 
-     * @return user's role.
-     */
-    public String getRole() {
-        return this.role;
-    }
-
-
-    /**
-     * Set the role of the User.
-     * 
-     * @param role the role of the User.
-     */
-    public void setRole(String role) {
-        this.role = role;
+    public void setBio(String bio) {
+        this.bio = bio;
     }
 }

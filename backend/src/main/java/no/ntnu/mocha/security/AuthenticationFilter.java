@@ -1,19 +1,21 @@
 package no.ntnu.mocha.security;
 import java.io.IOException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
-
+import io.jsonwebtoken.JwtException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import no.ntnu.mocha.service.JwtService;
+import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 
 /**
@@ -29,24 +31,39 @@ import no.ntnu.mocha.service.JwtService;
  */
 @Component
 public class AuthenticationFilter extends OncePerRequestFilter {
+    private final static Logger logger = LoggerFactory.getLogger(AuthenticationFilter.class.getSimpleName());
     
     @Autowired
-    private JwtService jwtService;
+    private UserDetailsService userDetailsService;
+
+    @Autowired
+    private AuthEntryPoint authEntryPoint;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
 
-        String jws = request.getHeader(HttpHeaders.AUTHORIZATION);
-           if (jws != null) {
-            String user = jwtService.getAuthUser(request);
-            Authentication authentication = new UsernamePasswordAuthenticationToken(
-                user,
-                null,
-                java.util.Collections.emptyList()
-            );
-            SecurityContextHolder.getContext().setAuthentication(authentication);
-        }
-        filterChain.doFilter(request, response);
-    }
+                final String authorizationHeader = request.getHeader("Authorization");
+                String username = null;
+                String jwt = null;
+                try {
+                  if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
+                    jwt = authorizationHeader.substring(7);
+                    username = authEntryPoint.extractUsername(jwt);
+                  }
+            
+                  if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+                    UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+                    if (authEntryPoint.validateToken(jwt, userDetails)) {
+                      UsernamePasswordAuthenticationToken upat = new UsernamePasswordAuthenticationToken(
+                          userDetails, null, userDetails.getAuthorities());
+                      upat.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+                      SecurityContextHolder.getContext().setAuthentication(upat);
+                    }
+                  }
+                } catch (JwtException ex) {
+                  logger.info("Error while parsing JWT token: " + ex.getMessage());
+                }
+                filterChain.doFilter(request, response);
+              }
 }

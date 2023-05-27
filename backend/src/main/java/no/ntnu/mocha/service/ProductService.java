@@ -2,8 +2,10 @@ package no.ntnu.mocha.service;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,6 +27,8 @@ import no.ntnu.mocha.domain.repository.ProductRepository;
 @Service
 public class ProductService {
     
+    Set<Product> products = new HashSet<>();
+
     /** Gives access to the repository */
     @Autowired
     private ProductRepository productRepository;
@@ -80,5 +84,27 @@ public class ProductService {
     private Product getProductFromDto(ProductDto object) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'addProductFromDto'");
+    }
+
+    /**
+     * Get all products stored in the application.
+     * 
+     * @return An iterable collection of all products.
+     */
+    public Iterable<Product> getAll() {
+        if (products.isEmpty()) {
+            initializeFakeProduct();
+        }
+        return products;
+    }
+
+    /**
+     * Fill product collection with fake products.
+     */
+    private void initializeFakeProduct() {
+        products.clear();
+        products.add(new Product("Mocha Coffee", 100.0, "50 gram", "Mocha brown coffee very strong", true));
+        products.add(new Product("Filter Kaffi", 150.0, "20 gram", "Vanlig filter kaffi!", true));
+        products.add(new Product("Espresso Drikke", 70.0, "45 gram", "Espresso kaffe, veldig sterk", true));
     }
 }

@@ -2,7 +2,7 @@
 
 // Imports
 import { HttpResponseError } from "./HttpResponseError";
-import { getCookie } from "/.cookies";
+import { getCookie } from "./cookies";
 
 // Import the REST API BASE URL from the environment variable
 const SERVER_URL = process.env.REACT_APP_API_BASE_URL;
