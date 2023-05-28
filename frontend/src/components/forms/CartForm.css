@@ -1,0 +1,18 @@
+/* Styling for the CartForm component */
+.cartForm {
+    display: flex;
+    flex-direction: column;
+    margin: 60px;
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-width: 400px;
+    max-width: 700px;
+}
+
+.cartForm > h1 {
+    color: rgb(228, 228, 228);
+}
+
+.cartForm > div > h2 {
+    color: rgb(228, 228, 228);
+}

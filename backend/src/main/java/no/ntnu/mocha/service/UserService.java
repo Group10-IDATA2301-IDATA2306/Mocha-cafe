@@ -22,6 +22,9 @@ public class UserService {
     @Autowired
     private RoleRepository roleRepository;
 
+    @Autowired
+    private EmailService emailService;
+
     private BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
 
     
@@ -42,6 +45,8 @@ public class UserService {
             dto.getEmail(),
             dto.getBio()
         );
+
+        emailService.sendAccountConfirmation(dto.getEmail());
 
         return userRepository.save(user);
     }
