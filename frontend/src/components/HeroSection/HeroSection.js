@@ -1,4 +1,4 @@
-import "./HeroSection.css"
+import "./HeroSection.css";
 
 /**
  * Component representing the Hero section of the homepage
@@ -6,15 +6,14 @@ import "./HeroSection.css"
  * @constructor
  */
 export function HeroSection() {
-
-    return(
-        <main id="hero-section">
-            <div>
-                <content>
-                    <main-title>Try our new exciting flavors</main-title>
-                    <button>Find out more</button>
-                </content>
-            </div>
-        </main>
-    );
+  return (
+    <hero-section>
+      <div>
+        <content>
+          <main-title>Try our new exciting flavors</main-title>
+          <button>Find out more</button>
+        </content>
+      </div>
+    </hero-section>
+  );
 }

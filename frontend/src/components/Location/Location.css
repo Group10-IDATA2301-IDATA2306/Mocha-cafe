@@ -1,0 +1,23 @@
+main > .location-section {
+  display: flex;
+  height: 100%;
+
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 3rem;
+  padding-top: 3rem;
+
+  background: linear-gradient(to right, #087f5b, #032f22);
+  text-align: center;
+}
+
+.location-section > * {
+  color: white;
+}
+
+iframe {
+  /* height: 30rem;
+  width: 50rem; */
+}

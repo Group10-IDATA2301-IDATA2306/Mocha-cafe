@@ -1,41 +1,28 @@
 import "./ShowcaseCard.css";
 
 /**
- * A collection of products
+ * A showcase of products
  *
+ * @param props the properties of the product being showcased
  * @return {JSX.Element}
  * @constructor
  */
-export function Product() {
+export function ShowcaseCard({ props }) {
   return (
-    <container className="product-section">
-      <h2>New Releases</h2>
-
-      <container className="product-container">
-        <card id="product1">
-          <container class="card-info">
-            <h4>Black coffe</h4>
-            <h4>229kr</h4>
-          </container>
-          <overlay></overlay>
-        </card>
-
-        <card id="product2">
-          <container class="card-info">
-            <h4>Brazillian coffe</h4>
-            <h4>99kr</h4>
-          </container>
-          <overlay></overlay>
-        </card>
-
-        <card id="product3">
-          <container class="card-info">
-            <h4>Black coffe</h4>
-            <h4>229kr</h4>
-          </container>
-          <overlay></overlay>
-        </card>
+    <card>
+      <img
+        className="product-image"
+        src={require("../../assets/img/" + props.id + ".png")}
+        alt="product"
+      />
+      <overlay></overlay>
+      <container className="card-info">
+        <container class="card-stats">
+          <h3>{props.name}</h3>
+        </container>
+        <p>{props.description}</p>
+        <h4>{props.price}kr</h4>
       </container>
-    </container>
+    </card>
   );
 }

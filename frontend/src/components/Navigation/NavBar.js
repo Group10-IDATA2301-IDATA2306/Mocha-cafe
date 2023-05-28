@@ -16,28 +16,32 @@ export function NavBar() {
 
   return (
     <nav>
+      <i class="fa fa-bars fa-4x" aria-hidden="true" id="bars-icon"></i>
       <logo class="fa fa-coffee fa-5x" aria-hidden="true" id="logo"></logo>
       <ActiveLink to="/">
-        <h4 class="navbar__links">HOME</h4>
+        <h4>HOME</h4>
       </ActiveLink>
       <ActiveLink to="/products">
-        <h4 class="navbar__links">PRODUCTS</h4>
+        <h4>PRODUCTS</h4>
       </ActiveLink>
       <ActiveLink to="/about">
-        <h4 class="navbar__links">ABOUT US</h4>
+        <h4>ABOUT US</h4>
       </ActiveLink>
-      <ActiveLink to="/login">
-        <h4 class="navbar__links">CONTACT</h4>
+      <ActiveLink to="/contact">
+        <h4>CONTACT</h4>
       </ActiveLink>
-      <container class="cart-container">
-        <ActiveLink to="/cart">
-          <i
-            class="fa fa-shopping-cart fa-5x"
-            aria-hidden="true"
-            id="cart-icon"
-          ></i>
-        </ActiveLink>
-        <counter>{itemsInCart}</counter>
+      <container className="user-cart-container">
+        <i class="fa fa-user fa-5x" aria-hidden="true" id="user-icon"></i>
+        <container class="cart-container">
+          <ActiveLink to="/cart">
+            <i
+              class="fa fa-shopping-cart fa-5x"
+              aria-hidden="true"
+              id="cart-icon"
+            ></i>
+          </ActiveLink>
+          <counter>{itemsInCart}</counter>
+        </container>
       </container>
     </nav>
   );

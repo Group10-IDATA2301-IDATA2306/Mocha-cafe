@@ -1,13 +1,15 @@
 import { HeroSection } from "../../components/HeroSection/HeroSection";
-import { Product } from "../../components/Showcase/ShowcaseCard";
+import { Showcase } from "../../components/Showcase/Showcase";
 import { Carousel } from "../../components/Testimonials/Carousel";
+import { Location } from "../../components/Location/Location";
 import "./Home.css";
 
 export function Home() {
   return (
     <>
       <HeroSection />
-      <Product />
+      <Showcase />
+      <Location />
       <Carousel />
     </>
   );

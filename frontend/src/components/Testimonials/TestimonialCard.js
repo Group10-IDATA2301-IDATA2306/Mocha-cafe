@@ -6,18 +6,17 @@ import "./TestimonialCard.css";
  * @constructor
  * @returns {JSX.Element}
  */
-export function TestimonialCard({ props }) {
+export function TestimonialCard({ testimonialInfo }) {
   return (
     <item>
       <Rating />
-      <p>{props.comment}</p>
-      <container class="portrait-container">
-        <img
-          src={require("../../assets/img/" + props.name + ".jpg")}
-          alt="A customer"
-        />
-        <h3>{props.name}</h3>
-      </container>
+      <p>{testimonialInfo.comment}</p>
+      <img
+        src={require("../../assets/img/" + testimonialInfo.name + ".jpg")}
+        alt="A customer"
+        class="testimonial-portrait"
+      />
+      <h3>{testimonialInfo.name}</h3>
     </item>
   );
 }
