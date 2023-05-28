@@ -3,6 +3,7 @@
 // Imports
 import { deleteCookie, getCookie, setCookie } from "./cookies";
 import { asyncApiRequest } from "./HttpInterface";
+import cookie from "react-cookies";
 
 /**
  * Retrieves the currently authenticated user. It checks for the
@@ -124,3 +125,10 @@ export function deleteAuthorizationCookies() {
   deleteCookie("current_username");
   deleteCookie("current_user_roles");
 }
+
+export const getTokenCookie = () => cookie.load("x-access-token");
+export const removeTokenCookie = () =>
+  cookie.remove("x-access-token", { path: "/" });
+export const getAuthHeader = () => {
+  return { headers: { Authorization: `Bearer ${getTokenCookie()}` } };
+};
