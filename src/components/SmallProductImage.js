@@ -1,3 +1,5 @@
+import "./SmallProductImage.css"
+
 /**
  * An image for small product entities.
  * 

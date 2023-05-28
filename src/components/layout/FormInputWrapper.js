@@ -1,4 +1,4 @@
-import "./FormInputWrapper";
+import "./FormInputWrapper.css";
 
 /**
  * A horizontal wrapper for form elements.
@@ -8,6 +8,6 @@ import "./FormInputWrapper";
  */
 export function FormInputWrapper(props) {
     return (
-        <div className=".formInputWrapper">{props.children}</div>
+        <div className="formInputWrapper">{props.children}</div>
     );
 }

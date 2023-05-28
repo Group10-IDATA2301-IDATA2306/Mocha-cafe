@@ -1,3 +1,4 @@
+import "./RemoveCartProductButton.css"
 /**
  * A button that removes a product from a shopping cart.
  * 

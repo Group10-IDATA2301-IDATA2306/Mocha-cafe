@@ -9,6 +9,7 @@
     font-size: 15px;
     letter-spacing: 4px;
     padding: 10px;
+    width: 200px;
 }
 
 .formButton:hover {

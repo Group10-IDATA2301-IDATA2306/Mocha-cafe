@@ -1,4 +1,4 @@
-import "./SmallProductTitle"
+import "./SmallProductTitle.css"
 
 /**
  * A title for small product entities.

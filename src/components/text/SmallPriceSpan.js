@@ -1,7 +1,9 @@
+import "./SmallPriceSpan.css"
 /**
  * A price tag for small product entities.
+ * 
  * @param {*} props 
- * @returns 
+ * @returns a small span with the desired price
  */
 export function SmallPriceSpan(props) {
     return (

@@ -1,0 +1,6 @@
+/* Styling for cart item wrappers */
+.cartItemsWrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
