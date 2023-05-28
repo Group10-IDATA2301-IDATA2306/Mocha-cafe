@@ -1,0 +1,8 @@
+/* Styling for all drop downs used in forms */
+.formDropDown {
+    margin: 10px;
+    flex-grow: 1;
+    color: #1d2124;
+    padding: 15px;
+    font-size: 17px;
+}

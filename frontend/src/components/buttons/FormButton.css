@@ -1,0 +1,17 @@
+/* Styling for all form buttons */
+.formButton {
+    text-transform: uppercase;
+    margin: 10px;
+    background-color: #1d2124;
+    color: white;
+    font-weight: bold;
+    border: none;
+    font-size: 15px;
+    letter-spacing: 4px;
+    padding: 10px;
+    width: 200px;
+}
+
+.formButton:hover {
+    cursor: pointer;
+}
