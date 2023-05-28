@@ -8,6 +8,7 @@ main > .location-section {
 
   gap: 3rem;
   padding-top: 3rem;
+  margin-bottom: 6rem;
 
   background: linear-gradient(to right, #087f5b, #032f22);
   text-align: center;
@@ -17,7 +18,20 @@ main > .location-section {
   color: white;
 }
 
-iframe {
-  /* height: 30rem;
-  width: 50rem; */
+@media (max-width: 1000px) {
+  iframe {
+    height: 60rem;
+    width: 45rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .location-section > h2 {
+    font-size: 2.7rem;
+  }
+
+  iframe {
+    height: 40rem;
+    width: 28rem;
+  }
 }
