@@ -45,8 +45,8 @@ public class ImageService {
               byte[] imageData = imageFile.getBytes();
               String fileExtension = getExtension(imageFile);
               String contentType = imageFile.getContentType();
-              image =
-                      imageRepository.save(new Image(imageData, fileExtension, contentType));
+              String alt = "";
+              image = imageRepository.save(new Image(imageData, fileExtension, contentType, alt));
             }
           } catch (Exception e) {
             e.printStackTrace();

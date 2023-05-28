@@ -1,12 +1,18 @@
 package no.ntnu.mocha.service;
 
+import java.util.ArrayList;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import no.ntnu.mocha.DTO.CartItemDto;
 import no.ntnu.mocha.domain.entities.CartItem;
 import no.ntnu.mocha.domain.entities.Order;
 import no.ntnu.mocha.domain.entities.Product;
 import no.ntnu.mocha.domain.repository.CartItemRepository;
+import no.ntnu.mocha.domain.repository.OrderRepository;
+import no.ntnu.mocha.domain.repository.ProductRepository;
 
 /**
  * <h1>Business Logic Service class for Cart Item</h1>
@@ -24,6 +30,15 @@ public class CartItemService {
     @Autowired
     private CartItemRepository cartItemRepository;
 
+    /** Gives access to the Product Repository */
+    @Autowired
+    private ProductRepository productRepository;
+
+    @Autowired
+    private OrderRepository orderRepository;
+
+
+
     /**
      * Returns the cart item with the given id.
      * 
@@ -33,6 +48,18 @@ public class CartItemService {
      */
     public CartItem getCartItem(long id) {
         return this.cartItemRepository.findById(id).orElse(null);
+    }
+
+    public Iterable<CartItem> getCart(long id) {
+        return this.cartItemRepository.getAllByOrderId(id);
+    }
+
+    public Iterable<Product> getCartProducts(long id) {
+        ArrayList<Product> products = new ArrayList<>();
+        for (CartItem cartItem : this.getCart(id)) {
+            products.add(this.productRepository.findById(cartItem.getProduct().getId()).orElse(null));
+        }
+        return products;
     }
 
     /**
@@ -53,8 +80,21 @@ public class CartItemService {
      * 
      * @param cartItem  the cart item to be saved.
      */
-    public void addCartItem(CartItem cartItem) {
-        this.cartItemRepository.save(cartItem);
+    public CartItem addCartItem(CartItemDto dto) {
+
+        Optional<Order> order = orderRepository.findById(dto.getOrderId());
+        Optional<Product> product = productRepository.findById(dto.getProductId());
+
+        if (order.isPresent() && product.isPresent()) {
+            CartItem cartItem = new CartItem(
+                order.get(), 
+                product.get(), 
+                dto.getAmount()
+            );
+            return cartItemRepository.save(cartItem);
+        } else {
+            return null;
+        }
     }
 
     /**
@@ -80,11 +120,20 @@ public class CartItemService {
 
     /**
      * Deletes all the item in the cart item
-     * with the given id.
+     * with the given order id.
      * 
-     * @param id    the cart item id to be deleted.
+     * @param id    the order id of the cart items to be deleted.
      */
     public void deleteAllCartItemById(long id) {
-        this.cartItemRepository.deleteAllCartItemById(id);
+        this.cartItemRepository.deleteAllCartItemByOrderId(id);
+    }
+
+
+    public void incrementCartItem(long id) {
+        this.cartItemRepository.incrementCartItem(id);
+    }
+
+    public void decrementCartItem(long id) {
+        this.cartItemRepository.decrementCartItem(id);
     }
 }

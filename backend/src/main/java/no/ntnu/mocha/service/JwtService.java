@@ -1,10 +1,11 @@
 package no.ntnu.mocha.service;
 
 
-import java.security.Key;
+import java.util.Base64;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -33,18 +34,22 @@ public class JwtService {
 	@Autowired
     private AuthenticationManager authenticationManager;
 
+	@Autowired
+	private Environment environment;
+
 
 	static final long EXPIRATIONTIME = 86400000; // 1 day in ms
 	static final String PREFIX = "Bearer";
 
 	// Generate secret key. Only for the demonstration
 	// You should read it from the application configuration
-	static final Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+	private static byte[] key = null;
 
 	
 	// Generate JWT token
 	public String getToken(String username, String password) {
-
+		checkKey(environment);
+		
 		UsernamePasswordAuthenticationToken creds = new UsernamePasswordAuthenticationToken(
 			username,
 			password
@@ -54,24 +59,36 @@ public class JwtService {
 		return Jwts.builder()
 			  .setSubject(auth.getName())
 			  .setExpiration(new Date(System.currentTimeMillis() + EXPIRATIONTIME))
-			  .signWith(key)
+			  .signWith(Keys.hmacShaKeyFor(key), SignatureAlgorithm.HS256)
 			  .compact();
   	}
 
 	// Get a token from request Authorization header,
     // parse a token and get username
 	public String getAuthUser(HttpServletRequest request) {
+		checkKey(environment);
+
         String token = request.getHeader(HttpHeaders.AUTHORIZATION);
         String user = null;
 
         if (token != null) {
             user = Jwts.parserBuilder()
-                .setSigningKey(key)
+                .setSigningKey(Keys.hmacShaKeyFor(key))
                 .build()
                 .parseClaimsJws(token.replace(PREFIX + " ", ""))
                 .getBody()
                 .getSubject();
         }
         return user;
+	}
+
+
+
+	private static void checkKey(Environment environment) {
+		if (key == null) {
+			String encodedKey = environment.getProperty("secretkey");
+			if (encodedKey == null) throw new NullPointerException("JWT: Secret key not specified.");
+			key = Base64.getDecoder().decode(encodedKey);
+		}
 	}
 }

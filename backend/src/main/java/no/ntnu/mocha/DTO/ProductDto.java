@@ -21,42 +21,19 @@ public class ProductDto {
     /** Price of the product */
     private double price;
 
-    /** Size of the product */
-    private String size;
+    /** Amount of the product */
+    private String amount;
 
     /** Description of the product. */
     private String description;
 
     /** The category of a product */
-    private String category;
+    private long category;
 
+    private boolean display;
 
+    private int totalBought;
 
-    /**
-     * Empty Constructor.
-     */
-    public ProductDto(){}
-
-    /**
-     * Creates an instance of ProductDto.
-     * 
-     * @param imageId       The id of the image associated with the product.
-     * @param name          The name of the product.
-     * @param price         The price of the product.
-     * @param amount        The amount of the specific product.
-     * @param description   The description of the product.
-     * @param category      The category of the product.
-     */
-    public ProductDto(long imageId, String name, double price,
-                        String size, String description,
-                        String category) {
-                            this.imageId = imageId;
-                            this.name = name;
-                            this.price = price;
-                            this.size = size;
-                            this.description = description;
-                            this.category = category;
-    }
 
     /**
      * Returns the image id associated with the product.
@@ -90,8 +67,8 @@ public class ProductDto {
      * 
      * @return the size of the product.
      */
-    public String getSize() {
-        return size;
+    public String getAmount() {
+        return amount;
     }
 
     /**
@@ -108,7 +85,7 @@ public class ProductDto {
      * 
      * @return  the category of the product.
      */
-    public String getCategory() {
+    public long getCategory() {
         return category;
     }
 
@@ -117,9 +94,23 @@ public class ProductDto {
      * 
      * @param category  the category of the product.s
      */
-    public void setCategory(String category) {
+    public void setCategory(long category) {
         this.category = category;
     } 
 
-                
+    public boolean getDisplay() {
+        return display;
+    }
+
+    public void setDisplay(boolean display) {
+        this.display = display;
+    }
+
+    public int getTotalBought() {
+        return totalBought;
+    }
+
+    public void setTotalBought(int totalBought) {
+        this.totalBought = totalBought;
+    }
 }

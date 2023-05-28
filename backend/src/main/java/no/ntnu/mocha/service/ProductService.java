@@ -2,16 +2,17 @@ package no.ntnu.mocha.service;
 
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import no.ntnu.mocha.DTO.ProductDto;
+import no.ntnu.mocha.domain.entities.Image;
 import no.ntnu.mocha.domain.entities.Product;
-import no.ntnu.mocha.domain.entities.ProductCategory;
+import no.ntnu.mocha.domain.repository.ImageRepository;
 import no.ntnu.mocha.domain.repository.ProductCategoryRepository;
 import no.ntnu.mocha.domain.repository.ProductRepository;
 
@@ -26,8 +27,6 @@ import no.ntnu.mocha.domain.repository.ProductRepository;
  */
 @Service
 public class ProductService {
-    
-    Set<Product> products = new HashSet<>();
 
     /** Gives access to the repository */
     @Autowired
@@ -35,7 +34,14 @@ public class ProductService {
 
     /** Gives access to the repository */
     @Autowired
-    private ProductCategoryRepository productCategoryRepository;
+    private ImageRepository imageRepository;
+
+    /** Gives access to the repository */
+    @Autowired
+    private ProductCategoryRepository categoryRepository;
+
+
+
 
     public Iterable<Product> getAllProducts() {
         List<Product> productList = new ArrayList<>();
@@ -45,66 +51,82 @@ public class ProductService {
                 .collect(Collectors.toList());
     }
 
-    public Product getProduct(long id) {
-        Optional<Product> p = productRepository.findById(id);
-        return p.orElse(null);
+
+    public Iterable<Product> getAllOrderedBy(String order) {
+        switch(order.toUpperCase()) {
+            case "price": return productRepository.getAllOrderedByPrice();
+            case "popularity": return productRepository.getAllOrderedByPurchases();
+            default: return getAllProducts();
+        } 
     }
+
+
+
+
+    public Product getProduct(long id) {
+        Optional<Product> product = productRepository.findById(id);
+        return (product.isPresent()) ? product.get() : null;
+    }
+
+
 
     public Product getProductByName(String name) {
         return productRepository.findByName(name);
     }
 
-    public Product addProductFromDto(ProductDto productDto) {
-        Product p = getProductFromDto(productDto);
-        if (productRepository.findByName(p.getName()) == null) {
-            ProductCategory productCategory = 
-                    productCategoryRepository.findByName(p.getCategory().getName());
-            if (productCategory == null) {
-                productCategoryRepository.save(p.getCategory());
-                p.setCategory(
-                    productCategoryRepository.findByName(p.getCategory().getName())
-                );
-            } else {
-                p.setCategory(productCategory);
-            }
-            productRepository.save(p);
+    public Iterable<Product> getAllByCategory(String category) {
+        long id = categoryRepository.findByName(category).getId();
+        return productRepository.getAllByCategory(id);
+    }
+
+
+    public Product addProduct(ProductDto dto) {
+        Optional<Image> image = imageRepository.findById(dto.getImageId());
+        if (image.isPresent()) {
+            Product product = new Product(
+                dto.getName(),
+                dto.getPrice(),
+                dto.getAmount(),
+                dto.getDescription(),
+                dto.getDisplay(),
+                image.get()
+            );
+            return productRepository.save(product);
+        } else {
+            return null;
         }
-        return productRepository.findByName(p.getName());
     }
 
-    public Product updateProduct(long id, ProductDto product) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'addProductFromDto'");
+
+
+    public void updateProduct(long id, ProductDto dto) {
+        productRepository.updateProduct(
+            dto.getImageId(), 
+            dto.getDisplay(), 
+            dto.getPrice(), 
+            dto.getImageId(), 
+            dto.getCategory(), 
+            dto.getAmount(), 
+            dto.getDescription(), 
+            dto.getName(),
+            dto.getTotalBought()
+        );
     }
 
-    public void deleteProduct(long id) {
 
+    public void increment(long id) {
+        productRepository.increment(id);
     }
 
-    private Product getProductFromDto(ProductDto object) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'addProductFromDto'");
+
+    public void updatePrice(long id, double price) {
+        productRepository.updatePrice(id, price);
     }
 
-    /**
-     * Get all products stored in the application.
-     * 
-     * @return An iterable collection of all products.
-     */
-    public Iterable<Product> getAll() {
-        if (products.isEmpty()) {
-            initializeFakeProduct();
-        }
-        return products;
-    }
 
-    /**
-     * Fill product collection with fake products.
-     */
-    private void initializeFakeProduct() {
-        products.clear();
-        products.add(new Product("Mocha Coffee", 100.0, "50 gram", "Mocha brown coffee very strong", true));
-        products.add(new Product("Filter Kaffi", 150.0, "20 gram", "Vanlig filter kaffi!", true));
-        products.add(new Product("Espresso Drikke", 70.0, "45 gram", "Espresso kaffe, veldig sterk", true));
+    public boolean deleteProduct(long id) {
+        Optional<Product> product = productRepository.findById(id);
+        if (product.isPresent()) productRepository.delete(product.get());
+        return product.isPresent();
     }
 }

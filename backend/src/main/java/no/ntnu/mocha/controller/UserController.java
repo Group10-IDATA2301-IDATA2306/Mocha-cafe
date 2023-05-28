@@ -31,7 +31,7 @@ public class UserController {
 
 
     @PostMapping
-    public ResponseEntity<?> addUser(UserDto dto) {
+    public ResponseEntity<?> addUser(@RequestBody UserDto dto) {
         service.addUser(dto);
 
         String jwts = jwtService.getToken(dto.getUsername(), dto.getPassword());

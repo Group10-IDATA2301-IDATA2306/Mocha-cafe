@@ -7,6 +7,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import no.ntnu.mocha.DTO.UserDto;
+import no.ntnu.mocha.domain.entities.Role;
 import no.ntnu.mocha.domain.entities.User;
 import no.ntnu.mocha.domain.repository.RoleRepository;
 import no.ntnu.mocha.domain.repository.UserRepository;
@@ -25,10 +26,15 @@ public class UserService {
     
 
     public void addUser(UserDto dto) {
+        Role role = roleRepository.findOneByName("USER");
+        if (role == null) {
+            role = new Role("USER");
+            roleRepository.save(role);
+        }
         User user = new User(
             dto.getUsername(),
             bCryptPasswordEncoder.encode(dto.getPassword()),
-            roleRepository.findOneByName("USER"),
+            role,
             dto.getEmail(),
             dto.getBio()
         );
