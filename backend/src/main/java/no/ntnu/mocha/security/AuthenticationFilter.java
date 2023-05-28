@@ -10,9 +10,11 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 import no.ntnu.mocha.service.JwtService;
+import no.ntnu.mocha.service.UserDetailsServiceImpl;
 
 
 
@@ -29,8 +31,12 @@ import no.ntnu.mocha.service.JwtService;
  */
 @Component
 public class AuthenticationFilter extends OncePerRequestFilter {
+
   @Autowired
   private JwtService jwtService;
+
+  @Autowired
+  private UserDetailsServiceImpl userDetailsService;
 
   @Override
   protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
@@ -39,13 +45,17 @@ public class AuthenticationFilter extends OncePerRequestFilter {
       String jws = request.getHeader(HttpHeaders.AUTHORIZATION);
          if (jws != null) {
           String user = jwtService.getAuthUser(request);
+          UserDetails details = userDetailsService.loadUserByUsername(user);
+
           Authentication authentication = new UsernamePasswordAuthenticationToken(
               user,
               null,
-              java.util.Collections.emptyList()
+              details.getAuthorities()
           );
           SecurityContextHolder.getContext().setAuthentication(authentication);
       }
       filterChain.doFilter(request, response);
   }
+
+   
 }

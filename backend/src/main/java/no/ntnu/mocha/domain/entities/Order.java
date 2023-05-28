@@ -27,7 +27,7 @@ public class Order {
     private long id;
 
     /** Foregin key (Uid) from User class */
-    @ManyToOne()
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 

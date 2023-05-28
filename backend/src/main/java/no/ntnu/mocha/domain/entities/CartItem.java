@@ -54,12 +54,14 @@ public class CartItem {
     /**
      * Creates an instance of cart item.
      * 
-     * @param oId       The Order Id of the Cart Item.
-     * @param pId       The Product Id of the Cart Item.
+     * @param order     The Order of the Cart Item.
+     * @param product   The Product of the Cart Item.
      * @param amount    The amount of the Cart Item.
      */
-    public CartItem(int amount) {
+    public CartItem(Order order, Product product, int amount) {
         super();
+        this.order = order;
+        this.product = product;
         this.amount = amount;
     }
 
@@ -100,4 +102,11 @@ public class CartItem {
         this.amount = amount;
     }
 
+    public Order getOrder() {
+        return order;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
 }

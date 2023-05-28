@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import no.ntnu.mocha.DTO.OrderDto;
 import no.ntnu.mocha.domain.entities.Order;
 import no.ntnu.mocha.domain.repository.OrderRepository;
 
@@ -41,9 +42,21 @@ public class OrderService {
      * @return {@code List<Order>} of all the orders
      *         in the database.
      */
-    public List<Order> getAllOrder() {
+    public Iterable<Order> getAllOrders() {
         List<Order> order = new ArrayList<>();
         orderRepository.findAll().forEach(order::add);
+        return order;
+    }
+
+        /**
+     * Returns a list of all orders by a user.
+     * 
+     * @return {@code List<Order>} of all the orders
+     *         made by a given user.
+     */
+    public Iterable<Order> getAllByUser(long id) {
+        List<Order> order = new ArrayList<>();
+        orderRepository.findAllByUserId(id).forEach(order::add);
         return order;
     }
 
@@ -71,10 +84,8 @@ public class OrderService {
      * @param id    the id of the order to be updated.
      * @param order the {@code order} to be updated.
      */
-    public void update(long id, Order order) {
-        if (order != null && order.getId() == id && getOrderItem(id) != null) {
-            this.orderRepository.save(order);
-        }
+    public void update(long id, OrderDto dto) {
+        this.orderRepository.update(id, dto.getDate());
     }
 
     /**

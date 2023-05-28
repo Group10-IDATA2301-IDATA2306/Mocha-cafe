@@ -39,6 +39,10 @@ public class Image {
     @Column(name = "content_type")
     private String contentType;
 
+    /** The content of the alt tag. */
+    @Column(name = "alt_info")
+    private String alt;
+
 
     /**
      * Empty constructor.
@@ -52,11 +56,12 @@ public class Image {
      * @param extension     the file extension of the Image.
      * @param contentType   the content type of this Image.
      */
-    public Image(byte[] imageData, String extension, String contentType) {
+    public Image(byte[] imageData, String extension, String contentType, String alt) {
         super();
         this.imageData = imageData;
         this.extension = extension;
         this.contentType = contentType;
+        this.alt = alt;
     }
 
     
@@ -133,5 +138,13 @@ public class Image {
      */
     public void setContentType(String contentType) {
         this.contentType = contentType;
+    }
+
+    public String getAlt() {
+        return alt;
+    }
+
+    public void setAlt(String alt) {
+        this.alt = alt;
     }
 }

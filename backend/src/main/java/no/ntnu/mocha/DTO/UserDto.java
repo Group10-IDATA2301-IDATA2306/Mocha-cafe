@@ -11,12 +11,6 @@ package no.ntnu.mocha.DTO;
  * @since   22.03.2023
  */
 public class UserDto {
-    
-    /** Firstname of the User */
-    private String firstName;
-
-    /** Lastname of the User */
-    private String lastName;
 
     /** Username of the User */
     private String username;
@@ -27,20 +21,8 @@ public class UserDto {
     /** Email of the User */
     private String email;
 
-    /** Country of the User */
-    private String country;
-
-    /** City of the User */
-    private String city;
-
-    /** Street of the User */
-    private String street;
-
-    /** Housenumber of the user */
-    private String houseNumber;
-
-    /** ZipCode of the User */
-    private int zipCode;
+    /** Bio of the User */
+    private String bio;
 
     /** Role of the User */
     private String role;
@@ -55,41 +37,6 @@ public class UserDto {
         this.username = username;
     }
 
-    /**
-     * Returns the firstname of the User.
-     * 
-     * @return the firstname of the User.
-     */
-    public String getFirstName() {
-        return firstName;
-    }
-
-    /**
-     * Sets the firstname of the User.
-     * 
-     * @param firstName the firstname of the User.
-     */
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    /**
-     * Returns the lastname of the User.
-     * 
-     * @return the lastname of the User.
-     */
-    public String getLastName() {
-        return lastName;
-    }
-
-    /**
-     * Sets the lastname of the User.
-     * 
-     * @param lastName the lastname of the User.
-     */
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
 
     /**
      * Returns the password for the User.
@@ -128,95 +75,22 @@ public class UserDto {
     }
 
     /**
-     * Returns the country of the User.
+     * Returns the bio of the User.
      * 
-     * @return the country of the User.
+     * @return the bio of the User.
      */
-    public String getCountry() {
-        return country;
+    public String getBio() {
+        return bio;
     }
 
     /**
-     * Sets the country of the User.
+     * Sets the bio of the User.
      * 
-     * @param country the country of the User.
+     * @param bio the bio of the User.
      */
-    public void setCountry(String country) {
-        this.country = country;
+    public void setBio(String bio) {
+        this.bio = bio;
     }
-
-    /**
-     * Returns the street of the User.
-     * 
-     * @return the street of the User.
-     */
-    public String getStreet() {
-        return street;
-    }
-
-    /**
-     * Sets the street of the User.
-     * 
-     * @param street the street of the User.
-     */
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
-    /**
-     * Returns the housenumber of the User.
-     * 
-     * @return the housenumber of the User.
-     */
-    public String getHouseNumber() {
-        return houseNumber;
-    }
-
-    /**
-     * Sets the housenumber of the User.
-     * 
-     * @param houseNumber the housenumber of the User.
-     */
-    public void setHouseNumber(String houseNumber) {
-        this.houseNumber = houseNumber;
-    }
-
-    /**
-     * Returns the city of the User.
-     * 
-     * @return the city of the User.
-     */
-    public String getCity() {
-        return city;
-    }
-
-    /**
-     * Sets the city of the User.
-     * 
-     * @param city the city of the User.
-     */
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    /**
-     * Returns the zip-code of the User.
-     * 
-     * @return the zip-code of the User.
-     */
-    public int getZipCode() {
-        return zipCode;
-    }
-
-    /**
-     * Sets the zip-code of the User.
-     * 
-     * @param zipCode the zip-code of the User.
-     */
-    public void setZipCode(int zipCode) {
-        this.zipCode = zipCode;
-    }
-
 
     public String getRole() {
         return role;

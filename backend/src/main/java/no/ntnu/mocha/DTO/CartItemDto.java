@@ -13,21 +13,12 @@ package no.ntnu.mocha.DTO;
 public class CartItemDto {
     
     /** The id of the product of this cart item dto. */
-    private final long productId;
+    private long productId;
 
     /** The quantity of the product in this cart item dto. */
-    private final int quantity;
+    private int amount;
 
-    /**
-     * Creates an instance of the product in this cart item dto.
-     * 
-     * @param productId the id of the product of this cart item dto.
-     * @param quantity  the quantity of the product in this cart item dto.
-     */
-    public CartItemDto(Long productId, Integer quantity) {
-        this.productId = productId;
-        this.quantity = quantity;
-    }
+    private long orderId;
 
     /**
      * Returns the id of the product in this cart item dto.
@@ -43,7 +34,11 @@ public class CartItemDto {
      * 
      * @return the quantity of the product in this cart item dto.
      */
-    public Integer getQuantity() {
-        return quantity;
+    public Integer getAmount() {
+        return amount;
+    }
+
+    public Long getOrderId() {
+        return orderId;
     }
 }

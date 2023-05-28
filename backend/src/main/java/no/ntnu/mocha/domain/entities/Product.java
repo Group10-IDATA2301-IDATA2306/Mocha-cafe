@@ -34,7 +34,7 @@ public class Product {
     private Image image;
 
     /** Product name, represented as Varchar(255). */
-    @Column(name = "image_name")
+    @Column(name = "name")
     private String name;
 
     /** Product price, represented as Int(11). */
@@ -46,7 +46,7 @@ public class Product {
     private String size;
 
     /** Description text for the product, represented as Text. */
-    @Column(name = "image_description")
+    @Column(name = "description")
     private String description;
 
     /** Indicating wether to display the product on the website or not, represented as Boolean. */
@@ -56,6 +56,10 @@ public class Product {
     @ManyToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "pc_id")
     private ProductCategory productCategory;
+
+    /** Number of purchases of the given product */
+    @Column(name = "purchases")
+    private int totalBought = 0;
 
 
     /**
@@ -72,13 +76,15 @@ public class Product {
      * @param description   the description of the product (e.g., "This is a dark mocha cofee")
      * @param display       the display of the product (boolean true/false)
      */
-    public Product(String name, double price, String size, String description, boolean display) {
+    public Product(String name, double price, String size, String description, boolean display, Image image) {
         super();
         this.name = name;
         this.price = price;
         this.size = size;
         this.description = description;
         this.display = display;
+        this.image = image;
+        this.totalBought = 0;
     }
 
     /**
@@ -207,5 +213,21 @@ public class Product {
      */
     public void setCategory(ProductCategory productCategory) {
         this.productCategory = productCategory;
+    }
+
+    public int getTotalBought() {
+        return totalBought;
+    }
+
+    public void setTotalBought(int totalBought) {
+        this.totalBought = totalBought;
+    }
+
+    public Image getImage() {
+        return image;
+    }
+
+    public void setImage(Image image) {
+        this.image = image;
     }
 }
