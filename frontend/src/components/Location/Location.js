@@ -1,7 +1,7 @@
 import "./Location.css";
 
 /**
- * A component that previews a location on google maps
+ * A component that previews a given location on Google maps
  *
  * @return {JSX.Element}
  * @constructor

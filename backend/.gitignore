@@ -36,3 +36,4 @@ build/
 env.properties
 src/main/resources/keystore/keystore.p12
 .env
+keystore.p12
