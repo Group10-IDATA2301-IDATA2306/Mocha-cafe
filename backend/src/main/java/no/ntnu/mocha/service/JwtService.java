@@ -58,6 +58,7 @@ public class JwtService {
 
 		return Jwts.builder()
 			  .setSubject(auth.getName())
+			  .claim("roles", auth.getAuthorities().toString())
 			  .setExpiration(new Date(System.currentTimeMillis() + EXPIRATIONTIME))
 			  .signWith(Keys.hmacShaKeyFor(key), SignatureAlgorithm.HS256)
 			  .compact();
@@ -81,6 +82,7 @@ public class JwtService {
         }
         return user;
 	}
+
 
 
 

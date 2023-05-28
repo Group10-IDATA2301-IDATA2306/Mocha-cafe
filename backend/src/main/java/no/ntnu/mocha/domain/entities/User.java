@@ -1,5 +1,15 @@
 package no.ntnu.mocha.domain.entities;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -7,7 +17,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
 /**
@@ -18,7 +29,7 @@ import jakarta.persistence.Table;
  */
 @Entity
 @Table(name = "user")
-public class User {
+public class User implements UserDetails {
     
     /** Unique User Id */
     @Id
@@ -41,9 +52,13 @@ public class User {
     @Column(name = "bio")
     private String bio;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "role", referencedColumnName = "role_id")
-    private Role role;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+        name = "user_roles", 
+        joinColumns = @JoinColumn(name = "user_id"),
+        inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private Set<Role> roles = new HashSet<>();
 
 
     /**
@@ -57,11 +72,11 @@ public class User {
      * @param username  The username of the User.
      * @param password  The pasword of the User.
      */
-    public User(String username, String password, Role role) {
+    public User(String username, String password, Set<Role> roles) {
         super();
         this.username = username;
         this.password = password;
-        this.role = role;
+        this.roles = roles;
     }
 
 
@@ -71,11 +86,11 @@ public class User {
      * @param username  The username of the User.
      * @param password  The pasword of the User.
      */
-    public User(String username, String password, Role role, String email, String bio) {
+    public User(String username, String password, Set<Role> roles, String email, String bio) {
         super();
         this.username = username;
         this.password = password;
-        this.role = role;
+        this.roles = roles;
         this.email = email;
         this.bio = bio;
     }
@@ -105,7 +120,7 @@ public class User {
      * 
      * @return user's username.
      */
-    public String getUserName(){
+    public String getUsername(){
         return username;
     }
 
@@ -166,11 +181,40 @@ public class User {
         this.bio = bio;
     }
 
-    public Role getRole() {
-        return role;
+    public Set<Role> getRoles() {
+        return roles;
     }
 
-    public void setRole(Role role) {
-        this.role = role;
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        List<SimpleGrantedAuthority> authorities = new ArrayList<>();
+        for (Role role : roles) {
+            authorities.add(new SimpleGrantedAuthority(role.getName()));
+        }
+        return authorities;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 }

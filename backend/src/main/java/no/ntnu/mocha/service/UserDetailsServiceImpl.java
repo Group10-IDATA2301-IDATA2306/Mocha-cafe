@@ -1,5 +1,6 @@
 package no.ntnu.mocha.service;
 
+import java.util.HashSet;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,16 +29,20 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     private static final int MIN_PASSWORD_LENGTH = 6;
 
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
 
     @Autowired
-    RoleRepository roleRepository;
+    private RoleRepository roleRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<User> user = userRepository.findByUsername(username);
         if (user.isPresent()) {
-            return new AccessUserDetails(user.get());
+            return new AccessUserDetails(
+                user.get().getUsername(),
+                user.get().getPassword(),
+                user.get().getRoles()
+            );
         } else {
             throw new UsernameNotFoundException("User " + username + "not found");
         }
@@ -111,12 +116,13 @@ public class UserDetailsServiceImpl implements UserDetailsService {
      * @param password Plaintext password of the new user
      */
     private void createUser(String username, String password) {
-        Role userRole = roleRepository.findOneByName("ROLE_USER");
-        if (userRole != null) {
+        HashSet<Role> roles = new HashSet<>();
+        roles.add(roleRepository.findOneByName("USER"));
+        if (!roles.isEmpty()) {
             User user = new User(
                 username, 
                 createHash(password), 
-                new Role("ROLE_USER")
+                roles
             );
             userRepository.save(user);
         }

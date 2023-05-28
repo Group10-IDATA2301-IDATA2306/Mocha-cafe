@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -34,6 +35,7 @@ import no.ntnu.mocha.service.UserDetailsServiceImpl;
  */
 @Configuration
 @EnableWebSecurity
+@EnableMethodSecurity( jsr250Enabled = true, prePostEnabled = true, securedEnabled = false)
 public class SecurityConfig {
 
   @Autowired
@@ -115,22 +117,15 @@ public class SecurityConfig {
             .cors(withDefaults())
             .sessionManagement(management -> management
                     .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-            /* 
             .authorizeHttpRequests(authorize -> authorize
                 .requestMatchers(HttpMethod.POST, "/login", "/users")
                 .permitAll()
+                .requestMatchers(HttpMethod.GET, "/orders")
+                .hasRole("ADMIN")
                 .anyRequest()
-                .authenticated()
-            ) */
-            .authorizeHttpRequests()
-            .requestMatchers(HttpMethod.POST, "/login", "/users")
-            .permitAll()
-            .anyRequest()
-            .authenticated()
-            .and()
+                .authenticated())
             .exceptionHandling(handling -> handling
-                .authenticationEntryPoint(exceptionHandler)
-            )
+                .authenticationEntryPoint(exceptionHandler))
             .addFilterBefore(authenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
       return http.build();

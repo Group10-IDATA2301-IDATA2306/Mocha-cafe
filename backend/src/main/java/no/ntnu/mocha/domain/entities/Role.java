@@ -15,11 +15,11 @@ import jakarta.persistence.Table;
 public class Role {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(unique = true, name = "role_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(unique = true)
     private Long id;
 
-    @Column(name = "role_name")
+    @Column(unique = true, nullable = false)
     private String name;
 
 

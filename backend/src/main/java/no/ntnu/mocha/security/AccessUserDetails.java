@@ -8,7 +8,6 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import no.ntnu.mocha.domain.entities.User;
 import no.ntnu.mocha.domain.entities.Role;
 
 
@@ -19,17 +18,18 @@ public class AccessUserDetails implements UserDetails {
     
     private final String username;
     private final String password;
-    private final Set<GrantedAuthority> authorities = new HashSet<>();
+    private Set<GrantedAuthority> authorities = new HashSet<>();
 
-    public AccessUserDetails(User user) {
-        this.username = user.getUserName();
-        this.password = user.getPassword();
-        this.convertRoles(user.getRole());
+    public AccessUserDetails(String username, String password, Set<Role> authorities) {
+        this.username = username;
+        this.password = password;
+        this.convertRoles(authorities);
     }
 
-    private void convertRoles(Role role) {
-        authorities.clear();
-        authorities.add(new SimpleGrantedAuthority(role.getName()));
+    private void convertRoles(Set<Role> roles) {
+        for (Role role : roles) {
+            authorities.add(new SimpleGrantedAuthority(role.getName()));
+        }
     }
 
     @Override
