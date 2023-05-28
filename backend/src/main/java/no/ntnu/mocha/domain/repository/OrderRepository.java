@@ -1,9 +1,13 @@
 package no.ntnu.mocha.domain.repository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import org.springframework.transaction.annotation.Transactional;
 
 import no.ntnu.mocha.domain.entities.Order;
 
@@ -26,4 +30,11 @@ public interface OrderRepository extends CrudRepository<Order, Long> {
      */
     List<Order> findAllOrdersById(Order id);
 
+    List<Order> findAllByUserId(long id);
+
+    
+    @Transactional
+    @Modifying
+    @Query(value = "update order o set o.date = ?2 where o.order_id = ?1", nativeQuery = true)
+    void update(long id, LocalDateTime date);
 }

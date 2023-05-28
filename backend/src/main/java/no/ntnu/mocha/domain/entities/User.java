@@ -65,6 +65,22 @@ public class User {
     }
 
 
+    /**
+     * Creates an instance of User with username and password.
+     * 
+     * @param username  The username of the User.
+     * @param password  The pasword of the User.
+     */
+    public User(String username, String password, Role role, String email, String bio) {
+        super();
+        this.username = username;
+        this.password = password;
+        this.role = role;
+        this.email = email;
+        this.bio = bio;
+    }
+
+
 
     /**
      * Returns the User Id for the User.
