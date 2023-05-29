@@ -13,7 +13,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 
-import no.ntnu.mocha.DTO.UserProfileDto;
+import no.ntnu.mocha.DTO.UserDto;
 import no.ntnu.mocha.domain.entities.Role;
 import no.ntnu.mocha.domain.entities.User;
 import no.ntnu.mocha.domain.repository.RoleRepository;
@@ -145,8 +145,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
      * @param profileData Profile data to set for the user
      * @return True on success, false otherwise
      */
-    public boolean updateProfile(User user, UserProfileDto profileData) {
-        user.setBio(profileData.getBio());
+    public boolean updateProfile(User user, UserDto dto) {
+        user.setBio(dto.getBio());
         userRepository.save(user);
         return true;
     }

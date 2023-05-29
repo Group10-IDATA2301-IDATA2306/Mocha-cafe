@@ -35,4 +35,9 @@ build/
 ### Properties and HTTPS Configs ###
 env.properties
 src/main/resources/keystore/keystore.p12
+*.env
 .env
+keystore.p12
+src/main/resources/env.properties
+prod
+test

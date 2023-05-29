@@ -59,7 +59,18 @@ public class CartItem {
      * @param amount    The amount of the Cart Item.
      */
     public CartItem(Order order, Product product, int amount) {
-        super();
+        if (amount < 1) {
+            throw new IllegalArgumentException("The amount cannot be less than 1.");
+        }
+
+        if (product == null) {
+            throw new IllegalArgumentException("Product cannot be null.");
+        }
+
+        if (order == null) {
+            throw new IllegalArgumentException("Order cannot be null.");
+        }
+
         this.order = order;
         this.product = product;
         this.amount = amount;
@@ -71,7 +82,7 @@ public class CartItem {
      * @return the id for the Cart Item.
      */
     public long getId() {
-        return id;
+        return this.id;
     }
 
     /**
@@ -89,7 +100,7 @@ public class CartItem {
      * @return  the amount for the Cart Item.
      */
     public int getAmount() {
-        return amount;
+        return this.amount;
     }
 
     /**
@@ -102,10 +113,20 @@ public class CartItem {
         this.amount = amount;
     }
 
+    /**
+     * Returns the order associated with the cart item.
+     * 
+     * @return order object
+     */
     public Order getOrder() {
-        return order;
+        return this.order;
     }
 
+    /**
+     * Returns the product associated with the cart item.
+     * 
+     * @return product object
+     */
     public Product getProduct() {
         return product;
     }

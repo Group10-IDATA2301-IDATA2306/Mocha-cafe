@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import no.ntnu.mocha.DTO.AuthenticationRequest;
 import no.ntnu.mocha.service.JwtService;
 
@@ -40,7 +42,11 @@ public class LoginController {
      * @return An HTTP response entity that includes a token in the Authorization header and the budget ID.
      */
     @PostMapping
-	public ResponseEntity<?> getToken(@RequestBody AuthenticationRequest dto) {
+	@Operation(
+        summary = "Login",
+        description = "Attempts login through authentication of user credentials."
+    )
+	public ResponseEntity<?> getToken(@Parameter(description = "User credentials.") @RequestBody AuthenticationRequest dto) {
 
 		// Generate token 
 		String jwts = jwtService.getToken(dto.getUsername(), dto.getPassword());

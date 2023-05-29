@@ -118,12 +118,25 @@ public class SecurityConfig {
             .sessionManagement(management -> management
                     .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(authorize -> authorize
-                .requestMatchers(HttpMethod.POST, "/login", "/users")
-                .permitAll()
-                .requestMatchers(HttpMethod.GET, "/orders")
-                .hasRole("ADMIN")
+
+                /* PUBLIC endpoints. */
+                .requestMatchers(HttpMethod.POST, "/login", "/users").permitAll()
+                .requestMatchers(HttpMethod.GET, "/products", "/products/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/reviews").permitAll()
+                .requestMatchers("/swagger-ui/**").permitAll()
+                .requestMatchers("/v3/**", "/v3/api-docs").permitAll()
+                .requestMatchers("/api-docs/**", "/v3/api-docs/swagger-config").permitAll()
+                
+
+
+                /* ADMIN endpoints. */
+                .requestMatchers(HttpMethod.GET, "/orders").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.PUT, "/products/**").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.POST, "/products/**").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.DELETE, "/products/**").hasRole("ADMIN")
                 .anyRequest()
                 .authenticated())
+
             .exceptionHandling(handling -> handling
                 .authenticationEntryPoint(exceptionHandler))
             .addFilterBefore(authenticationFilter, UsernamePasswordAuthenticationFilter.class);

@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -32,12 +33,7 @@ public class UserService {
     public User addUser(UserDto dto) {
         HashSet<Role> roles = new HashSet<>();
         roles.add(roleRepository.findOneByName("ROLE_USER"));
-        if (roles.isEmpty()) {
-            roleRepository.save(new Role("ROLE_USER"));
-            roleRepository.save(new Role("ROLE_ADMIN"));
-            roles.add(roleRepository.findOneByName("ROLE_USER"));
-            roles.add(roleRepository.findOneByName("ROLE_ADMIN"));
-        }
+
         User user = new User(
             dto.getUsername(),
             bCryptPasswordEncoder.encode(dto.getPassword()),
@@ -66,5 +62,11 @@ public class UserService {
         Optional<User> user = userRepository.findById(id);
         if (user.isPresent()) userRepository.delete(user.get());
         return user.isPresent();
+    }
+
+
+    public boolean validateUserAction(UserDto dto) {
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        return dto.getUsername().equals(username);
     }
 }

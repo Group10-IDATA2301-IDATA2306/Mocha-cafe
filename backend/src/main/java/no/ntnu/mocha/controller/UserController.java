@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import no.ntnu.mocha.DTO.UserDto;
 import no.ntnu.mocha.service.JwtService;
 import no.ntnu.mocha.service.UserService;
@@ -31,7 +33,11 @@ public class UserController {
 
 
     @PostMapping
-    public ResponseEntity<?> addUser(@RequestBody UserDto dto) {
+    @Operation(
+        summary = "Add a new user",
+        description = "Create a new user with given credentials and append it to the database."
+    )
+    public ResponseEntity<?> addUser(@Parameter(description = "Credentials of the new user.") @RequestBody UserDto dto) {
         service.addUser(dto);
 
         String jwts = jwtService.getToken(dto.getUsername(), dto.getPassword());
@@ -44,15 +50,38 @@ public class UserController {
 
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateUser(@PathVariable long id, @RequestBody UserDto dto) {
-        service.updateUser(id, dto);
-        return new ResponseEntity<>(HttpStatus.OK);
+    @Operation(
+        summary = "Update a user",
+        description = "Update the credentials of an existing user."
+    )
+    public ResponseEntity<?> updateUser(
+        @Parameter(description = "Id property of the given user.") @PathVariable long id, 
+        @Parameter(description = "Credentials of the given user.") @RequestBody UserDto dto) 
+    {
+
+        if (service.validateUserAction(dto)) {
+            service.updateUser(id, dto);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } else {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("You are not authorized to modify this user.");
+        }
     }
 
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteUser(@PathVariable long id, @RequestBody UserDto dto) {
-        return service.deleteUser(id, dto) ? 
-            new ResponseEntity<>(HttpStatus.OK) : new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    @Operation(
+        summary = "Delete a user",
+        description = "Delete a given user from the database."
+    )
+    public ResponseEntity<?> deleteUser(
+        @Parameter(description = "Id property of the given user.") @PathVariable long id, 
+        @Parameter(description = "Credentials of the given user.") @RequestBody UserDto dto) 
+    {
+        if (service.validateUserAction(dto)) {
+            return service.deleteUser(id, dto) ? 
+                new ResponseEntity<>(HttpStatus.OK) : new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("You are not authorized to modify this user.");
+        }
     }
 }

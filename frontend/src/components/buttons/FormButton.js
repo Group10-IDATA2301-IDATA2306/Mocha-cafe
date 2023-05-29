@@ -8,6 +8,6 @@ import "./FormButton.css"
  */
 export function FormButton(props) {
     return (
-        <button className="formButton">{props.text}</button>
+        <button className="formButton" id={props.id}>{props.text}</button>
     );
 }

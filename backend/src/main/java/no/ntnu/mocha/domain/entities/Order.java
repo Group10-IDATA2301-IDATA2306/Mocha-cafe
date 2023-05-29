@@ -22,7 +22,7 @@ public class Order {
     
     /** Unique Id for Order */
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false, name = "order_id")
     private long id;
 
