@@ -5,7 +5,8 @@ const jsonTestData = {
   id: "2",
   name: "Black Coffe",
   price: "122",
-  description: "Brazilian coffee is sealed for freshness...",
+  description:
+    "This delicious Brazilian coffee is sealed for freshness, giving you the ultimate coffee drinking experience.Enjoy the unique Brazilian flavor in every sip!",
 };
 
 /**

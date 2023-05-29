@@ -10,7 +10,7 @@ hero-section {
   background-image: url("/src/assets/img/Coffe_7000_x_4000-no-bg.png");
 }
 
-.button {
+.hero-section-button {
   width: 20rem;
   padding: 1.3em 3em;
 
@@ -124,7 +124,7 @@ main-title {
     font-size: 4rem;
   }
 
-  button {
+  .hero-section-button {
     height: 4rem;
     width: 20rem;
     text-align: center;
@@ -159,7 +159,7 @@ main-title {
     text-align: center;
   }
 
-  button {
+  .hero-section-button {
     width: 18rem;
     height: 4.2rem;
     font-size: 1rem;
@@ -193,7 +193,7 @@ main-title {
     font-size: 2.5rem;
     text-align: center;
   }
-  button {
+  .hero-section-button {
     width: 13rem;
     height: 3rem;
     font-size: 0.7rem;
