@@ -1,8 +1,11 @@
 // All the code for sending requests to backend is stored in the HttpInterface file
 
 // Imports
+import { createAsyncThunk } from "@reduxjs/toolkit";
 import { HttpResponseError } from "./HttpResponseError";
 import { getCookie } from "./cookies";
+import axios from "axios";
+axios.defaults.headers.post["Content-Type"] = "application/json";
 
 // Import the REST API BASE URL from the environment variable
 const SERVER_URL = process.env.REACT_APP_API_BASE_URL;
@@ -106,11 +109,11 @@ export const HttpInterface = {
 
   getAllProducts: async function () {
     const response = await httpGET("/products");
-    return response.ok ? response.text() : null;
+    return response.ok ? response.json() : null;
   },
 
   getUserDetails: async function (userId) {
     const response = await httpGET("/users/" + userId);
-    return response.ok ? response.text() : null;
+    return response.ok ? response.json() : null;
   },
 };

@@ -1,3 +1,7 @@
 export function ProfilePage() {
-  return <></>;
+  return (
+    <>
+      <h1>hey</h1>
+    </>
+  );
 }

@@ -50,24 +50,26 @@ function Form(props) {
   );
 
   return (
-    <article id="login-article">
-      <header>
-        <h1>Login</h1>
-      </header>
+    <div className="login-page">
+      <article id="login-article">
+        <header>
+          <h1>Login</h1>
+        </header>
 
-      <section id="login-section">
-        <ul>
-          <li> {USERNAME_INPUT} </li>
-          <li> {PASSWORD_INPUT} </li>
-        </ul>
-        {LOGIN_BUTTON}
-      </section>
+        <section id="login-section">
+          <ul>
+            <li> {USERNAME_INPUT} </li>
+            <li> {PASSWORD_INPUT} </li>
+          </ul>
+          {LOGIN_BUTTON}
+        </section>
 
-      <section id="signup-section">
-        <h2>Don't have an account?</h2>
-        {SIGNUP_BUTTON}
-      </section>
-    </article>
+        <section id="signup-section">
+          <h2>Don't have an account?</h2>
+          {SIGNUP_BUTTON}
+        </section>
+      </article>
+    </div>
   );
 }
 

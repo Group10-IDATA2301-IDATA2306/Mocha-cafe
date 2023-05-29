@@ -1,48 +1,58 @@
+.login-page {
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
 #login-article article {
-    width: 100%;
+  width: 100%;
 }
 
-#login-article  h1 {
-    font-size: 2.5em;
+#login-article h1 {
+  font-size: 2.5em;
 }
 
-#login-article  h2 {
-    text-align: left;
-    padding-left: 3rem;
-    margin-top: 5rem;
-    font-weight: 150;
+#login-article h2 {
+  text-align: left;
+  padding-left: 3rem;
+  margin-top: 5rem;
+  font-weight: 150;
 }
 
 #login-article header {
-    width: 65rem;
+  width: 65rem;
 }
 
 #login-article ul {
-    list-style: none;
-    margin-top: -4rem;
-    margin-bottom: -2rem;
-    text-align: left;
+  list-style: none;
+  margin-top: -4rem;
+  margin-bottom: -2rem;
+  text-align: left;
 }
 
 #login-article li {
-    font-size: 1.5em;
-    margin-top: -0.5rem;
-    text-align: left;
+  font-size: 1.5em;
+  margin-top: -0.5rem;
+  text-align: left;
 }
 
-#login-article #login-section, #login-article #signup-section {
-    text-align: left;
+#login-article #login-section,
+#login-article #signup-section {
+  text-align: left;
 }
 
 #login-article #signup-section {
-    padding-bottom: 15rem;
+  padding-bottom: 15rem;
 }
 
-#login-article #login-btn, #login-article #signup-btn {
-    margin-left: 4rem;
+#login-article #login-btn,
+#login-article #signup-btn {
+  margin-left: 4rem;
 }
 
 #login-article #login-btn {
-    margin-top: 4rem;
-    background-color: green;
+  margin-top: 4rem;
+  background-color: green;
 }

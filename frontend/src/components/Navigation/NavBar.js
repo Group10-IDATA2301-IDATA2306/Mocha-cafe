@@ -31,7 +31,9 @@ export function NavBar() {
         <h4>CONTACT</h4>
       </ActiveLink>
       <container className="user-cart-container">
-        <i class="fa fa-user fa-5x" aria-hidden="true" id="user-icon"></i>
+        <ActiveLink to="/login">
+          <i class="fa fa-user fa-5x" aria-hidden="true" id="user-icon"></i>
+        </ActiveLink>
         <container class="cart-container">
           <ActiveLink to="/cart">
             <i

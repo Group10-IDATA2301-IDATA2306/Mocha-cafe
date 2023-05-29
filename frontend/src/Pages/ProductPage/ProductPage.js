@@ -1,33 +1,65 @@
-import "./ProductPage.css";
+import { useEffect, useState } from "react";
+import "../ProductPage/ProductPage.css";
+import { HttpInterface } from "../../api/HttpInterface";
+import { ShowcaseCard } from "../../components/Showcase/ShowcaseCard";
 
 /**
- * Represents product page.
- *
- * @param props Properties containing the products.
- * @return {null}
- * @constructor
+ * Test data for the product
  */
-export function ProductPage(props) {
-  let content;
-  if (props.error) {
-    content = <p className="error">Error: {props.error}</p>;
-  } else {
-    let productContent;
-    if (props.products.length > 0) {
-      productContent = props.products.map((product) => (
-        <li key={product.id}>{product.name + "($" + product.price + ")"}</li>
-      ));
-    } else {
-      productContent = <p>Loading...</p>;
-    }
-    content = (
-      <>
-        <h1>Products</h1>
-        <p>Here you can see all our products.</p>
-        <ul id="product-container">{productContent}</ul>
-      </>
-    );
-  }
+const jsonTestData = {
+  id: "2",
+  name: "Black Coffe",
+  price: "122",
+  description: "Brazilian coffee is sealed for freshness...",
+};
 
-  return content;
-}
+const ProductPage = () => {
+  const [products, setProducts] = useState([]);
+  const [page, setPage] = useState(1);
+  const [selectedProduct, setSelectedProduct] = useState(null);
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
+  const fetchNextProducts = () => {
+    setPage((prevPage) => prevPage + 1);
+  };
+
+  const fetchProducts = async () => {
+    try {
+      // Retrieve the array of products from the HTTP interface
+      const response = await HttpInterface.getAllProducts();
+      const productList = await response.json();
+
+      // Set the retrieved products in the component's state
+      setProducts(productList);
+    } catch (error) {
+      console.log("Error fetching products: ", error);
+    }
+  };
+
+  const handleCardClick = (product) => {
+    setSelectedProduct(product);
+  };
+
+  const handleClosePopup = () => {
+    setSelectedProduct(null);
+  };
+
+  return (
+    <>
+      <div className="product-section">
+        <h2>Products</h2>
+        <container className="product-container">
+          <ShowcaseCard props={jsonTestData} />
+          <ShowcaseCard props={jsonTestData} />
+          <ShowcaseCard props={jsonTestData} />
+          <ShowcaseCard props={jsonTestData} />
+        </container>
+      </div>
+    </>
+  );
+};
+
+export default ProductPage;
