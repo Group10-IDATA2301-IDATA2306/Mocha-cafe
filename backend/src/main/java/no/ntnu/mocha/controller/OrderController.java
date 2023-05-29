@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import no.ntnu.mocha.DTO.OrderDto;
 import no.ntnu.mocha.domain.entities.Order;
 import no.ntnu.mocha.service.OrderService;
@@ -25,23 +28,44 @@ public class OrderController {
 
 
     @GetMapping
+    @Operation(
+        summary = "Get all orders",
+        description = "Returns a collection of all orders."
+    )
     public Iterable<Order> getOrders() {
         return service.getAllOrders();
     }
 
+
     @GetMapping("/user/{id}")
-    public Iterable<Order> getByUser(@PathVariable long id) {
+    @Operation(
+        summary = "Get all users orders",
+        description = "Returns a collection of all orders made by a user."
+    )
+    public Iterable<Order> getByUser(@Parameter(description = "ID of the user.") @PathVariable long id) {
         return service.getAllByUser(id);
     }
 
+
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateOrder(@PathVariable long id, OrderDto dto) {
+    @Operation(
+        summary = "Update order",
+        description = "Update an existing order."
+    )
+    public ResponseEntity<?> updateOrder(
+        @Parameter(description = "ID of the order.") @PathVariable long id, 
+        @Parameter(description = "DTO representing an order entity.") @RequestBody OrderDto dto) {
         service.update(id, dto);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteOrder(@PathVariable long id) {
+    @Operation(
+        summary = "Delete order",
+        description = "Delete an order from the database."
+    )
+    public ResponseEntity<?> deleteOrder(@Parameter(description = "ID of the order.") @PathVariable long id) {
         service.deleteOrder(id); 
         return new ResponseEntity<>(HttpStatus.OK);
     }

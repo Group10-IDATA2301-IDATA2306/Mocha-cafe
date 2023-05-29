@@ -135,5 +135,7 @@ public class CartItemService {
 
     public void decrementCartItem(long id) {
         this.cartItemRepository.decrementCartItem(id);
+        Optional<CartItem> item = this.cartItemRepository.findById(id);
+        if (item.isPresent() &&  (item.get().getAmount() == 0)) this.cartItemRepository.delete(item.get());
     }
 }

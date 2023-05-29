@@ -12,9 +12,11 @@ import org.springframework.stereotype.Service;
 import no.ntnu.mocha.DTO.ProductDto;
 import no.ntnu.mocha.domain.entities.Image;
 import no.ntnu.mocha.domain.entities.Product;
+import no.ntnu.mocha.domain.entities.Review;
 import no.ntnu.mocha.domain.repository.ImageRepository;
 import no.ntnu.mocha.domain.repository.ProductCategoryRepository;
 import no.ntnu.mocha.domain.repository.ProductRepository;
+import no.ntnu.mocha.domain.repository.ReviewRepository;
 
 /**
  * <Business Logic Service for the Product</h1>
@@ -40,6 +42,10 @@ public class ProductService {
     @Autowired
     private ProductCategoryRepository categoryRepository;
 
+    /** Gives access to the repository */
+    @Autowired
+    private ReviewRepository reviewRepository;
+
 
 
 
@@ -54,12 +60,16 @@ public class ProductService {
 
     public Iterable<Product> getAllOrderedBy(String order) {
         switch(order.toUpperCase()) {
-            case "price": return productRepository.getAllOrderedByPrice();
-            case "popularity": return productRepository.getAllOrderedByPurchases();
+            case "PRICE": return productRepository.getAllOrderedByPrice();
+            case "POPULARITY": return productRepository.getAllOrderedByPurchases();
             default: return getAllProducts();
         } 
     }
 
+
+    public Iterable<Review> getReviews(long id) {
+        return reviewRepository.getAllByProductId(id);
+    }
 
 
 

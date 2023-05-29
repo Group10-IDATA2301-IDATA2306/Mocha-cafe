@@ -10,6 +10,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.core.env.Environment;
 
+import no.ntnu.mocha.domain.entities.Role;
 import no.ntnu.mocha.domain.repository.RoleRepository;
 import no.ntnu.mocha.domain.repository.UserRepository;
 
@@ -53,5 +54,12 @@ public class MochaApplication implements CommandLineRunner {
 
 		/* Log initial status to STDOUT. */
 		logger.info("Server instance initialized: " + ip + ":" + port);
+
+		if (roleRepository.findOneByName("ROLE_USER") == null) {
+			roleRepository.save(new Role("ROLE_USER"));
+		}
+		if (roleRepository.findOneByName("ROLE_ADMIN") == null) {
+			roleRepository.save(new Role("ROLE_ADMIN"));
+		}
 	}
 }

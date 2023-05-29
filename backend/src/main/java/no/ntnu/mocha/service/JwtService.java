@@ -55,7 +55,7 @@ public class JwtService {
 			password
 		);
 		Authentication auth = authenticationManager.authenticate(creds);
-
+		
 		return Jwts.builder()
 			  .setSubject(auth.getName())
 			  .claim("roles", auth.getAuthorities().toString())

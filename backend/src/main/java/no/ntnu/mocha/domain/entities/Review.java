@@ -58,13 +58,15 @@ public class Review {
     /**
      * Creates an instance of Review.
      * 
-     * @param uId       the uId of user which made the review. 
-     * @param pId       the pId of the product which is reviewed.
+     * @param user      the user which made the review. 
+     * @param product   the product which is reviewed.
      * @param comment   the content of the review.
      * @param stars     the star rating of the review.
      */
-    public Review(String comment, int stars) {
+    public Review(User user, Product product, String comment, int stars) {
         super();
+        this.user = user;
+        this.product = product;
         this.comment = comment;
         this.stars = stars;
         this.date = LocalDateTime.now();
