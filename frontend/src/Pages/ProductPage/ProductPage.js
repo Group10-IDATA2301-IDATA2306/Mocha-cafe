@@ -1,9 +1,17 @@
-import ProductCard from "../../components/products/ProductCard/ProductCard";
 import { useEffect, useState } from "react";
-import Grid from "@mui/material/Grid";
-import Button from "@mui/material/Button";
 import "../ProductPage/ProductPage.css";
 import { HttpInterface } from "../../api/HttpInterface";
+import { ShowcaseCard } from "../../components/Showcase/ShowcaseCard";
+
+/**
+ * Test data for the product
+ */
+const jsonTestData = {
+  id: "2",
+  name: "Black Coffe",
+  price: "122",
+  description: "Brazilian coffee is sealed for freshness...",
+};
 
 const ProductPage = () => {
   const [products, setProducts] = useState([]);
@@ -32,21 +40,15 @@ const ProductPage = () => {
 
   return (
     <>
-      <Grid container spacing={2} className="article_card">
-        {products && products.length > 0 ? (
-          products.map((item) => (
-            <Grid key={item._id} item xs={12} sm={6} lg={3}>
-              <ProductCard product={item} />
-            </Grid>
-          ))
-        ) : (
-          <p>No products found</p>
-        )}
-      </Grid>
-      <hr />
-      <Button variant="outlined" onClick={fetchNextProducts}>
-        Load More
-      </Button>
+      <container className="product-section">
+        <h2>Products</h2>
+        <container className="product-container">
+          <ShowcaseCard props={jsonTestData} />
+          <ShowcaseCard props={jsonTestData} />
+          <ShowcaseCard props={jsonTestData} />
+          <ShowcaseCard props={jsonTestData} />
+        </container>
+      </container>
     </>
   );
 };
