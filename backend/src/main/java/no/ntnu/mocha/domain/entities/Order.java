@@ -1,6 +1,7 @@
 package no.ntnu.mocha.domain.entities;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -33,7 +34,7 @@ public class Order {
 
     /** Given date for the current order */
     @Column(name = "order_date")
-    private LocalDateTime date;
+    private LocalDate date;
 
 
     /**
@@ -50,7 +51,7 @@ public class Order {
     public Order(User user) {
         super();
         this.setUser(user);
-        this.setDate(LocalDateTime.now());
+        this.setDate(LocalDate.now());
     }
 
 
@@ -87,7 +88,7 @@ public class Order {
      * 
      * @return when this order item was created.
      */
-    public LocalDateTime getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
@@ -97,7 +98,7 @@ public class Order {
      * 
      * @param date the date of the order.
      */
-    private void setDate(LocalDateTime date) {
+    private void setDate(LocalDate date) {
         this.date = date;
     }
 }

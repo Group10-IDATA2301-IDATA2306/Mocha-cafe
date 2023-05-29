@@ -1,6 +1,7 @@
 package no.ntnu.mocha.domain.entities;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -46,7 +47,7 @@ public class Review {
 
     /** Date of the review. */
     @Column(name = "review_date")
-    private LocalDateTime date;
+    private LocalDate date;
 
 
     
@@ -70,7 +71,7 @@ public class Review {
         this.setProduct(product);
         this.setComment(comment);
         this.setStars(stars);
-        this.setDate(LocalDateTime.now()); 
+        this.setDate(LocalDate.now()); 
     }
 
 
@@ -171,7 +172,7 @@ public class Review {
      * 
      * @return date of the Review.
      */
-    public LocalDateTime getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
@@ -181,7 +182,7 @@ public class Review {
      * 
      * @param date the date of the Review.
      */
-    private void setDate(LocalDateTime date) {
+    private void setDate(LocalDate date) {
         this.date = date;
     }
 }

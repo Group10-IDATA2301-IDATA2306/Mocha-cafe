@@ -1,6 +1,6 @@
 package no.ntnu.mocha.domain.repository;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.Modifying;
@@ -36,5 +36,5 @@ public interface OrderRepository extends CrudRepository<Order, Long> {
     @Transactional
     @Modifying
     @Query(value = "update order o set o.date = ?2 where o.order_id = ?1", nativeQuery = true)
-    void update(long id, LocalDateTime date);
+    void update(long id, LocalDate date);
 }
