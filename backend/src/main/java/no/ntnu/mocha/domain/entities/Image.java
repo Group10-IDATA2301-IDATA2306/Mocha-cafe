@@ -20,26 +20,26 @@ import jakarta.persistence.Table;
 @Table(name = "image")
 public class Image {
     
-
     /** Image ID (primary key) represented as Long in the database. */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(unique = true, name = "image_id", nullable = false)
     private long id;
 
+    /** The image-file represented as machine-code. */
     @Lob
-    @Column(name = "imagedata")
+    @Column(name = "imagedata", columnDefinition = "LONGBLOB")
     private byte[] imageData;
 
     /** File extension of the image, represented as VarChar(255). */
     @Column(name = "extension")
     private String extension;
 
-    /** The content type of the image */
+    /** The content type of the image. */
     @Column(name = "content_type")
     private String contentType;
 
-    /** The content of the alt tag. */
+    /** The content of the HTML alt-tag. */
     @Column(name = "alt_info")
     private String alt;
 
@@ -49,19 +49,21 @@ public class Image {
      */
     public Image() {}
 
+
     /**
      * Creates an instance of an Image.
      * 
      * @param imageData     the array of bytes of an Image.
      * @param extension     the file extension of the Image.
      * @param contentType   the content type of this Image.
+     * @param alt           the content of the HTML alt-tag.
      */
     public Image(byte[] imageData, String extension, String contentType, String alt) {
         super();
-        this.imageData = imageData;
-        this.extension = extension;
-        this.contentType = contentType;
-        this.alt = alt;
+        this.setImageData(imageData);
+        this.setExtension(extension);
+        this.setContentType(contentType);
+        this.setAlt(alt);
     }
 
     
@@ -74,14 +76,6 @@ public class Image {
         return id; 
     }
 
-    /**
-     * Set the unique iId of the image.
-     * 
-     * @param iId the unique id of the image.
-     */
-    public void setmID(long id) { 
-        this.id = id; 
-    }
 
     /**
      * Returns the file extension of the image.
@@ -92,6 +86,7 @@ public class Image {
         return extension; 
     }
 
+
     /**
      * Set the file extension of the image.
      * 
@@ -100,6 +95,7 @@ public class Image {
     public void setExtension(String extension) {
         this.extension = extension;
     }
+
 
     /**
      * Returns the array of the bytes creating 
@@ -111,6 +107,7 @@ public class Image {
         return imageData;
     }
 
+
     /**
      * Sets the array of byten creating the Image.
      * 
@@ -119,6 +116,7 @@ public class Image {
     public void setImageData(byte[] imageData) {
         this.imageData = imageData;
     }
+
 
     /**
      * Returns the content type of the given
@@ -130,6 +128,7 @@ public class Image {
         return contentType;
     }
 
+
     /**
      * Sets the content type of the given Image.
      * 
@@ -140,10 +139,22 @@ public class Image {
         this.contentType = contentType;
     }
 
+
+    /**
+     * Get the contents of the HTML alt-tag.
+     * 
+     * @return content of alt-tag.
+     */
     public String getAlt() {
         return alt;
     }
 
+
+    /**
+     * Set the content of the HTML alt-tag.
+     * 
+     * @param alt content of the alt-tag.
+     */
     public void setAlt(String alt) {
         this.alt = alt;
     }

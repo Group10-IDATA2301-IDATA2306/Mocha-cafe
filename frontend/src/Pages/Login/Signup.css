@@ -1,95 +1,102 @@
-#signup {
-    background: rgb(79, 117, 85);
-    padding-left: 10%;
+/* Sign-up Page*/
+
+.signup-page {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100vh;
 }
+
+/* Sign-up Article */
 
 #signup-article {
-    width: 100%;
+  width: 100%;
+  max-width: 65rem;
 }
 
-#signup-article header {
-    width: 65rem;
+/* Sign-up Title*/
+
+.signup-title h1 {
+  font-size: 37px;
+  text-align: center;
+  margin-top: 12rem;
 }
 
-#signup-article h1 {
-    font-size: 2.5em;
+/* Sign-up Section */
+
+.signup-section {
+  text-align: center;
+  margin-top: 4rem;
 }
 
-#signup-article form {
-    width: 30%;
-    display: grid;
-    margin-left: 4rem;
-    margin-top: 3rem;
-    margin-bottom: 1rem;
+.username-field {
+  margin-bottom: 1rem;
 }
 
-#signup-article section {
-    height: 150%;
-    width: 200%;
-    padding-bottom: 3rem;
+.MuiFormControl-root {
+  width: 100%;
 }
+
+/* Sign-up Buttons */
+
+.signup-buttons {
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+#signup-btn-pagesignup {
+  font-size: 15px;
+  margin-left: 3rem;
+}
+
+#login-btn-pagesignup {
+  font-size: 15px;
+  margin-right: 3rem;
+}
+
+/* Strenght Bar */
 
 #signup-article .strength-bar {
-    margin: 8px 0;
-    flex: 1 1 auto;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    height: 6px;
-    border-radius: 3px;
-    background: #dfe1f0;
+  margin: 8px 0;
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 6px;
+  border-radius: 3px;
+  background: #dfe1f0;
 }
 
 #signup-article .strength-bar div {
-    height: 6px;
-    border-radius: 3px;
-    transition: 0.4s;
-    width: 0%;
+  height: 6px;
+  border-radius: 3px;
+  transition: 0.4s;
+  width: 0%;
 }
 
 #signup-article .strength-bar.weak div {
-    background: #e24c71;
-    width: 33.33%;
+  background: #e24c71;
+  width: 33.33%;
 }
 
 #signup-article .strength-bar.decent div {
-    background: #f39845;
-    width: 66.66%;
+  background: #f39845;
+  width: 66.66%;
 }
 
 #signup-article .strength-bar.strong div {
-    background: #57c558;
-    width: 100%;
+  background: #57c558;
+  width: 100%;
 }
 
 #signup-article #strength-label {
-    text-align: left;
-    height: 30px;
-    text-transform: capitalize;
-    color: #868b94;
-}
-
-#signup-article #signup-btn {
-    cursor: pointer;
-    margin-left: 5%;
-    width: 10%;
-}
-
-#signup-article #login-btn-container, #signup-article #signup-btn-container {
-    display: inline-block;
-}
-
-#signup-article #login-btn-container {
-    margin-right: -5rem;
-}
-
-#signup-article #signup-btn-container {
-    width: 50%;
-}
-
-#signup-article #login-btn {
-    background-color: rgb(255, 255, 255, 0.75);
-    color: black;
-    border: 1px solid rgba(17, 92, 255, 0.5);
-    margin-left: 2rem;
+  text-align: left;
+  height: 30px;
+  text-transform: capitalize;
+  color: #868b94;
 }

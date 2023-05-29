@@ -12,29 +12,16 @@ package no.ntnu.mocha.DTO;
  */
 public class ProductDto {
 
-    /** Image id associated with the product */
     private long imageId;
-
-    /** Name of the product */
     private String name;
-
-    /** Price of the product */
-    private double price;
-
-    /** Amount of the product */
     private String amount;
-
-    /** Description of the product. */
+    private String category;
     private String description;
-
-    /** The category of a product */
-    private long category;
-
+    private double price;
+    private int totalBought;
     private boolean display;
 
-    private int totalBought;
-
-
+    
     /**
      * Returns the image id associated with the product.
      * 
@@ -50,7 +37,7 @@ public class ProductDto {
      * @return the name of the product.
      */
     public String getName() {
-        return name;
+        return name.substring(0, 1).toUpperCase() + name.substring(1);
     }
 
     /**
@@ -68,7 +55,7 @@ public class ProductDto {
      * @return the size of the product.
      */
     public String getAmount() {
-        return amount;
+        return amount.substring(0, 1).toUpperCase() + amount.substring(1);
     }
 
     /**
@@ -77,7 +64,7 @@ public class ProductDto {
      * @return the description of the product.
      */
     public String getDescription() {
-        return description;
+        return description.substring(0, 1).toUpperCase() + description.substring(1);
     }
 
     /**
@@ -85,32 +72,11 @@ public class ProductDto {
      * 
      * @return  the category of the product.
      */
-    public long getCategory() {
-        return category;
+    public String getCategory() {
+        return category.toUpperCase();
     }
 
-    /**
-     * Sets the category of the product.
-     * 
-     * @param category  the category of the product.s
-     */
-    public void setCategory(long category) {
-        this.category = category;
-    } 
 
-    public boolean getDisplay() {
-        return display;
-    }
-
-    public void setDisplay(boolean display) {
-        this.display = display;
-    }
-
-    public int getTotalBought() {
-        return totalBought;
-    }
-
-    public void setTotalBought(int totalBought) {
-        this.totalBought = totalBought;
-    }
+    public boolean getDisplay() { return display; }
+    public int getTotalBought() { return totalBought; }
 }

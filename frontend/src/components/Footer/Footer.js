@@ -1,7 +1,14 @@
+import * as React from "react";
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import Typography from "@mui/material/Typography";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import "./Footer.css";
 
 /**
  * Creates the footer for the application
+ * with Accordian mui component library.
  *
  * @returns {JSX.Element}
  * @constructor
@@ -9,26 +16,59 @@ import "./Footer.css";
 export function Footer() {
   return (
     <footer>
-      <container id="about-us-section">
-        <h3>About us</h3>
-        <i class="fa fa-angle-down fa-4x"></i>
-      </container>
+      <Accordion className="accordion">
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="about-us-content"
+          id="about-us-header"
+        >
+          <Typography sx={{ fontSize: 20 }}>About us</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography sx={{ fontSize: 16 }}>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+            malesuada lacus ex, sit amet blandit leo lobortis eget.
+          </Typography>
+        </AccordionDetails>
+      </Accordion>
 
-      <container id="contact-us-section">
-        <h3>Contact us</h3>
-        <i class="fa fa-angle-down fa-4x"></i>
-      </container>
+      <Accordion className="accordion">
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="contact-us-content"
+          id="contact-us-header"
+        >
+          <Typography sx={{ fontSize: 20 }}>Contact us</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography sx={{ fontSize: 16 }}>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+            malesuada lacus ex, sit amet blandit leo lobortis eget.
+          </Typography>
+        </AccordionDetails>
+      </Accordion>
 
-      <container id="info-section">
-        <h3>Info</h3>
-        <i class="fa fa-angle-down fa-4x"></i>
-      </container>
+      <Accordion className="accordion">
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="info-content"
+          id="info-header"
+        >
+          <Typography sx={{ fontSize: 20 }}>Info</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography sx={{ fontSize: 16 }}>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+            malesuada lacus ex, sit amet blandit leo lobortis eget.
+          </Typography>
+        </AccordionDetails>
+      </Accordion>
 
-      <container id="footer-icons">
+      <div id="footer-icons">
         <i class="fa fa-facebook fa-5x" aria-hidden="true"></i>
         <i class="fa fa-instagram fa-5x" aria-hidden="true"></i>
         <i class="fa fa-twitter fa-5x" aria-hidden="true"></i>
-      </container>
+      </div>
     </footer>
   );
 }

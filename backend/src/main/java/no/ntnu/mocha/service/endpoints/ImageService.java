@@ -1,4 +1,4 @@
-package no.ntnu.mocha.service;
+package no.ntnu.mocha.service.endpoints;
 
 import java.util.Arrays;
 
@@ -17,18 +17,15 @@ import no.ntnu.mocha.domain.repository.ImageRepository;
  * @version 22.04.2023
  * @since   22.04.2023
  */
-@Service
-public class ImageService {
+@Service public class ImageService {
 
-    /** Gives access to the repository */
-    @Autowired
-    private ImageRepository imageRepository;
+    @Autowired private ImageRepository imageRepository;
 
-    /** Arrays defining valid extensions and content types that are
-     * allowed to be uploaded.
-     */
-    private final String[] FILE_EXTENSIONS = {"jpeg", "jpg", "png", "svg", "webp"};
-    private final String[] CONTENT_TYPES = {"image/jpeg", "image/jpg", "image/svg+xml", "image/webp"};
+    /* Arrays defining valid extensions and content types that are allowed to be uploaded. */
+    private final String[] FILE_EXTENSIONS = { "jpeg", "jpg", "png", "svg", "webp" };
+    private final String[] CONTENT_TYPES = { "image/jpeg", "image/jpg", "image/svg+xml", "image/webp" };
+
+
 
     /**
      * Adds a new image. {@code isImageValid} checks if the Image File
@@ -38,21 +35,22 @@ public class ImageService {
      * @throws Exception if the Image is not valid.
      */
     public Image addImage(MultipartFile imageFile) {
-        Image image = null;
-
         try {
             if (isImageValid(imageFile)) {
-              byte[] imageData = imageFile.getBytes();
-              String fileExtension = getExtension(imageFile);
-              String contentType = imageFile.getContentType();
-              String alt = "";
-              image = imageRepository.save(new Image(imageData, fileExtension, contentType, alt));
+                byte[] imageData = imageFile.getBytes();
+                String fileExtension = getExtension(imageFile);
+                String contentType = imageFile.getContentType();
+                String alt = "";
+
+                return imageRepository.save(
+                    new Image(imageData, fileExtension, contentType, alt)
+                );
             }
-          } catch (Exception e) {
-            e.printStackTrace();
-          }
-          return image;
+        } catch (Exception e) { e.printStackTrace(); }
+
+        return null;
     }
+
 
     /**
      * Returns the Image by it's given id.
@@ -62,6 +60,7 @@ public class ImageService {
     public Image getImageById(long id) {
         return imageRepository.findById(id).orElse(null);
     }
+
 
     /**
      * Updates already existing Image.
@@ -80,12 +79,11 @@ public class ImageService {
                     image.setContentType(imageFile.getContentType());
                     imageRepository.save(image);
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            } catch (Exception e) { e.printStackTrace(); }
         }
         return image;
     }
+
 
     /**
      * Retuns the Extension and extracts the extension
@@ -103,6 +101,7 @@ public class ImageService {
         return extension;
     }
 
+
     /**
      * Checks if the extension is valid or not.
      * 
@@ -113,6 +112,7 @@ public class ImageService {
     private boolean isExtenstionValid(String extension) {
         return extension != null && Arrays.asList(FILE_EXTENSIONS).contains(extension);
     }
+
 
     /**
      * Checks if the content type is valid or not.
@@ -125,6 +125,7 @@ public class ImageService {
         return contentType != null && Arrays.asList(CONTENT_TYPES).contains(contentType);
     }
 
+    
     /**
      * Checks if the image is valid or not.
      * 

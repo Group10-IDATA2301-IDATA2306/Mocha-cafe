@@ -14,6 +14,4 @@ import no.ntnu.mocha.domain.entities.Image;
  * @see     Image
  */
 @RepositoryRestResource
-public interface ImageRepository extends CrudRepository<Image, Long>{
-    
-}
+public interface ImageRepository extends CrudRepository<Image, Long>{}

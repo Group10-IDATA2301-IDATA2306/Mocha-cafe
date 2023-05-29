@@ -1,6 +1,7 @@
 package no.ntnu.mocha.domain.entities;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,37 +21,39 @@ import jakarta.persistence.Table;
 @Table(name = "product_order")
 public class Order {
     
-    /** Unique Id for Order */
+    /** Unique Id for Order. */
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false, name = "order_id")
     private long id;
 
-    /** Foregin key (Uid) from User class */
+    /** User entity of the Order. */
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
     /** Given date for the current order */
     @Column(name = "order_date")
-    private LocalDateTime date;
+    private LocalDate date;
+
 
     /**
      * Empty constructor.
      */
     public Order(){}
 
+
     /**
      * Creates an instance of order item.
      * 
-     * @param oId   The Order Id for the Order.
-     * @param Uid   The User Id for the Order.
+     * @param user The User which made the order.
      */
-    public Order(LocalDateTime date) {
+    public Order(User user) {
         super();
-        // The current date of the Order
-        this.date = LocalDateTime.now(); 
+        this.setUser(user);
+        this.setDate(LocalDate.now());
     }
+
 
     /**
      * Return this order items id.
@@ -61,23 +64,41 @@ public class Order {
         return id;
     }
 
+
     /**
-     * Sets the order id for this
-     * order.
+     * Returns the User of the order.
      * 
-     * @param id the order id for this order.
+     * @return User of the order.
      */
-    public void setId(long id) {
-        this.id = id;
+    public User getUser() {
+        return user;
     }
+
+    /**
+     * Set the User of the order.
+     * @param user User which made the order.
+     */
+    private void setUser(User user) {
+        this.user = user;
+    }
+
 
     /**
      * Return when this order item was created.
      * 
      * @return when this order item was created.
      */
-    public LocalDateTime getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
+
+    /**
+     * Sets the date of the order.
+     * 
+     * @param date the date of the order.
+     */
+    private void setDate(LocalDate date) {
+        this.date = date;
+    }
 }

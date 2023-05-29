@@ -1,3 +1,6 @@
+/* Footer styles */
+
+/* Styles for the footer container */
 footer {
   display: grid;
   grid-auto-flow: row;
@@ -6,6 +9,7 @@ footer {
   padding: 2rem;
 }
 
+/* Styles for the "About Us" section */
 #about-us-section {
   display: flex;
   flex-direction: row;
@@ -15,6 +19,7 @@ footer {
   margin-left: 2rem;
 }
 
+/* Styles for the "Contact us" section*/
 #contact-us-section {
   display: flex;
   flex-direction: row;
@@ -23,6 +28,7 @@ footer {
   margin-left: 2rem;
 }
 
+/* Styles for the information section */
 #info-section {
   display: flex;
   flex-direction: row;
@@ -31,13 +37,16 @@ footer {
   margin-left: 2rem;
 }
 
+/* Styles for the footer icons */
 #footer-icons {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   gap: 2rem;
   margin-left: 2rem;
+  margin-top: 16px;
 }
 
+/* Styles for the individual footer icons */
 #footer-icons > i {
   background-color: #343a40;
   border-radius: 50%;
@@ -47,7 +56,19 @@ footer {
   min-width: 2.5rem;
 }
 
+/* Styles for the content of footer icnons */
 #footer-icons > i::before {
   color: whitesmoke;
   text-align: center;
+}
+
+/* Styles for the accordian component */
+.accordian .MuiAccordian-root {
+  margin-bottom: 0;
+}
+
+/* Styles for the accordian container */
+.accordian {
+  width: 100%;
+  margin: 0;
 }

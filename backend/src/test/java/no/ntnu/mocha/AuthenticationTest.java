@@ -1,5 +1,6 @@
 package no.ntnu.mocha;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -21,8 +22,8 @@ import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilde
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import jakarta.servlet.http.HttpServletRequest;
-import no.ntnu.mocha.service.JwtService;
-import no.ntnu.mocha.service.UserDetailsServiceImpl;
+import no.ntnu.mocha.service.authentication.JwtService;
+import no.ntnu.mocha.service.authentication.UserDetailsServiceImpl;
 
 
 
@@ -35,15 +36,10 @@ import no.ntnu.mocha.service.UserDetailsServiceImpl;
 @RunWith(SpringRunner.class)
 public class AuthenticationTest {
 
-    @Autowired
-    private MockMvc mvc;
-
-	@Autowired
-	private JwtService jwtService;
-  
-	@Autowired
-	private UserDetailsServiceImpl userDetailsService;
-
+    @Autowired private MockMvc mvc;
+	@Autowired private JwtService jwtService;
+	@Autowired private UserDetailsServiceImpl userDetailsService;
+ 
 
 
 	/**
@@ -67,13 +63,12 @@ public class AuthenticationTest {
      */
     @Test
     public void authentication_request_with_valid_credentials() throws Exception {
-        this.mvc
-            .perform(
-                post("/login")
-                    .content("{\"username\":\"user\",\"password\":\"user\"}")
-                    .header(HttpHeaders.CONTENT_TYPE, "application/json")
-                )
-            .andDo(print()).andExpect(status().isOk());
+        mvc.perform(
+			post("/login")
+				.content("{\"username\":\"admin\",\"password\":\"admin\"}")
+				.header(HttpHeaders.CONTENT_TYPE, "application/json"))
+		.andDo(print())
+		.andExpect(status().isOk());
     }
 
 
@@ -84,13 +79,12 @@ public class AuthenticationTest {
      */
     @Test
     public void authentication_request_with_invalid_credentials() throws Exception {
-        this.mvc
-            .perform(
-                post("/login")
-                    .content("{\"username\":\"hello\",\"password\":\"world\"}")
-                    .header(HttpHeaders.CONTENT_TYPE, "application/json")
-                )
-            .andDo(print()).andExpect(status().isUnauthorized());
+        mvc.perform(
+			post("/login")
+				.content("{\"username\":\"hello\",\"password\":\"world\"}")
+				.header(HttpHeaders.CONTENT_TYPE, "application/json"))
+		.andDo(print())
+		.andExpect(status().isUnauthorized());
     }
 
 
@@ -101,7 +95,7 @@ public class AuthenticationTest {
 	@Test
 	public void authenticated_user_has_USER_role() throws Exception {
 
-		byte[] content = "{\"username\":\"user3\",\"password\":\"user3\"}".getBytes();
+		byte[] content = "{\"username\":\"user10\",\"password\":\"user10\"}".getBytes();
 
 		MockHttpServletRequestBuilder builder = MockMvcRequestBuilders
 			.post("/login")
@@ -120,7 +114,38 @@ public class AuthenticationTest {
 		
 		List<String> authorities = getAuthorities(request, token);
 
+		assertTrue(authorities.contains("ROLE_USER"));
+		assertFalse(authorities.contains("ROLE_ADMIN"));
+	}
+
+
+	/**
+	 * Asserts that the admin user has the role "ROLE_USER" and "ROLE_ADMIN" specified
+	 * in its JWT.
+	 */
+	@Test
+	public void authenticated_admin_has_ADMIN_role() throws Exception {
+
+		byte[] content = "{\"username\":\"admin\",\"password\":\"admin\"}".getBytes();
+
+		MockHttpServletRequestBuilder builder = MockMvcRequestBuilders
+			.post("/login")
+			.content(content)
+			.contentType("application/json");
+		
+		String token = this.mvc
+			.perform(builder)
+			.andReturn().getResponse().getHeader(HttpHeaders.AUTHORIZATION);
+		
+		HttpServletRequest request = MockMvcRequestBuilders
+			.post("/")
+			.header(HttpHeaders.CONTENT_TYPE, "application/json")
+			.header(HttpHeaders.AUTHORIZATION, token)
+			.buildRequest(new MockServletContext());
+		
+		List<String> authorities = getAuthorities(request, token);
 
 		assertTrue(authorities.contains("ROLE_USER"));
+		assertTrue(authorities.contains("ROLE_ADMIN"));
 	}
 }

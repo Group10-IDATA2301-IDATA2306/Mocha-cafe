@@ -1,8 +1,8 @@
-import { SmallDescription } from "../text/SmallDescription";
-import { TotalFee } from "../text/TotalFee";
-import { CartItemsWrapper } from "./CartItemsWrapper";
+import { SmallDescription } from "../../components/text/SmallDescription";
+import { TotalFee } from "../../components/text/TotalFee";
+import { FormButton } from "../../components/buttons/FormButton";
+import { RightButtonLayout } from "../../components/layout/RightButtonLayout";
 import "./CartSection.css"
-import { HFlexContainer } from "./HFlexContainer";
 
 /**
  * Section for showing shopping cart items and addional fees, as well as the total fee.
@@ -13,12 +13,14 @@ import { HFlexContainer } from "./HFlexContainer";
  * @param {*} props all the properties of the cart
  * @returns {JSX.Element} section for shopping cart and price details
  */
-export function CartSection(props) {
+export function CartSectionFee(props) {
     return (
-        <section className="cartSection">
-            <CartItemsWrapper>{props.children}</CartItemsWrapper>
+        <section className="cartSection" id="cartSectionFee">
             <SmallDescription text={props.priceDetails}></SmallDescription>
             <TotalFee text={props.totalFee}></TotalFee>
+            <RightButtonLayout>
+                <FormButton text="Continue to payment" id="smallScreenProceedCheckoutBtn"></FormButton>
+            </RightButtonLayout>
         </section>
     );
 }

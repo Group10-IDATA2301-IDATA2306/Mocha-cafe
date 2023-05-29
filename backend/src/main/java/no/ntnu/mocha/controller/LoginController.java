@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import no.ntnu.mocha.DTO.AuthenticationRequest;
-import no.ntnu.mocha.service.JwtService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import no.ntnu.mocha.DTO.CredentialsDto;
+import no.ntnu.mocha.service.authentication.JwtService;
 
 
 /**
@@ -29,8 +31,7 @@ import no.ntnu.mocha.service.JwtService;
 public class LoginController {
 
     
-    @Autowired
-    private JwtService jwtService;
+    @Autowired private JwtService jwtService;
 
 	/**
      * Receives an HTTP POST request with the user's credentials and authenticates them. If the
@@ -40,12 +41,15 @@ public class LoginController {
      * @return An HTTP response entity that includes a token in the Authorization header and the budget ID.
      */
     @PostMapping
-	public ResponseEntity<?> getToken(@RequestBody AuthenticationRequest dto) {
+	@Operation(
+        summary = "Login",
+        description = "Attempts login through authentication of user credentials."
+    )
+	public ResponseEntity<?> login(@Parameter(description = "User credentials.") @RequestBody CredentialsDto dto) {
 
-		// Generate token 
+		/* Authenticate and generate JSON Web Token. */
 		String jwts = jwtService.getToken(dto.getUsername(), dto.getPassword());
 
-		// Build response with the generated token
 		return ResponseEntity.ok()
 			.header(HttpHeaders.AUTHORIZATION, "Bearer " + jwts)
 			.header(HttpHeaders.ACCESS_CONTROL_EXPOSE_HEADERS, "Authorization")

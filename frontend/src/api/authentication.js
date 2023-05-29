@@ -3,6 +3,7 @@
 // Imports
 import { deleteCookie, getCookie, setCookie } from "./cookies";
 import { asyncApiRequest } from "./HttpInterface";
+import cookie from "react-cookies";
 
 /**
  * Retrieves the currently authenticated user. It checks for the
@@ -58,11 +59,7 @@ export async function sendAuthenticationRequest(
     password: password,
   };
   try {
-    const jwtResponse = await asyncApiRequest(
-      "POST",
-      "/authenticate",
-      postData
-    );
+    const jwtResponse = await asyncApiRequest("POST", "/login", postData);
     if (jwtResponse && jwtResponse.jwt) {
       setCookie("jwt", jwtResponse.jwt);
       const userData = parseJwtUser(jwtResponse.jwt);

@@ -41,6 +41,7 @@ public class ProductCategory {
      */
     public ProductCategory(){}
 
+
     /**
      * Creates an instance of Product Category.
      * 
@@ -49,11 +50,10 @@ public class ProductCategory {
      */
     public ProductCategory(String name, String description) {
         super();
-        this.name = name;
-        this.description = description;
+        this.setName(name);
+        this.setDescription(description);
     }
 
-    // Getters and setters
 
     /**
      * Returns the id of the product category.
@@ -65,15 +65,6 @@ public class ProductCategory {
     } 
 
     /**
-     * Sets the product category id.
-     * 
-     * @param id the product category id
-     */
-    public void setPcId(long id) {
-        this.id = id;
-    }
-
-    /**
      * Returns the name of the
      * Product Category.
      * 
@@ -83,14 +74,16 @@ public class ProductCategory {
         return name;
     }
 
+
     /**
      * Sets the name of the product category.
      * 
      * @param name  the name of the product category.
      */
-    public void setName(String name) {
-        this.name = name;
+    private void setName(String name) {
+        this.name = name.toUpperCase();
     }
+
 
     /**
      * Returns the description of the 
@@ -103,6 +96,7 @@ public class ProductCategory {
         return description;
     }
 
+
     /**
      * Sets the description of the product
      * category.
@@ -110,8 +104,7 @@ public class ProductCategory {
      * @param description   the description of the 
      *                      product category.
      */
-    public void setDescription(String description) {
+    private void setDescription(String description) {
         this.description = description;
     }
-
 }

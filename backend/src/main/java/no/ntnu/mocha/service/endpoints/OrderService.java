@@ -1,4 +1,4 @@
-package no.ntnu.mocha.service;
+package no.ntnu.mocha.service.endpoints;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,12 +19,11 @@ import no.ntnu.mocha.domain.repository.OrderRepository;
  * @version 22.04.2023
  * @since   22.04.2023
  */
-@Service
-public class OrderService {
+@Service public class OrderService {
 
-    /** Gives access to the Order Repository */
-    @Autowired
-    private OrderRepository orderRepository;
+    @Autowired private OrderRepository orderRepository;
+
+
 
     /**
      * Returns the order with the given id.
@@ -35,6 +34,7 @@ public class OrderService {
     public Order getOrderItem(long id) {
         return this.orderRepository.findById(id).orElse(null);
     }
+
 
     /**
      * Returns a list of all orders.
@@ -48,7 +48,8 @@ public class OrderService {
         return order;
     }
 
-        /**
+
+    /**
      * Returns a list of all orders by a user.
      * 
      * @return {@code List<Order>} of all the orders
@@ -60,6 +61,7 @@ public class OrderService {
         return order;
     }
 
+
     /**
      * Adds an order to the database.
      * 
@@ -69,6 +71,7 @@ public class OrderService {
         this.orderRepository.save(order);
     }
 
+
     /**
      * Adds an collection of the orders into the database.
      * 
@@ -77,6 +80,7 @@ public class OrderService {
     public void addAllOrderItems(Iterable<Order> order) {
         this.orderRepository.saveAll(order);
     }
+
 
     /**
      * Updates the order with the given id.
@@ -88,6 +92,7 @@ public class OrderService {
         this.orderRepository.update(id, dto.getDate());
     }
 
+    
     /**
      * Deletes the order by the given id.
      * 
