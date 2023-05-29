@@ -1,3 +1,50 @@
 #root {
     background: white;
 }
+
+.cartPage {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+/* Hides the button for proceeding to payment for small screens, by default */
+#smallScreenProceedCheckoutBtn {
+    display: none;
+}
+
+@media (max-width: 1100px) {
+    .cartPage {
+        flex-direction: column;
+    }
+
+    .cartForm {
+        margin: 60px auto;
+    }
+
+    #cartSectionOnlyItems {
+        display: flex;
+    }
+
+    #bigScreenProceedCheckoutBtn {
+        display: none;
+    }
+
+    #bigScreenCartSection {
+        display: none;
+    }
+
+    #cartSectionFee {
+        display: flex;
+    }
+
+    #smallScreenProceedCheckoutBtn {
+        display: block;
+    }
+}
+
+@media (max-width: 750px) {
+    .formInputWrapper {
+        flex-direction: column;
+    }
+}
