@@ -21,9 +21,6 @@ export function Showcase() {
       <h2>New Releases</h2>
       <container className="product-container">
         <ShowcaseCard props={jsonTestData} />
-        <ShowcaseCard props={jsonTestData} />
-        <ShowcaseCard props={jsonTestData} />
-        <ShowcaseCard props={jsonTestData} />
       </container>
     </container>
   );
