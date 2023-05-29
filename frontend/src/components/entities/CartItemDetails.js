@@ -1,5 +1,6 @@
 import { SmallProductImage } from "../SmallProductImage";
-import { CartItemTitleAndQuantity } from "./CartItemTitleAndQuantity";
+import { SmallProductTitle } from "../text/SmallProductTitle"
+import { ProductQuantityInput } from "../input/ProductQuantityInput"
 import "./CartItemDetails.css"
 
 /**
@@ -12,7 +13,8 @@ export function CartItemDetails(props) {
     return (
         <div className="cartItemDetails">
             <SmallProductImage src={props.src} alt={props.alt}></SmallProductImage>
-            <CartItemTitleAndQuantity text={props.text} value={props.value}></CartItemTitleAndQuantity>
+            <SmallProductTitle text={props.text}></SmallProductTitle>
+            <ProductQuantityInput value={props.value}></ProductQuantityInput>
         </div>
     );
 }
