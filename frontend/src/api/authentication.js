@@ -59,11 +59,7 @@ export async function sendAuthenticationRequest(
     password: password,
   };
   try {
-    const jwtResponse = await asyncApiRequest(
-      "POST",
-      "/authenticate",
-      postData
-    );
+    const jwtResponse = await asyncApiRequest("POST", "/login", postData);
     if (jwtResponse && jwtResponse.jwt) {
       setCookie("jwt", jwtResponse.jwt);
       const userData = parseJwtUser(jwtResponse.jwt);
@@ -125,10 +121,3 @@ export function deleteAuthorizationCookies() {
   deleteCookie("current_username");
   deleteCookie("current_user_roles");
 }
-
-export const getTokenCookie = () => cookie.load("x-access-token");
-export const removeTokenCookie = () =>
-  cookie.remove("x-access-token", { path: "/" });
-export const getAuthHeader = () => {
-  return { headers: { Authorization: `Bearer ${getTokenCookie()}` } };
-};
