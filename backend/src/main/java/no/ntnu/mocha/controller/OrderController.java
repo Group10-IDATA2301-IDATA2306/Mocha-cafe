@@ -16,15 +16,14 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import no.ntnu.mocha.DTO.OrderDto;
 import no.ntnu.mocha.domain.entities.Order;
-import no.ntnu.mocha.service.OrderService;
+import no.ntnu.mocha.service.endpoints.OrderService;
 
 @RestController
 @CrossOrigin
 @RequestMapping("/orders")
 public class OrderController {
     
-    @Autowired
-    private OrderService service;
+    @Autowired private OrderService service;
 
 
     @GetMapping
@@ -54,7 +53,8 @@ public class OrderController {
     )
     public ResponseEntity<?> updateOrder(
         @Parameter(description = "ID of the order.") @PathVariable long id, 
-        @Parameter(description = "DTO representing an order entity.") @RequestBody OrderDto dto) {
+        @Parameter(description = "DTO representing an order entity.") @RequestBody OrderDto dto) 
+    {
         service.update(id, dto);
         return new ResponseEntity<>(HttpStatus.OK);
     }

@@ -1,12 +1,12 @@
 {"properties": [
   {
-    "name": "debugging_mode",
+    "name": "jwt.secret.key",
     "type": "java.lang.String",
-    "description": "A description for 'debugging_mode'"
+    "description": "Secret Key used for signing JWT Tokens. Is converted into a java.security.Key object with the HS256 algorithm. "
   },
   {
-    "name": "secretkey",
-    "type": "java.lang.String",
-    "description": "A description for 'secretkey'"
+    "name": "spring.ssh.port",
+    "type": "java.lang.Integer",
+    "description": "Port number used for communicate with the application. Overrides the default SSH port 8443."
   }
 ]}

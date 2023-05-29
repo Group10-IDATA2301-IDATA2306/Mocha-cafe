@@ -20,13 +20,13 @@ import jakarta.persistence.Table;
 @Table(name = "product_order")
 public class Order {
     
-    /** Unique Id for Order */
+    /** Unique Id for Order. */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false, name = "order_id")
     private long id;
 
-    /** Foregin key (Uid) from User class */
+    /** User entity of the Order. */
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
@@ -35,22 +35,24 @@ public class Order {
     @Column(name = "order_date")
     private LocalDateTime date;
 
+
     /**
      * Empty constructor.
      */
     public Order(){}
 
+
     /**
      * Creates an instance of order item.
      * 
-     * @param oId   The Order Id for the Order.
-     * @param Uid   The User Id for the Order.
+     * @param user The User which made the order.
      */
-    public Order(LocalDateTime date) {
+    public Order(User user) {
         super();
-        // The current date of the Order
-        this.date = LocalDateTime.now(); 
+        this.setUser(user);
+        this.setDate(LocalDateTime.now());
     }
+
 
     /**
      * Return this order items id.
@@ -61,15 +63,24 @@ public class Order {
         return id;
     }
 
+
     /**
-     * Sets the order id for this
-     * order.
+     * Returns the User of the order.
      * 
-     * @param id the order id for this order.
+     * @return User of the order.
      */
-    public void setId(long id) {
-        this.id = id;
+    public User getUser() {
+        return user;
     }
+
+    /**
+     * Set the User of the order.
+     * @param user User which made the order.
+     */
+    private void setUser(User user) {
+        this.user = user;
+    }
+
 
     /**
      * Return when this order item was created.
@@ -80,4 +91,13 @@ public class Order {
         return date;
     }
 
+
+    /**
+     * Sets the date of the order.
+     * 
+     * @param date the date of the order.
+     */
+    private void setDate(LocalDateTime date) {
+        this.date = date;
+    }
 }

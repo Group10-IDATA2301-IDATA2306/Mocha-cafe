@@ -17,7 +17,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import no.ntnu.mocha.DTO.ReviewDto;
 import no.ntnu.mocha.domain.entities.Review;
-import no.ntnu.mocha.service.ReviewService;
+import no.ntnu.mocha.service.endpoints.ReviewService;
 
 
 @RestController
@@ -25,8 +25,7 @@ import no.ntnu.mocha.service.ReviewService;
 @CrossOrigin
 public class ReviewController {
     
-    @Autowired
-    private ReviewService service;
+    @Autowired private ReviewService service;
 
 
     @GetMapping
@@ -55,7 +54,7 @@ public class ReviewController {
         summary = "Update a review.",
         description = "Update a given review."
     )
-    public ResponseEntity<?> updateProductById(
+    public ResponseEntity<?> updateReview(
         @Parameter(description = "Review ID.") @PathVariable long id, 
         @Parameter(description = "DTO representing a review entity.") @RequestBody ReviewDto dto) 
     {

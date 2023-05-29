@@ -12,33 +12,11 @@ package no.ntnu.mocha.DTO;
  */
 public class CartItemDto {
     
-    /** The id of the product of this cart item dto. */
     private long productId;
-
-    /** The quantity of the product in this cart item dto. */
+    private long orderId;
     private int amount;
 
-    private long orderId;
-
-    /**
-     * Returns the id of the product in this cart item dto.
-     * 
-     * @return the id of the product in this cart item dto.
-     */
-    public Long getProductId() {
-        return productId;
-    }
-
-    /**
-     * Returns the quantity of the product in this cart item dto.
-     * 
-     * @return the quantity of the product in this cart item dto.
-     */
-    public Integer getAmount() {
-        return amount;
-    }
-
-    public Long getOrderId() {
-        return orderId;
-    }
+    public Long getProductId() { return productId; }
+    public Long getOrderId() { return orderId; }
+    public Integer getAmount() { return amount; }
 }

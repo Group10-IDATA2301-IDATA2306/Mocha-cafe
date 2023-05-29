@@ -28,20 +28,20 @@ public class Product {
     @Column(unique = true, name = "product_id")
     private long id;
 
-    /** Image ID (foreign key to Image) represented as Long in the database. */
+    /** Image associated with the product. */
     @OneToOne
     @JoinColumn(name = "image_id")
     private Image image;
 
-    /** Product name, represented as Varchar(255). */
+    /** Product name. */
     @Column(name = "name")
     private String name;
 
-    /** Product price, represented as Int(11). */
+    /** Product price. */
     @Column(name = "price")
     private double price;
 
-    /** Size of the product measured in weight, represented as Int(11). */
+    /** Size of the product measured in a given unit. */
     @Column(name = "amount")
     private String size;
 
@@ -53,6 +53,7 @@ public class Product {
     @Column(name = "display")
     private boolean display;
 
+    /** Category of the product. */
     @ManyToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "pc_id")
     private ProductCategory productCategory;
@@ -67,6 +68,7 @@ public class Product {
      */
     public Product() {}
 
+
     /**
      * Creates an instance of Product.
      * 
@@ -75,17 +77,21 @@ public class Product {
      * @param size          the size of the product (e.g., 25.9)
      * @param description   the description of the product (e.g., "This is a dark mocha cofee")
      * @param display       the display of the product (boolean true/false)
+     * @param image         the image of the product.
+     * @param category      the category of the product.
      */
-    public Product(String name, double price, String size, String description, boolean display, Image image) {
+    public Product(String name, double price, String size, String description, boolean display, Image image, ProductCategory category) {
         super();
-        this.name = name;
-        this.price = price;
-        this.size = size;
-        this.description = description;
-        this.display = display;
-        this.image = image;
-        this.totalBought = 0;
+        this.setName(name);
+        this.setPrice(price);
+        this.setSize(size);
+        this.setDescription(description);
+        this.setDisplay(display);
+        this.setImage(image);
+        this.setCategory(category);
+        this.setTotalBought(0);
     }
+
 
     /**
      * Returns the id of the product.
@@ -96,14 +102,6 @@ public class Product {
         return id;
     }
 
-    /**
-     * Set the id of the product.
-     * 
-     * @param id the id of the product
-     */
-    public void setPid(long id) {
-        this.id = id;
-    }
 
     /**
      * Returns the name of the product.
@@ -114,14 +112,16 @@ public class Product {
         return name;
     }
 
+
     /**
      * Set the name of the product.
      * 
      * @param name the name of the product
      */
-    public void setName(String name) {
-        this.name = name;
+    private void setName(String name) {
+        this.name = name.substring(0, 1).toUpperCase() + name.substring(1);
     }
+
 
     /**
      * Returns the price of the product.
@@ -132,14 +132,16 @@ public class Product {
         return price;
     }
 
+
     /**
      * Set the price of the product.
      * 
      * @param price the price of the product
      */
-    public void setPrice(double price) {
+    private void setPrice(double price) {
         this.price = price;
     }
+
 
     /**
      * Returns the size of the product.
@@ -150,14 +152,16 @@ public class Product {
         return size;
     }
 
+
     /**
      * Set the size of the product.
      * 
      * @param size the size of the product
      */
-    public void setSize(String size) {
+    private void setSize(String size) {
         this.size = size;
     }
+
 
     /**
      * Returns the description of the product.
@@ -168,14 +172,16 @@ public class Product {
         return description;
     }
 
+
     /**
      * Set the description of the product.
      * 
      * @param description the description of the product
      */
-    public void setDescription(String description) {
+    private void setDescription(String description) {
         this.description = description;
     }
+
 
     /**
      * Returns the display of the product.
@@ -186,14 +192,16 @@ public class Product {
         return display;
     }
 
+
     /**
      * Set the display of the product.
      * 
      * @param display the display of the product
      */
-    public void setDisplay(boolean display) {
+    private void setDisplay(boolean display) {
         this.display = display;
     }
+
 
     /**
      * Returns the product category of the given
@@ -205,29 +213,54 @@ public class Product {
         return productCategory;
     }
 
+
     /**
      * Sets the product category of the given product.
      * 
      * @param productCategory   the product category of the
      *                          given product.
      */
-    public void setCategory(ProductCategory productCategory) {
+    private void setCategory(ProductCategory productCategory) {
         this.productCategory = productCategory;
     }
 
+
+    /**
+     * Get the number of times the product has been bought.
+     * 
+     * @param number of purchases.
+     */
     public int getTotalBought() {
         return totalBought;
     }
 
-    public void setTotalBought(int totalBought) {
+
+    /**
+     * Set the number of purchases for the product.
+     * 
+     * @param totalBought the number of purchases.
+     */
+    private void setTotalBought(int totalBought) {
         this.totalBought = totalBought;
     }
 
+
+    /**
+     * Get the Image to display with the product.
+     * 
+     * @return image the image of the product.
+     */
     public Image getImage() {
         return image;
     }
 
-    public void setImage(Image image) {
+
+    /**
+     * Set the Image to display with the product.
+     * 
+     * @param image the image of the product.
+     */
+    private void setImage(Image image) {
         this.image = image;
     }
 }

@@ -1,6 +1,4 @@
-package no.ntnu.mocha.service;
-
-import java.util.Optional;
+package no.ntnu.mocha.service.endpoints;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,12 +15,11 @@ import no.ntnu.mocha.domain.repository.ProductCategoryRepository;
  * @version 21.04.2023
  * @since   21.04.2023
  */
-@Service
-public class ProductCategoryService {
+@Service public class ProductCategoryService {
 
-    /** Gives access to the repository */
-    @Autowired
-    private ProductCategoryRepository productCategoryRepository;
+    @Autowired private ProductCategoryRepository productCategoryRepository;
+
+
 
     /**
      * Returns an iterable collection of all the
@@ -35,6 +32,7 @@ public class ProductCategoryService {
         return productCategoryRepository.findAll();
     }
 
+
     /**
      * Returns the product category with the given id.
      * 
@@ -42,9 +40,10 @@ public class ProductCategoryService {
      *          and if not {@code null} if nothing is found.
      */
     public ProductCategory getProductCategory(long id) {
-        Optional<ProductCategory> category = productCategoryRepository.findById(id);
-        return category.orElse(null);
+        return (productCategoryRepository.findById(id).isPresent()) ? 
+            productCategoryRepository.findById(id).get() : null; 
     }
+
 
     /**
      * Adds the given product category to the database.
@@ -52,11 +51,10 @@ public class ProductCategoryService {
      * @param category  {@code ProductCategory} to be added.
      */
     public void addProductCategory(ProductCategory category) {
-        if(!productCategoryRepository.existsById(category.getId())) {
-            productCategoryRepository.save(category);
-        }
+        productCategoryRepository.save(category);
     }
 
+    
     /**
      * Deletes the product category by the given
      * id.
@@ -65,8 +63,6 @@ public class ProductCategoryService {
      *              deleted.
      */
     public void deleteProductCategory(long id) {
-        if (productCategoryRepository.existsById(id)) {
-            productCategoryRepository.deleteById(id);
-        }
+        productCategoryRepository.deleteById(id);
     }
 }

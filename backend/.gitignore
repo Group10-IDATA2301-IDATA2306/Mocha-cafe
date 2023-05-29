@@ -39,5 +39,3 @@ src/main/resources/keystore/keystore.p12
 .env
 keystore.p12
 src/main/resources/env.properties
-prod
-test

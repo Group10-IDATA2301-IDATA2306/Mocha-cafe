@@ -1,4 +1,4 @@
-package no.ntnu.mocha.service;
+package no.ntnu.mocha.service.endpoints;
 
 import java.util.HashSet;
 import java.util.Optional;
@@ -13,23 +13,33 @@ import no.ntnu.mocha.domain.entities.Role;
 import no.ntnu.mocha.domain.entities.User;
 import no.ntnu.mocha.domain.repository.RoleRepository;
 import no.ntnu.mocha.domain.repository.UserRepository;
+import no.ntnu.mocha.service.email.EmailService;
 
-@Service
-public class UserService {
+
+/**
+ * <Business Logic Service for the User</h1>
+ * 
+ * Representing an Review class for the User.
+ * 
+ * @version 29.04.2023
+ * @since   25.04.2023
+ */
+@Service public class UserService {
     
-    @Autowired
-    private UserRepository userRepository;
-
-    @Autowired
-    private RoleRepository roleRepository;
-
-    @Autowired
-    private EmailService emailService;
+    @Autowired private UserRepository userRepository;
+    @Autowired private RoleRepository roleRepository;
+    @Autowired private EmailService emailService;
 
     private BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
 
     
 
+    /**
+     * Add a new user to the database.
+     * 
+     * @param dto the dto representing the user.
+     * @return the new user.
+     */
     public User addUser(UserDto dto) {
         HashSet<Role> roles = new HashSet<>();
         roles.add(roleRepository.findOneByName("ROLE_USER"));
@@ -48,6 +58,12 @@ public class UserService {
     }
 
 
+    /**
+     * Update an existing user.
+     * 
+     * @param id the id of the user.
+     * @param dto the dto representing the user.
+     */
     public void updateUser(long id, UserDto dto) {
         userRepository.updateUser(
             id, 
@@ -58,6 +74,12 @@ public class UserService {
     }
 
 
+    /**
+     * Delete a user from the database.
+     * 
+     * @param id the id of the user.
+     * @param dto the dto representing the user.
+     */
     public boolean deleteUser(long id, UserDto dto) {
         Optional<User> user = userRepository.findById(id);
         if (user.isPresent()) userRepository.delete(user.get());
@@ -65,6 +87,13 @@ public class UserService {
     }
 
 
+    /**
+     * Checks if the user attempting to perform something on a user entity
+     * actually is the user itself.
+     * 
+     * @param dto the dto representing the user.
+     * @return true if the user is the same as the one in the dto, otherwise false.
+     */
     public boolean validateUserAction(UserDto dto) {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         return dto.getUsername().equals(username);

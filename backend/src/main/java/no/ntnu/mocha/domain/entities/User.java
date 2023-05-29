@@ -31,7 +31,7 @@ import jakarta.persistence.Table;
 @Table(name = "user")
 public class User implements UserDetails {
     
-    /** Unique User Id */
+    /** Unique User ID. */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false, updatable = false, name = "user_id")
@@ -49,9 +49,11 @@ public class User implements UserDetails {
     @Column(name = "email")
     private String email;
 
+    /** User biography. */
     @Column(name = "bio")
     private String bio;
 
+    /** Set of roles held by the user. */
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
         name = "user_roles", 
@@ -61,22 +63,25 @@ public class User implements UserDetails {
     private Set<Role> roles = new HashSet<>();
 
 
+
     /**
      * Empty constructor.
      */
-    public User(){}
+    public User() {}
+
 
     /**
      * Creates an instance of User with username and password.
      * 
      * @param username  The username of the User.
      * @param password  The pasword of the User.
+     * @param roles     Set of roles held by the user.
      */
     public User(String username, String password, Set<Role> roles) {
         super();
-        this.username = username;
-        this.password = password;
-        this.roles = roles;
+        this.setUserName(username);
+        this.setPassword(password);
+        this.setRoles(roles);
     }
 
 
@@ -85,16 +90,18 @@ public class User implements UserDetails {
      * 
      * @param username  The username of the User.
      * @param password  The pasword of the User.
+     * @param roles     Set of roles held by the user.
+     * @param email     The email od the user.
+     * @param bio       The biography of the user.
      */
     public User(String username, String password, Set<Role> roles, String email, String bio) {
         super();
-        this.username = username;
-        this.password = password;
-        this.roles = roles;
-        this.email = email;
-        this.bio = bio;
+        this.setUserName(username);
+        this.setPassword(password);
+        this.setRoles(roles);
+        this.setEmail(email);
+        this.setBio(bio);
     }
-
 
 
     /**
@@ -106,14 +113,6 @@ public class User implements UserDetails {
         return id;
     }
 
-    /**
-     * Sets the User id {@code id} for the User.
-     * 
-     * @param id the user id for the User.
-     */
-    public void setUid(long id) {
-        this.id = id;
-    }
 
     /**
      * Get the username of the user.
@@ -124,14 +123,16 @@ public class User implements UserDetails {
         return username;
     }
 
+
     /**
      * Set the username of the user.
      * 
      * @param username the new username.
      */
-    public void setUserName(String username) {
+    private void setUserName(String username) {
         this.username = username;
     }
+
 
     /**
      * Returns the password for the User.
@@ -142,14 +143,16 @@ public class User implements UserDetails {
         return password;
     }
 
+
     /**
      * Sets the password for the User.
      * 
      * @param password the password for the User.
      */
-    public void setPassword(String password) {
+    private void setPassword(String password) {
         this.password = password;
     }
+
 
     /**
      * Returns the email of the User.
@@ -160,34 +163,56 @@ public class User implements UserDetails {
         return email;
     }
 
+
     /**
      * Sets the email of the User.
      * 
      * @param email the email of the User.
      */
-    public void setEmail(String email) {
+    private void setEmail(String email) {
         this.email = email;
     }
 
-    public boolean isActive() {
-        return false;
-    }
 
+    /**
+     * Get the biography of the User.
+     * 
+     * @return the bio of the user.
+     */
     public String getBio() {
         return bio;
     }
 
+
+    /**
+     * Set the biography of the user.
+     * 
+     * @param bio the bio of the user.
+     */
     public void setBio(String bio) {
         this.bio = bio;
     }
 
+
+    /**
+     * Get the roles of the user.
+     * 
+     * @return list of user roles.
+     */
     public Set<Role> getRoles() {
         return roles;
     }
 
-    public void setRoles(Set<Role> roles) {
+
+    /**
+     * Set the roles of the user.
+     * 
+     * @param roles the roles of the user.
+     */
+    private void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -198,20 +223,24 @@ public class User implements UserDetails {
         return authorities;
     }
 
+
     @Override
     public boolean isAccountNonExpired() {
         return true;
     }
+
 
     @Override
     public boolean isAccountNonLocked() {
         return true;
     }
 
+
     @Override
     public boolean isCredentialsNonExpired() {
         return true;
     }
+
 
     @Override
     public boolean isEnabled() {

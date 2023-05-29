@@ -14,11 +14,7 @@ import jakarta.persistence.Table;
 
 
 /**
- * <h1>Cart Item</h1>
- * 
- * <p>Represents an simple entity class for Cart Item
- *  with the JPA's {@code @Entity} annotation. 
- * </p>
+ * Represents the Cart-Item entiry with the JPA's {@code @Entity} annotation. 
  * 
  * @version 21.03.2023
  * @since   22.04.2023
@@ -27,29 +23,33 @@ import jakarta.persistence.Table;
 @Table(name = "cart_item")
 public class CartItem {
 
+    /** Primary key. */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "cart_item_id")
     private long id;
 
-    /** The order Id of the Cart Item */
+    /** The Order which the Cart Item belongs to. */
     @OneToOne
     @JoinColumn(name = "order_id")
     private Order order;
 
-    /** The Product Id of the Cart Item */
+    /** The Product which the Cart Item represents. */
     @ManyToOne
     @JoinColumn(name = "product_id")
     private Product product;
 
-    /** The amount of the Cart Items */
+    /** The amount the product held by the Cart Item. */
     @Column(name = "amount")
     private int amount;
+
+
 
     /**
      * Empty Constructor.
      */
-    public CartItem(){}
+    public CartItem() {}
+
 
     /**
      * Creates an instance of cart item.
@@ -59,22 +59,16 @@ public class CartItem {
      * @param amount    The amount of the Cart Item.
      */
     public CartItem(Order order, Product product, int amount) {
-        if (amount < 1) {
-            throw new IllegalArgumentException("The amount cannot be less than 1.");
-        }
+        super();
+        if (amount < 1) throw new IllegalArgumentException("The amount cannot be less than 1.");
+        if (product == null) throw new IllegalArgumentException("Product cannot be null.");
+        if (order == null) throw new IllegalArgumentException("Order cannot be null.");
 
-        if (product == null) {
-            throw new IllegalArgumentException("Product cannot be null.");
-        }
-
-        if (order == null) {
-            throw new IllegalArgumentException("Order cannot be null.");
-        }
-
-        this.order = order;
-        this.product = product;
-        this.amount = amount;
+        this.setOrder(order);
+        this.setProduct(product);
+        this.setAmount(amount);
     }
+
 
     /**
      * Returns the id for the Cart Item.
@@ -85,33 +79,26 @@ public class CartItem {
         return this.id;
     }
 
-    /**
-     * Sets the id for the Cart Item.
-     * 
-     * @param id    the id for the Cart Item.
-     */
-    public void setId(long id) {
-        this.id = id;
-    }
 
     /**
      * Returns the amount for the Cart Item.
      * 
-     * @return  the amount for the Cart Item.
+     * @return the amount for the Cart Item.
      */
     public int getAmount() {
         return this.amount;
     }
 
+
     /**
-     * Sets the amount for the Cart Item.
+     * Sets the amount of the Cart Item.
      * 
-     * @param amount    the amount for the
-     *                  Cart Item.
+     * @param amount the amount for the Cart Item.
      */
-    public void setAmount(int amount) {
+    private void setAmount(int amount) {
         this.amount = amount;
     }
+
 
     /**
      * Returns the order associated with the cart item.
@@ -122,6 +109,17 @@ public class CartItem {
         return this.order;
     }
 
+
+    /**
+     * Set the Order which the Cart Item is associated with.
+     * 
+     * @param order the Order of the product.
+     */
+    private void setOrder(Order order) {
+        this.order = order;
+    }
+
+
     /**
      * Returns the product associated with the cart item.
      * 
@@ -129,5 +127,15 @@ public class CartItem {
      */
     public Product getProduct() {
         return product;
+    }
+
+
+    /**
+     * Set the Product which the Cart Item represents.
+     * 
+     * @param product the Product of the Cart Item.
+     */
+    private void setProduct(Product product) {
+        this.product = product;
     }
 }

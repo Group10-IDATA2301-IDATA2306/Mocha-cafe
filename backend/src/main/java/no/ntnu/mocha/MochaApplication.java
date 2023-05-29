@@ -12,7 +12,6 @@ import org.springframework.core.env.Environment;
 
 import no.ntnu.mocha.domain.entities.Role;
 import no.ntnu.mocha.domain.repository.RoleRepository;
-import no.ntnu.mocha.domain.repository.UserRepository;
 
 /**
  * <h1>Mocha Application</h1>
@@ -21,45 +20,51 @@ import no.ntnu.mocha.domain.repository.UserRepository;
  * Spring Boot Application "Mocha Application" with the 
  * CommandLineRunner interface.</p>
  * 
- * @version	21.03.2023
+ * @version	29.05.2023
  * @since	21.03.2023
  */
 @SpringBootApplication
 public class MochaApplication implements CommandLineRunner {
 
-	@Autowired
-	UserRepository urepository;
+	/** Logger object used for loggin application information. */
+	private static final Logger LOGGER = LoggerFactory.getLogger(MochaApplication.class);
 
-	@Autowired
-	RoleRepository roleRepository;
-
-	/* Represents the environment in which the application is running. */
-	@Autowired
-	private Environment environment;
-
-	private static final Logger logger = 
-		LoggerFactory.getLogger(MochaApplication.class);
+	@Autowired private RoleRepository repository;
+	@Autowired private Environment environment;
 
 
+	
+
+	/**
+	 * Starting point of the Spring Boot application. Initializes the rest of the
+	 * application components.
+	 * 
+	 * @param args arguments.
+	 */
 	public static void main(String[] args) {
 		SpringApplication.run(MochaApplication.class, args);
 	}
 
+
+
+	/**
+	 * Logs the IP-address and port-number in which the server is running on and
+	 * ensures that the required ROLE entities are present in the database.
+	 * 
+	 * @param args arguments.
+	 */
 	@Override
 	public void run(String... args) throws Exception {
 
-		/* Inject IP address and assigned port of active server instance. */
-		String ip   = InetAddress.getLocalHost().getHostAddress();
-		String port = environment.getProperty("local.server.port");
+		/* Logs active IP-address and port to STDOUT. */
+		LOGGER.info(
+			"Server instance initialized: " 
+			+ InetAddress.getLocalHost().getHostAddress() + ":" 
+			+ environment.getProperty("local.server.port")
+		);
 
-		/* Log initial status to STDOUT. */
-		logger.info("Server instance initialized: " + ip + ":" + port);
-
-		if (roleRepository.findOneByName("ROLE_USER") == null) {
-			roleRepository.save(new Role("ROLE_USER"));
-		}
-		if (roleRepository.findOneByName("ROLE_ADMIN") == null) {
-			roleRepository.save(new Role("ROLE_ADMIN"));
-		}
+		/* Ensures that the two ROLE instances are present in the database. */
+		if (repository.findOneByName("ROLE_USER") == null) repository.save(new Role("ROLE_USER"));
+		if (repository.findOneByName("ROLE_ADMIN") == null) repository.save(new Role("ROLE_ADMIN"));
 	}
 }

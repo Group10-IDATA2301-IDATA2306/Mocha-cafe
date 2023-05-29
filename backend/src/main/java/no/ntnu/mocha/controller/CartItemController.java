@@ -19,7 +19,7 @@ import io.swagger.v3.oas.annotations.Parameter;
 import no.ntnu.mocha.DTO.CartItemDto;
 import no.ntnu.mocha.domain.entities.CartItem;
 import no.ntnu.mocha.domain.entities.Product;
-import no.ntnu.mocha.service.CartItemService;
+import no.ntnu.mocha.service.endpoints.CartItemService;
 
 /**
  * <h1>Cart Item Controller </h1>
@@ -34,8 +34,7 @@ import no.ntnu.mocha.service.CartItemService;
 @RequestMapping("/cart")
 public class CartItemController {
 
-    @Autowired
-    private CartItemService service;
+    @Autowired private CartItemService service;
 
 
     @GetMapping

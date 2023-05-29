@@ -14,39 +14,63 @@ import jakarta.persistence.Table;
 @Table(name = "roles")
 public class Role {
     
+    /** Primary key of the entity. */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true)
     private Long id;
 
+    /** Name of the entity. */
     @Column(unique = true, nullable = false)
     private String name;
 
 
     /**
-    * Empty constructor needed for JPA
-    */
-    public Role() {
-    }
+     * Empty constructor.
+     */
+    public Role() {}
 
+
+    /**
+     * Creates a new Role entity.
+     * 
+     * @param name the name of the role.
+     */
     public Role(String name) {
         super();
-        this.name = name;
+        this.setName(name);
     }
 
+
+    /**
+     * Get the ID of role.
+     * 
+     * @return ID of the role.
+     */
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
+    /**
+     * Get the name of the role.
+     * 
+     * @return name of the role.
+     */
     public String getName() {
         return name;
     }
 
+
+    /**
+     * Set the name of the role.
+     * 
+     * @param name the name of the role.
+     */
     public void setName(String name) {
-        this.name = name;
+        this.name = name.toUpperCase();
+        if (!this.name.startsWith("ROLE_")) {
+            this.name = "ROLE_" + name.toUpperCase();
+        }
     }
 }

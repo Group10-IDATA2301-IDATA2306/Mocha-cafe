@@ -23,7 +23,6 @@ public interface UserRepository extends CrudRepository<User, Long> {
 
     Optional<User> findByUsername(String username);
 
-
     @Transactional
     @Modifying
     @Query(value = "update user u set u.password = ?2, u.email = ?3, u.bio = ?4 where u.user_id = ?1", nativeQuery = true)

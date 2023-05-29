@@ -26,29 +26,30 @@ public class Review {
     @Column(unique = true, name = "review_id")
     private long id;
 
-    /** User ID (foreign key) represented as Long in the database. */
+    /** User which made the review. */
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
-    /** Product ID (foreign key) represented as Long in the database. */
+    /** The product which was reviewed.. */
     @ManyToOne
     @JoinColumn(name = "product_id")
     private Product product;
 
-    /** Content of the review represented as VarChar(255) in the database. */
+    /** Content of the review. */
     @Column(name = "review_comment")
     private String comment;
 
-    /** Star rating of the review represented as Integer in the database. */
+    /** Star rating of the review. */
     @Column(name = "stars")
     private int stars;
 
-    /** Date of the review represented as Date in the database. */
+    /** Date of the review. */
     @Column(name = "review_date")
     private LocalDateTime date;
 
 
+    
     /**
      * Emtpy Constructor.
      */
@@ -65,12 +66,13 @@ public class Review {
      */
     public Review(User user, Product product, String comment, int stars) {
         super();
-        this.user = user;
-        this.product = product;
-        this.comment = comment;
-        this.stars = stars;
-        this.date = LocalDateTime.now();
+        this.setUser(user);
+        this.setProduct(product);
+        this.setComment(comment);
+        this.setStars(stars);
+        this.setDate(LocalDateTime.now()); 
     }
+
 
     /**
      * Get the id of the Review.
@@ -81,14 +83,46 @@ public class Review {
         return id;
     }
 
+
     /**
-     * Set the id of the Review.
+     * Get the author of the review.
      * 
-     * @param id the id of the Review.
+     * @return user of the review.
      */
-    public void setRid(long id) {
-        this.id = id;
+    public User getUser() {
+        return user;
     }
+
+
+    /**
+     * Set the user of the review.
+     * 
+     * @param user the user of the review.
+     */
+    private void setUser(User user) {
+        this.user = user;
+    }
+
+
+    /**
+     * Get the product which is reviewed.
+     * 
+     * @return product of the review.
+     */
+    public Product getProduct() {
+        return product;
+    }
+
+
+    /**
+     * Set the product which is reviewed.
+     * 
+     * @param product the product of the review.
+     */
+    private void setProduct(Product product) {
+        this.product = product;
+    }
+
 
     /**
      * Get the comment of the Review.
@@ -99,14 +133,16 @@ public class Review {
         return comment;
     }
 
+
     /**
      * Set the comment of the Review.
      * 
      * @param comment the comment of the Review.
      */
-    public void setComment(String comment) {
+    private void setComment(String comment) {
         this.comment = comment;
     }
+
 
     /**
      * Get the stars of the Review.
@@ -117,14 +153,18 @@ public class Review {
         return stars;
     }
 
+
     /**
      * Set the stars of the Review.
      * 
      * @param stars the stars of the Review.
      */
-    public void setStars(int stars) {
+    private void setStars(int stars) {
         this.stars = stars;
+        if (stars < 0) this.stars = 0;
+        if (stars > 5) this.stars = 5;
     }
+
 
     /**
      * Get the date of the Review.
@@ -135,12 +175,13 @@ public class Review {
         return date;
     }
 
+    
     /**
      * Set the date of the Review.
      * 
      * @param date the date of the Review.
      */
-    public void setDate(LocalDateTime date) {
+    private void setDate(LocalDateTime date) {
         this.date = date;
     }
 }

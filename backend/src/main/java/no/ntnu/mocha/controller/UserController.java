@@ -16,20 +16,16 @@ import org.springframework.web.bind.annotation.RestController;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import no.ntnu.mocha.DTO.UserDto;
-import no.ntnu.mocha.service.JwtService;
-import no.ntnu.mocha.service.UserService;
+import no.ntnu.mocha.service.authentication.JwtService;
+import no.ntnu.mocha.service.endpoints.UserService;
 
 @RestController
 @CrossOrigin
 @RequestMapping("/users")
 public class UserController {
     
-
-    @Autowired
-    private UserService service;
-
-    @Autowired
-    private JwtService jwtService;
+    @Autowired private UserService service;
+    @Autowired private JwtService jwtService;
 
 
     @PostMapping

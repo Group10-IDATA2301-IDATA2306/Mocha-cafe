@@ -19,7 +19,7 @@ import io.swagger.v3.oas.annotations.Parameter;
 import no.ntnu.mocha.DTO.ProductDto;
 import no.ntnu.mocha.domain.entities.Product;
 import no.ntnu.mocha.domain.entities.Review;
-import no.ntnu.mocha.service.ProductService;
+import no.ntnu.mocha.service.endpoints.ProductService;
 
 /**
  * Serves product-related REST API endpoints.
@@ -29,8 +29,7 @@ import no.ntnu.mocha.service.ProductService;
 @CrossOrigin
 public class ProductController {
     
-    @Autowired
-    private ProductService service;
+    @Autowired private ProductService service;
 
 
     /**
@@ -45,7 +44,7 @@ public class ProductController {
         summary = "Get all products",
         description = "Returns a collection of all products."
     )
-    public Iterable<Product> getAll() throws InterruptedException {
+    public Iterable<Product> getAll() {
         return service.getAllProducts();
     }
 
@@ -155,7 +154,7 @@ public class ProductController {
     )
     public ResponseEntity<?> updateProductPrice(
         @Parameter(description = "Product ID.") @PathVariable long id, 
-        @Parameter(description = "New price.") @RequestParam double price) 
+        @Parameter(description = "New price.")  @RequestParam double price) 
     {
         service.updatePrice(id, price);
         return new ResponseEntity<>(HttpStatus.OK);

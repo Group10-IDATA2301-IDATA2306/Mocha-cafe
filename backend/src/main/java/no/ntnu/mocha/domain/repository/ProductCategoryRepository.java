@@ -1,5 +1,7 @@
 package no.ntnu.mocha.domain.repository;
 
+import java.util.Optional;
+
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
@@ -22,5 +24,5 @@ public interface ProductCategoryRepository extends CrudRepository<ProductCategor
      * @param name  the name of the product category.
      * @return  the product category by the given name.
      */
-    ProductCategory findByName(String name);
+    Optional<ProductCategory> findByName(String name);
 }
