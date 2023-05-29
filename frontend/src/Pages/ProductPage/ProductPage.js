@@ -16,6 +16,7 @@ const jsonTestData = {
 const ProductPage = () => {
   const [products, setProducts] = useState([]);
   const [page, setPage] = useState(1);
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
   useEffect(() => {
     fetchProducts();
@@ -38,9 +39,17 @@ const ProductPage = () => {
     }
   };
 
+  const handleCardClick = (product) => {
+    setSelectedProduct(product);
+  };
+
+  const handleClosePopup = () => {
+    setSelectedProduct(null);
+  };
+
   return (
     <>
-      <container className="product-section">
+      <div className="product-section">
         <h2>Products</h2>
         <container className="product-container">
           <ShowcaseCard props={jsonTestData} />
@@ -48,7 +57,7 @@ const ProductPage = () => {
           <ShowcaseCard props={jsonTestData} />
           <ShowcaseCard props={jsonTestData} />
         </container>
-      </container>
+      </div>
     </>
   );
 };
