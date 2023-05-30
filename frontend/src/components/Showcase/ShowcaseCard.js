@@ -1,4 +1,6 @@
 import "./ShowcaseCard.css";
+import * as React from "react";
+import Button from "@mui/material/Button";
 
 /**
  * A showcase of products
@@ -22,6 +24,9 @@ export function ShowcaseCard({ props }) {
         </container>
         <p>{props.description}</p>
         <h4>{props.price}kr</h4>
+        <div className="button-container">
+          <Button variant="contained">View Product</Button>
+        </div>
       </div>
     </div>
   );
