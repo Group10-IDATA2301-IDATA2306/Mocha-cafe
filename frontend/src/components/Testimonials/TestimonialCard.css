@@ -1,4 +1,4 @@
-item {
+.testimonial-card {
   height: 100%;
   width: 25%;
   min-width: 25rem;
@@ -31,20 +31,20 @@ item {
   font-size: 0.8rem;
 }
 
-item > h3 {
+.testimonial-card > h3 {
   font-size: 3rem;
 }
 
 @media (max-width: 600px) {
-  item > p {
+  .testimonial-card > p {
     font-size: 1.6rem;
   }
 
-  item > .rating {
+  .testimonial-card > .rating {
     font-size: 0.7rem;
   }
 
-  item > h3 {
+  .testimonial-card > h3 {
     font-size: 2rem;
   }
 }

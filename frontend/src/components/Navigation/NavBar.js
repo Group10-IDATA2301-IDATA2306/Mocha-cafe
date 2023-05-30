@@ -16,8 +16,8 @@ export function NavBar() {
 
   return (
     <div className="navbar-container">
-      <i class="fa fa-bars fa-4x" aria-hidden="true" id="bars-icon"></i>
-      <i class="fa fa-coffee fa-5x" aria-hidden="true" id="logo"></i>
+      <i className="fa fa-bars fa-4x" aria-hidden="true" id="bars-icon"></i>
+      <i className="fa fa-coffee fa-5x" aria-hidden="true" id="logo"></i>
       <ActiveLink to="/">
         <h4>HOME</h4>
       </ActiveLink>

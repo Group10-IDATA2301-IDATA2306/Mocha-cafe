@@ -6,7 +6,7 @@
 
   margin-bottom: 10rem;
   margin-top: 5rem;
-  /* height: 80vh; */
+
   text-align: center;
 }
 
@@ -14,14 +14,12 @@
   color: white;
 }
 
-carousel {
+.testimonial-container {
   display: flex;
   align-items: center;
   justify-content: space-around;
   min-height: 30rem;
-  /* gap: 1rem; */
 
-  /* height: 40rem; */
   flex-wrap: wrap;
   overflow: hidden;
 }
@@ -31,13 +29,7 @@ carousel {
     font-size: 2.7rem;
   }
 
-  carousel {
-    /* height: 40%; */
+  .testimonial-container {
     gap: 2rem;
-  }
-
-  item {
-    /* margin-left: 5rem;
-    margin-right: 5rem; */
   }
 }
