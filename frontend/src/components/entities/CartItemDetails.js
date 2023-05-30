@@ -6,15 +6,15 @@ import "./CartItemDetails.css"
 /**
  * A container with cart product image, title and quantity.
  * 
- * @param {*} props image src, title text and quantity initial value
+ * @param {*} item image src, title text and quantity initial value
  * @returns {JSX.Element} div with children
  */
-export function CartItemDetails(props) {
+export function CartItemDetails(item) {
     return (
         <div className="cartItemDetails">
-            <SmallProductImage src={props.src} alt={props.alt}></SmallProductImage>
-            <SmallProductTitle text={props.text}></SmallProductTitle>
-            <ProductQuantityInput value={props.value}></ProductQuantityInput>
+            <SmallProductImage src={item.src} alt={item.alt}></SmallProductImage>
+            <SmallProductTitle text={item.text}></SmallProductTitle>
+            <ProductQuantityInput quantity={item.quantity}></ProductQuantityInput>
         </div>
     );
 }

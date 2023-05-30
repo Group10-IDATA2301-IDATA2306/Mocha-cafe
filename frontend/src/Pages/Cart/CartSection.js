@@ -2,7 +2,8 @@ import { SmallDescription } from "../../components/text/SmallDescription";
 import { TotalFee } from "../../components/text/TotalFee";
 import { CartItemsWrapper } from "../../components/layout/CartItemsWrapper";
 import "./CartSection.css"
-import { HFlexContainer } from "../../components/layout/HFlexContainer";
+import { CartEngine } from "./CartEngine";
+import { CartProvider } from "../../context/CartContext";
 
 /**
  * Section for showing shopping cart items and addional fees, as well as the total fee.
@@ -16,7 +17,11 @@ import { HFlexContainer } from "../../components/layout/HFlexContainer";
 export function CartSection(props) {
     return (
         <section className="cartSection" id="bigScreenCartSection">
-            <CartItemsWrapper>{props.children}</CartItemsWrapper>
+            <CartItemsWrapper>
+                <CartProvider>
+                    <CartEngine></CartEngine>
+                </CartProvider>
+            </CartItemsWrapper>
             <SmallDescription text={props.priceDetails}></SmallDescription>
             <TotalFee text={props.totalFee}></TotalFee>
         </section>
