@@ -24,8 +24,8 @@ public class Order {
     /** Unique Id for Order. */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(unique = true, nullable = false, name = "order_id")
-    private long id;
+    @Column(nullable = false, updatable = false, name = "order_id")
+    private Long id;
 
     /** User entity of the Order. */
     @ManyToOne

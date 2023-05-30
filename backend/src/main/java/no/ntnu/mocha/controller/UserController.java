@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -28,6 +29,7 @@ public class UserController {
     @Autowired private JwtService jwtService;
 
 
+
     @PostMapping
     @Operation(
         summary = "Add a new user",
@@ -45,6 +47,17 @@ public class UserController {
     }
 
 
+    @GetMapping("/{username}")
+    @Operation(
+        summary = "Get user ID",
+        description = "Get the user ID of a given user by searching the username."
+    )
+    public ResponseEntity<?> getIdByUsername(@Parameter(description = "Username of the user.") @PathVariable String username) {
+        long id = service.getUserId(username);
+        return (id == -1) ? new ResponseEntity<>(HttpStatus.NOT_FOUND) : ResponseEntity.ok().body(id);
+    }
+
+
     @PutMapping("/{id}")
     @Operation(
         summary = "Update a user",
@@ -55,7 +68,7 @@ public class UserController {
         @Parameter(description = "Credentials of the given user.") @RequestBody UserDto dto) 
     {
 
-        if (service.validateUserAction(dto)) {
+        if (service.validateUserAction(id)) {
             service.updateUser(id, dto);
             return new ResponseEntity<>(HttpStatus.OK);
         } else {
@@ -70,11 +83,10 @@ public class UserController {
         description = "Delete a given user from the database."
     )
     public ResponseEntity<?> deleteUser(
-        @Parameter(description = "Id property of the given user.") @PathVariable long id, 
-        @Parameter(description = "Credentials of the given user.") @RequestBody UserDto dto) 
+        @Parameter(description = "Id property of the user to delete.") @PathVariable long id) 
     {
-        if (service.validateUserAction(dto)) {
-            return service.deleteUser(id, dto) ? 
+        if (service.validateUserAction(id)) {
+            return service.deleteUser(id) ? 
                 new ResponseEntity<>(HttpStatus.OK) : new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body("You are not authorized to modify this user.");
