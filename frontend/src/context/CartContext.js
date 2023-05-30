@@ -1,4 +1,5 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
+import axios from "axios";
 
 // creates a new context
 export const CartContext = createContext();
@@ -11,6 +12,26 @@ export const CartContext = createContext();
  */
 export const CartProvider = ({ children }) => {
     const [cartItems, setCartItems] = useState([]);
+
+    // fetches data once the component is mounted
+    useEffect(() => {
+        fetchData();
+    }, []);
+
+    // fetches product data using swagger api
+    const fetchData = async () => {
+        try {
+            const response = await axios.get('https://group10.web-tek.ninja:8080/products');
+            const products = response.data; // Assuming the response contains an array of products
+
+            // Loop through the fetched products and add them to the cart
+            products.forEach((product) => {
+                addToCart(product);
+            });
+        } catch (error) {
+            console.error(error);
+        }
+    };
 
     /**
      * Adds an item to the cart.
@@ -29,7 +50,7 @@ export const CartProvider = ({ children }) => {
             setCartItems((prevItems) => [...prevItems, { ...item, quantity: 1 }]);
         }
     };
- 
+
     /**
      * Removes an item from the cart.
      * 

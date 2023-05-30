@@ -137,7 +137,7 @@ h4 {
   }
 }
 
-@media (min-width: 360px) and (max-width: 500px) {
+@media (max-width: 500px) {
   .navbar-container {
     display: grid;
     grid-template-columns: 1fr 2rem 1fr;
