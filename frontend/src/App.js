@@ -24,6 +24,7 @@ export function App() {
       console.log("Loading products...");
       asyncApiRequest("GET", "/products").then(function (loadProducts) {
         console.log("Products received");
+        console.log(products);
         setProducts(loadProducts);
       });
     }

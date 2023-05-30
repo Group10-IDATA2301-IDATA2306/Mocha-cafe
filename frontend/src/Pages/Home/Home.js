@@ -4,7 +4,7 @@ import { Carousel } from "../../components/Testimonials/Carousel";
 import { Location } from "../../components/Location/Location";
 import "./Home.css";
 
-export function Home() {
+export function Home(props) {
   return (
     <>
       <HeroSection />

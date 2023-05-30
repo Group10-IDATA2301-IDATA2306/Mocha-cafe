@@ -1,8 +1,9 @@
 .product-section {
   display: grid;
-  grid-template-rows: 10% 1fr;
+  grid-template-rows: 8% 1fr;
   align-items: center;
   padding-top: 3rem;
+  padding-bottom: 3rem;
 
   background-color: #f7f7f7;
 }
