@@ -28,6 +28,7 @@ export function CartEngine() {
                         text={cartItem.name}
                         price={(cartItem.price * cartItem.quantity) + ",-"}
                         quantity={cartItem.quantity}
+                        item={cartItem}
                     />
                 ))
             ) : (
