@@ -1,12 +1,10 @@
 package no.ntnu.mocha.DTO;
 
-import java.time.LocalDate;
-
 public class OrderDto {
     
-    private long userId;
-    private String date;
+    private String orderDate;
+    private Long userId;
 
-    public long getUserId() { return userId; }
-    public LocalDate getDate() { return LocalDate.parse(date); }
+    public Long getUserId() { return userId; }
+    public String getDate() { return orderDate; }
 }

@@ -1,5 +1,6 @@
 package no.ntnu.mocha.service.endpoints;
 
+import java.time.LocalDate;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,12 +70,15 @@ import no.ntnu.mocha.domain.repository.UserRepository;
      * @param dto the dto representing the review.
      */
     public void updateReview(long id, ReviewDto dto) {
+        String[] parts = dto.getDate().split("-");
+        LocalDate date = LocalDate.of(Integer.parseInt(parts[0]), Integer.parseInt(parts[1]), Integer.parseInt(parts[2]));
+
         reviewRepository.updateReview(
             id, 
             dto.getUserId(), 
             dto.getProductId(), 
             dto.getComment(), 
-            dto.getDate(), 
+            date, 
             dto.getStars()
         );
     }

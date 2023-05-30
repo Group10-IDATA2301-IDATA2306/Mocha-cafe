@@ -35,6 +35,6 @@ public interface OrderRepository extends CrudRepository<Order, Long> {
     
     @Transactional
     @Modifying
-    @Query(value = "update order o set o.date = ?2 where o.order_id = ?1", nativeQuery = true)
+    @Query(value = "update product_order o set o.order_date = ?2 where o.order_id = ?1", nativeQuery = true)
     void update(long id, LocalDate date);
 }

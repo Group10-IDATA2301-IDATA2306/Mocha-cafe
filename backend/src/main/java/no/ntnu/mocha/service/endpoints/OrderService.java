@@ -1,14 +1,18 @@
 package no.ntnu.mocha.service.endpoints;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import no.ntnu.mocha.DTO.OrderDto;
 import no.ntnu.mocha.domain.entities.Order;
+import no.ntnu.mocha.domain.entities.User;
 import no.ntnu.mocha.domain.repository.OrderRepository;
+import no.ntnu.mocha.domain.repository.UserRepository;
 
 /**
  * <h1>Business Logic Service class for Order </h1>
@@ -22,6 +26,7 @@ import no.ntnu.mocha.domain.repository.OrderRepository;
 @Service public class OrderService {
 
     @Autowired private OrderRepository orderRepository;
+    @Autowired private UserRepository userRepository;
 
 
 
@@ -49,6 +54,18 @@ import no.ntnu.mocha.domain.repository.OrderRepository;
     }
 
 
+    /**
+     * Creates a new order and adds it to the database.
+     * 
+     * @param dto the dto representing the order.
+     * @return the new order or null if error occured.
+     */
+    public Order createOrder(OrderDto dto) {
+        Optional<User> user = userRepository.findById(dto.getUserId());
+        return (user.isPresent()) ? orderRepository.save(new Order(user.get())) : null;
+    }
+
+    
     /**
      * Returns a list of all orders by a user.
      * 
@@ -86,10 +103,11 @@ import no.ntnu.mocha.domain.repository.OrderRepository;
      * Updates the order with the given id.
      * 
      * @param id    the id of the order to be updated.
-     * @param order the {@code order} to be updated.
+     * @param date  the new date of the order.
      */
-    public void update(long id, OrderDto dto) {
-        this.orderRepository.update(id, dto.getDate());
+    public void update(long id, String date) {
+        LocalDate localDate = LocalDate.parse(date);
+        this.orderRepository.update(id, localDate);
     }
 
     
