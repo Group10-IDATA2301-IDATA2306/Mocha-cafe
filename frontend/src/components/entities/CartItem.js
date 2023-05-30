@@ -12,7 +12,7 @@ import "./CartItem.css"
 export function CartItem(props) {
     return (
         <div className="cartItem">
-            <CartItemDetails src={props.src} alt={props.alt} text={props.text} quantity={props.quantity} price={props.price}></CartItemDetails>
+            <CartItemDetails src={props.src} alt={props.alt} text={props.text} item={props.item} price={props.price}></CartItemDetails>
             <SmallPriceSpan text={props.price}></SmallPriceSpan>
             <RemoveCartProductButton item={props.item}></RemoveCartProductButton>
         </div>

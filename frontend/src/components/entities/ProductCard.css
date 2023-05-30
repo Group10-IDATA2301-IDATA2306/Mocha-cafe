@@ -1,0 +1,9 @@
+.productCard {
+    display: flex;
+    flex-direction: column;
+}
+
+.productCardLink {
+    display: flex;
+    flex-direction: column;
+}

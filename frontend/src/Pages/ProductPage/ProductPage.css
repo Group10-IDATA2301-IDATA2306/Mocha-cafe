@@ -1,5 +1,6 @@
-.product_body {
-  background-color: #fff;
+/* Styling for the product page */
+.productPage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
-
-/* PRODUCT CARD */
