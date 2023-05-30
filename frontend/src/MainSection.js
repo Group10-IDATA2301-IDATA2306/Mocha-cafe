@@ -9,6 +9,7 @@ import { Login } from "./Pages/Login/Login";
 import { Signup } from "./Pages/Login/Signup";
 import { AdminPage } from "./Pages/AdminPage/AdminPage";
 import { ProfilePage } from "./Pages/ProfilePage/ProfilePage";
+import { LogOut } from "./Pages/Login/LogOut";
 
 export function MainSection(props) {
   const username = props.user ? props.user.username : null;
@@ -25,6 +26,7 @@ export function MainSection(props) {
         <Route path="/profile" element={<ProfilePage username={username} />} />
         <Route path="/login" element={<Login setUser={props.setUser} />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/logout" element={<LogOut />} />
         <Route path="/contact" element={<About />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/contact" element={<Contact />} />

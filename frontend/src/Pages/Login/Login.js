@@ -20,6 +20,7 @@ export function Login(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
 
   /**
@@ -30,12 +31,9 @@ export function Login(props) {
   function submitForm(event) {
     event.preventDefault(); // Prevent default form submission
     console.log("Submitting form");
-    sendAuthenticationRequest(
-      username,
-      password,
-      onLoginSuccess,
-      (errorMessage) => setError(errorMessage)
-    );
+    sendAuthenticationRequest(username, password)
+      .then(onLoginSuccess)
+      .catch((error) => setError(error.errorMessage));
   }
 
   /**
@@ -44,8 +42,8 @@ export function Login(props) {
    * @param {Object} userData - User data received after successful login
    */
   function onLoginSuccess(userData) {
-    console.log("Login successfull", userData);
     props.setUser(userData);
+    setIsLoggedIn(true);
     navigate("/");
   }
 
