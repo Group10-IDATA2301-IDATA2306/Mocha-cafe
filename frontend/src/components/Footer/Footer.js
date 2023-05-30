@@ -65,9 +65,9 @@ export function Footer() {
       </Accordion>
 
       <div id="footer-icons">
-        <i class="fa fa-facebook fa-5x" aria-hidden="true"></i>
-        <i class="fa fa-instagram fa-5x" aria-hidden="true"></i>
-        <i class="fa fa-twitter fa-5x" aria-hidden="true"></i>
+        <i className="fa fa-facebook fa-5x" aria-hidden="true"></i>
+        <i className="fa fa-instagram fa-5x" aria-hidden="true"></i>
+        <i className="fa fa-twitter fa-5x" aria-hidden="true"></i>
       </div>
     </footer>
   );

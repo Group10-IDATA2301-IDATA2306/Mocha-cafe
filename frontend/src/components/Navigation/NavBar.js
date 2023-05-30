@@ -32,12 +32,12 @@ export function NavBar() {
       </ActiveLink>
       <div className="user-cart-container">
         <ActiveLink to="/login">
-          <i class="fa fa-user fa-5x" aria-hidden="true" id="user-icon"></i>
+          <i className="fa fa-user fa-5x" aria-hidden="true" id="user-icon"></i>
         </ActiveLink>
-        <div class="cart-container">
+        <div className="cart-container">
           <ActiveLink to="/cart">
             <i
-              class="fa fa-shopping-cart fa-5x"
+              className="fa fa-shopping-cart fa-5x"
               aria-hidden="true"
               id="cart-icon"
             ></i>

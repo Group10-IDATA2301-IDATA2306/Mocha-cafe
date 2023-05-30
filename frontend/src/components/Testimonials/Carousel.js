@@ -9,7 +9,7 @@ import testimonails from "../../assets/testimonials.json";
  */
 export function Carousel() {
   return (
-    <div class="testimonial-section">
+    <div className="testimonial-section">
       <h2>What our customers say</h2>
       <div className="testimonial-container">
         <TestimonialCard testimonialInfo={testimonails[0]} />

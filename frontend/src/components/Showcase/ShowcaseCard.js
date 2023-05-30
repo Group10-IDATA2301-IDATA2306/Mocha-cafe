@@ -19,13 +19,13 @@ export function ShowcaseCard({ props }) {
       />
       <div className="card-overlay"></div>
       <div className="card-info">
-        <div class="card-stats">
+        <div className="card-stats">
           <h3>{props.name}</h3>
         </div>
         <p>{props.description}</p>
         <h4>{props.price}kr</h4>
         <div className="button-container">
-          <Button variant="contained">View Product</Button>
+          <Button variant="contained">Buy</Button>
         </div>
       </div>
     </div>
