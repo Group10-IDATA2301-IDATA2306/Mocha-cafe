@@ -7,8 +7,10 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -36,6 +38,17 @@ public class OrderController {
     }
 
 
+    @PostMapping
+    @Operation(
+        summary = "Create new order",
+        description = "Create a new order entity."
+    )
+    public ResponseEntity<?> addOrder(@Parameter(description = "DTO representing an order entity.") @RequestBody OrderDto dto) 
+    {
+        return (service.createOrder(dto) != null) ? new ResponseEntity<>(HttpStatus.CREATED) : new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+
     @GetMapping("/user/{id}")
     @Operation(
         summary = "Get all users orders",
@@ -53,9 +66,9 @@ public class OrderController {
     )
     public ResponseEntity<?> updateOrder(
         @Parameter(description = "ID of the order.") @PathVariable long id, 
-        @Parameter(description = "DTO representing an order entity.") @RequestBody OrderDto dto) 
+        @Parameter(description = "New date of the order.") @RequestParam String date) 
     {
-        service.update(id, dto);
+        service.update(id, date);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

@@ -7,13 +7,11 @@ import "./HeroSection.css";
  */
 export function HeroSection() {
   return (
-    <hero-section>
-      <div>
-        <content>
-          <main-title>Try our new exciting flavors</main-title>
-          <button>Find out more</button>
-        </content>
+    <div className="hero-section-container">
+      <div className="hero-section-content">
+        <h1>Try our new exciting flavors</h1>
+        <button className="hero-section-button">Find out more</button>
       </div>
-    </hero-section>
+    </div>
   );
 }

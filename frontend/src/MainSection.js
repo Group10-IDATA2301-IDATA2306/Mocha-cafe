@@ -17,7 +17,10 @@ export function MainSection(props) {
     <main>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/products" element={<ProductPage />} />
+        <Route
+          path="/products"
+          element={<ProductPage products={props.products} />}
+        />
         <Route path="/admin" element={<AdminPage />} />
         <Route path="/profile" element={<ProfilePage username={username} />} />
         <Route path="/login" element={<Login setUser={props.setUser} />} />

@@ -40,7 +40,7 @@ public class Order {
     /**
      * Empty constructor.
      */
-    public Order(){}
+    public Order() {}
 
 
     /**
