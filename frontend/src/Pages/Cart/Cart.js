@@ -1,8 +1,4 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-import productImg1 from "../../assets/img/Product 1.png"
-import productImg2 from "../../assets/img/Product 2.png"
-import { CartItem } from "../../components/entities/CartItem"
 import { CartSection } from './CartSection';
 import { CartForm } from '../../components/forms/CartForm';
 import './Cart.css';

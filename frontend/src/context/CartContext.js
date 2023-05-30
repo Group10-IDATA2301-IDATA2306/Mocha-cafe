@@ -10,7 +10,7 @@ export const CartContext = createContext();
  * @param children the children of the context
  * @returns the cart context with its children
  */
-export const CartProvider = ({ children }) => {
+export const CartProvider = (props) => {
     const [cartItems, setCartItems] = useState([]);
 
     // fetches data once the component is mounted
@@ -69,7 +69,7 @@ export const CartProvider = ({ children }) => {
 
     return (
         <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, clearCart }}>
-            {children}
+            {props.children}
         </CartContext.Provider>
     );
 };

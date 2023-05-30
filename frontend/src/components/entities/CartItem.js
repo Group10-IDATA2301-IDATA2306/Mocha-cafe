@@ -15,7 +15,7 @@ export function CartItem(item) {
         <div className="cartItem">
             <CartItemDetails src={item.src} alt={item.alt} text={item.text} quantity={item.quantity} price={item.price}></CartItemDetails>
             <SmallPriceSpan text={item.price}></SmallPriceSpan>
-            <RemoveCartProductButton id={item.id}></RemoveCartProductButton>
+            <RemoveCartProductButton></RemoveCartProductButton>
         </div>
     );
 }
