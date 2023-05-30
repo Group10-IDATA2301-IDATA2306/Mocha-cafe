@@ -12,7 +12,7 @@
   border-radius: 5rem;
 }
 
-card {
+.card-container {
   display: grid;
   grid-template-rows: 1fr 1fr;
   justify-content: center;
@@ -33,7 +33,7 @@ card {
   cursor: pointer;
 }
 
-card:hover {
+.card-container:hover {
   transform: translateY(2rem);
 }
 
@@ -87,7 +87,7 @@ card:hover {
   z-index: 5;
 }
 
-overlay {
+.card-overlay {
   height: auto;
   width: auto;
   z-index: 3;
@@ -105,7 +105,7 @@ overlay {
     width: 28rem;
   }
 
-  overlay {
+  .card-overlay {
     grid-row: 1;
     grid-column: 1;
     z-index: 3;

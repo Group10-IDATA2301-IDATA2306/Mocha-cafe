@@ -19,14 +19,14 @@ const jsonTestData = {
  */
 export function Showcase() {
   return (
-    <container className="product-section">
+    <div className="product-section">
       <h2>New Releases</h2>
-      <container className="product-container">
+      <div className="product-container">
         <ShowcaseCard props={jsonTestData} />
         <ShowcaseCard props={jsonTestData} />
         <ShowcaseCard props={jsonTestData} />
         <ShowcaseCard props={jsonTestData} />
-      </container>
-    </container>
+      </div>
+    </div>
   );
 }

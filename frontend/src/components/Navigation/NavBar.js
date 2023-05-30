@@ -17,7 +17,7 @@ export function NavBar() {
   return (
     <nav>
       <i class="fa fa-bars fa-4x" aria-hidden="true" id="bars-icon"></i>
-      <logo class="fa fa-coffee fa-5x" aria-hidden="true" id="logo"></logo>
+      <i class="fa fa-coffee fa-5x" aria-hidden="true" id="logo"></i>
       <ActiveLink to="/">
         <h4>HOME</h4>
       </ActiveLink>

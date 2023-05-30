@@ -9,20 +9,20 @@ import "./ShowcaseCard.css";
  */
 export function ShowcaseCard({ props }) {
   return (
-    <card>
+    <div className="card-container">
       <img
         className="product-image"
         src={require("../../assets/img/" + props.id + ".png")}
         alt="product"
       />
-      <overlay></overlay>
-      <container className="card-info">
+      <div className="card-overlay"></div>
+      <div className="card-info">
         <container class="card-stats">
           <h3>{props.name}</h3>
         </container>
         <p>{props.description}</p>
         <h4>{props.price}kr</h4>
-      </container>
-    </card>
+      </div>
+    </div>
   );
 }
