@@ -9,7 +9,7 @@ axios.defaults.headers.post["Content-Type"] = "application/json";
 
 // Import the REST API BASE URL from the environment variable
 // const SERVER_URL = "process.env.REACT_APP_BASE_URL";
-const SERVER_URL = "https://group10.web-tek.ninja:8080";
+const SERVER_URL = "http://group10.web-tek.ninja";
 
 /**
  * Send and asynchronous request to the remote API.
