@@ -25,7 +25,7 @@ export function ShowcaseCard({ props }) {
         <p>{props.description}</p>
         <h4>{props.price}kr</h4>
         <div className="button-container">
-          <Button variant="contained">Buy</Button>
+          <Button variant="contained">Add to cart</Button>
         </div>
       </div>
     </div>

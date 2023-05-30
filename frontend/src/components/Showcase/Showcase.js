@@ -3,7 +3,7 @@ import { ShowcaseCard } from "./ShowcaseCard";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-const jsonTestData = {
+const jsonTestshowcaseData = {
   id: "2",
   name: "Black Coffe",
   price: "122",
@@ -18,14 +18,34 @@ const jsonTestData = {
  * @constructor
  */
 export function Showcase() {
+  // const [showcaseData, setshowcaseData] = useState([]);
+
+  // // fetches showcaseData once the component is mounted
+  // useEffect(() => {
+  //   fetchshowcaseData();
+  // }, []);
+
+  // // fetches product showcaseData using swagger api
+  // const fetchshowcaseData = async () => {
+  //   try {
+  //     const response = await axios.get(
+  //       "https://group10.web-tek.ninja:8080/products/order?order=popularity"
+  //     );
+  //     setshowcaseData(response.showcaseData);
+  //     console.log(response.showcaseData);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
+
   return (
     <div className="product-section">
-      <h2>New Releases</h2>
+      <h2>Popular Releases</h2>
       <div className="product-container">
-        <ShowcaseCard props={jsonTestData} />
-        <ShowcaseCard props={jsonTestData} />
-        <ShowcaseCard props={jsonTestData} />
-        <ShowcaseCard props={jsonTestData} />
+        <ShowcaseCard props={jsonTestshowcaseData} />
+        {/* <ShowcaseCard props={showcaseData[0]} />
+        <ShowcaseCard props={showcaseData[1]} />
+        <ShowcaseCard props={showcaseData[2]} /> */}
       </div>
     </div>
   );
