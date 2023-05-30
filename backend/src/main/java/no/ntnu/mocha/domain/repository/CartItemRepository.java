@@ -44,7 +44,7 @@ public interface CartItemRepository extends CrudRepository<CartItem, Long> {
      */
     @Transactional
     @Modifying
-    @Query(value = "delete * from cart_item c where c.order_id = ?1", nativeQuery = true)
+    @Query(value = "delete from cart_item where order_id = ?1", nativeQuery = true)
     void deleteAllCartItemByOrderId(long id);
 
     @Query(value = "select * from cart_item c where c.order_id = ?1", nativeQuery = true)

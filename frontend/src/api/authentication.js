@@ -3,7 +3,6 @@
 // Imports
 import { deleteCookie, getCookie, setCookie } from "./cookies";
 import { asyncApiRequest } from "./HttpInterface";
-import cookie from "react-cookies";
 
 /**
  * Retrieves the currently authenticated user. It checks for the

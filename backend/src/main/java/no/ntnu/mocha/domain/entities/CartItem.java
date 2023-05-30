@@ -8,7 +8,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 
@@ -25,12 +24,12 @@ public class CartItem {
 
     /** Primary key. */
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cart_item_id")
     private long id;
 
     /** The Order which the Cart Item belongs to. */
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "order_id")
     private Order order;
 

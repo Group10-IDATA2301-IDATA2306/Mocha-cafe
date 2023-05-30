@@ -18,9 +18,7 @@ export function CartSection(props) {
     return (
         <section className="cartSection" id="bigScreenCartSection">
             <CartItemsWrapper>
-                <CartProvider>
-                    <CartEngine></CartEngine>
-                </CartProvider>
+                <CartEngine></CartEngine>
             </CartItemsWrapper>
             <SmallDescription text={props.priceDetails}></SmallDescription>
             <TotalFee text={props.totalFee}></TotalFee>

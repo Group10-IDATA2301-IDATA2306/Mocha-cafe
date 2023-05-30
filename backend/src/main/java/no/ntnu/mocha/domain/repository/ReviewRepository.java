@@ -28,6 +28,6 @@ public interface ReviewRepository extends CrudRepository<Review, Long> {
 
     @Transactional
     @Modifying
-    @Query(value = "update review r set r.user_id = ?2, r.product_id = ?3, r.review_comment = ?4, r.stars = ?5, r.review_date = ?6 where r.review_id = ?1", nativeQuery = true)
+    @Query(value = "update review r set r.user_id = ?2, r.product_id = ?3, r.review_comment = ?4, r.stars = ?6, r.review_date = ?5 where r.review_id = ?1", nativeQuery = true)
     void updateReview(long id, long uId, long pId, String comment, LocalDate date, int stars);
 }

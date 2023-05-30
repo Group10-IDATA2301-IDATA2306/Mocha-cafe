@@ -6,20 +6,15 @@ import "./RemoveCartProductButton.css"
  * 
  * @returns {JSX.Element} button removing cart product
  */
-export function RemoveCartProductButton(item) {
+export function RemoveCartProductButton(props) {
     const { removeFromCart } = useContext(CartContext);
 
-    /**
-     * Function for removing item from the cart.
-     */
-    const handleRemoveFromCart = () => {
-        removeFromCart(item);
+    const handleRemove = () => {
+        removeFromCart(props.item);
     };
 
     return (
-        <button
-            className="removeCartProductButton"
-            onClick={handleRemoveFromCart}>
+        <button className="removeCartProductButton" onClick={handleRemove}>
             X
         </button>
     );
