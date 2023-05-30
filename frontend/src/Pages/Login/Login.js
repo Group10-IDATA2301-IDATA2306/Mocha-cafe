@@ -76,11 +76,30 @@ export function Login(props) {
     />
   );
 
+  /** The login icon which is going to be in the login button */
+  const LOGIN_ICON = (
+    <FontAwesomeIcon icon={faRightToBracket} style={{ color: "#ffffff" }} />
+  );
+
   /** Log in button with the given login icon */
   const LOGIN_BUTTON = (
     <Button id="login-btn" variant="contained" onClick={submitForm}>
       Login &nbsp; {LOGIN_ICON}
     </Button>
+  );
+
+  /** Signup icon which is going to be at the create account button */
+  const SIGNUP_ICON = (
+    <FontAwesomeIcon icon={faUser} style={{ color: "#ffffff" }} />
+  );
+
+  /** Signup button consisting of the signup icon */
+  const SIGNUP_BUTTON = (
+    <ActiveLink to="/signup">
+      <Button id="signup-btn" variant="contained">
+        Create Account &nbsp; {SIGNUP_ICON}
+      </Button>
+    </ActiveLink>
   );
 
   /** The login page output */
@@ -108,22 +127,3 @@ export function Login(props) {
     </div>
   );
 }
-
-/** The login icon which is going to be in the login button */
-const LOGIN_ICON = (
-  <FontAwesomeIcon icon={faRightToBracket} style={{ color: "#ffffff" }} />
-);
-
-/** Signup icon which is going to be at the create account button */
-const SIGNUP_ICON = (
-  <FontAwesomeIcon icon={faUser} style={{ color: "#ffffff" }} />
-);
-
-/** Signup button consisting of the signup icon */
-const SIGNUP_BUTTON = (
-  <ActiveLink to="/signup">
-    <Button id="signup-btn" variant="contained">
-      Create Account &nbsp; {SIGNUP_ICON}
-    </Button>
-  </ActiveLink>
-);
