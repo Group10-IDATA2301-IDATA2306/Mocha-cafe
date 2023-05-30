@@ -15,7 +15,7 @@ export function NavBar() {
   useEffect(loadItemsInCart);
 
   return (
-    <nav>
+    <div className="navbar-container">
       <i class="fa fa-bars fa-4x" aria-hidden="true" id="bars-icon"></i>
       <i class="fa fa-coffee fa-5x" aria-hidden="true" id="logo"></i>
       <ActiveLink to="/">
@@ -30,11 +30,11 @@ export function NavBar() {
       <ActiveLink to="/contact">
         <h4>CONTACT</h4>
       </ActiveLink>
-      <container className="user-cart-container">
+      <div className="user-cart-container">
         <ActiveLink to="/login">
           <i class="fa fa-user fa-5x" aria-hidden="true" id="user-icon"></i>
         </ActiveLink>
-        <container class="cart-container">
+        <div class="cart-container">
           <ActiveLink to="/cart">
             <i
               class="fa fa-shopping-cart fa-5x"
@@ -42,10 +42,10 @@ export function NavBar() {
               id="cart-icon"
             ></i>
           </ActiveLink>
-          <counter>{itemsInCart}</counter>
-        </container>
-      </container>
-    </nav>
+          <div className="item-counter">{itemsInCart}</div>
+        </div>
+      </div>
+    </div>
   );
 
   /**
