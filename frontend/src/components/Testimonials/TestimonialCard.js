@@ -14,7 +14,7 @@ export function TestimonialCard({ testimonialInfo }) {
       <img
         src={require("../../assets/img/" + testimonialInfo.name + ".jpg")}
         alt="A customer"
-        class="testimonial-portrait"
+        className="testimonial-portrait"
       />
       <h3>{testimonialInfo.name}</h3>
     </div>
