@@ -1,4 +1,4 @@
-nav {
+.navbar-container {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -18,17 +18,17 @@ nav {
   gap: 3rem;
 }
 
-nav > a {
+.navbar-container > a {
   text-decoration: none;
   color: rgb(24, 24, 24);
 }
 
-nav > i,
+.navbar-container > i,
 h4 {
   transition: all 0.5s ease 0s;
 }
 
-nav > h4:hover {
+.navbar-container > h4:hover {
   color: #087f5b;
   cursor: pointer;
   text-shadow: 0px 5px 5px rgba(46, 229, 157, 0.4);
@@ -58,7 +58,7 @@ nav > h4:hover {
   transition: all 0.5s ease 0s;
 }
 
-counter {
+.item-counter {
   position: absolute;
   grid-column: 1;
   grid-row: 1;
@@ -98,7 +98,7 @@ counter {
 }
 
 @media (min-width: 500px) and (max-width: 700px) {
-  nav {
+  .navbar-container {
     display: grid;
     grid-template-columns: 1fr 3rem 1fr;
     grid-template-rows: 7rem;
@@ -132,13 +132,13 @@ counter {
     gap: 3rem;
   }
 
-  nav > a {
+  .navbar-container > a {
     display: none;
   }
 }
 
 @media (min-width: 360px) and (max-width: 500px) {
-  nav {
+  .navbar-container {
     display: grid;
     grid-template-columns: 1fr 2rem 1fr;
     grid-template-rows: 7rem;
@@ -184,7 +184,7 @@ counter {
     grid-row: 1;
   }
 
-  nav > a {
+  .navbar-container > a {
     display: none;
   }
 }

@@ -102,7 +102,7 @@
 }
 
 @media (min-width: 360px) and (max-width: 600px) {
-  card {
+  .card-container {
     height: 46rem;
     width: 28rem;
   }
