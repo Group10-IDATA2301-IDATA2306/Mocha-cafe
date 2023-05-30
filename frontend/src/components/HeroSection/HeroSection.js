@@ -8,12 +8,10 @@ import "./HeroSection.css";
 export function HeroSection() {
   return (
     <hero-section>
-      <div>
-        <content>
-          <main-title>Try our new exciting flavors</main-title>
-          <button>Find out more</button>
-        </content>
-      </div>
+      <content>
+        <main-title>Try our new exciting flavors</main-title>
+        <button className="hero-section-button">Find out more</button>
+      </content>
     </hero-section>
   );
 }

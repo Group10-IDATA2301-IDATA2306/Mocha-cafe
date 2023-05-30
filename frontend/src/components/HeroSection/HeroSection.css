@@ -10,7 +10,7 @@ hero-section {
   background-image: url("/src/assets/img/Coffe_7000_x_4000-no-bg.png");
 }
 
-.button {
+.hero-section-button {
   width: 20rem;
   padding: 1.3em 3em;
 
