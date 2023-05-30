@@ -1,4 +1,6 @@
 import "./ShowcaseCard.css";
+import * as React from "react";
+import Button from "@mui/material/Button";
 
 /**
  * A showcase of products
@@ -9,20 +11,23 @@ import "./ShowcaseCard.css";
  */
 export function ShowcaseCard({ props }) {
   return (
-    <card>
+    <div className="card-container">
       <img
         className="product-image"
         src={require("../../assets/img/" + props.id + ".png")}
         alt="product"
       />
-      <overlay></overlay>
-      <container className="card-info">
-        <container class="card-stats">
+      <div className="card-overlay"></div>
+      <div className="card-info">
+        <div className="card-stats">
           <h3>{props.name}</h3>
-        </container>
+        </div>
         <p>{props.description}</p>
         <h4>{props.price}kr</h4>
-      </container>
-    </card>
+        <div className="button-container">
+          <Button variant="contained">Buy</Button>
+        </div>
+      </div>
+    </div>
   );
 }

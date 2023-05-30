@@ -1,3 +1,5 @@
+/** Showcase Card */
+
 .product-container {
   display: flex;
   justify-content: space-around;
@@ -12,7 +14,7 @@
   border-radius: 5rem;
 }
 
-card {
+.card-container {
   display: grid;
   grid-template-rows: 1fr 1fr;
   justify-content: center;
@@ -33,7 +35,7 @@ card {
   cursor: pointer;
 }
 
-card:hover {
+.card-container:hover {
   transform: translateY(2rem);
 }
 
@@ -87,7 +89,7 @@ card:hover {
   z-index: 5;
 }
 
-overlay {
+.card-overlay {
   height: auto;
   width: auto;
   z-index: 3;
@@ -100,12 +102,12 @@ overlay {
 }
 
 @media (min-width: 360px) and (max-width: 600px) {
-  card {
+  .card-container {
     height: 46rem;
     width: 28rem;
   }
 
-  overlay {
+  .card-overlay {
     grid-row: 1;
     grid-column: 1;
     z-index: 3;
@@ -127,4 +129,18 @@ overlay {
     width: 28rem;
     height: 18rem;
   }
+}
+
+/* View Product Button */
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: auto;
+}
+
+.button-container Button {
+  font-size: 1rem;
+  padding: 1rem 9rem;
 }

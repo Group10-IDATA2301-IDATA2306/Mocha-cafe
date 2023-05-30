@@ -8,15 +8,15 @@ import "./TestimonialCard.css";
  */
 export function TestimonialCard({ testimonialInfo }) {
   return (
-    <item>
+    <div className="testimonial-card">
       <Rating />
       <p>{testimonialInfo.comment}</p>
       <img
         src={require("../../assets/img/" + testimonialInfo.name + ".jpg")}
         alt="A customer"
-        class="testimonial-portrait"
+        className="testimonial-portrait"
       />
       <h3>{testimonialInfo.name}</h3>
-    </item>
+    </div>
   );
 }

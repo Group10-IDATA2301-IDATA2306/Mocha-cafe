@@ -1,4 +1,4 @@
-hero-section {
+.hero-section-container {
   display: grid;
   height: 78rem;
   grid-template-columns: 50% 1fr;
@@ -30,18 +30,18 @@ hero-section {
   outline: none;
 }
 
-.button:hover {
+.hero-section-button:hover {
   background-color: #23c483;
   color: #fff;
   box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
   transform: translateY(-7px);
 }
 
-.button:active {
+.hero-section-button:active {
   transform: translateY(-1px);
 }
 
-.content {
+.hero-section-content {
   display: flex;
   flex-direction: column;
   z-index: 1;
@@ -53,7 +53,7 @@ hero-section {
   gap: 4rem;
 }
 
-main-title {
+.hero-section-content > h1 {
   z-index: 3;
   width: inherit;
   grid-column: 1;
@@ -66,65 +66,65 @@ main-title {
 
 /* Computer screens */
 @media (min-width: 1400px) and (max-width: 1600px) {
-  hero-section {
+  .hero-section-container {
     height: 75rem;
   }
-  content {
+  .hero-section-content {
     width: 60rem;
     height: 20rem;
   }
-  main-title {
+  .hero-section-content > h1 {
     font-size: 8rem;
   }
 }
 
 /* Computer screens */
 @media (min-width: 1280px) and (max-width: 1400px) {
-  hero-section {
+  .hero-section-container {
     height: 70rem;
   }
-  content {
-    width: 55rem;
+  .hero-section-content {
+    width: 51rem;
     height: 20rem;
     text-align: left;
   }
-  main-title {
+  .hero-section-content > h1 {
     font-size: 7rem;
   }
 }
 
 /* TBD */
 @media (min-width: 1080px) and (max-width: 1280px) {
-  hero-section {
+  .hero-section-container {
     height: 65rem;
     background-position: center right;
   }
-  content {
-    width: 40rem;
+  .hero-section-content {
+    width: 37rem;
     height: 10rem;
     text-align: left;
   }
-  main-title {
+  .hero-section-content > h1 {
     font-size: 5rem;
   }
 }
 
 /* TBD */
 @media (min-width: 700px) and (max-width: 1080px) {
-  hero-section {
+  .hero-section-container {
     height: 60rem;
   }
-  content {
-    width: 30rem;
+  .hero-section-content {
+    width: 29rem;
     height: 8rem;
     text-align: left;
   }
 
-  main-title {
+  .hero-section-content > h1 {
     font-size: 4rem;
   }
 
-  .button {
+  .hero-section-container-button {
     height: 4rem;
     width: 20rem;
     text-align: center;
@@ -133,7 +133,7 @@ main-title {
 
 /* Mobile devices */
 @media (min-width: 400px) and (max-width: 700px) {
-  hero-section {
+  .hero-section-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -143,7 +143,7 @@ main-title {
     background-size: cover;
     background-position: center center;
   }
-  content {
+  .hero-section-content {
     width: 30rem;
     height: 18rem;
     text-align: left;
@@ -154,12 +154,12 @@ main-title {
     margin-left: 0;
   }
 
-  main-title {
+  .hero-section-content > h1 {
     font-size: 4rem;
     text-align: center;
   }
 
-  .button {
+  .hero-section-container-button {
     width: 18rem;
     height: 4.2rem;
     font-size: 1rem;
@@ -168,7 +168,7 @@ main-title {
 
 /* Mobile devices */
 @media (min-width: 300px) and (max-width: 400px) {
-  hero-section {
+  .hero-section-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -178,7 +178,7 @@ main-title {
     background-size: cover;
     background-position: center center;
   }
-  content {
+  .hero-section-content {
     width: 20rem;
     height: 12rem;
 
@@ -189,11 +189,11 @@ main-title {
     gap: 2rem;
     margin-left: 0;
   }
-  main-title {
+  .hero-section-content > h1 {
     font-size: 2.5rem;
     text-align: center;
   }
-  .button {
+  .hero-section-container-button {
     width: 13rem;
     height: 3rem;
     font-size: 0.7rem;

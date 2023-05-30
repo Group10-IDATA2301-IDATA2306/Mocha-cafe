@@ -7,15 +7,15 @@ import { FlexDummy } from "./FlexDummy";
 /**
  * Component representing an item in the shopping cart.
  * 
- * @param {*} props the properties of the item
+ * @param {*} item the properties of the item
  * @returns {JSX.Element} a container with all its children
  */
-export function CartItem(props) {
+export function CartItem(item) {
     return (
         <div className="cartItem">
-            <CartItemDetails src={props.src} alt={props.alt} text={props.text} value={props.value} price={props.price}></CartItemDetails>
-            <SmallPriceSpan text={props.price}></SmallPriceSpan>
-            <RemoveCartProductButton></RemoveCartProductButton>
+            <CartItemDetails src={item.src} alt={item.alt} text={item.text} quantity={item.quantity} price={item.price}></CartItemDetails>
+            <SmallPriceSpan text={item.price}></SmallPriceSpan>
+            <RemoveCartProductButton id={item.id}></RemoveCartProductButton>
         </div>
     );
 }

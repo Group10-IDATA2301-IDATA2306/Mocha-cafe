@@ -2,6 +2,7 @@ import { NavBar } from "./components/Navigation/NavBar";
 import { Footer } from "./components/Footer/Footer";
 import { BrowserRouter as Router } from "react-router-dom";
 import { MainSection } from "./MainSection";
+import { CartProvider } from "./context/CartContext";
 import { useState } from "react";
 import { useEffect } from "react";
 import { asyncApiRequest } from "./api/HttpInterface";
@@ -24,6 +25,7 @@ export function App() {
       console.log("Loading products...");
       asyncApiRequest("GET", "/products").then(function (loadProducts) {
         console.log("Products received");
+        console.log(products);
         setProducts(loadProducts);
       });
     }
@@ -32,9 +34,11 @@ export function App() {
   return (
     <Router>
       <section>
-        <NavBar />
-        <MainSection user={user} products={products} setUser={setUser} />
-        <Footer />
+        <CartProvider>
+          <NavBar />
+          <MainSection user={user} products={products} setUser={setUser} />
+          <Footer />
+        </CartProvider>
       </section>
     </Router>
   );

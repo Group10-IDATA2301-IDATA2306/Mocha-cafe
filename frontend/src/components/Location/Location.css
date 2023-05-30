@@ -1,4 +1,4 @@
-main > .location-section {
+.location-section {
   display: flex;
   height: 100%;
 
@@ -14,7 +14,7 @@ main > .location-section {
   text-align: center;
 }
 
-.location-section > * {
+.location-section > h2 {
   color: white;
 }
 

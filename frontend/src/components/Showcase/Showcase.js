@@ -1,5 +1,7 @@
 import "./Showcase.css";
 import { ShowcaseCard } from "./ShowcaseCard";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 const jsonTestData = {
   id: "2",
@@ -17,11 +19,14 @@ const jsonTestData = {
  */
 export function Showcase() {
   return (
-    <container className="product-section">
+    <div className="product-section">
       <h2>New Releases</h2>
-      <container className="product-container">
+      <div className="product-container">
         <ShowcaseCard props={jsonTestData} />
-      </container>
-    </container>
+        <ShowcaseCard props={jsonTestData} />
+        <ShowcaseCard props={jsonTestData} />
+        <ShowcaseCard props={jsonTestData} />
+      </div>
+    </div>
   );
 }

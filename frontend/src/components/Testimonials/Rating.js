@@ -7,12 +7,12 @@ import "./Rating.css";
  */
 export function Rating() {
   return (
-    <container class="rating">
-      <i class="fa fa-star fa-5x" aria-hidden="true"></i>
-      <i class="fa fa-star fa-5x" aria-hidden="true"></i>
-      <i class="fa fa-star fa-5x" aria-hidden="true"></i>
-      <i class="fa fa-star fa-5x" aria-hidden="true"></i>
-      <i class="fa fa-star fa-5x" aria-hidden="true"></i>
-    </container>
+    <div className="rating">
+      <i className="fa fa-star fa-5x" aria-hidden="true"></i>
+      <i className="fa fa-star fa-5x" aria-hidden="true"></i>
+      <i className="fa fa-star fa-5x" aria-hidden="true"></i>
+      <i className="fa fa-star fa-5x" aria-hidden="true"></i>
+      <i className="fa fa-star fa-5x" aria-hidden="true"></i>
+    </div>
   );
 }
