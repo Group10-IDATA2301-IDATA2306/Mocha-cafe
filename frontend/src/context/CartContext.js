@@ -1,5 +1,4 @@
 import React, { createContext, useState, useEffect } from "react";
-import axios from "axios";
 
 // creates a new context
 export const CartContext = createContext();
@@ -12,26 +11,7 @@ export const CartContext = createContext();
  */
 export const CartProvider = (props) => {
     const [cartItems, setCartItems] = useState([]);
-
-    // fetches data once the component is mounted
-    useEffect(() => {
-        fetchData();
-    }, []);
-
-    // fetches product data using swagger api
-    const fetchData = async () => {
-        try {
-            const response = await axios.get('https://group10.web-tek.ninja:8080/products');
-            const products = response.data; // Assuming the response contains an array of products
-
-            // Loop through the fetched products and add them to the cart
-            products.forEach((product) => {
-                addToCart(product);
-            });
-        } catch (error) {
-            console.error(error);
-        }
-    };
+    const [totalPrice, setTotalPrice] = useState(0);
 
     /**
      * Adds an item to the cart.
@@ -67,8 +47,34 @@ export const CartProvider = (props) => {
         setCartItems([]);
     };
 
+    /**
+     * Updates the quantity of a spesific item in the cart.
+     * 
+     * @param {*} item the item to update 
+     * @param {*} newQuantity the new quantity
+     */
+    const updateQuantity = (item, newQuantity) => {
+        setCartItems((prevItems) =>
+            prevItems.map((i) =>
+                i.id === item.id ? { ...i, quantity: newQuantity } : i
+            )
+        );
+    };
+
+
+    // runs on every useeffect
+    useEffect(() => {
+        /**
+         * Updates the total price of all items currently in the cart.
+         */
+        const total = cartItems.reduce((accumulator, item) => {
+            return accumulator + item.price * item.quantity;
+        }, 0);
+        setTotalPrice(total);
+    }, [cartItems]);
+
     return (
-        <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, clearCart }}>
+        <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, clearCart, totalPrice, updateQuantity }}>
             {props.children}
         </CartContext.Provider>
     );

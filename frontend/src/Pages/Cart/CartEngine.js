@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
-import axios from "axios";
 import { CartItem } from "../../components/entities/CartItem"
-import { CartContext, CartProvider } from "../../context/CartContext";
+import { CartContext } from "../../context/CartContext";
 import "./CartEngine.css"
 
 /**
@@ -10,7 +9,7 @@ import "./CartEngine.css"
  * @returns {JSX.Element} components representing cart items
  */
 export function CartEngine() {
-    const { cartItems, addToCart } = useContext(CartContext);
+    const { cartItems } = useContext(CartContext);
     const [items, setItems] = useState([]);
 
     useEffect(() => {
@@ -20,17 +19,23 @@ export function CartEngine() {
     return (
         <>
             {items.length > 0 ? (
-                items.map((cartItem) => (
-                    <CartItem
-                        key={cartItem.id}
-                        src={`data:image/png;base64,${cartItem.image.imageData}`}
-                        alt={cartItem.image.alt}
-                        text={cartItem.name}
-                        price={(cartItem.price * cartItem.quantity) + ",-"}
-                        quantity={cartItem.quantity}
-                        item={cartItem}
-                    />
-                ))
+                items.map((cartItem) => {
+                    // Check if cartItem and its image property are defined
+                    if (cartItem && cartItem.image) {
+                        return (
+                            <CartItem
+                                key={cartItem.id}
+                                src={`data:image/png;base64,${cartItem.image.imageData}`}
+                                alt={cartItem.image.alt}
+                                text={cartItem.name}
+                                price={(cartItem.price * cartItem.quantity) + ",-"}
+                                quantity={cartItem.quantity}
+                                item={cartItem}
+                            />
+                        );
+                    }
+                    return null; // Handle undefined cartItem or image property
+                })
             ) : (
                 <span className="emptyCartSpan">Cart is empty</span>
             )}

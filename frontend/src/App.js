@@ -6,7 +6,6 @@ import { CartProvider } from "./context/CartContext";
 import { useState } from "react";
 import { useEffect } from "react";
 import { asyncApiRequest } from "./api/HttpInterface";
-import { CartEngine } from "./Pages/Cart/CartEngine";
 
 /**
  * Component representing the main page

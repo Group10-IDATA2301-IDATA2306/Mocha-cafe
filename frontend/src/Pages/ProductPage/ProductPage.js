@@ -1,30 +1,42 @@
-import "../ProductPage/ProductPage.css";
-import { ShowcaseCard } from "../../components/Showcase/ShowcaseCard";
+import { useState, useContext, useEffect } from "react";
+import axios from "axios";
+import { CartContext } from "../../context/CartContext";
+import { ProductCard } from "../../components/entities/ProductCard";
+import { PageHeader } from "../../components/text/PageHeader";
+import { useParams } from 'react-router-dom';
+import "./ProductPage.css";
 
 /**
- * Test data for the product
+ * A react component responsible for displaying the products page.
+ * 
+ * @returns {JSX.Element} div element with its children
  */
-const jsonTestData = {
-  id: "2",
-  name: "Black Coffe",
-  price: "122",
-  description: "Brazilian coffee is sealed for freshness...",
-};
+export function ProductPage() {
+    const { addToCart } = useContext(CartContext);
+    const [products, setProducts] = useState([]);
 
-const ProductPage = () => {
-  return (
-    <>
-      <div className="product-section">
-        <h2>Products</h2>
-        <container className="product-container">
-          <ShowcaseCard props={jsonTestData} />
-          <ShowcaseCard props={jsonTestData} />
-          <ShowcaseCard props={jsonTestData} />
-          <ShowcaseCard props={jsonTestData} />
-        </container>
-      </div>
-    </>
-  );
-};
+    // fetches data once the component is mounted
+    useEffect(() => {
+        fetchData();
+    }, []);
 
-export default ProductPage;
+    // fetches product data using swagger api
+    const fetchData = async () => {
+        try {
+            const response = await axios.get('http://group10.web-tek.ninja/products');
+            setProducts(response.data);
+            console.log(response.data)
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    return (
+        <div className="productPage">
+            <PageHeader text="Products" />
+            {products.map((product) => (
+                <ProductCard key={product.id} product={product}/>
+            ))}
+        </div>
+    );
+};
