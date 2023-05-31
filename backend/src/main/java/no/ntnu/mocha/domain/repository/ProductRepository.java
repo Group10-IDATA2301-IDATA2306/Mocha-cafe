@@ -48,12 +48,15 @@ public interface ProductRepository extends CrudRepository<Product, Long> {
     @Query(value = "update product p set p.price = ?2 where p.product_id = ?1", nativeQuery = true)
     void updatePrice(long id, double price);
 
-    @Query(value = "select * from product p order by p.price desc", nativeQuery = true)
+    @Query(value = "select * from product p where p.display = 1 order by p.price desc", nativeQuery = true)
     List<Product> getAllOrderedByPrice();
 
-    @Query(value = "select * from product p order by p.purchases desc", nativeQuery = true)
+    @Query(value = "select * from product p where p.display = 1 order by p.purchases desc", nativeQuery = true)
     List<Product> getAllOrderedByPurchases();
 
-    @Query(value = "select * from product p where p.pc_id = ?1", nativeQuery = true)
+    @Query(value = "select * from product p where p.pc_id = ?1 and p.display = 1", nativeQuery = true)
     List<Product> getAllByCategory(long id);
+
+    @Query(value = "select * from product p where p.display = 1", nativeQuery = true)
+    List<Product> getAllToDisplay();
 }

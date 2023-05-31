@@ -69,7 +69,7 @@ The front-end application is a React project. The project has been built into st
 The back-end application is a Spring Boot project. The project has been compressed into a JAR and deployed on an OpenStack server.
 
 * Source code: <a href="https://github.com/Group10-IDATA2301-IDATA2306/Mocha-cafe/tree/main/backend">⁓/backend</a>
-* Deployment:  <a href="https://group10.web-tek.ninja:8080">10.212.26.80:8080</a>
+* Deployment:  <a href="http://group10.web-tek.ninja">10.212.26.80</a>
 
 
 
@@ -108,7 +108,7 @@ can be used to visit the database.
 <br/>
 
 <b>OpenStack</b>:
-* Domain name: <i><a href="https://group10.web-tek.ninja:8080">group10.web-tek.ninja:8080</a></i>
+* Domain name: <i><a href="http://group10.web-tek.ninja">group10.web-tek.ninja</a></i>
 * Owner: Norwegian University of Science and Technology
 * Platform:
   * Operating system: Ubuntu 22.04
@@ -117,6 +117,8 @@ can be used to visit the database.
   * Storage: 40GB (SSD)
   * Internal IPv4: 10.212.26.80
   * Public IPv6: 2001:700:300:6018:f816:3eff:fe31:b3c6
+  * Nginx:
+    * Forwarding proxy from default port 80 to https://localhost:8080
 
 <br/>
 

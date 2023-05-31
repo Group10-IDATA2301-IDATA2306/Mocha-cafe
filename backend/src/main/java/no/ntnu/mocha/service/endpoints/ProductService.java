@@ -39,11 +39,27 @@ import no.ntnu.mocha.domain.repository.ReviewRepository;
 
     /**
      * Returns an Iterable of all products in the database ordered
+     * by product ID where display=true.
+     * 
+     * @return an Iterable of all products in the database where display=true.
+     */
+    public Iterable<Product> getAllProducts() {
+        List<Product> productList = new ArrayList<>();
+        productRepository.getAllToDisplay().forEach(productList::add);
+
+        return productList.stream()
+            .sorted(Comparator.comparingLong(Product::getId))
+            .collect(Collectors.toList());
+    }
+
+
+    /**
+     * Returns an Iterable of all products in the database ordered
      * by product ID.
      * 
      * @return an Iterable of all products in the database.
      */
-    public Iterable<Product> getAllProducts() {
+    public Iterable<Product> getAll() {
         List<Product> productList = new ArrayList<>();
         productRepository.findAll().forEach(productList::add);
 

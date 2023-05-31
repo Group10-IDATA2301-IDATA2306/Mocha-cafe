@@ -102,6 +102,7 @@ public class SecurityConfig {
 
                 /* ADMIN endpoints. */
                 .requestMatchers(HttpMethod.GET, "/orders").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.GET, "/products/admin").hasRole("ADMIN")
                 .requestMatchers(HttpMethod.PUT, "/products/**").hasRole("ADMIN")
                 .requestMatchers(HttpMethod.POST, "/products/**").hasRole("ADMIN")
                 .requestMatchers(HttpMethod.DELETE, "/products/**").hasRole("ADMIN")

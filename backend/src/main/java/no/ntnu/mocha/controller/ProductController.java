@@ -33,7 +33,7 @@ public class ProductController {
 
 
     /**
-     * Get all products stored in the database.
+     * Get all products stored in the database with display=true.
      * 
      * @return  All products in the storage.
      * @throws InterruptedException An exception if the executing thread is interrupted while
@@ -42,11 +42,29 @@ public class ProductController {
     @GetMapping
     @Operation(
         summary = "Get all products",
-        description = "Returns a collection of all products."
+        description = "Returns a collection of all products to display."
     )
     public Iterable<Product> getAll() {
         return service.getAllProducts();
     }
+
+
+    /**
+     * Get all products stored in the database.
+     * 
+     * @return  All products in the storage.
+     * @throws InterruptedException An exception if the executing thread is interrupted while
+     *                              it is sleeping. 
+     */
+    @GetMapping("/admin")
+    @Operation(
+        summary = "Get all products",
+        description = "Returns a collection of all products."
+    )
+    public Iterable<Product> getAllAsAdmin() {
+        return service.getAll();
+    }
+
 
 
     @GetMapping("/order")

@@ -9,7 +9,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 /**
@@ -29,7 +28,7 @@ public class Product {
     private long id;
 
     /** Image associated with the product. */
-    @OneToOne
+    @ManyToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "image_id")
     private Image image;
 

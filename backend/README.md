@@ -150,14 +150,14 @@ java -jar /PATH/TO/THE/JAR/FILE/MochaServer.jar
 The REST API implementation has been documented using Swagger. If you would like to
 consult the documentation, please see the following links:
 * <a href="https://localhost:8080/swagger-ui/index.html">localhost:8080/swagger-ui</a>
-* <a href="https://group10.web-tek.ninja:8080/swagger-ui/index.html">web-tek.ninja/swagger-ui</a>
+* <a href="http://group10.web-tek.ninja/swagger-ui/index.html">web-tek.ninja/swagger-ui</a>
 
 <br/>
 
 ### Postman tests
 
 For testing the API, the group has used Postman tests. The tests should be available here:
-* Postman test collection: <a href="https://www.postman.com/mocha-cafe/workspace/appdev-2023/collection/25404809-4c772fb3-621a-4a6b-bb66-071df0072ec5?action=share&creator=25394859">AppDev 2023</a>
+* Postman test collection: <a href="https://ntnu-iir-students.postman.co/workspace/Team-Workspace~8b23436b-0cdb-468a-8652-f57c420e9db8/collection/27687274-53b8f976-0479-4d92-84bf-735368e5f7dd?action=share&creator=27687274">AppDev 2023</a>
 * Exported to JSON: <a href="https://github.com/Group10-IDATA2301-IDATA2306/Mocha-cafe/tree/main/backend/postman">⁓/postman</a>
 
 <br/>
@@ -178,7 +178,7 @@ The application is deployed on an OpenStack server borrowed from NTNU. The entir
 <br/>
 
 <b>OpenStack</b>:
-* Domain name: <i><a href="https://group10.web-tek.ninja:8080">group10.web-tek.ninja:8080</a></i>
+* Domain name: <i><a href="http://group10.web-tek.ninja">group10.web-tek.ninja</a></i>
 * Owner: Norwegian University of Science and Technology
 * Platform:
   * Operating system: Ubuntu 22.04
@@ -187,6 +187,8 @@ The application is deployed on an OpenStack server borrowed from NTNU. The entir
   * Storage: 40GB (SSD)
   * Internal IPv4: 10.212.26.80
   * Public IPv6: 2001:700:300:6018:f816:3eff:fe31:b3c6
+  * Nginx:
+    * Forwarding proxy from default port 80 to https://localhost:8080
 
 <br/>
 
