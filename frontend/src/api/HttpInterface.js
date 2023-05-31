@@ -9,7 +9,7 @@ axios.defaults.headers.post["Content-Type"] = "application/json";
 
 // Import the REST API BASE URL from the environment variable
 // const SERVER_URL = "process.env.REACT_APP_BASE_URL";
-const SERVER_URL = "http://group10.web-tek.ninja";
+const SERVER_URL = "https://group10.web-tek.ninja:8080";
 
 /**
  * Send and asynchronous request to the remote API.
@@ -116,5 +116,11 @@ export const HttpInterface = {
   getUserDetails: async function (userId) {
     const response = await httpGET("/users/" + userId);
     return response.ok ? response.json() : null;
+  },
+
+
+
+  submitOrder: async function (userId, listOfCartItems) {
+    const response = await httpSendData("/orders/user/" + userId, "POST", listOfCartItems);
   },
 };

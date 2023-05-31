@@ -7,6 +7,8 @@ import TextField from "@mui/material/TextField";
 import "./Login.css";
 import { useNavigate } from "react-router-dom";
 import { sendAuthenticationRequest } from "../../api/authentication";
+import { HttpInterface } from "../../api/HttpInterface";
+import { getCookie } from "../../api/cookies";
 
 /**
  * Form component representing the login form.
