@@ -15,37 +15,15 @@ import "./CartForm.css"
  */
 export function CartForm() {
     const { addToCart, cartItems } = useContext(CartContext);
-    const [data, setData] = useState([]);
-
-    // fetches data once the component is mounted
-    useEffect(() => {
-        fetchData();
-    }, []);
-
-    // fetches product data using swagger api
-    const fetchData = async () => {
-        try {
-            const response = await axios.get('https://group10.web-tek.ninja:8080/products');
-            setData(response.data);
-        } catch (error) {
-            console.error(error);
-        }
-    };
-
-    // Adds a random item to the cart
-    const addRandomItemToCart = () => {
-        const randomItem = data[Math.floor(Math.random() * data.length)];
-        addToCart(randomItem);
-        console.log(cartItems)
-    };
 
     return (
         <section className="cartForm">
             <PageHeader text="Checkout"></PageHeader>
             <ContactInformationForm></ContactInformationForm>
             <ShippingAddressForm></ShippingAddressForm>
+            <p class="formNote">* Form not functional at the moment, but you can still submit the cart</p>
             <RightButtonLayout>
-                <FormButton text="Submit" id="bigScreenProceedCheckoutBtn"></FormButton>
+                <FormButton text="Continue to payment" id="bigScreenProceedCheckoutBtn"></FormButton>
             </RightButtonLayout>
         </section>
     );
