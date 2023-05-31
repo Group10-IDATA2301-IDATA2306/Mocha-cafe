@@ -21,7 +21,7 @@ export function FormButton(props) {
             };
         });
         console.log(submitList);
-        HttpInterface.submitOrder(1, submitList);
+        HttpInterface.submitOrder(sessionStorage.getItem("UID"), submitList);
     }
 
     return (

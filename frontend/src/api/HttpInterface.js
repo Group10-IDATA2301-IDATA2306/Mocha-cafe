@@ -81,31 +81,72 @@ async function httpGET(endpoint) {
   return response.json();
 }
 
-async function httpSendData(endpoint, method, data) {
-  return await fetch(SERVER_URL + endpoint, {
-    method: method,
+async function httpGETtext(endpoint) {
+  const response = await fetch(SERVER_URL + endpoint, {
+    method: "GET",
     headers: {
       "Content-Type": "application/json",
       Authorization: "Bearer " + SESSION.Token,
+    },
+  });
+  return response.text();
+}
+
+
+async function httpSendCredentials(endpoint, method, data) {
+  return await fetch(SERVER_URL + endpoint, {
+    method: method,
+    headers: {
+      "Content-Type": "application/json"
     },
     body: JSON.stringify(data),
   });
 }
 
+async function httpSendData(endpoint, method, data) {
+  return await fetch(SERVER_URL + endpoint, {
+    method: method,
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: sessionStorage.getItem("JWT"),
+    },
+    body: JSON.stringify(data),
+  });
+}
+
+
+
 export const HttpInterface = {
+
+  getUserId: async function (username) {
+    const response = await httpGETtext("/users/" + username);
+    sessionStorage.setItem("UID", response);
+  },
+
   authenticateLogin: async function (credentials) {
-    const response = await httpSendData("/login", "POST", credentials);
+    const response = await httpSendCredentials("/login", "POST", credentials);
     if (response.ok) {
       const authHeader = response.headers.get("Authorization").split(" ");
       SESSION.Token = authHeader[1];
+      sessionStorage.setItem("JWT", authHeader[1]);
+      sessionStorage.setItem("USERNAME", credentials.username);
       SESSION.Authorized = true;
+      this.getUserId(credentials.username);
     }
     return SESSION.Authorized;
   },
 
   signUp: async function (credentials) {
-    const response = await httpSendData("/users", "POST", credentials);
-    return response.created ? await this.authenticateLogin(credentials) : false;
+    const response = await httpSendCredentials("/users", "POST", credentials);
+    if (response.ok) {
+      const authHeader = response.headers.get("Authorization").split(" ");
+      SESSION.Token = authHeader[1];
+      sessionStorage.setItem("JWT", authHeader[1]);
+      sessionStorage.setItem("USERNAME", credentials.username);
+      SESSION.Authorized = true;
+      this.getUserId(credentials.username);
+    }
+    return SESSION.Authorized;
   },
 
   getAllProducts: async function () {
@@ -117,7 +158,6 @@ export const HttpInterface = {
     const response = await httpGET("/users/" + userId);
     return response.ok ? response.json() : null;
   },
-
 
 
   submitOrder: async function (userId, listOfCartItems) {
