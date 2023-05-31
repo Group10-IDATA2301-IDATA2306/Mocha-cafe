@@ -135,4 +135,8 @@
     width: 28rem;
     height: 22rem;
   }
+
+  .product-section > h2 {
+    font-size: 2.8rem;
+  }
 }
