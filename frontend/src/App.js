@@ -33,13 +33,11 @@ export function App() {
 
   return (
     <Router>
-      <section>
-        <CartProvider>
-          <NavBar />
-          <MainSection user={user} products={products} setUser={setUser} />
-          <Footer />
-        </CartProvider>
-      </section>
+      <CartProvider>
+        <NavBar />
+        <MainSection user={user} products={products} setUser={setUser} />
+        <Footer />
+      </CartProvider>
     </Router>
   );
 }
