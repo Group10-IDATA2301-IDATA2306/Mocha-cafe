@@ -9,6 +9,7 @@
     width: 200px;
     padding: 20px;
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.693);
+    border-radius: 3px;
 }
 
 /* Styling for product card link section */
