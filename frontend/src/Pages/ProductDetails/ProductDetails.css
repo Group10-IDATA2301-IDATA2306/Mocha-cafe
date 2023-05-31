@@ -1,0 +1,18 @@
+/* Styling for the whole product details page */
+.productDetails {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Styling for box displaying details about a product */
+.productDetailsBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(228, 228, 228);
+    padding: 40px;
+    margin: 100px auto;
+}

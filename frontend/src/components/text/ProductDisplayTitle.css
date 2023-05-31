@@ -1,11 +1,10 @@
-/* Styling for all product card titles */
-.productCardTitle {
+/* Styling for all product display titles */
+.productDisplayTitle {
     text-align: center;
     padding: 5px;
-    margin: 5px;
-    width: 150px;
+    margin: 10px;
     height: 60px;
-    font-size: 16px;
+    font-size: 30px;
     letter-spacing: 2px;
     text-decoration: none;
     text-transform: uppercase;
