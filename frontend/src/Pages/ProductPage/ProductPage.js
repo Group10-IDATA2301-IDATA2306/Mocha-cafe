@@ -26,7 +26,6 @@ export function ProductPage() {
         try {
             const response = await axios.get('http://group10.web-tek.ninja/products');
             setProducts(response.data);
-            console.log(response.data)
         } catch (error) {
             console.error(error);
         }

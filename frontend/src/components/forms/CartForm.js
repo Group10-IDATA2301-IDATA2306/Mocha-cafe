@@ -15,29 +15,6 @@ import "./CartForm.css"
  */
 export function CartForm() {
     const { addToCart, cartItems } = useContext(CartContext);
-    const [data, setData] = useState([]);
-
-    // fetches data once the component is mounted
-    useEffect(() => {
-        fetchData();
-    }, []);
-
-    // fetches product data using swagger api
-    const fetchData = async () => {
-        try {
-            const response = await axios.get('http://group10.web-tek.ninja/products');
-            setData(response.data);
-        } catch (error) {
-            console.error(error);
-        }
-    };
-
-    // Adds a random item to the cart
-    const addRandomItemToCart = () => {
-        const randomItem = data[Math.floor(Math.random() * data.length)];
-        addToCart(randomItem);
-        console.log(cartItems)
-    };
 
     return (
         <section className="cartForm">
@@ -47,7 +24,6 @@ export function CartForm() {
             <RightButtonLayout>
                 <FormButton text="Continue to payment" id="bigScreenProceedCheckoutBtn"></FormButton>
             </RightButtonLayout>
-            <button onClick={addRandomItemToCart}>Add Random Item to Cart</button>
         </section>
     );
 }
