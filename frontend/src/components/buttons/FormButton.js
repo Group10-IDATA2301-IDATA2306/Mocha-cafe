@@ -1,6 +1,8 @@
 import { useContext } from "react";
+import axios from "axios";
 import "./FormButton.css"
 import { CartContext } from "../../context/CartContext";
+import { HttpInterface } from "../../api/HttpInterface";
 
 /**
  * A button for forms.
@@ -11,14 +13,15 @@ import { CartContext } from "../../context/CartContext";
 export function FormButton(props) {
     const { cartItems } = useContext(CartContext);
 
-    const submit = () => {
+    const submit = async () => {
         const submitList = cartItems.map((item) => {
             return {
                 productId: item.id,
                 amount: item.quantity,
             };
         });
-        console.log("success");
+        console.log(submitList);
+        HttpInterface.submitOrder(1, submitList);
     }
 
     return (
