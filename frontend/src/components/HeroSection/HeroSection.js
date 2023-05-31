@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./HeroSection.css";
 
 /**
@@ -10,7 +11,9 @@ export function HeroSection() {
     <div className="hero-section-container">
       <div className="hero-section-content">
         <h1>Try our new exciting flavors</h1>
-        <button className="hero-section-button">Find out more</button>
+        <Link to={`/products`}>
+          <button className="hero-section-button">Find out more</button>
+        </Link>
       </div>
     </div>
   );
