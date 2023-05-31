@@ -2,9 +2,10 @@
 	"info": {
 		"_postman_id": "53b8f976-0479-4d92-84bf-735368e5f7dd",
 		"name": "Mocha cafe (Group 10)",
+		"description": "This collection aims to test all operations regarding extracting and being able to modify resources such as products, users and orders.\n\n#### Procedure:\n\n1. Ensure enviroment used is \"Test enviroment (Group 10)\".\n2. Run the \"Authentication\" folder or the collection as a whole to invoke necassary privileges.\n3. Wait for testing to complete.\n4. Evaluate results.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "27687274",
-		"_collection_link": "https://ntnu-iir-students.postman.co/workspace/Team-Workspace~8b23436b-0cdb-468a-8652-f57c420e9db8/collection/27687274-53b8f976-0479-4d92-84bf-735368e5f7dd?action=share&creator=27687274&source=collection_link"
+		"_exporter_id": "27699954",
+		"_collection_link": "https://ntnu-iir-students.postman.co/workspace/Team-Workspace~8b23436b-0cdb-468a-8652-f57c420e9db8/collection/27687274-53b8f976-0479-4d92-84bf-735368e5f7dd?action=share&creator=27699954&source=collection_link"
 	},
 	"item": [
 		{
@@ -19,7 +20,6 @@
 								"exec": [
 									"var bearerToken = pm.response.headers.get(\"Authorization\");\r",
 									"\r",
-									"console.log(bearerToken);\r",
 									"pm.environment.set(\"Bearer-token\", bearerToken);\r",
 									"\r",
 									"\r",
