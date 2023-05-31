@@ -58,10 +58,11 @@ export async function sendAuthenticationRequest(
     password: password,
   };
   try {
-    const jwtResponse = await asyncApiRequest("POST", "/login", postData, true);
-    if (jwtResponse && jwtResponse.jwt) {
-      setCookie("jwt", jwtResponse.jwt);
-      const userData = parseJwtUser(jwtResponse.jwt);
+    const jwtResponse = await asyncApiRequest("POST", "/login", postData, false);
+    console.log(jwtResponse.headers.get("Authorization"));
+    if (true) {
+      setCookie("jwt", jwtResponse.headers.get("Authorization"));
+      const userData = parseJwtUser(jwtResponse.headers.get("Authorization"));
       if (userData) {
         setCookie("current_username", userData.username);
         setCookie("current_user_roles", userData.roles.join(","));

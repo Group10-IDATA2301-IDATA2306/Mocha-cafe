@@ -33,22 +33,11 @@ export function Login(props) {
   function submitForm(event) {
     event.preventDefault(); // Prevent default form submission
     console.log("Submitting form");
-    sendAuthenticationRequest(username, password)
-      .then(onLoginSuccess)
-      .catch((error) => setError(error.errorMessage));
-    console.log(getCookie());
-  }
-
-  /**
-   * Callback function called upon successful login.
-   *
-   * @param {Object} userData - User data received after successful login
-   */
-  function onLoginSuccess(userData) {
-    props.setUser(userData);
+    HttpInterface.authenticateLogin({username: username, password: password});
     setIsLoggedIn(true);
     navigate("/");
   }
+
 
   let errorMessage = null;
   if (error) {

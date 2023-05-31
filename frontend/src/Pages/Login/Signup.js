@@ -7,6 +7,7 @@ import TextField from "@mui/material/TextField";
 import "./Signup.css";
 import { useNavigate } from "react-router-dom";
 import { asyncApiRequest } from "../../api/HttpInterface";
+import { HttpInterface } from "../../api/HttpInterface";
 
 /**
  * Sign Up form component.
@@ -146,9 +147,7 @@ export function Signup(props) {
       password: password,
       email: email,
     };
-    asyncApiRequest("POST", "/users", signupData, true)
-      .then(onSignupSuccess)
-      .catch((error) => setError(error.message));
+    HttpInterface.signUp(signupData);
   }
 
   /**
