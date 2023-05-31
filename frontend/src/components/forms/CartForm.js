@@ -32,13 +32,6 @@ export function CartForm() {
         }
     };
 
-    // Adds a random item to the cart
-    const addRandomItemToCart = () => {
-        const randomItem = data[Math.floor(Math.random() * data.length)];
-        addToCart(randomItem);
-        console.log(cartItems)
-    };
-
     return (
         <section className="cartForm">
             <PageHeader text="Checkout"></PageHeader>
@@ -47,7 +40,6 @@ export function CartForm() {
             <RightButtonLayout>
                 <FormButton text="Continue to payment" id="bigScreenProceedCheckoutBtn"></FormButton>
             </RightButtonLayout>
-            <button onClick={addRandomItemToCart}>Add Random Item to Cart</button>
         </section>
     );
 }
