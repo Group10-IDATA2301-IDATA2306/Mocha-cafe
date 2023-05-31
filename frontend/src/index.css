@@ -18,9 +18,9 @@ body {
 }
 
 p {
-  /* font-family: 'Tilt Neon', sans-serif; */
   font-size: 2rem;
   color: #1c1f22;
+  font-family: "SoDoSans", sans-serif;
 }
 
 span {

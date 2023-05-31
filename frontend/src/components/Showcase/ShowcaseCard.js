@@ -3,7 +3,7 @@ import * as React from "react";
 import { Link } from "react-router-dom";
 
 /**
- * A showcase of products
+ * A showcase of a product
  *
  * @param props the properties of the product being showcased
  * @return {JSX.Element}
