@@ -47,7 +47,6 @@ export function CartForm() {
             <RightButtonLayout>
                 <FormButton text="Continue to payment" id="bigScreenProceedCheckoutBtn"></FormButton>
             </RightButtonLayout>
-            <button onClick={addRandomItemToCart}>Add Random Item to Cart</button>
         </section>
     );
 }
