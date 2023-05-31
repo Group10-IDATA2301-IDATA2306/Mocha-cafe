@@ -7,6 +7,7 @@ import TextField from "@mui/material/TextField";
 import "./Login.css";
 import { useNavigate } from "react-router-dom";
 import { sendAuthenticationRequest } from "../../api/authentication";
+import { HttpInterface } from "../../api/HttpInterface";
 
 /**
  * Form component representing the login form.
@@ -31,6 +32,7 @@ export function Login(props) {
   function submitForm(event) {
     event.preventDefault(); // Prevent default form submission
     console.log("Submitting form");
+    HttpInterface.authenticateLogin({username: username, password: password});
     sendAuthenticationRequest(username, password)
       .then(onLoginSuccess)
       .catch((error) => setError(error.errorMessage));
