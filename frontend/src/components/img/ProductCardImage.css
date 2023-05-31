@@ -1,0 +1,6 @@
+/* Styling for all images for product cards  */
+.productCardImage {
+    width: 60px;
+    border-radius: 3px;
+    margin: 10px;
+}

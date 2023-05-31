@@ -18,6 +18,7 @@ import { asyncApiRequest } from "../../api/HttpInterface";
 export function Signup(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
@@ -51,6 +52,21 @@ export function Signup(props) {
       defaultValue=""
       value={username}
       onChange={(event) => setUsername(event.target.value)}
+    />
+  );
+
+  /**
+   * Username inputs for handling
+   * the textfield with different
+   * parameters.
+   */
+  const EMAIL_INPUT = (
+    <TextField
+      variant="filled"
+      label="Email"
+      defaultValue=""
+      value={email}
+      onChange={(event) => setEmail(event.target.value)}
     />
   );
 
@@ -104,6 +120,7 @@ export function Signup(props) {
 
           <form className="signup-section">
             <div className="username-field">{USERNAME_INPUT}</div>
+            <div className="email-field">{EMAIL_INPUT}</div>
             <div className="password-field">{PASSWORD_INPUT}</div>
             <div className="strength-indicator">{STRENGTH_CONTAINER}</div>
           </form>
@@ -127,8 +144,9 @@ export function Signup(props) {
     const signupData = {
       username: username,
       password: password,
+      email: email,
     };
-    asyncApiRequest("POST", "/signup", signupData, true)
+    asyncApiRequest("POST", "/users", signupData, true)
       .then(onSignupSuccess)
       .catch((error) => setError(error.message));
   }

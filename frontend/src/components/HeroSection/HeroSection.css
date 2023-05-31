@@ -124,9 +124,10 @@
     font-size: 4rem;
   }
 
-  .hero-section-container-button {
+  .hero-section-button {
     height: 4rem;
-    width: 20rem;
+    width: 18rem;
+    font-size: 1rem;
     text-align: center;
   }
 }
@@ -159,7 +160,7 @@
     text-align: center;
   }
 
-  .hero-section-container-button {
+  .hero-section-button {
     width: 18rem;
     height: 4.2rem;
     font-size: 1rem;
@@ -193,9 +194,9 @@
     font-size: 2.5rem;
     text-align: center;
   }
-  .hero-section-container-button {
-    width: 13rem;
+  .hero-section-button {
+    width: 15rem;
     height: 3rem;
-    font-size: 0.7rem;
+    font-size: 0.8rem;
   }
 }

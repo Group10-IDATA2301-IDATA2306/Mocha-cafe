@@ -138,6 +138,8 @@
   justify-content: center;
   align-items: center;
   margin-top: auto;
+
+  z-index: 3;
 }
 
 .button-container Button {

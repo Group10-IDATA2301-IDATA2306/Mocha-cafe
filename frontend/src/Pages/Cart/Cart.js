@@ -1,23 +1,26 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import productImg1 from "../../assets/img/Product 1.png"
-import productImg2 from "../../assets/img/Product 2.png"
-import { CartItem } from "../../components/entities/CartItem"
+import React, { useContext } from "react";
 import { CartSection } from './CartSection';
 import { CartForm } from '../../components/forms/CartForm';
-import './Cart.css';
 import { CartSectionOnlyItems } from "./CartSectionOnlyItems";
 import { CartSectionFee } from "./CartSectionFee";
+import { CartContext } from "../../context/CartContext";
+import './Cart.css';
+
 
 /**
- * A react component responsible for displaying the shopping cart to the user.
+ * A react component responsible for displaying the shopping cart page to the user.
  * 
  * @returns {JSX.Element} div element with its children
  */
 export function Cart() {
+    const { totalPrice } = useContext(CartContext);
+
+    // total fee description string
     const feeDescription = "Extra fees might be added to the total due to differences in the shipping locations. The total"
         + "fee will be calculated at the next step."
-    const totalFee = "Total: NOK 350,-"
+
+    // string for the total fee of the cart
+    const totalFee = "Total: NOK " + totalPrice + ",-";
 
     return (
         <div className="cartPage">

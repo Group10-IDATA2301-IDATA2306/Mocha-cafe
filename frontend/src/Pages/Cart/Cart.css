@@ -2,6 +2,7 @@
     background: white;
 }
 
+/* Styling for the cart page */
 .cartPage {
     display: flex;
     flex-direction: row;

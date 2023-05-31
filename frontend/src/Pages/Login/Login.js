@@ -20,6 +20,7 @@ export function Login(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
 
   /**
@@ -30,12 +31,9 @@ export function Login(props) {
   function submitForm(event) {
     event.preventDefault(); // Prevent default form submission
     console.log("Submitting form");
-    sendAuthenticationRequest(
-      username,
-      password,
-      onLoginSuccess,
-      (errorMessage) => setError(errorMessage)
-    );
+    sendAuthenticationRequest(username, password)
+      .then(onLoginSuccess)
+      .catch((error) => setError(error.errorMessage));
   }
 
   /**
@@ -45,6 +43,7 @@ export function Login(props) {
    */
   function onLoginSuccess(userData) {
     props.setUser(userData);
+    setIsLoggedIn(true);
     navigate("/");
   }
 
@@ -76,11 +75,30 @@ export function Login(props) {
     />
   );
 
+  /** The login icon which is going to be in the login button */
+  const LOGIN_ICON = (
+    <FontAwesomeIcon icon={faRightToBracket} style={{ color: "#ffffff" }} />
+  );
+
   /** Log in button with the given login icon */
   const LOGIN_BUTTON = (
     <Button id="login-btn" variant="contained" onClick={submitForm}>
       Login &nbsp; {LOGIN_ICON}
     </Button>
+  );
+
+  /** Signup icon which is going to be at the create account button */
+  const SIGNUP_ICON = (
+    <FontAwesomeIcon icon={faUser} style={{ color: "#ffffff" }} />
+  );
+
+  /** Signup button consisting of the signup icon */
+  const SIGNUP_BUTTON = (
+    <ActiveLink to="/signup">
+      <Button id="signup-btn" variant="contained">
+        Create Account &nbsp; {SIGNUP_ICON}
+      </Button>
+    </ActiveLink>
   );
 
   /** The login page output */
@@ -108,22 +126,3 @@ export function Login(props) {
     </div>
   );
 }
-
-/** The login icon which is going to be in the login button */
-const LOGIN_ICON = (
-  <FontAwesomeIcon icon={faRightToBracket} style={{ color: "#ffffff" }} />
-);
-
-/** Signup icon which is going to be at the create account button */
-const SIGNUP_ICON = (
-  <FontAwesomeIcon icon={faUser} style={{ color: "#ffffff" }} />
-);
-
-/** Signup button consisting of the signup icon */
-const SIGNUP_BUTTON = (
-  <ActiveLink to="/signup">
-    <Button id="signup-btn" variant="contained">
-      Create Account &nbsp; {SIGNUP_ICON}
-    </Button>
-  </ActiveLink>
-);

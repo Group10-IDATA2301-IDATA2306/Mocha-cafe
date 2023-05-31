@@ -3,7 +3,6 @@
 // Imports
 import { deleteCookie, getCookie, setCookie } from "./cookies";
 import { asyncApiRequest } from "./HttpInterface";
-import cookie from "react-cookies";
 
 /**
  * Retrieves the currently authenticated user. It checks for the
@@ -59,7 +58,7 @@ export async function sendAuthenticationRequest(
     password: password,
   };
   try {
-    const jwtResponse = await asyncApiRequest("POST", "/login", postData);
+    const jwtResponse = await asyncApiRequest("POST", "/login", postData, true);
     if (jwtResponse && jwtResponse.jwt) {
       setCookie("jwt", jwtResponse.jwt);
       const userData = parseJwtUser(jwtResponse.jwt);
@@ -81,7 +80,7 @@ export async function sendAuthenticationRequest(
  * @returns {any} Decoded JWT object
  */
 function parseJwt(token) {
-  const base64Url = token.spli(".")[1];
+  const base64Url = token.split(".")[1];
   const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
   const jsonPayload = decodeURIComponent(
     atob(base64)
