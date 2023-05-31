@@ -36,6 +36,7 @@ export function Login(props) {
     sendAuthenticationRequest(username, password)
       .then(onLoginSuccess)
       .catch((error) => setError(error.errorMessage));
+    console.log(getCookie());
   }
 
   /**
