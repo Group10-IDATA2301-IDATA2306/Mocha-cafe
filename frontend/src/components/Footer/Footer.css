@@ -37,31 +37,6 @@ footer {
   margin-left: 2rem;
 }
 
-/* Styles for the footer icons */
-#footer-icons {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  margin-left: 2rem;
-  margin-top: 16px;
-}
-
-/* Styles for the individual footer icons */
-#footer-icons > i {
-  background-color: #343a40;
-  border-radius: 50%;
-  text-align: center;
-  margin-bottom: 5rem;
-  padding: 1.2rem;
-  min-width: 2.5rem;
-}
-
-/* Styles for the content of footer icnons */
-#footer-icons > i::before {
-  color: whitesmoke;
-  text-align: center;
-}
-
 /* Styles for the accordian component */
 .accordian .MuiAccordian-root {
   margin-bottom: 0;

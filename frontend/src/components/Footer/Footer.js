@@ -65,7 +65,6 @@ export function Footer() {
           </Typography>
         </AccordionDetails>
       </Accordion>
-
       <div id="footer-icons">
         <i className="fa fa-facebook fa-5x" aria-hidden="true"></i>
         <i className="fa fa-instagram fa-5x" aria-hidden="true"></i>

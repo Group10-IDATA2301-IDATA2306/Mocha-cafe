@@ -23,7 +23,23 @@ export function NavBar() {
 
   return (
     <nav className="navbar-container">
-      <i className="fa fa-bars fa-4x" aria-hidden="true" id="bars-icon"></i>
+      <div class="dropdown">
+        <i className="fa fa-bars fa-5x" aria-hidden="true" id="bars-icon"></i>
+        <div class="dropdown-content">
+          <ActiveLink to="/">
+            <h4>HOME</h4>
+          </ActiveLink>
+          <ActiveLink to="/products">
+            <h4>PRODUCTS</h4>
+          </ActiveLink>
+          <ActiveLink to="/about">
+            <h4>ABOUT US</h4>
+          </ActiveLink>
+          <ActiveLink to="/contact">
+            <h4>CONTACT</h4>
+          </ActiveLink>
+        </div>
+      </div>
       <Link to={`/`}>
         <i className="fa fa-coffee fa-5x" aria-hidden="true" id="logo"></i>
       </Link>
