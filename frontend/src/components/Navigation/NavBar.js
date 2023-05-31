@@ -1,11 +1,8 @@
 import { useState, useEffect, useContext } from "react";
 import "./Navbar.css";
 import { ActiveLink } from "./ActiveLink";
-<<<<<<< HEAD
 import { CartContext } from "../../context/CartContext";
-=======
 import { useNavigate } from "react-router-dom";
->>>>>>> 7c00b6e79a98e04454cb45c593b9be7ce11efe8c
 
 /**
  * A collection of links to navigate the webpage.
@@ -15,12 +12,9 @@ import { useNavigate } from "react-router-dom";
  */
 export function NavBar() {
   const [itemsInCart, setNumberOfItemsInCart] = useState(2);
-<<<<<<< HEAD
   const { cartItems } = useContext(CartContext);
   const cartSize = cartItems.length;
-=======
   const navigate = useNavigate();
->>>>>>> 7c00b6e79a98e04454cb45c593b9be7ce11efe8c
 
   useEffect(loadItemsInCart);
 
