@@ -1,6 +1,6 @@
 import "./ShowcaseCard.css";
 import * as React from "react";
-import Button from "@mui/material/Button";
+import { Link } from "react-router-dom";
 
 /**
  * A showcase of products
@@ -11,23 +11,22 @@ import Button from "@mui/material/Button";
  */
 export function ShowcaseCard({ props }) {
   return (
-    <div className="card-container">
-      <img
-        className="product-image"
-        src={require("../../assets/img/" + props.id + ".png")}
-        alt="product"
-      />
-      <div className="card-overlay"></div>
-      <div className="card-info">
-        <div className="card-stats">
-          <h3>{props.name}</h3>
+    <Link to={`/productdetails/${props.id}`} className="productCardLink">
+      <section className="card-container">
+        <img
+          className="product-image"
+          src={`data:image/png;base64,${props.image.imageData}`}
+          alt={props.image.alt}
+        />
+        <div className="card-overlay"></div>
+        <div className="card-info">
+          <div className="card-stats">
+            <h3>{props.name}</h3>
+          </div>
+          <p>{props.description}</p>
+          <h4>{props.price}kr</h4>
         </div>
-        <p>{props.description}</p>
-        <h4>{props.price}kr</h4>
-        <div className="button-container">
-          <Button variant="contained">Add to cart</Button>
-        </div>
-      </div>
-    </div>
+      </section>
+    </Link>
   );
 }

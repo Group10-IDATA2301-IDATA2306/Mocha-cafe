@@ -66,7 +66,7 @@ export function Signup(props) {
       label="Email"
       defaultValue=""
       value={email}
-      onChange={(event) => setUsername(event.target.value)}
+      onChange={(event) => setEmail(event.target.value)}
     />
   );
 
@@ -144,8 +144,9 @@ export function Signup(props) {
     const signupData = {
       username: username,
       password: password,
+      email: email,
     };
-    asyncApiRequest("POST", "/signup", signupData, true)
+    asyncApiRequest("POST", "/users", signupData, true)
       .then(onSignupSuccess)
       .catch((error) => setError(error.message));
   }
