@@ -19,7 +19,7 @@ export function CartSectionFee(props) {
             <SmallDescription text={props.priceDetails}></SmallDescription>
             <TotalFee text={props.totalFee}></TotalFee>
             <RightButtonLayout>
-                <FormButton text="Continue to payment" id="smallScreenProceedCheckoutBtn"></FormButton>
+                <FormButton text="Submit" id="smallScreenProceedCheckoutBtn"></FormButton>
             </RightButtonLayout>
         </section>
     );
