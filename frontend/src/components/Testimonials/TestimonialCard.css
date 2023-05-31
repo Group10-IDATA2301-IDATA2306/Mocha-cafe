@@ -1,8 +1,8 @@
 .testimonial-card {
   height: 100%;
   width: 25%;
-  min-width: 25rem;
-  min-height: 40rem;
+  min-width: 28rem;
+  max-height: 45rem;
 
   display: grid;
   grid-template-rows: 8rem 1fr 1fr 10%;

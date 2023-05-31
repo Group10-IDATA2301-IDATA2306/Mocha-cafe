@@ -58,8 +58,10 @@ export function Footer() {
         </AccordionSummary>
         <AccordionDetails>
           <Typography sx={{ fontSize: 16 }}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget.
+            This website is a result of a university group project, performed in
+            the course IDATA2301 Web technologies, at NTNU. All the information
+            provided here is a result of imagination. Any resemblance with real
+            companies or products is a coincidence.
           </Typography>
         </AccordionDetails>
       </Accordion>
