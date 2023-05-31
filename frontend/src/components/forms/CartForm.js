@@ -45,7 +45,7 @@ export function CartForm() {
             <ContactInformationForm></ContactInformationForm>
             <ShippingAddressForm></ShippingAddressForm>
             <RightButtonLayout>
-                <FormButton text="Continue to payment" id="bigScreenProceedCheckoutBtn"></FormButton>
+                <FormButton text="Submit" id="bigScreenProceedCheckoutBtn"></FormButton>
             </RightButtonLayout>
         </section>
     );
