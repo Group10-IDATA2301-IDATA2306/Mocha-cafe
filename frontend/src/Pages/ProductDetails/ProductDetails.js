@@ -14,7 +14,7 @@ export function ProductDetails() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`http://group10.web-tek.ninja/products/${id}`);
+                const response = await axios.get(`https://group10.web-tek.ninja/products/${id}`);
                 const productData = response.data;
                 setProduct(productData);
             } catch (error) {

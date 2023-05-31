@@ -15,22 +15,6 @@ import "./CartForm.css"
  */
 export function CartForm() {
     const { addToCart, cartItems } = useContext(CartContext);
-    const [data, setData] = useState([]);
-
-    // fetches data once the component is mounted
-    useEffect(() => {
-        fetchData();
-    }, []);
-
-    // fetches product data using swagger api
-    const fetchData = async () => {
-        try {
-            const response = await axios.get('http://group10.web-tek.ninja/products');
-            setData(response.data);
-        } catch (error) {
-            console.error(error);
-        }
-    };
 
     return (
         <section className="cartForm">
