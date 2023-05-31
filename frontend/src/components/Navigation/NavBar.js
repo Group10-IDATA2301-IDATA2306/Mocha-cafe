@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
  * @constructor
  */
 export function NavBar() {
-  const [itemsInCart, setNumberOfItemsInCart] = useState(2);
+  const [itemsInCart, setNumberOfItemsInCart] = useState(0);
   const { cartItems } = useContext(CartContext);
   const cartSize = cartItems.length;
   const navigate = useNavigate();
@@ -23,7 +23,7 @@ export function NavBar() {
 
   return (
     <nav className="navbar-container">
-      <div class="dropdown">
+      <article class="dropdown">
         <i className="fa fa-bars fa-5x" aria-hidden="true" id="bars-icon"></i>
         <div class="dropdown-content">
           <ActiveLink to="/">
@@ -39,7 +39,7 @@ export function NavBar() {
             <h4>CONTACT</h4>
           </ActiveLink>
         </div>
-      </div>
+      </article>
       <Link to={`/`}>
         <i className="fa fa-coffee fa-5x" aria-hidden="true" id="logo"></i>
       </Link>
