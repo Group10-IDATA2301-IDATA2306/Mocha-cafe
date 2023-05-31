@@ -9,8 +9,8 @@ import { Login } from "./Pages/Login/Login";
 import { Signup } from "./Pages/Login/Signup";
 import { AdminPage } from "./Pages/AdminPage/AdminPage";
 import { ProfilePage } from "./Pages/ProfilePage/ProfilePage";
-import { ProductDetails } from "./Pages/ProductDetails/ProductDetails";
 import { LogOut } from "./Pages/Login/LogOut";
+import { ProductDetails } from "./Pages/ProductDetails/ProductDetails";
 
 export function MainSection(props) {
   const username = props.user ? props.user.username : null;
