@@ -117,4 +117,10 @@ export const HttpInterface = {
     const response = await httpGET("/users/" + userId);
     return response.ok ? response.json() : null;
   },
+
+
+
+  submitOrder: async function (userId, listOfCartItems) {
+    const response = await httpSendData("/orders/user/" + userId, "POST", listOfCartItems);
+  },
 };
