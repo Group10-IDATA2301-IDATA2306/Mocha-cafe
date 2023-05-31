@@ -6,8 +6,7 @@ import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import "./Signup.css";
 import { useNavigate } from "react-router-dom";
-import { asyncApiRequest } from "../../api/HttpInterface";
-import { HttpInterface } from "../../api/HttpInterface";
+import { HttpInterface, SESSION } from "../../api/HttpInterface";
 
 /**
  * Sign Up form component.
@@ -140,21 +139,22 @@ export function Signup(props) {
    * Submit the sign-up form
    * @param event
    */
-  function submitForm(event) {
+  async function submitForm(event) {
     event.preventDefault();
     const signupData = {
       username: username,
       password: password,
       email: email,
     };
-    HttpInterface.signUp(signupData);
-  }
+    await HttpInterface.signUp(signupData);
 
-  /**
-   * This function is called when signup was successful
-   */
-  function onSignupSuccess() {
-    navigate("/");
+    if (SESSION.Authorized) {
+      navigate("/");
+    } else {
+      setUsername("");
+      setPassword("");
+      setEmail("");
+    }
   }
 }
 
