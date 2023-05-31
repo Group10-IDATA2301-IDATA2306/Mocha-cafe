@@ -65,7 +65,7 @@ async function handleErrors(response) {
   return response;
 }
 
-const SESSION = {
+export const SESSION = {
   Token: "",
   Authorized: false,
 };
@@ -132,6 +132,8 @@ export const HttpInterface = {
       sessionStorage.setItem("USERNAME", credentials.username);
       SESSION.Authorized = true;
       this.getUserId(credentials.username);
+    } else {
+      window.alert("Bad credentials. Please try again");
     }
     return SESSION.Authorized;
   },

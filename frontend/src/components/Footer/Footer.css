@@ -6,8 +6,51 @@ footer {
   flex-direction: row;
   background-color: #f7f7f7;
   padding: 2rem;
+<<<<<<< HEAD
   justify-content: space-around;
   color: #1c1f22c7;
   font-size: 12px;
   letter-spacing: 1px;
 }
+=======
+}
+
+/* Styles for the "About Us" section */
+#about-us-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2rem;
+  margin-left: 2rem;
+}
+
+/* Styles for the "Contact us" section*/
+#contact-us-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 2rem;
+  margin-left: 2rem;
+}
+
+/* Styles for the information section */
+#info-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 2rem;
+  margin-left: 2rem;
+}
+
+/* Styles for the accordian component */
+.accordian .MuiAccordian-root {
+  margin-bottom: 0;
+}
+
+/* Styles for the accordian container */
+.accordian {
+  width: 100%;
+  margin: 0;
+}
+>>>>>>> 7f561b40138808f3eafbee3b91eab0946be9fcf7

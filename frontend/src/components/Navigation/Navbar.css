@@ -94,6 +94,22 @@ h4 {
   margin-top: 0.8rem;
 }
 
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 10rem;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  padding: 12px 16px;
+  z-index: 1;
+  text-decoration: none;
+}
+
+.dropdown {
+  display: none;
+  text-decoration: none;
+}
+
 @media (min-width: 500px) and (max-width: 700px) {
   .navbar-container {
     display: grid;
@@ -131,6 +147,15 @@ h4 {
     margin-right: 2.4rem;
 
     gap: 3rem;
+  }
+
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
   }
 }
 
@@ -185,5 +210,14 @@ h4 {
     margin-left: 2rem;
     grid-column: 1;
     grid-row: 1;
+  }
+
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
   }
 }
