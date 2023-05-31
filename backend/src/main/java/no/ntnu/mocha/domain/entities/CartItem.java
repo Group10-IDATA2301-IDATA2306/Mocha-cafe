@@ -1,6 +1,7 @@
 package no.ntnu.mocha.domain.entities;
 
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -29,12 +30,12 @@ public class CartItem {
     private long id;
 
     /** The Order which the Cart Item belongs to. */
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "order_id")
     private Order order;
 
     /** The Product which the Cart Item represents. */
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "product_id")
     private Product product;
 
