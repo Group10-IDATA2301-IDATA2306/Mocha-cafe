@@ -23,7 +23,7 @@ export function CartForm() {
             <ShippingAddressForm></ShippingAddressForm>
             <p class="formNote">* Form not functional at the moment, but you can still submit the cart</p>
             <RightButtonLayout>
-                <FormButton text="Continue to payment" id="bigScreenProceedCheckoutBtn"></FormButton>
+                <FormButton text="Submit" id="bigScreenProceedCheckoutBtn"></FormButton>
             </RightButtonLayout>
         </section>
     );

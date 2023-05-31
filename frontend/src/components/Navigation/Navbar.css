@@ -18,6 +18,10 @@
   gap: 3rem;
 }
 
+a {
+  text-decoration: none;
+}
+
 .navbar-container > a {
   text-decoration: none;
   color: rgb(24, 24, 24);
