@@ -5,6 +5,7 @@ import { ProductCard } from "../../components/entities/ProductCard";
 import { PageHeader } from "../../components/text/PageHeader";
 import { useParams } from 'react-router-dom';
 import "./ProductPage.css";
+import { ProductCardGrid } from "../../components/layout/ProductCardGrid";
 
 /**
  * A react component responsible for displaying the products page.
@@ -34,9 +35,11 @@ export function ProductPage() {
     return (
         <div className="productPage">
             <PageHeader text="Products" />
-            {products.map((product) => (
-                <ProductCard key={product.id} product={product}/>
-            ))}
+            <ProductCardGrid>
+                {products.map((product) => (
+                    <ProductCard key={product.id} product={product} />
+                ))}
+            </ProductCardGrid>
         </div>
     );
 };
