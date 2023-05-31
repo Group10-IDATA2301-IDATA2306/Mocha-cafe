@@ -21,7 +21,7 @@ export function Showcase() {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        "http://group10.web-tek.ninja/products/order?order=popularity"
+        "https://group10.web-tek.ninja:8080/products/order?order=popularity"
       );
       setProducts(response.data);
       console.log(response.data);
