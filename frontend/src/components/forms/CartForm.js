@@ -25,7 +25,7 @@ export function CartForm() {
     // fetches product data using swagger api
     const fetchData = async () => {
         try {
-            const response = await axios.get('http://group10.web-tek.ninja/products');
+            const response = await axios.get('https://group10.web-tek.ninja:8080/products');
             setData(response.data);
         } catch (error) {
             console.error(error);
