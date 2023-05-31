@@ -1,17 +1,20 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import "./Navbar.css";
 import { ActiveLink } from "./ActiveLink";
+import { CartContext } from "../../context/CartContext";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 /**
  * A collection of links to navigate the webpage.
  *
- * @return {JSX.Element}
+ * @return {JSX.Element} navbar element
  * @constructor
  */
 export function NavBar() {
   const [itemsInCart, setNumberOfItemsInCart] = useState(2);
+  const { cartItems } = useContext(CartContext);
+  const cartSize = cartItems.length;
   const navigate = useNavigate();
 
   useEffect(loadItemsInCart);
@@ -62,7 +65,7 @@ export function NavBar() {
     // E.g queryCartItems().length
 
     // Dummy number to showcase functionality
-    const numberOfItems = 1;
+    const numberOfItems = cartSize;
 
     setNumberOfItemsInCart(numberOfItems);
   }
