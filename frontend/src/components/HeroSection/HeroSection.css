@@ -16,10 +16,10 @@
 
   font-size: 12px;
   text-transform: uppercase;
-  letter-spacing: 2.5px;
-  font-weight: 500;
+  letter-spacing: 2px;
+  font-family: "SoDoSans-Bold", sans-serif;
 
-  color: #000;
+  color: #343a40;
   background-color: #fff;
 
   border: none;

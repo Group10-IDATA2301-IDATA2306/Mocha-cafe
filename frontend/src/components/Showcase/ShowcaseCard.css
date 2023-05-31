@@ -26,7 +26,7 @@
   justify-content: center;
   z-index: 5;
 
-  height: 50rem;
+  height: 55rem;
   width: 32rem;
   margin-left: 1rem;
   margin-right: 1rem;
@@ -55,12 +55,12 @@
 }
 
 .card-info {
-  height: 18rem;
+  height: 22rem;
   width: 32rem;
   margin-top: 0.5rem;
 
   display: grid;
-  grid-template-rows: 30% 1fr 30%;
+  grid-template-rows: 20% 1fr 30%;
   justify-content: left;
   align-items: center;
 }
@@ -109,7 +109,7 @@
 
 @media (min-width: 360px) and (max-width: 600px) {
   .card-container {
-    height: 46rem;
+    height: 50rem;
     width: 28rem;
   }
 
@@ -133,7 +133,7 @@
 
   .card-info {
     width: 28rem;
-    height: 18rem;
+    height: 22rem;
   }
 }
 
