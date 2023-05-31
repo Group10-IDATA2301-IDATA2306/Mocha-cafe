@@ -136,19 +136,3 @@
     height: 22rem;
   }
 }
-
-/* View Product Button */
-
-.button-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: auto;
-
-  z-index: 3;
-}
-
-.button-container Button {
-  font-size: 1rem;
-  padding: 1rem 9rem;
-}

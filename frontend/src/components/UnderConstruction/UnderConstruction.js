@@ -1,7 +1,7 @@
 import "./UnderConstruction.css";
 
 /**
- * A component that previews a given location on Google maps
+ * A component that communicates that a section is under construction
  *
  * @return {JSX.Element}
  * @constructor
