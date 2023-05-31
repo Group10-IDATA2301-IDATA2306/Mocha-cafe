@@ -75,7 +75,7 @@ async function httpGET(endpoint) {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      Authorization: "Bearer " + SESSION.Token,
+      Authorization: getCookie("jwt"),
     },
   });
   return response.json();
@@ -86,7 +86,7 @@ async function httpSendData(endpoint, method, data) {
     method: method,
     headers: {
       "Content-Type": "application/json",
-      Authorization: "Bearer " + SESSION.Token,
+      Authorization: getCookie("jwt"),
     },
     body: JSON.stringify(data),
   });
