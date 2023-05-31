@@ -14,7 +14,7 @@ export function ContactInformationForm() {
     return (
         <FormWrapper>
             <FormHeader text={formHeader}></FormHeader>
-            <FormTextInput placeholder={placeholder1}></FormTextInput>
+            {/*<FormTextInput placeholder={placeholder1}></FormTextInput>*/}
             <FormTextInput placeholder={placeholder2}></FormTextInput>
         </FormWrapper>
     );
