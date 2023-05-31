@@ -168,7 +168,7 @@ const strengthIndicators = ["weak", "decent", "strong"];
  */
 const LOGIN_BUTTON = (
   <ActiveLink to="/login">
-    <Button id="login-btn-pagesignup" variant="contained">
+    <Button id="login-btn-pagesignup" variant="outlined">
       Already have an account?
     </Button>
   </ActiveLink>
