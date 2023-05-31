@@ -20,7 +20,11 @@ body {
 p {
   /* font-family: 'Tilt Neon', sans-serif; */
   font-size: 2rem;
-  font-family: "Josefin Sans", sans-serif;
+  color: #1c1f22;
+}
+
+span {
+  color: #1c1f22;
 }
 
 /* Specified sizes */
