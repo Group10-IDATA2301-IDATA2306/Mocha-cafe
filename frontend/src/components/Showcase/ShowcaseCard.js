@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 export function ShowcaseCard({ props }) {
   return (
     <Link to={`/productdetails/${props.id}`} className="productCardLink">
-      <section className="card-container">
+      <article className="card-container">
         <img
           className="product-image"
           src={`data:image/png;base64,${props.image.imageData}`}
@@ -26,7 +26,7 @@ export function ShowcaseCard({ props }) {
           <p>{props.description}</p>
           <h4>{props.price}kr</h4>
         </div>
-      </section>
+      </article>
     </Link>
   );
 }

@@ -1,4 +1,4 @@
-import "./Carousel.css";
+import "./Testimonials.css";
 import { TestimonialCard } from "./TestimonialCard";
 import testimonails from "../../assets/testimonials.json";
 
@@ -7,15 +7,15 @@ import testimonails from "../../assets/testimonials.json";
  * @constructor
  * @returns {JSX.Element}
  */
-export function Carousel() {
+export function Testimonials() {
   return (
-    <div className="testimonial-section">
+    <section className="testimonial-section">
       <h2>What our customers say</h2>
-      <div className="testimonial-container">
+      <article className="testimonial-container">
         <TestimonialCard testimonialInfo={testimonails[0]} />
         <TestimonialCard testimonialInfo={testimonails[3]} />
         <TestimonialCard testimonialInfo={testimonails[2]} />
-      </div>
-    </div>
+      </article>
+    </section>
   );
 }

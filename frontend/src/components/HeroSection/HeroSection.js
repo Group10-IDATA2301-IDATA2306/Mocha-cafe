@@ -8,13 +8,13 @@ import "./HeroSection.css";
  */
 export function HeroSection() {
   return (
-    <div className="hero-section-container">
-      <div className="hero-section-content">
+    <section className="hero-section-container">
+      <article className="hero-section-content">
         <h1>Try our new exciting flavors</h1>
         <Link to={`/products`}>
           <button className="hero-section-button">Find out more</button>
         </Link>
-      </div>
-    </div>
+      </article>
+    </section>
   );
 }

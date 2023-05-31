@@ -48,6 +48,11 @@ h4 {
 
 #bars-icon {
   display: none;
+  cursor: pointer;
+}
+
+#hamburger:checked {
+  opacity: 0;
 }
 
 #cart-icon {
@@ -106,6 +111,10 @@ h4 {
     height: 7rem;
   }
 
+  .navbar-container > a > h4 {
+    display: none;
+  }
+
   #logo {
     grid-column: 2;
 
@@ -131,10 +140,6 @@ h4 {
 
     gap: 3rem;
   }
-
-  .navbar-container > a {
-    display: none;
-  }
 }
 
 @media (max-width: 500px) {
@@ -146,8 +151,14 @@ h4 {
     height: 7rem;
   }
 
+  .navbar-container > a > h4 {
+    display: none;
+  }
+
   .user-cart-container {
     gap: 1.6rem;
+    grid-column: 3;
+    grid-row: 1;
   }
 
   #bars-icon,
@@ -182,9 +193,5 @@ h4 {
     margin-left: 2rem;
     grid-column: 1;
     grid-row: 1;
-  }
-
-  .navbar-container > a {
-    display: none;
   }
 }

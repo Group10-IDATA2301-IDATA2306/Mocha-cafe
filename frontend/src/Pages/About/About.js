@@ -1,9 +1,10 @@
-import './About.css';
+import "./About.css";
+import { UnderConstruction } from "../../components/UnderConstruction/UnderConstruction";
 
 export function About() {
-    return (
-        <>
-            <p>About page...</p>
-        </>
-    );
+  return (
+    <>
+      <UnderConstruction />
+    </>
+  );
 }

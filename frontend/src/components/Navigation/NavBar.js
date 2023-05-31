@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import "./Navbar.css";
 import { ActiveLink } from "./ActiveLink";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 /**
  * A collection of links to navigate the webpage.
@@ -18,9 +19,11 @@ export function NavBar() {
   // Check if the user is logged ins
 
   return (
-    <div className="navbar-container">
+    <nav className="navbar-container">
       <i className="fa fa-bars fa-4x" aria-hidden="true" id="bars-icon"></i>
-      <i className="fa fa-coffee fa-5x" aria-hidden="true" id="logo"></i>
+      <Link to={`/`}>
+        <i className="fa fa-coffee fa-5x" aria-hidden="true" id="logo"></i>
+      </Link>
       <ActiveLink to="/">
         <h4>HOME</h4>
       </ActiveLink>
@@ -48,7 +51,7 @@ export function NavBar() {
           <div className="item-counter">{itemsInCart}</div>
         </div>
       </div>
-    </div>
+    </nav>
   );
 
   /**
