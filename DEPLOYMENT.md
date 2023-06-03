@@ -17,3 +17,12 @@ Should you experience receiving the error mentioned above, we would recommend th
 * Ensure that you are connected to NTNUs network
 * Try to disable validation of SSL certificate authority in your browser if possible
 * Try opening the website in another browser, such as Safari
+
+
+## Workaround
+
+In order to override the SSL certificate validation configuration in a browser, do the following:
+
+* Open the following link in the same browser: https://group10.web-tek.ninja:8080/products
+* Click "Trust domain"
+* Now, the products should be visible in the website
